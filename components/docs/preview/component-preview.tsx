@@ -89,12 +89,13 @@ export function ComponentPreview({
                 href={`${prePath}/preview/${name}`}
                 target="_blank"
                 rel="noreferrer"
+                className={cn("group no-underline transition-all duration-200")}
               >
                 Live Preview
                 <ArrowUpRight
                   className={cn(
                     "h-4 w-4",
-                    "transition-transform duration-200 group-hover:rotate-12"
+                    "transition-transform duration-200 group-hover:rotate-45"
                   )}
                 />
               </a>
