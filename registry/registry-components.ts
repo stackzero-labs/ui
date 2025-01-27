@@ -33,7 +33,7 @@ export const components: Registry = [
   {
     name: "face-rating-03",
     type: "registry:component",
-    dependencies: ["lucide-react"],
+    dependencies: ["lucide-react", "tailwindcss-motion"],
     files: [
       {
         path: "@/components/commerce-ui/face-rating/face-rating-03.tsx",
@@ -75,6 +75,24 @@ export const components: Registry = [
       () =>
         import(
           "../components/commerce-ui/upvote-downvote-rating/upvote-downvote-rating-02"
+        )
+    ),
+  },
+
+  {
+    name: "upvote-downvote-rating-03",
+    type: "registry:component",
+    dependencies: ["lucide-react", "@number-flow/react"],
+    files: [
+      {
+        path: "@/components/commerce-ui/upvote-downvote-rating/upvote-downvote-rating-03.tsx",
+        type: "registry:component",
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import(
+          "../components/commerce-ui/upvote-downvote-rating/upvote-downvote-rating-03"
         )
     ),
   },

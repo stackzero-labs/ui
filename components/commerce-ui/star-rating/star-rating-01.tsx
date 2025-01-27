@@ -253,15 +253,6 @@ const StarRating = () => {
           className="transition-transform duration-200 hover:scale-110"
         />
       ))}
-      <p className="ms-1 text-sm font-medium text-gray-500 dark:text-gray-400">
-        {rating.toFixed(2)}
-      </p>
-      <p className="ms-1 text-sm font-medium text-gray-500 dark:text-gray-400">
-        out of
-      </p>
-      <p className="ms-1 text-sm font-medium text-gray-500 dark:text-gray-400">
-        {MAX_RATING}
-      </p>
     </div>
   );
 };
