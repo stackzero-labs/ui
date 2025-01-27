@@ -1,0 +1,53 @@
+---
+title: Installation
+description: A simple guide to set up commerce ui with the required dependencies and structure.
+icon: PackagePlus
+---
+
+This project is built with **Next.js**, using **TypeScript** and **Tailwind CSS** for all components. Some components also rely on [shadcn/ui](https://ui.shadcn.com/docs/installation) and [Motion](https://motion.dev).  
+
+
+
+<Steps>
+  <Step>
+    ### Install Tailwind CSS
+
+    The components are styled using **Tailwind CSS**.  
+    Follow the official [installation guide](https://tailwindcss.com/docs/installation) to set it up in your project.
+  </Step>
+
+  <Step>
+    ### Install Motion
+
+    To use components with animations, you’ll need to add **Motion** to your project.
+
+    <InstallTabs items={['npm', 'pnpm', 'bun']}>
+    ```bash tab="npm"
+    npm install motion
+    ```
+    ```bash tab="pnpm"
+    pnpm add motion
+    ```
+    ```bash tab="bun"
+    bun add motion
+    ```
+    </InstallTabs>
+  </Step>
+
+  <Step>
+    ### Add a Utility Helper
+
+    To make it easier to conditionally apply Tailwind CSS classes, add this `cn` helper function to your project.
+
+    ```ts title="lib/utils.ts"
+    import { clsx, type ClassValue } from 'clsx'
+    import { twMerge } from 'tailwind-merge'
+
+    export function cn(...inputs: ClassValue[]) {
+      return twMerge(clsx(inputs))
+    }
+    ```
+  </Step>
+</Steps>
+
+You're good to go!
