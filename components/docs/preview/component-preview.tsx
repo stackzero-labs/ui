@@ -42,8 +42,6 @@ export function ComponentPreview({
     }, 1000);
   };
 
-  console.log("componentName", name);
-
   return (
     <div className="not-prose relative z-0 flex items-center justify-between pb-4">
       <Tabs

@@ -1,5 +1,6 @@
 import { cn } from "@/lib/utils";
 import { ArrowBigDown, ArrowBigUp } from "lucide-react";
+import NumberFlow from "@number-flow/react";
 import * as React from "react";
 
 const UPVOTE_COLOR = "#009e42";
@@ -7,7 +8,7 @@ const DOWNVOTE_COLOR = "#a60021";
 const UPVOTE_POINTS = 1;
 const DOWNVOTE_POINTS = 1;
 
-const UpvoteDownvoteRating_01 = () => {
+const UpvoteDownvoteRating_02 = () => {
   const [upvotes, setUpvotes] = React.useState(40);
   const [downvotes, setDownvotes] = React.useState(10);
   const [upvoted, setUpvoted] = React.useState(true);
@@ -39,7 +40,7 @@ const UpvoteDownvoteRating_01 = () => {
       : number.toLocaleString();
   };
 
-  const totalVotes = formatNumber(upvotes - downvotes);
+  const totalVotes = upvotes - downvotes;
 
   return (
     <div
@@ -65,7 +66,8 @@ const UpvoteDownvoteRating_01 = () => {
         />
       </div>
       <div className="min-w-8 p-1 text-center">
-        <span>{totalVotes}</span>
+        {/* <span>{totalVotes}</span> */}
+        <NumberFlow format={{ notation: "compact" }} value={totalVotes} />
       </div>
       <div
         className="cursor-pointer rounded-full p-1 hover:bg-zinc-800/30"
@@ -81,4 +83,4 @@ const UpvoteDownvoteRating_01 = () => {
   );
 };
 
-export default UpvoteDownvoteRating_01;
+export default UpvoteDownvoteRating_02;

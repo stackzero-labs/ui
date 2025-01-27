@@ -17,11 +17,7 @@ export default async function PreviewPage({
   params: Promise<{ slug: string[] }>;
 }) {
   const { slug } = await params;
-  console.log("componentName", slug);
   if (!slug.length) return notFound();
-
-  console.log("slug", slug);
-
   const componentName = slug.join("/");
 
   try {
@@ -51,21 +47,13 @@ export default async function PreviewPage({
 }
 
 export async function generateStaticParams() {
-  registry.forEach((component) => {
-    console.log("component", component.name);
-  });
+  // registry.forEach((component) => {
+  //   console.log("component", component.name);
+  // });
 
   const allComponents = registry.map((component) => {
     return { slug: [component.name] };
   });
-  console.log("allComponents", allComponents);
-
-  // return [
-  //   { slug: [] },
-  //   { slug: ["installation"] },
-  //   { slug: ["test"] },
-  //   { slug: ["face-rating-01"] },
-  // ];
 
   return allComponents;
 }

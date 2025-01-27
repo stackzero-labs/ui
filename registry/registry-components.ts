@@ -61,4 +61,36 @@ export const components: Registry = [
         )
     ),
   },
+  {
+    name: "upvote-downvote-rating-02",
+    type: "registry:component",
+    dependencies: ["lucide-react", "@number-flow/react"],
+    files: [
+      {
+        path: "@/components/commerce-ui/upvote-downvote-rating/upvote-downvote-rating-02.tsx",
+        type: "registry:component",
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import(
+          "../components/commerce-ui/upvote-downvote-rating/upvote-downvote-rating-02"
+        )
+    ),
+  },
+
+  {
+    name: "star-rating-01",
+    type: "registry:component",
+    dependencies: ["lucide-react"],
+    files: [
+      {
+        path: "@/components/commerce-ui/star-rating/star-rating-01.tsx",
+        type: "registry:component",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/commerce-ui/star-rating/star-rating-01")
+    ),
+  },
 ];
