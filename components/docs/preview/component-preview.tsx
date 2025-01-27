@@ -66,21 +66,31 @@ export function ComponentPreview({
           <div className="flex-grow"></div>
 
           <div className="align-center mb-2 flex flex-row gap-2">
-            <Button size="sm" onClick={handleTerminalClick} variant="ghost">
+            <Button
+              size="sm"
+              onClick={handleTerminalClick}
+              variant="outline"
+              className="relative"
+            >
               {isTerminalCopied ? (
                 <>
-                  <CheckCheck className="h-3.5 w-3.5 text-white dark:text-black" />
+                  <CheckCheck className="h-3.5 w-3.5" />
+                  <span className="motion-preset-expand motion-duration-[0.3s] absolute right-0 top-1/2 flex h-full -translate-y-1/2 transform items-center rounded-e-sm bg-background px-8 text-teal-400">
+                    Copied!
+                  </span>
                 </>
               ) : (
-                <Terminal
-                  className={cn(
-                    "h-3.5 w-3.5",
-                    "transition-all duration-200",
-                    "group-hover:rotate-12"
-                  )}
-                />
+                <>
+                  <Terminal
+                    className={cn(
+                      "h-3.5 w-3.5",
+                      "transition-all duration-200",
+                      "group-hover:rotate-12"
+                    )}
+                  />
+                </>
               )}
-              <span>npx shadcn add {name}</span>{" "}
+              <span className="font-mono">npx shadcn add {name}</span>{" "}
             </Button>
             <Button size="sm" asChild variant="default">
               <a

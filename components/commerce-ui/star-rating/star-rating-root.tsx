@@ -21,7 +21,7 @@ const StarIcon = ({
   onClick?: () => void;
 }) => (
   <svg
-    className={cn("w-4 h-4 me-1 cursor-pointer", className)}
+    className={cn("me-1 h-4 w-4 cursor-pointer", className)}
     aria-hidden="true"
     fill="currentColor"
     viewBox="0 0 22 20"
@@ -50,7 +50,7 @@ const QuarterStarIcon = ({
   onClick?: () => void;
 }) => (
   <svg
-    className="w-4 h-4 me-1 cursor-pointer"
+    className="me-1 h-4 w-4 cursor-pointer"
     aria-hidden="true"
     fill="currentColor"
     viewBox="0 0 22 20"
@@ -94,7 +94,7 @@ const HalfStarIcon = ({
   onClick?: () => void;
 }) => (
   <svg
-    className="w-4 h-4 me-1 cursor-pointer"
+    className="me-1 h-4 w-4 cursor-pointer"
     aria-hidden="true"
     fill="currentColor"
     viewBox="0 0 22 20"
@@ -132,7 +132,7 @@ const ThreeQuarterStarIcon = ({
   onClick?: () => void;
 }) => (
   <svg
-    className="w-4 h-4 me-1 cursor-pointer"
+    className="me-1 h-4 w-4 cursor-pointer"
     aria-hidden="true"
     fill="currentColor"
     viewBox="0 0 22 20"
