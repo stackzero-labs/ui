@@ -243,4 +243,19 @@ export const components: Registry = [
         )
     ),
   },
+
+  {
+    name: "image-carousel-01",
+    type: "registry:component",
+    dependencies: ["lucide-react", "@radix-ui/react-radio-group"],
+    files: [
+      {
+        path: "@/components/commerce-ui/image-carousel/image-carousel-01.tsx",
+        type: "registry:component",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/commerce-ui/image-carousel/image-carousel-01")
+    ),
+  },
 ];

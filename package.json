@@ -28,6 +28,8 @@
     "@radix-ui/react-tooltip": "^1.1.4",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "embla-carousel": "^8.5.2",
+    "embla-carousel-react": "^8.5.2",
     "fumadocs-core": "14.7.7",
     "fumadocs-mdx": "11.3.1",
     "fumadocs-twoslash": "^2.0.3",
