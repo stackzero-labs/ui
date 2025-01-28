@@ -168,7 +168,7 @@ export const components: Registry = [
   {
     name: "variant-selector-01",
     type: "registry:component",
-    dependencies: ["lucide-react"],
+    dependencies: ["lucide-react", "@radix-ui/react-radio-group"],
     files: [
       {
         path: "@/components/commerce-ui/variant-selector/variant-selector-01.tsx",
@@ -183,7 +183,7 @@ export const components: Registry = [
   {
     name: "variant-selector-02",
     type: "registry:component",
-    dependencies: ["lucide-react"],
+    dependencies: ["lucide-react", "@radix-ui/react-radio-group"],
     files: [
       {
         path: "@/components/commerce-ui/variant-selector/variant-selector-02.tsx",
@@ -198,7 +198,7 @@ export const components: Registry = [
   {
     name: "variant-selector-03",
     type: "registry:component",
-    dependencies: ["lucide-react"],
+    dependencies: ["lucide-react", "@radix-ui/react-radio-group", "motion"],
     files: [
       {
         path: "@/components/commerce-ui/variant-selector/variant-selector-03.tsx",
@@ -213,7 +213,7 @@ export const components: Registry = [
   {
     name: "variant-selector-04",
     type: "registry:component",
-    dependencies: ["lucide-react"],
+    dependencies: ["lucide-react", "@radix-ui/react-radio-group"],
     files: [
       {
         path: "@/components/commerce-ui/variant-selector/variant-selector-04.tsx",
@@ -223,6 +223,24 @@ export const components: Registry = [
     component: React.lazy(
       () =>
         import("../components/commerce-ui/variant-selector/variant-selector-04")
+    ),
+  },
+
+  {
+    name: "variant-color-selector-01",
+    type: "registry:component",
+    dependencies: ["lucide-react", "@radix-ui/react-radio-group"],
+    files: [
+      {
+        path: "@/components/commerce-ui/variant-color-selector/variant-color-selector-01.tsx",
+        type: "registry:component",
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import(
+          "../components/commerce-ui/variant-color-selector/variant-color-selector-01"
+        )
     ),
   },
 ];
