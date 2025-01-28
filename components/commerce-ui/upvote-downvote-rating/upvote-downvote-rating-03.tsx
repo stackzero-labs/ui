@@ -2,8 +2,8 @@ import { cn } from "@/lib/utils";
 import { ThumbsUp, ThumbsDown } from "lucide-react";
 import * as React from "react";
 
-const UPVOTE_COLOR = "#009e42";
-const DOWNVOTE_COLOR = "#a60021";
+const UPVOTE_COLOR = "#f93003";
+const DOWNVOTE_COLOR = "#5817fb";
 const UPVOTE_POINTS = 1;
 const DOWNVOTE_POINTS = 1;
 
@@ -55,7 +55,7 @@ const UpvoteDownvoteRating_01 = () => {
       }}
     >
       <div
-        className="hover:motion-preset-shake cursor-pointer rounded-full px-2 py-2"
+        className="cursor-pointer rounded-full px-2 py-2 hover:motion-preset-shake"
         onClick={() => handleVote("upvote")}
       >
         <ThumbsUp
@@ -64,11 +64,11 @@ const UpvoteDownvoteRating_01 = () => {
           fill={upvoted ? "white" : "transparent"}
         />
       </div>
-      <div className="min-w-8 px-2 py-1 text-center">
+      <div className="min-w-8 px-2 py-1 text-center text-white">
         <span>{totalVotes}</span>
       </div>
       <div
-        className="hover:motion-preset-shake cursor-pointer rounded-full px-2 py-2"
+        className="cursor-pointer rounded-full px-2 py-2 hover:motion-preset-shake"
         onClick={() => handleVote("downvote")}
       >
         <ThumbsDown

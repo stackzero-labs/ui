@@ -6,11 +6,7 @@ import { registry } from "@/registry";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 // Arrays to categorize components
-const CENTERED_COMPONENTS = [
-  "face-rating",
-  "upvote-downvote-rating",
-  "star-rating",
-];
+const NOT_CENTERED_COMPONENTS: string[] = [];
 
 // const FULL_WIDTH_COMPONENTS = ["hero"];
 
@@ -32,12 +28,14 @@ export default async function PreviewPage({
     //   { ssr: true }
     // );
 
-    // Check if component should be centered
-    const shouldCenter = CENTERED_COMPONENTS.some((component) =>
+    // Check if component should not be centered
+    const shouldNotCenter = NOT_CENTERED_COMPONENTS.some((component) =>
       componentName.startsWith(component)
     );
 
-    return shouldCenter ? (
+    return shouldNotCenter ? (
+      <ComponentLoader name={componentName} hasReTrigger={false} />
+    ) : (
       <>
         <header className="fixed left-0 top-0 z-10 flex w-full items-center justify-between gap-4 border-b border-neutral-800 bg-neutral-950 p-4 shadow-md">
           <div>
@@ -58,8 +56,6 @@ export default async function PreviewPage({
           </div>
         </div>
       </>
-    ) : (
-      <ComponentLoader name={componentName} hasReTrigger={false} />
     );
   } catch (error) {
     return notFound();

@@ -64,7 +64,7 @@ const UpvoteDownvoteRating_01 = () => {
           fill={upvoted ? "white" : "transparent"}
         />
       </div>
-      <div className="min-w-8 p-1 text-center">
+      <div className="min-w-8 p-1 text-center text-white">
         <span>{totalVotes}</span>
       </div>
       <div
