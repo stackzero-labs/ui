@@ -1,19 +1,38 @@
-# test-fumadocs-app
+# commerce-ui
 
-This is a Next.js application generated with
-[Create Fumadocs](https://github.com/fuma-nama/fumadocs).
+For the documentation of the Commerce UI components, see the [Commerce UI documentation](https://ui.stackzero.co).
 
-Run development server:
+## Development
+
+This project uses `pnpm` as the package manager. To install the dependencies, run the following command:
 
 ```bash
-npm run dev
-# or
+pnpm install
+```
+
+To run the development server, run the following command:
+
+```bash
 pnpm dev
-# or
-yarn dev
 ```
 
 Open http://localhost:3000 with your browser to see the result.
+
+## Build
+
+To build the project, run the following command:
+
+```bash
+pnpm run build
+```
+
+This script will also build the registry as part of a post-build script.
+
+To just build the registry, run the following command:
+
+```bash
+pnpm run build:registry
+```
 
 ## Learn More
 

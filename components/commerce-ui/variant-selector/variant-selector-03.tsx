@@ -1,9 +1,10 @@
 "use client";
 
-import * as React from "react";
 import * as RadioGroupPrimitive from "@radix-ui/react-radio-group";
 import { Circle } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
+import * as React from "react";
+
 import { cn } from "@/lib/utils";
 
 interface VariantItem {
@@ -24,7 +25,8 @@ const VariantSelector_03 = ({ className }: { className?: string }) => {
     console.log("Selected variant:", value);
   };
 
-  const [activeTab, setActiveTab] = React.useState(variants[0].id);
+  const [activeTab, setActiveTab] = React.useState("variant-b");
+  const [activeStyles, setActiveStyles] = React.useState({ left: 0, width: 0 });
   const itemsRef = React.useRef<Map<string, HTMLLabelElement>>(new Map());
 
   // Function to get the position and width of the active element
@@ -44,6 +46,12 @@ const VariantSelector_03 = ({ className }: { className?: string }) => {
     };
   };
 
+  // Use useLayoutEffect to calculate initial position
+  React.useLayoutEffect(() => {
+    const styles = getActiveStyles();
+    setActiveStyles(styles);
+  }, [activeTab]);
+
   return (
     <fieldset className={cn("space-y-4", className)}>
       <legend>Select your Headphone variant:</legend>
@@ -59,7 +67,7 @@ const VariantSelector_03 = ({ className }: { className?: string }) => {
           <motion.div
             layoutId="variant-background"
             className="absolute inset-0 h-full rounded-lg border border-lime-300 bg-lime-300/30"
-            animate={getActiveStyles()}
+            animate={activeStyles}
             transition={{
               type: "spring",
               bounce: 0.2,

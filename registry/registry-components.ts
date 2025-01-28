@@ -210,4 +210,19 @@ export const components: Registry = [
         import("../components/commerce-ui/variant-selector/variant-selector-03")
     ),
   },
+  {
+    name: "variant-selector-04",
+    type: "registry:component",
+    dependencies: ["lucide-react"],
+    files: [
+      {
+        path: "@/components/commerce-ui/variant-selector/variant-selector-04.tsx",
+        type: "registry:component",
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import("../components/commerce-ui/variant-selector/variant-selector-04")
+    ),
+  },
 ];

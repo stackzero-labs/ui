@@ -1,0 +1,15 @@
+{
+  "name": "variant-selector-04",
+  "type": "registry:component",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "files": [
+    {
+      "type": "registry:component",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\n\nimport { cn } from \"@/lib/utils\";\nimport { ToggleGroup, ToggleGroupItem } from \"@radix-ui/react-toggle-group\";\ninterface VariantItem {\n  id: string;\n  value: string;\n  label: string;\n}\n\nconst variants: VariantItem[] = [\n  { id: \"variant-xxs\", value: \"variant-xxs\", label: \"XXS\" },\n  { id: \"variant-xs\", value: \"variant-xs\", label: \"XS\" },\n  { id: \"variant-s\", value: \"variant-s\", label: \"S\" },\n  { id: \"variant-m\", value: \"variant-m\", label: \"M\" },\n  { id: \"variant-l\", value: \"variant-l\", label: \"L\" },\n  { id: \"variant-xl\", value: \"variant-xl\", label: \"XL\" },\n  { id: \"variant-xxl\", value: \"variant-xxl\", label: \"XXL\" },\n];\n\nconst VariantSelector_04 = ({ className }: { className?: string }) => {\n  const handleSelect = (value: string) => {\n    console.log(\"Selected variant:\", value);\n  };\n  return (\n    <fieldset className={cn(\"space-y-4\", className)}>\n      <legend className=\"sr-only\">Select a variant</legend>\n      <ToggleGroup\n        className=\"bg-mauve6 shadow-blackA4 inline-flex space-x-px rounded shadow-[0_2px_10px]\"\n        type=\"single\"\n        defaultValue=\"center\"\n        aria-label=\"Text alignment\"\n      >\n        <ToggleGroupItem value=\"left\" aria-label=\"Left aligned\">\n          One\n        </ToggleGroupItem>\n        <ToggleGroupItem value=\"center\" aria-label=\"Center aligned\">\n          Two\n        </ToggleGroupItem>\n        <ToggleGroupItem value=\"right\" aria-label=\"Right aligned\">\n          Three\n        </ToggleGroupItem>\n      </ToggleGroup>\n    </fieldset>\n  );\n};\n\nexport default VariantSelector_04;\n",
+      "path": "/components/commerce-ui/variant-selector/variant-selector-04.tsx",
+      "target": "/components/commerce-ui/variant-selector-04.tsx"
+    }
+  ]
+}
