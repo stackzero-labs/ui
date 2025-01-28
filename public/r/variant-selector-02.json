@@ -1,0 +1,15 @@
+{
+  "name": "variant-selector-02",
+  "type": "registry:component",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "files": [
+    {
+      "type": "registry:component",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport * as RadioGroupPrimitive from \"@radix-ui/react-radio-group\";\nimport { Circle } from \"lucide-react\";\n\nimport { cn } from \"@/lib/utils\";\nimport Image from \"next/image\";\n\ninterface VariantItem {\n  id: string;\n  value: string;\n  label: string;\n  url: string;\n  disabled?: boolean;\n}\n\nconst variants: VariantItem[] = [\n  {\n    id: \"cat-default\",\n    value: \"cat-default\",\n    label: \"Default Cat\",\n    url: \"/placeholders/cat-default.webp\",\n  },\n  {\n    id: \"cat-steampunk\",\n    value: \"cat-steampunk\",\n    label: \"Steampunk Cat\",\n    url: \"/placeholders/cat-steampunk.webp\",\n  },\n  {\n    id: \"cat-cyberpunk\",\n    value: \"cat-cyberpunk\",\n    label: \"Cyberpunk Cat\",\n    url: \"/placeholders/cat-cyberpunk.webp\",\n  },\n];\nconst VariantSelector_02 = ({ className }: { className?: string }) => {\n  const handleSelect = (value: string) => {\n    console.log(\"Selected variant:\", value);\n  };\n  return (\n    <fieldset className={cn(\"space-y-4\", className)}>\n      <legend className=\"sr-only\">Select a variant</legend>\n      <RadioGroupPrimitive.Root\n        className=\"grid grid-cols-3 gap-2\"\n        defaultValue=\"cat-default\"\n        onValueChange={handleSelect}\n      >\n        {variants.map((variant) => (\n          <label\n            key={variant.id}\n            className=\"relative flex cursor-pointer flex-col items-center gap-3 rounded-lg border border-input px-2 py-3 text-center shadow-sm shadow-black/5 outline-offset-2 transition-colors has-[[data-disabled]]:cursor-not-allowed has-[[data-state=checked]]:border-ring has-[[data-state=checked]]:bg-accent has-[[data-disabled]]:opacity-50 has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-ring/70\"\n          >\n            <RadioGroupPrimitive.Item\n              value={variant.value}\n              className=\"sr-only after:absolute after:inset-0\"\n            >\n              <RadioGroupPrimitive.Indicator className=\"flex items-center justify-center\">\n                <Circle className=\"h-2.5 w-2.5 fill-current text-current\" />\n              </RadioGroupPrimitive.Indicator>\n            </RadioGroupPrimitive.Item>\n            <img\n              alt={variant.label}\n              src={variant.url}\n              width={150}\n              height={150}\n            />\n            <p className=\"text-xs text-muted-foreground\">{variant.label}</p>\n          </label>\n        ))}\n      </RadioGroupPrimitive.Root>\n    </fieldset>\n  );\n};\n\nexport default VariantSelector_02;\n",
+      "path": "/components/commerce-ui/variant-selector/variant-selector-02.tsx",
+      "target": "/components/commerce-ui/variant-selector-02.tsx"
+    }
+  ]
+}

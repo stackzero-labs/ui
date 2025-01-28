@@ -1,16 +1,21 @@
 import { cn } from "@/lib/utils";
 import { ArrowBigDown, ArrowBigUp } from "lucide-react";
-import NumberFlow from "@number-flow/react";
+import NumberFlow, { Format } from "@number-flow/react";
 import * as React from "react";
 
-const UPVOTE_COLOR = "#009e42";
-const DOWNVOTE_COLOR = "#a60021";
+const UPVOTE_COLOR = "#10b981";
+const DOWNVOTE_COLOR = "#ef4444";
 const UPVOTE_POINTS = 1;
 const DOWNVOTE_POINTS = 1;
+const format: Format = {
+  notation: "compact",
+  compactDisplay: "short",
+  roundingMode: "trunc",
+};
 
-const UpvoteDownvoteRating_02 = () => {
-  const [upvotes, setUpvotes] = React.useState(40);
-  const [downvotes, setDownvotes] = React.useState(10);
+const UpvoteDownvoteRating_05 = () => {
+  const [upvotes, setUpvotes] = React.useState(4150);
+  const [downvotes, setDownvotes] = React.useState(550);
   const [upvoted, setUpvoted] = React.useState(true);
   const [downvoted, setDownvoted] = React.useState(false);
 
@@ -66,8 +71,7 @@ const UpvoteDownvoteRating_02 = () => {
         />
       </div>
       <div className="min-w-8 p-1 text-center text-white">
-        {/* <span>{totalVotes}</span> */}
-        <NumberFlow format={{ notation: "compact" }} value={totalVotes} />
+        <NumberFlow format={format} value={totalVotes} />
       </div>
       <div
         className="cursor-pointer rounded-full p-1 hover:bg-zinc-800/30"
@@ -83,4 +87,4 @@ const UpvoteDownvoteRating_02 = () => {
   );
 };
 
-export default UpvoteDownvoteRating_02;
+export default UpvoteDownvoteRating_05;

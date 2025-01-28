@@ -96,6 +96,41 @@ export const components: Registry = [
         )
     ),
   },
+  {
+    name: "upvote-downvote-rating-04",
+    type: "registry:component",
+    dependencies: ["lucide-react", "@number-flow/react"],
+    files: [
+      {
+        path: "@/components/commerce-ui/upvote-downvote-rating/upvote-downvote-rating-04.tsx",
+        type: "registry:component",
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import(
+          "../components/commerce-ui/upvote-downvote-rating/upvote-downvote-rating-04"
+        )
+    ),
+  },
+
+  {
+    name: "upvote-downvote-rating-05",
+    type: "registry:component",
+    dependencies: ["lucide-react", "@number-flow/react"],
+    files: [
+      {
+        path: "@/components/commerce-ui/upvote-downvote-rating/upvote-downvote-rating-05.tsx",
+        type: "registry:component",
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import(
+          "../components/commerce-ui/upvote-downvote-rating/upvote-downvote-rating-05"
+        )
+    ),
+  },
 
   {
     name: "star-rating-01",
@@ -109,6 +144,70 @@ export const components: Registry = [
     ],
     component: React.lazy(
       () => import("../components/commerce-ui/star-rating/star-rating-01")
+    ),
+  },
+
+  {
+    name: "like-dislike-rating-01",
+    type: "registry:component",
+    dependencies: ["lucide-react"],
+    files: [
+      {
+        path: "@/components/commerce-ui/like-dislike-rating/like-dislike-rating-01.tsx",
+        type: "registry:component",
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import(
+          "../components/commerce-ui/like-dislike-rating/like-dislike-rating-01"
+        )
+    ),
+  },
+
+  {
+    name: "variant-selector-01",
+    type: "registry:component",
+    dependencies: ["lucide-react"],
+    files: [
+      {
+        path: "@/components/commerce-ui/variant-selector/variant-selector-01.tsx",
+        type: "registry:component",
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import("../components/commerce-ui/variant-selector/variant-selector-01")
+    ),
+  },
+  {
+    name: "variant-selector-02",
+    type: "registry:component",
+    dependencies: ["lucide-react"],
+    files: [
+      {
+        path: "@/components/commerce-ui/variant-selector/variant-selector-02.tsx",
+        type: "registry:component",
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import("../components/commerce-ui/variant-selector/variant-selector-02")
+    ),
+  },
+  {
+    name: "variant-selector-03",
+    type: "registry:component",
+    dependencies: ["lucide-react"],
+    files: [
+      {
+        path: "@/components/commerce-ui/variant-selector/variant-selector-03.tsx",
+        type: "registry:component",
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import("../components/commerce-ui/variant-selector/variant-selector-03")
     ),
   },
 ];
