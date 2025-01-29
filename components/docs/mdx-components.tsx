@@ -16,7 +16,7 @@ import type { ReactNode } from "react";
 import { ComponentBase } from "./preview/component-base";
 import { ComponentCollapse } from "./preview/component-collapse";
 import { ComponentPreview } from "./preview/component-preview";
-
+import { ComponentPropsTable } from "./component-props-table";
 const { AutoTypeTable } = createTypeTable();
 
 export function getMDXComponents(components: MDXComponents): MDXComponents {
@@ -37,6 +37,7 @@ export function getMDXComponents(components: MDXComponents): MDXComponents {
     Tab,
 
     TypeTable,
+    ComponentPropsTable,
     ImageZoom,
     Steps,
     Step,

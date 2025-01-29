@@ -5,12 +5,52 @@ icon: GalleryThumbnails
 ---
 
 
-  ### Image Carousel - 01
+## Image Carousel - 01
 <ComponentPreview 
   name="image-carousel-01"     
   classNameComponentContainer='min-h-[200px]' 
 />
 
+### Props
+
+<ComponentPropsTable
+  componentName="MyComponent"
+  types={{
+    images: {
+      description:
+        'The images to display in the carousel',
+      type: 'string[]',
+      required: true,
+    },
+    showControl: {
+      description:
+        'Display the carousel controls',
+      type: 'boolean',
+      default: true,
+    },
+    imageFit: {
+      description: "Controls how to display the image",
+      type: 'enum',
+      default: 'contain',
+      typeValue: `"cover" | "contain" | "fill"`
+    },
+    aspectRatio: {
+      description: "Controls aspect ratio of the images displayed",
+      type: 'enum',
+      default: 'wide',
+      typeValue: `"square" | "video" | "wide" | "auto"`
+    }
+    // ... more props
+  }}
+/>
+
+## Examples
+
+  ### Image Carousel - 01 - Example
+<ComponentPreview 
+  name="image-carousel-01-example"     
+  classNameComponentContainer='min-h-[200px]' 
+/>
 
 
 
