@@ -75,8 +75,12 @@ const Thumb: React.FC<ThumbPropType> = (props) => {
   return (
     <div
       className={cn(
-        "min-w-0 flex-[0_0_22%] pl-3 transition-opacity duration-200 sm:flex-[0_0_15%]",
-        selected ? "opacity-100" : "opacity-50 hover:opacity-70"
+        "transition-opacity duration-200",
+        selected ? "opacity-100" : "opacity-50 hover:opacity-70",
+        // Horizontal layout (top/bottom)
+        "group-[.thumbs-horizontal]:min-w-0 group-[.thumbs-horizontal]:flex-[0_0_22%] group-[.thumbs-horizontal]:pl-3 sm:group-[.thumbs-horizontal]:flex-[0_0_15%]",
+        // Vertical layout (left/right)
+        "group-[.thumbs-vertical]:w-full group-[.thumbs-vertical]:pt-3"
       )}
     >
       <button
@@ -101,6 +105,8 @@ interface ImageCarousel_01Props extends React.HTMLAttributes<HTMLDivElement> {
   showControls?: boolean;
   imageFit?: "cover" | "contain" | "fill";
   aspectRatio?: "square" | "video" | "wide" | "auto";
+  thumbPosition?: "bottom" | "top" | "left" | "right";
+  showThumbs?: boolean;
 }
 
 const ImageCarousel_01: React.FC<ImageCarousel_01Props> = ({
@@ -110,6 +116,8 @@ const ImageCarousel_01: React.FC<ImageCarousel_01Props> = ({
   className,
   imageFit = "contain",
   aspectRatio = "wide",
+  thumbPosition = "left",
+  showThumbs = true,
   ...props
 }) => {
   const [emblaRef, emblaApi] = useEmblaCarousel({
@@ -117,19 +125,24 @@ const ImageCarousel_01: React.FC<ImageCarousel_01Props> = ({
     axis: "x",
   });
 
-  const [emblaThumbsRef, emblaThumbsApi] = useEmblaCarousel({
-    containScroll: "keepSnaps",
-    dragFree: true,
-    axis: "x",
-  });
+  const [emblaThumbsRef, emblaThumbsApi] = useEmblaCarousel(
+    showThumbs
+      ? {
+          containScroll: "keepSnaps",
+          dragFree: true,
+          axis:
+            thumbPosition === "left" || thumbPosition === "right" ? "y" : "x",
+        }
+      : undefined
+  );
 
   const onThumbClick = useCallback(
     (index: number) => {
-      if (!emblaApi || !emblaThumbsApi) return;
+      if (!emblaApi || !showThumbs || !emblaThumbsApi) return;
       emblaApi.scrollTo(index);
       emblaThumbsApi.scrollTo(index);
     },
-    [emblaApi, emblaThumbsApi]
+    [emblaApi, emblaThumbsApi, showThumbs]
   );
 
   const [canScrollPrev, setCanScrollPrev] = useState(false);
@@ -158,15 +171,18 @@ const ImageCarousel_01: React.FC<ImageCarousel_01Props> = ({
   );
 
   const onSelect = useCallback(() => {
-    if (!emblaApi || !emblaThumbsApi) return;
+    if (!emblaApi) return;
     setSelectedIndex(emblaApi.selectedScrollSnap());
-    emblaThumbsApi.scrollTo(emblaApi.selectedScrollSnap());
     setCanScrollPrev(emblaApi.canScrollPrev());
     setCanScrollNext(emblaApi.canScrollNext());
-  }, [emblaApi, emblaThumbsApi]);
+
+    if (showThumbs && emblaThumbsApi) {
+      emblaThumbsApi.scrollTo(emblaApi.selectedScrollSnap());
+    }
+  }, [emblaApi, emblaThumbsApi, showThumbs]);
 
   useEffect(() => {
-    if (!emblaApi || !emblaThumbsApi) return;
+    if (!emblaApi) return;
 
     onSelect();
     emblaApi.on("reInit", onSelect);
@@ -176,17 +192,52 @@ const ImageCarousel_01: React.FC<ImageCarousel_01Props> = ({
       emblaApi.off("reInit", onSelect);
       emblaApi.off("select", onSelect);
     };
-  }, [emblaApi, emblaThumbsApi, onSelect]);
+  }, [emblaApi, onSelect]);
 
   return (
     <div
-      className={cn("relative w-full max-w-3xl", className)}
+      className={cn(
+        "relative w-full max-w-3xl",
+        {
+          "flex gap-4":
+            showThumbs &&
+            (thumbPosition === "left" || thumbPosition === "right"),
+          "flex-row-reverse": showThumbs && thumbPosition === "left",
+        },
+        className
+      )}
       role="region"
       aria-roledescription="carousel"
       onKeyDownCapture={handleKeyDown}
       {...props}
     >
-      <div className="relative" aria-label="Image carousel controls">
+      {showThumbs && thumbPosition === "top" && (
+        <div className="mb-4">
+          <div className="overflow-hidden" ref={emblaThumbsRef}>
+            <div className="thumbs-horizontal group -ml-3 flex">
+              {images?.map((image, index) => (
+                <Thumb
+                  key={index}
+                  onClick={() => onThumbClick(index)}
+                  selected={index === selectedIndex}
+                  index={index}
+                  imgUrl={image}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
+
+      <div
+        className={cn(
+          "relative",
+          showThumbs &&
+            (thumbPosition === "left" || thumbPosition === "right") &&
+            "flex-[1_1_75%]"
+        )}
+        aria-label="Image carousel controls"
+      >
         <div ref={emblaRef} className="overflow-hidden rounded-lg">
           <div className="-ml-4 flex">
             {images?.map((image, index) => (
@@ -234,21 +285,45 @@ const ImageCarousel_01: React.FC<ImageCarousel_01Props> = ({
         )}
       </div>
 
-      <div className="mt-4">
-        <div className="overflow-hidden" ref={emblaThumbsRef}>
-          <div className="-ml-3 flex gap-2">
-            {images?.map((image, index) => (
-              <Thumb
-                key={index}
-                onClick={() => onThumbClick(index)}
-                selected={index === selectedIndex}
-                index={index}
-                imgUrl={image}
-              />
-            ))}
+      {showThumbs &&
+        (thumbPosition === "bottom" ||
+          thumbPosition === "left" ||
+          thumbPosition === "right") && (
+          <div
+            className={cn(
+              thumbPosition === "left" || thumbPosition === "right"
+                ? "relative flex-[0_0_20%]"
+                : "mt-4"
+            )}
+          >
+            <div
+              className={cn(
+                "overflow-hidden",
+                (thumbPosition === "left" || thumbPosition === "right") &&
+                  "absolute inset-0"
+              )}
+              ref={emblaThumbsRef}
+            >
+              <div
+                className={cn(
+                  thumbPosition === "bottom"
+                    ? "thumbs-horizontal group -ml-3 flex"
+                    : "thumbs-vertical group -mt-3 flex h-full flex-col"
+                )}
+              >
+                {images?.map((image, index) => (
+                  <Thumb
+                    key={index}
+                    onClick={() => onThumbClick(index)}
+                    selected={index === selectedIndex}
+                    index={index}
+                    imgUrl={image}
+                  />
+                ))}
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
+        )}
     </div>
   );
 };

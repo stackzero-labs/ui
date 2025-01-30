@@ -26,18 +26,24 @@ icon: GalleryThumbnails
       description:
         'Display the carousel controls',
       type: 'boolean',
-      default: true,
+      default: `true`,
+    },
+    showThumbs: {
+      description:
+        'Display the carousel thumbs gallery',
+      type: 'boolean',
+      default: `true`,
     },
     imageFit: {
       description: "Controls how to display the image",
       type: 'enum',
-      default: 'contain',
+      default: `"contain"`,
       typeValue: `"cover" | "contain" | "fill"`
     },
     aspectRatio: {
       description: "Controls aspect ratio of the images displayed",
       type: 'enum',
-      default: 'wide',
+      default: `"wide"`,
       typeValue: `"square" | "video" | "wide" | "auto"`
     }
     // ... more props
@@ -46,13 +52,26 @@ icon: GalleryThumbnails
 
 ## Examples
 
-  ### Image Carousel - 01 - Example
+### Thumbs gallery position
+The thumbs gallery can be positioned at the bottom, top, left or right of the main imagecarousel.
+
 <ComponentPreview 
-  name="image-carousel-01-example"     
+  name="image-carousel-01-ex-01"     
+  classNameComponentContainer='min-h-[200px]' 
+/>
+---
+<ComponentPreview 
+  name="image-carousel-01-ex-02"     
   classNameComponentContainer='min-h-[200px]' 
 />
 
+### Hide thumbs gallery
 
+<ComponentPreview 
+  name="image-carousel-01-ex-03"     
+  classNameComponentContainer='min-h-[200px]' 
+/>
+ 
 
 
 

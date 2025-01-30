@@ -8,6 +8,8 @@ const images = [
   "https://prd.place/800/300?id=41",
 ];
 
-export default function ImageCarousel01Example() {
-  return <ImageCarousel01 images={images} imageFit="contain" />;
+export default function ImageCarousel01Example03() {
+  return (
+    <ImageCarousel01 images={images} imageFit="contain" showThumbs={false} />
+  );
 }
