@@ -1,0 +1,19 @@
+{
+  "name": "price-format-01",
+  "type": "registry:component",
+  "dependencies": [
+    "lucide-react",
+    "react-number-format"
+  ],
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "type": "registry:component",
+      "content": "\"use client\";\n\nimport { cn } from \"@/lib/utils\";\nimport { NumericFormat } from \"react-number-format\";\n\ninterface PriceFormat01Props extends React.HTMLAttributes<HTMLDivElement> {\n  value: number;\n  prefix?: string;\n  thousandSeparator?: string;\n  decimalSeparator?: string;\n  decimalScale?: number;\n}\n\nconst PriceFormat01: React.FC<PriceFormat01Props> = ({\n  value = 1499.99,\n  prefix = \"$\",\n  className,\n  thousandSeparator = \".\",\n  decimalSeparator = \",\",\n  decimalScale = 2,\n}) => {\n  return (\n    <NumericFormat\n      value={value}\n      thousandSeparator={thousandSeparator}\n      decimalSeparator={decimalSeparator}\n      decimalScale={decimalScale}\n      prefix={prefix}\n      displayType=\"text\"\n      className={cn(\"text-lg font-medium\", className)}\n    />\n  );\n};\n\nexport default PriceFormat01;\n",
+      "path": "/components/commerce-ui/price-format/price-format-01.tsx",
+      "target": "/components/commerce-ui/price-format-01.tsx"
+    }
+  ]
+}

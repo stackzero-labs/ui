@@ -2,6 +2,7 @@ import { lib } from "./registry-lib";
 import { components } from "./registry-components";
 import { Registry } from "./schema";
 import { examples } from "./registry-examples";
+import { blocks } from "./registry-blocks";
 
 // Ensure that the registry always have an array of registry items
 const ensureArray = <T>(items: T | T[]): T[] =>
@@ -15,6 +16,7 @@ export const registry: Registry = [
   // ...ensureArray(ui),
   ...ensureArray(components),
   ...ensureArray(examples),
+  ...ensureArray(blocks),
 ];
 
 // Utility functions

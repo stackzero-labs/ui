@@ -53,4 +53,22 @@ export const examples: Registry = [
         )
     ),
   },
+
+  {
+    name: "price-format-01-ex-01",
+    type: "registry:example",
+    dependencies: ["lucide-react"],
+    files: [
+      {
+        path: "@/components/commerce-ui/price-format/examples/price-format-01-ex-01.tsx",
+        type: "registry:example",
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import(
+          "../components/commerce-ui/price-format/examples/price-format-01-ex-01"
+        )
+    ),
+  },
 ];
