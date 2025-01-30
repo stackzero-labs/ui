@@ -74,9 +74,18 @@ const getComponentFiles = async (files: File[], registryType: string) => {
     const fileType =
       typeof file === "string" ? registryType : file.type || registryType;
 
+    // Modify the import paths in the content
+    let modifiedContent = fileContent;
+    if (fileContent.includes("@/components/commerce-ui/")) {
+      modifiedContent = fileContent.replace(
+        /@\/components\/commerce-ui\/[^/]+\//g,
+        "@/components/commerce-ui/"
+      );
+    }
+
     return {
       type: fileType,
-      content: fileContent,
+      content: modifiedContent,
       path: normalizedPath,
       target:
         typeof file === "string"

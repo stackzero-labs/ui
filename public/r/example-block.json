@@ -1,0 +1,19 @@
+{
+  "name": "example-block",
+  "type": "registry:block",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "https://ui.stackzero.co/r/face-rating-01.json",
+    "https://ui.stackzero.co/r/star-rating-01.json"
+  ],
+  "files": [
+    {
+      "type": "registry:block",
+      "content": "\"use client\";\n\nimport FaceRating from \"@/components/commerce-ui/face-rating-01\";\nimport StarRating from \"@/components/commerce-ui/star-rating-01\";\n\nexport default function TestBlock() {\n  return (\n    <div>\n      Test Block\n      <div>\n        <FaceRating />\n        <StarRating />\n      </div>\n    </div>\n  );\n}\n",
+      "path": "/components/commerce-ui/blocks/test-block.tsx",
+      "target": "/components/commerce-ui/test-block.tsx"
+    }
+  ]
+}

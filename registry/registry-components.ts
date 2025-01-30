@@ -151,6 +151,7 @@ export const components: Registry = [
     name: "like-dislike-rating-01",
     type: "registry:component",
     dependencies: ["lucide-react"],
+    registryDependencies: ["button"],
     files: [
       {
         path: "@/components/commerce-ui/like-dislike-rating/like-dislike-rating-01.tsx",
@@ -248,6 +249,7 @@ export const components: Registry = [
     name: "image-carousel-01",
     type: "registry:component",
     dependencies: ["lucide-react", "@radix-ui/react-radio-group"],
+    registryDependencies: ["button"],
     files: [
       {
         path: "@/components/commerce-ui/image-carousel/image-carousel-01.tsx",
