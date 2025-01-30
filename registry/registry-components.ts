@@ -260,4 +260,20 @@ export const components: Registry = [
       () => import("../components/commerce-ui/image-carousel/image-carousel-01")
     ),
   },
+
+  {
+    name: "price-format-01",
+    type: "registry:component",
+    dependencies: ["lucide-react", "react-number-format"],
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "@/components/commerce-ui/price-format/price-format-01.tsx",
+        type: "registry:component",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/commerce-ui/price-format/price-format-01")
+    ),
+  },
 ];

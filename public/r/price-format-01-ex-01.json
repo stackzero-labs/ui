@@ -1,0 +1,15 @@
+{
+  "name": "price-format-01-ex-01",
+  "type": "registry:example",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "files": [
+    {
+      "type": "registry:example",
+      "content": "import PriceFormat01 from \"@/components/commerce-ui/price-format-01\";\n\nexport default function PriceFormat01Example01() {\n  return (\n    <div className=\"flex flex-col gap-2\">\n      <PriceFormat01 prefix=\"€\" value={5549.54} />\n      <PriceFormat01 prefix=\"¥\" value={998.99} />\n      <PriceFormat01 prefix=\"R$\" value={154404.85} />\n    </div>\n  );\n}\n",
+      "path": "/components/commerce-ui/price-format/examples/price-format-01-ex-01.tsx",
+      "target": "/components/commerce-ui/price-format-01-ex-01.tsx"
+    }
+  ]
+}
