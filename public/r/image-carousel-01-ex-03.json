@@ -1,0 +1,15 @@
+{
+  "name": "image-carousel-01-ex-03",
+  "type": "registry:example",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "files": [
+    {
+      "type": "registry:example",
+      "content": "import ImageCarousel01 from \"@/components/commerce-ui/image-carousel/image-carousel-01\";\n\nconst images = [\n  \"https://prd.place/400/600?id=37\",\n  \"https://prd.place/400/600?id=38\",\n  \"https://prd.place/400/600?id=39\",\n  \"https://prd.place/800/1200?id=40\",\n  \"https://prd.place/800/300?id=41\",\n];\n\nexport default function ImageCarousel01Example02() {\n  return (\n    <ImageCarousel01 images={images} imageFit=\"contain\" showThumbs={false} />\n  );\n}\n",
+      "path": "/components/commerce-ui/image-carousel/examples/image-carousel-01-ex-03.tsx",
+      "target": "/components/commerce-ui/image-carousel-01-ex-03.tsx"
+    }
+  ]
+}
