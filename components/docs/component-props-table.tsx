@@ -46,7 +46,7 @@ export const ComponentPropsTable: React.FC<PropsTableProps> = ({
   console.log("propsComponentData", types);
 
   return (
-    <>
+    <div className="overflow-x-auto">
       <table className="min-w-full divide-y divide-gray-200">
         <thead>
           <tr>
@@ -120,6 +120,6 @@ export const ComponentPropsTable: React.FC<PropsTableProps> = ({
           ))}
         </tbody>
       </table>
-    </>
+    </div>
   );
 };
