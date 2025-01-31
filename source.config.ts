@@ -3,6 +3,7 @@ import {
   defineConfig,
   defineCollections,
   frontmatterSchema,
+  metaSchema,
 } from "fumadocs-mdx/config";
 import { z } from "zod";
 

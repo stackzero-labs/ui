@@ -71,4 +71,93 @@ export const examples: Registry = [
         )
     ),
   },
+
+  {
+    name: "face-rating-01-ex-01",
+    type: "registry:example",
+    dependencies: ["lucide-react"],
+    files: [
+      {
+        path: "@/components/commerce-ui/face-rating/examples/face-rating-01-ex-01.tsx",
+        type: "registry:example",
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import(
+          "../components/commerce-ui/face-rating/examples/face-rating-01-ex-01"
+        )
+    ),
+  },
+
+  {
+    name: "face-rating-basic-ex-01",
+    type: "registry:example",
+    dependencies: ["lucide-react"],
+    files: [
+      {
+        path: "@/components/commerce-ui/face-rating/basic/face-rating-basic-ex-01.tsx",
+        type: "registry:example",
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import(
+          "../components/commerce-ui/face-rating/basic/face-rating-basic-ex-01"
+        )
+    ),
+  },
+
+  {
+    name: "face-rating-basic-ex-02",
+    type: "registry:example",
+    dependencies: ["lucide-react"],
+    files: [
+      {
+        path: "@/components/commerce-ui/face-rating/basic/face-rating-basic-ex-02.tsx",
+        type: "registry:example",
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import(
+          "../components/commerce-ui/face-rating/basic/face-rating-basic-ex-02"
+        )
+    ),
+  },
+
+  {
+    name: "face-rating-basic-ex-03",
+    type: "registry:example",
+    dependencies: ["lucide-react"],
+    files: [
+      {
+        path: "@/components/commerce-ui/face-rating/basic/face-rating-basic-ex-03.tsx",
+        type: "registry:example",
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import(
+          "../components/commerce-ui/face-rating/basic/face-rating-basic-ex-03"
+        )
+    ),
+  },
+  {
+    name: "face-rating-gradient-ex-01",
+    type: "registry:example",
+    dependencies: ["lucide-react"],
+    files: [
+      {
+        path: "@/components/commerce-ui/face-rating/gradient/face-rating-gradient-ex-01.tsx",
+        type: "registry:example",
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import(
+          "../components/commerce-ui/face-rating/gradient/face-rating-gradient-ex-01"
+        )
+    ),
+  },
 ];

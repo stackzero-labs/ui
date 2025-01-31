@@ -10,8 +10,6 @@ import {
 } from "lucide-react";
 import * as React from "react";
 
-const MAX_RATING = 5;
-const ICON_SIZE = 24;
 const DEFAULT_COLORS = {
   angry: "red",
   frown: "orange",
@@ -20,22 +18,28 @@ const DEFAULT_COLORS = {
   laugh: "green",
 };
 
-interface FaceRating_01Props {
+interface FaceRatingBasicProps {
   value: number;
   onChange: (value: number) => void;
   className?: string;
+  iconSize?: number;
 }
 
-const FaceRating_01 = ({ value, onChange, className }: FaceRating_01Props) => {
+const FaceRating_Basic = ({
+  value,
+  onChange,
+  className,
+  iconSize = 24,
+}: FaceRatingBasicProps) => {
   const handleIconClick = (index: number) => {
-    const newRating = (index + 1) * (MAX_RATING / 5);
+    const newRating = index + 1;
     onChange(newRating);
   };
 
   const icons = [
     <AngryIcon
       key="angry"
-      size={ICON_SIZE}
+      size={iconSize}
       color={value === 1 ? DEFAULT_COLORS.angry : "gray"}
       onClick={() => handleIconClick(0)}
       className="transition-transform duration-200 hover:scale-110"
@@ -43,7 +47,7 @@ const FaceRating_01 = ({ value, onChange, className }: FaceRating_01Props) => {
     />,
     <FrownIcon
       key="frown"
-      size={ICON_SIZE}
+      size={iconSize}
       color={value === 2 ? DEFAULT_COLORS.frown : "gray"}
       onClick={() => handleIconClick(1)}
       className="transition-transform duration-200 hover:scale-110"
@@ -51,7 +55,7 @@ const FaceRating_01 = ({ value, onChange, className }: FaceRating_01Props) => {
     />,
     <MehIcon
       key="meh"
-      size={ICON_SIZE}
+      size={iconSize}
       color={value === 3 ? DEFAULT_COLORS.meh : "gray"}
       onClick={() => handleIconClick(2)}
       className="transition-transform duration-200 hover:scale-110"
@@ -59,7 +63,7 @@ const FaceRating_01 = ({ value, onChange, className }: FaceRating_01Props) => {
     />,
     <SmileIcon
       key="smile"
-      size={ICON_SIZE}
+      size={iconSize}
       color={value === 4 ? DEFAULT_COLORS.smile : "gray"}
       onClick={() => handleIconClick(3)}
       className="transition-transform duration-200 hover:scale-110"
@@ -67,7 +71,7 @@ const FaceRating_01 = ({ value, onChange, className }: FaceRating_01Props) => {
     />,
     <LaughIcon
       key="laugh"
-      size={ICON_SIZE}
+      size={iconSize}
       color={value === 5 ? DEFAULT_COLORS.laugh : "gray"}
       onClick={() => handleIconClick(4)}
       className="transition-transform duration-200 hover:scale-110"
@@ -80,4 +84,4 @@ const FaceRating_01 = ({ value, onChange, className }: FaceRating_01Props) => {
   );
 };
 
-export default FaceRating_01;
+export default FaceRating_Basic;

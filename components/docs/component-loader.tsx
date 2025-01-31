@@ -22,6 +22,7 @@ export function ComponentLoader({
 
   useEffect(() => {
     const component = getComponentByName(name)?.component;
+    console.log("component", name);
     if (component) {
       setComponent(() => component);
     }

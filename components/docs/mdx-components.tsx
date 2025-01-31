@@ -17,6 +17,13 @@ import { ComponentBase } from "./preview/component-base";
 import { ComponentCollapse } from "./preview/component-collapse";
 import { ComponentPreview } from "./preview/component-preview";
 import { ComponentPropsTable } from "./component-props-table";
+import {
+  ComponentInstall,
+  CLIInstall,
+  ManualInstall,
+} from "./preview/components-install";
+import { ComponentSource } from "./preview/component-source";
+
 const { AutoTypeTable } = createTypeTable();
 
 export function getMDXComponents(components: MDXComponents): MDXComponents {
@@ -35,7 +42,6 @@ export function getMDXComponents(components: MDXComponents): MDXComponents {
     References,
     Tabs,
     Tab,
-
     TypeTable,
     ComponentPropsTable,
     ImageZoom,
@@ -46,6 +52,20 @@ export function getMDXComponents(components: MDXComponents): MDXComponents {
       const { code, highlightedCode } = await extractSourceCode(name);
       return (
         <ComponentPreview
+          name={name}
+          code={code}
+          highlightedCode={highlightedCode}
+          {...props}
+        />
+      );
+    },
+    ComponentInstall,
+    CLIInstall,
+    ManualInstall,
+    ComponentSource: async ({ name, ...props }: { name: string }) => {
+      const { code, highlightedCode } = await extractSourceCode(name);
+      return (
+        <ComponentSource
           name={name}
           code={code}
           highlightedCode={highlightedCode}

@@ -5,13 +5,13 @@
     "lucide-react"
   ],
   "registryDependencies": [
-    "https://ui.stackzero.co/r/face-rating-01.json",
-    "https://ui.stackzero.co/r/star-rating-01.json"
+    "https://6n4gr4k4-3000.euw.devtunnels.ms/r/face-rating-basic.json",
+    "https://6n4gr4k4-3000.euw.devtunnels.ms/r/star-rating-01.json"
   ],
   "files": [
     {
       "type": "registry:block",
-      "content": "\"use client\";\n\nimport FaceRating from \"@/components/commerce-ui/face-rating-01\";\nimport StarRating from \"@/components/commerce-ui/star-rating-01\";\n\nexport default function TestBlock() {\n  return (\n    <div>\n      Test Block\n      <div>\n        <FaceRating />\n        <StarRating />\n      </div>\n    </div>\n  );\n}\n",
+      "content": "\"use client\";\n\nimport FaceRating from \"@/components/commerce-ui/face-rating-basic\";\nimport StarRating from \"@/components/commerce-ui/star-rating-01\";\nimport { useState } from \"react\";\n\nexport default function TestBlock() {\n  const [starRatingValue, setStarRatingValue] = useState(0);\n  return (\n    <div>\n      <p className=\"mb-4 text-lg font-bold\">Test Block</p>\n      <div className=\"flex flex-col gap-4\">\n        <FaceRating value={starRatingValue} onChange={setStarRatingValue} />\n        <StarRating />\n      </div>\n    </div>\n  );\n}\n",
       "path": "/components/commerce-ui/blocks/test-block.tsx",
       "target": "/components/commerce-ui/test-block.tsx"
     }

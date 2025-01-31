@@ -78,8 +78,8 @@ const getComponentFiles = async (files: File[], registryType: string) => {
     let modifiedContent = fileContent;
     if (fileContent.includes("@/components/commerce-ui/")) {
       modifiedContent = fileContent.replace(
-        /@\/components\/commerce-ui\/[^/]+\//g,
-        "@/components/commerce-ui/"
+        /@\/components\/commerce-ui\/.*?([^/]+)$/gm,
+        "@/components/commerce-ui/$1"
       );
     }
 

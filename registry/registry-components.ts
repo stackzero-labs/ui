@@ -3,6 +3,39 @@ import * as React from "react";
 
 export const components: Registry = [
   {
+    name: "face-rating-basic",
+    type: "registry:component",
+    dependencies: ["lucide-react"],
+    files: [
+      {
+        path: "@/components/commerce-ui/face-rating/basic/face-rating-basic.tsx",
+        type: "registry:component",
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import("../components/commerce-ui/face-rating/basic/face-rating-basic")
+    ),
+  },
+
+  {
+    name: "face-rating-gradient",
+    type: "registry:component",
+    dependencies: ["lucide-react"],
+    files: [
+      {
+        path: "@/components/commerce-ui/face-rating/gradient/face-rating-gradient.tsx",
+        type: "registry:component",
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import(
+          "../components/commerce-ui/face-rating/gradient/face-rating-gradient"
+        )
+    ),
+  },
+  {
     name: "face-rating-01",
     type: "registry:component",
     dependencies: ["lucide-react"],
