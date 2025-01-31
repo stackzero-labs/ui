@@ -1,18 +1,10 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { siteConfig } from "@/config/site";
-import { cn } from "@/lib/utils";
-import { ArrowUpRight, CheckCheck, Ellipsis, Terminal } from "lucide-react";
-import { useState } from "react";
 import { DynamicCodeBlock } from "fumadocs-ui/components/dynamic-codeblock";
-import { Tab, Tabs as FumadocsTabs } from "fumadocs-ui/components/tabs";
+import { Tabs as FumadocsTabs, Tab } from "fumadocs-ui/components/tabs";
+import { useState } from "react";
 
 const prePath =
   process.env.NODE_ENV === "development"
@@ -89,4 +81,4 @@ const ManualInstall = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
-export { ComponentInstall, CLIInstall, ManualInstall };
+export { CLIInstall, ComponentInstall, ManualInstall };

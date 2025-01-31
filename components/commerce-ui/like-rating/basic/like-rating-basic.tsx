@@ -3,9 +3,6 @@ import { cn } from "@/lib/utils";
 import { ThumbsDown, ThumbsUp } from "lucide-react";
 import * as React from "react";
 
-const LIKE_COLOR = "#009e42";
-const DISLIKE_COLOR = "#a60021";
-
 export type Rating = "like" | "dislike" | null;
 
 interface LikeRatingBasicProps {

@@ -61,6 +61,7 @@
     "autoprefixer": "^10.4.20",
     "eslint": "^8",
     "eslint-config-next": "15.1.5",
+    "eslint-plugin-perfectionist": "^4.7.0",
     "postcss": "^8.5.1",
     "prettier-plugin-tailwindcss": "^0.6.11",
     "source-map-support": "^0.5.21",

@@ -1,14 +1,10 @@
-import { notFound } from "next/navigation";
-import dynamic from "next/dynamic";
 import { ComponentLoader } from "@/components/docs/component-loader";
-import { source } from "@/lib/source";
-import { registry } from "@/registry";
 import { Button } from "@/components/ui/button";
+import { registry } from "@/registry";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 // Arrays to categorize components
 const NOT_CENTERED_COMPONENTS: string[] = [];
-
-// const FULL_WIDTH_COMPONENTS = ["hero"];
 
 export default async function PreviewPage({
   params,

@@ -66,7 +66,6 @@ export function getMDXComponents(components: MDXComponents): MDXComponents {
       const { code, highlightedCode } = await extractSourceCode(name);
       return (
         <ComponentSource
-          name={name}
           code={code}
           highlightedCode={highlightedCode}
           {...props}
@@ -95,7 +94,7 @@ export function getMDXComponents(components: MDXComponents): MDXComponents {
         />
       );
     },
-    pre: ({ ref: _ref, ...props }) => (
+    pre: ({ ...props }) => (
       <CodeBlock {...props}>
         <Pre>{props.children}</Pre>
       </CodeBlock>

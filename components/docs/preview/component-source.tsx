@@ -10,21 +10,17 @@ import { useState } from "react";
 import { CodeRenderer } from "../code-renderer";
 
 export function ComponentSource({
-  name,
   code,
   highlightedCode,
   className,
   expandButtonTitle = "Expand",
-  defaultExpanded = false,
   maxHeight = "550px",
   ...props
 }: {
-  name: string;
   code: string;
   highlightedCode: string;
   className?: string;
   expandButtonTitle?: string;
-  defaultExpanded?: boolean;
   maxHeight?: string;
 }) {
   const [isOpened, setIsOpened] = useState(false);

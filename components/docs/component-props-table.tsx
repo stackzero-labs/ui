@@ -1,19 +1,11 @@
-import * as React from "react";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-  TooltipProvider,
-} from "@/components/ui/tooltip";
-
+import { Badge } from "@/components/ui/badge";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-
-import { Badge } from "@/components/ui/badge";
 import { InfoIcon } from "lucide-react";
+import * as React from "react";
 
 interface TypeMetadata {
   description?: string;
