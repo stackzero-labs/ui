@@ -3,53 +3,55 @@ import * as React from "react";
 
 export const examples: Registry = [
   {
-    name: "image-carousel-01-ex-01",
+    name: "image-carousel-horizontal-ex-01",
     type: "registry:example",
     dependencies: ["lucide-react"],
     files: [
       {
-        path: "@/components/commerce-ui/image-carousel/examples/image-carousel-01-ex-01.tsx",
+        path: "@/components/commerce-ui/image-carousel/horizontal/image-carousel-horizontal-ex-01.tsx",
         type: "registry:example",
       },
     ],
     component: React.lazy(
       () =>
         import(
-          "../components/commerce-ui/image-carousel/examples/image-carousel-01-ex-01"
+          "../components/commerce-ui/image-carousel/horizontal/image-carousel-horizontal-ex-01"
         )
     ),
   },
+
   {
-    name: "image-carousel-01-ex-02",
+    name: "image-carousel-horizontal-ex-02",
     type: "registry:example",
     dependencies: ["lucide-react"],
     files: [
       {
-        path: "@/components/commerce-ui/image-carousel/examples/image-carousel-01-ex-02.tsx",
+        path: "@/components/commerce-ui/image-carousel/horizontal/image-carousel-horizontal-ex-02.tsx",
         type: "registry:example",
       },
     ],
     component: React.lazy(
       () =>
         import(
-          "../components/commerce-ui/image-carousel/examples/image-carousel-01-ex-02"
+          "../components/commerce-ui/image-carousel/horizontal/image-carousel-horizontal-ex-02"
         )
     ),
   },
+
   {
-    name: "image-carousel-01-ex-03",
+    name: "image-carousel-horizontal-ex-03",
     type: "registry:example",
     dependencies: ["lucide-react"],
     files: [
       {
-        path: "@/components/commerce-ui/image-carousel/examples/image-carousel-01-ex-03.tsx",
+        path: "@/components/commerce-ui/image-carousel/horizontal/image-carousel-horizontal-ex-03.tsx",
         type: "registry:example",
       },
     ],
     component: React.lazy(
       () =>
         import(
-          "../components/commerce-ui/image-carousel/examples/image-carousel-01-ex-03"
+          "../components/commerce-ui/image-carousel/horizontal/image-carousel-horizontal-ex-03"
         )
     ),
   },
@@ -226,6 +228,95 @@ export const examples: Registry = [
       () =>
         import(
           "../components/commerce-ui/rating-upvote/animated/rating-upvote-animated-ex-02"
+        )
+    ),
+  },
+
+  {
+    name: "variant-selector-basic-ex-01",
+    type: "registry:example",
+    dependencies: ["lucide-react", "@radix-ui/react-radio-group"],
+    files: [
+      {
+        path: "@/components/commerce-ui/variant-selector/basic/variant-selector-basic-ex-01.tsx",
+        type: "registry:example",
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import(
+          "../components/commerce-ui/variant-selector/basic/variant-selector-basic-ex-01"
+        )
+    ),
+  },
+  {
+    name: "variant-selector-images-ex-01",
+    type: "registry:example",
+    dependencies: ["lucide-react", "@radix-ui/react-radio-group"],
+    files: [
+      {
+        path: "@/components/commerce-ui/variant-selector/images/variant-selector-images-ex-01.tsx",
+        type: "registry:example",
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import(
+          "../components/commerce-ui/variant-selector/images/variant-selector-images-ex-01"
+        )
+    ),
+  },
+
+  {
+    name: "variant-selector-animated-ex-01",
+    type: "registry:example",
+    dependencies: ["lucide-react", "@radix-ui/react-radio-group", "motion"],
+    files: [
+      {
+        path: "@/components/commerce-ui/variant-selector/animated/variant-selector-animated-ex-01.tsx",
+        type: "registry:example",
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import(
+          "../components/commerce-ui/variant-selector/animated/variant-selector-animated-ex-01"
+        )
+    ),
+  },
+
+  {
+    name: "variant-selector-multiple-ex-01",
+    type: "registry:example",
+    dependencies: ["lucide-react", "@radix-ui/react-radio-group", "motion"],
+    files: [
+      {
+        path: "@/components/commerce-ui/variant-selector/multiple/variant-selector-multiple-ex-01.tsx",
+        type: "registry:example",
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import(
+          "../components/commerce-ui/variant-selector/multiple/variant-selector-multiple-ex-01"
+        )
+    ),
+  },
+
+  {
+    name: "variant-color-selector-basic-ex-01",
+    type: "registry:example",
+    dependencies: ["lucide-react", "@radix-ui/react-radio-group", "motion"],
+    files: [
+      {
+        path: "@/components/commerce-ui/variant-color-selector/basic/variant-color-selector-basic-ex-01.tsx",
+        type: "registry:example",
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import(
+          "../components/commerce-ui/variant-color-selector/basic/variant-color-selector-basic-ex-01"
         )
     ),
   },

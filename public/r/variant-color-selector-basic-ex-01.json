@@ -1,0 +1,17 @@
+{
+  "name": "variant-color-selector-basic-ex-01",
+  "type": "registry:example",
+  "dependencies": [
+    "lucide-react",
+    "@radix-ui/react-radio-group",
+    "motion"
+  ],
+  "files": [
+    {
+      "type": "registry:example",
+      "content": "import * as React from \"react\";\nimport VariantColorSelectorBasic, {\n  ColorVariantItem,\n} from \"./variant-color-selector-basic\";\n\nconst variants: ColorVariantItem[] = [\n  { id: \"color-black\", value: \"black\", color: \"#000000\", label: \"Black\" },\n  { id: \"color-white\", value: \"white\", color: \"#FFFFFF\", label: \"White\" },\n  { id: \"color-red\", value: \"red\", color: \"#FF0000\", label: \"Red\" },\n  { id: \"color-blue\", value: \"blue\", color: \"#0000FF\", label: \"Blue\" },\n  { id: \"color-green\", value: \"green\", color: \"#00FF00\", label: \"Green\" },\n  { id: \"color-yellow\", value: \"yellow\", color: \"#FFFF00\", label: \"Yellow\" },\n  { id: \"color-purple\", value: \"purple\", color: \"#800080\", label: \"Purple\" },\n];\n\nexport default function VariantColorSelectorBasicExample() {\n  const [selectedColor, setSelectedColor] = React.useState(\"black\");\n\n  return (\n    <div className=\"space-y-8\">\n      <fieldset className=\"space-y-4\">\n        <legend className=\"mb-2 text-sm font-medium\">Select color:</legend>\n        <VariantColorSelectorBasic\n          value={selectedColor}\n          onValueChange={setSelectedColor}\n          variants={variants}\n        />\n      </fieldset>\n    </div>\n  );\n}\n",
+      "path": "/components/commerce-ui/variant-color-selector/basic/variant-color-selector-basic-ex-01.tsx",
+      "target": "/components/commerce-ui/variant-color-selector-basic-ex-01.tsx"
+    }
+  ]
+}

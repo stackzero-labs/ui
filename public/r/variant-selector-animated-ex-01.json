@@ -1,0 +1,17 @@
+{
+  "name": "variant-selector-animated-ex-01",
+  "type": "registry:example",
+  "dependencies": [
+    "lucide-react",
+    "@radix-ui/react-radio-group",
+    "motion"
+  ],
+  "files": [
+    {
+      "type": "registry:example",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport VariantSelectorAnimated from \"./variant-selector-animated\";\n\nconst variants = [\n  { id: \"variant-a\", value: \"variant-a\", label: \"Sport\" },\n  { id: \"variant-b\", value: \"variant-b\", label: \"Pro\" },\n  { id: \"variant-c\", value: \"variant-c\", label: \"UltraQuite™\" },\n  { id: \"variant-d\", value: \"variant-d\", label: \"ExtremeSilence™\" },\n];\n\nconst VariantSelectorAnimatedExample = () => {\n  const [selectedVariant, setSelectedVariant] = React.useState(\"variant-b\");\n\n  return (\n    <div className=\"flex flex-col gap-4\">\n      <fieldset className=\"space-y-4\">\n        <legend className=\"mb-2 text-sm font-medium\">Select Variant:</legend>\n        <VariantSelectorAnimated\n          value={selectedVariant}\n          onValueChange={setSelectedVariant}\n          variants={variants}\n        />\n      </fieldset>\n    </div>\n  );\n};\n\nexport default VariantSelectorAnimatedExample;\n",
+      "path": "/components/commerce-ui/variant-selector/animated/variant-selector-animated-ex-01.tsx",
+      "target": "/components/commerce-ui/variant-selector-animated-ex-01.tsx"
+    }
+  ]
+}

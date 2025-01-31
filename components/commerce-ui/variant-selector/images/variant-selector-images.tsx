@@ -6,31 +6,32 @@ import { Circle } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 
-interface VariantItem {
+export interface VariantItem {
   id: string;
   value: string;
   label: string;
+  url: string;
+  disabled?: boolean;
 }
 
-const variants: VariantItem[] = [
-  { id: "variant-xxs", value: "variant-xxs", label: "XXS" },
-  { id: "variant-xs", value: "variant-xs", label: "XS" },
-  { id: "variant-s", value: "variant-s", label: "S" },
-  { id: "variant-m", value: "variant-m", label: "M" },
-  { id: "variant-l", value: "variant-l", label: "L" },
-  { id: "variant-xl", value: "variant-xl", label: "XL" },
-  { id: "variant-xxl", value: "variant-xxl", label: "XXL" },
-];
+interface VariantSelectorImagesProps {
+  value: string;
+  onValueChange: (value: string) => void;
+  variants: VariantItem[];
+  className?: string;
+}
 
-const VariantSelector_01 = ({ className }: { className?: string }) => {
-  const handleSelect = (value: string) => {
-    console.log("Selected variant:", value);
-  };
+const VariantSelectorImages = ({
+  value,
+  onValueChange,
+  variants,
+  className,
+}: VariantSelectorImagesProps) => {
   return (
     <RadioGroupPrimitive.Root
-      className="grid grid-cols-7 gap-2"
-      defaultValue="variant-m"
-      onValueChange={handleSelect}
+      className={cn("grid grid-cols-3 gap-2", className)}
+      value={value}
+      onValueChange={onValueChange}
     >
       {variants.map((variant) => (
         <label
@@ -39,19 +40,19 @@ const VariantSelector_01 = ({ className }: { className?: string }) => {
         >
           <RadioGroupPrimitive.Item
             value={variant.value}
+            disabled={variant.disabled}
             className="sr-only after:absolute after:inset-0"
           >
             <RadioGroupPrimitive.Indicator className="flex items-center justify-center">
               <Circle className="h-2.5 w-2.5 fill-current text-current" />
             </RadioGroupPrimitive.Indicator>
           </RadioGroupPrimitive.Item>
-          <p className="text-sm font-medium leading-none text-foreground">
-            {variant.label}
-          </p>
+          <img alt={variant.label} src={variant.url} width={150} height={150} />
+          <p className="text-xs text-muted-foreground">{variant.label}</p>
         </label>
       ))}
     </RadioGroupPrimitive.Root>
   );
 };
 
-export default VariantSelector_01;
+export default VariantSelectorImages;

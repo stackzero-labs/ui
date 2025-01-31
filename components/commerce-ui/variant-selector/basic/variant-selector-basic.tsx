@@ -6,31 +6,30 @@ import { Circle } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 
-interface VariantItem {
+export interface VariantItem {
   id: string;
   value: string;
   label: string;
 }
 
-const variants: VariantItem[] = [
-  { id: "variant-xxs", value: "variant-xxs", label: "XXS" },
-  { id: "variant-xs", value: "variant-xs", label: "XS" },
-  { id: "variant-s", value: "variant-s", label: "S" },
-  { id: "variant-m", value: "variant-m", label: "M" },
-  { id: "variant-l", value: "variant-l", label: "L" },
-  { id: "variant-xl", value: "variant-xl", label: "XL" },
-  { id: "variant-xxl", value: "variant-xxl", label: "XXL" },
-];
+interface VariantSelectorBasicProps {
+  value: string;
+  onValueChange: (value: string) => void;
+  variants: VariantItem[];
+  className?: string;
+}
 
-const VariantSelector_01 = ({ className }: { className?: string }) => {
-  const handleSelect = (value: string) => {
-    console.log("Selected variant:", value);
-  };
+const VariantSelectorBasic = ({
+  value,
+  onValueChange,
+  variants,
+  className,
+}: VariantSelectorBasicProps) => {
   return (
     <RadioGroupPrimitive.Root
-      className="grid grid-cols-7 gap-2"
-      defaultValue="variant-m"
-      onValueChange={handleSelect}
+      className={cn("grid grid-cols-7 gap-2", className)}
+      value={value}
+      onValueChange={onValueChange}
     >
       {variants.map((variant) => (
         <label
@@ -54,4 +53,4 @@ const VariantSelector_01 = ({ className }: { className?: string }) => {
   );
 };
 
-export default VariantSelector_01;
+export default VariantSelectorBasic;
