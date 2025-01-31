@@ -29,3 +29,6 @@ next-env.d.ts
 
 pnpm-lock.yaml
 content
+
+# registry
+public/r
