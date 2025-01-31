@@ -1,6 +1,6 @@
 "use client";
 
-import PriceFormat_Basic from "./price-format-basic";
+import PriceFormat_Basic from "@/components/commerce-ui/price-format/basic/price-format-basic";
 
 export default function PriceFormat_Basic_Ex_01() {
   return (

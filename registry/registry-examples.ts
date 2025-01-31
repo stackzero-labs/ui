@@ -176,4 +176,57 @@ export const examples: Registry = [
         )
     ),
   },
+
+  {
+    name: "rating-upvote-basic-ex-01",
+    type: "registry:example",
+    dependencies: ["lucide-react"],
+    files: [
+      {
+        path: "@/components/commerce-ui/rating-upvote/basic/rating-upvote-basic-ex-01.tsx",
+        type: "registry:example",
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import(
+          "../components/commerce-ui/rating-upvote/basic/rating-upvote-basic-ex-01"
+        )
+    ),
+  },
+  {
+    name: "rating-upvote-animated-ex-01",
+    type: "registry:example",
+    dependencies: ["lucide-react", "@number-flow/react"],
+    files: [
+      {
+        path: "@/components/commerce-ui/rating-upvote/animated/rating-upvote-animated-ex-01.tsx",
+        type: "registry:example",
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import(
+          "../components/commerce-ui/rating-upvote/animated/rating-upvote-animated-ex-01"
+        )
+    ),
+  },
+
+  {
+    name: "rating-upvote-animated-ex-02",
+    type: "registry:example",
+    dependencies: ["lucide-react", "@number-flow/react"],
+    files: [
+      {
+        path: "@/components/commerce-ui/rating-upvote/animated/rating-upvote-animated-ex-02.tsx",
+        type: "registry:example",
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import(
+          "../components/commerce-ui/rating-upvote/animated/rating-upvote-animated-ex-02"
+        )
+    ),
+  },
 ];
