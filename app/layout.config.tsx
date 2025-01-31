@@ -19,7 +19,7 @@ export const linkItems: LinkItemType[] = [
       {
         text: "Components",
         description: "Collection of interactive components",
-        url: "/docs/components/face-rating",
+        url: "/docs/components/star-rating/basic",
         icon: <Icons.lab />,
       },
       {

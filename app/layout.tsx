@@ -1,15 +1,11 @@
-import "./global.css";
-import { RootProvider } from "fumadocs-ui/provider";
-import { Metadata } from "next";
-import { Inter } from "next/font/google";
-import type { ReactNode } from "react";
-import { GeistMono } from "geist/font/mono";
-import { GeistSans } from "geist/font/sans";
 import { fontRedaction } from "@/lib/fonts";
 import { cn } from "@/lib/utils";
-const inter = Inter({
-  subsets: ["latin"],
-});
+import { RootProvider } from "fumadocs-ui/provider";
+import { GeistMono } from "geist/font/mono";
+import { GeistSans } from "geist/font/sans";
+import { Metadata } from "next";
+import type { ReactNode } from "react";
+import "./global.css";
 
 export default function Layout({ children }: { children: ReactNode }) {
   return (

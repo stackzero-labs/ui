@@ -3,45 +3,36 @@ import * as React from "react";
 
 export const components: Registry = [
   {
-    name: "face-rating-01",
+    name: "face-rating-basic",
     type: "registry:component",
     dependencies: ["lucide-react"],
     files: [
       {
-        path: "@/components/commerce-ui/face-rating/face-rating-01.tsx",
+        path: "@/components/commerce-ui/face-rating/basic/face-rating-basic.tsx",
         type: "registry:component",
       },
     ],
     component: React.lazy(
-      () => import("../components/commerce-ui/face-rating/face-rating-01")
+      () =>
+        import("../components/commerce-ui/face-rating/basic/face-rating-basic")
     ),
   },
+
   {
-    name: "face-rating-02",
+    name: "face-rating-gradient",
     type: "registry:component",
     dependencies: ["lucide-react"],
     files: [
       {
-        path: "@/components/commerce-ui/face-rating/face-rating-02.tsx",
+        path: "@/components/commerce-ui/face-rating/gradient/face-rating-gradient.tsx",
         type: "registry:component",
       },
     ],
     component: React.lazy(
-      () => import("../components/commerce-ui/face-rating/face-rating-02")
-    ),
-  },
-  {
-    name: "face-rating-03",
-    type: "registry:component",
-    dependencies: ["lucide-react", "tailwindcss-motion"],
-    files: [
-      {
-        path: "@/components/commerce-ui/face-rating/face-rating-03.tsx",
-        type: "registry:component",
-      },
-    ],
-    component: React.lazy(
-      () => import("../components/commerce-ui/face-rating/face-rating-03")
+      () =>
+        import(
+          "../components/commerce-ui/face-rating/gradient/face-rating-gradient"
+        )
     ),
   },
   {
@@ -133,147 +124,202 @@ export const components: Registry = [
   },
 
   {
-    name: "star-rating-01",
+    name: "star-rating-basic",
     type: "registry:component",
     dependencies: ["lucide-react"],
     files: [
       {
-        path: "@/components/commerce-ui/star-rating/star-rating-01.tsx",
+        path: "@/components/commerce-ui/star-rating/basic/star-rating-basic.tsx",
         type: "registry:component",
       },
     ],
     component: React.lazy(
-      () => import("../components/commerce-ui/star-rating/star-rating-01")
+      () =>
+        import("../components/commerce-ui/star-rating/basic/star-rating-basic")
     ),
   },
 
   {
-    name: "like-dislike-rating-01",
+    name: "like-rating-basic",
     type: "registry:component",
     dependencies: ["lucide-react"],
     registryDependencies: ["button"],
     files: [
       {
-        path: "@/components/commerce-ui/like-dislike-rating/like-dislike-rating-01.tsx",
+        path: "@/components/commerce-ui/like-rating/basic/like-rating-basic.tsx",
+        type: "registry:component",
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import("../components/commerce-ui/like-rating/basic/like-rating-basic")
+    ),
+  },
+
+  {
+    name: "variant-color-selector-basic",
+    type: "registry:component",
+    dependencies: ["lucide-react", "@radix-ui/react-radio-group"],
+    files: [
+      {
+        path: "@/components/commerce-ui/variant-color-selector/basic/variant-color-selector-basic.tsx",
         type: "registry:component",
       },
     ],
     component: React.lazy(
       () =>
         import(
-          "../components/commerce-ui/like-dislike-rating/like-dislike-rating-01"
+          "../components/commerce-ui/variant-color-selector/basic/variant-color-selector-basic"
         )
     ),
   },
 
   {
-    name: "variant-selector-01",
+    name: "image-carousel-horizontal",
     type: "registry:component",
-    dependencies: ["lucide-react", "@radix-ui/react-radio-group"],
+    dependencies: ["lucide-react", "embla-carousel-react", "embla-carousel"],
+    registryDependencies: ["button"],
     files: [
       {
-        path: "@/components/commerce-ui/variant-selector/variant-selector-01.tsx",
-        type: "registry:component",
-      },
-    ],
-    component: React.lazy(
-      () =>
-        import("../components/commerce-ui/variant-selector/variant-selector-01")
-    ),
-  },
-  {
-    name: "variant-selector-02",
-    type: "registry:component",
-    dependencies: ["lucide-react", "@radix-ui/react-radio-group"],
-    files: [
-      {
-        path: "@/components/commerce-ui/variant-selector/variant-selector-02.tsx",
-        type: "registry:component",
-      },
-    ],
-    component: React.lazy(
-      () =>
-        import("../components/commerce-ui/variant-selector/variant-selector-02")
-    ),
-  },
-  {
-    name: "variant-selector-03",
-    type: "registry:component",
-    dependencies: ["lucide-react", "@radix-ui/react-radio-group", "motion"],
-    files: [
-      {
-        path: "@/components/commerce-ui/variant-selector/variant-selector-03.tsx",
-        type: "registry:component",
-      },
-    ],
-    component: React.lazy(
-      () =>
-        import("../components/commerce-ui/variant-selector/variant-selector-03")
-    ),
-  },
-  {
-    name: "variant-selector-04",
-    type: "registry:component",
-    dependencies: ["lucide-react", "@radix-ui/react-radio-group"],
-    files: [
-      {
-        path: "@/components/commerce-ui/variant-selector/variant-selector-04.tsx",
-        type: "registry:component",
-      },
-    ],
-    component: React.lazy(
-      () =>
-        import("../components/commerce-ui/variant-selector/variant-selector-04")
-    ),
-  },
-
-  {
-    name: "variant-color-selector-01",
-    type: "registry:component",
-    dependencies: ["lucide-react", "@radix-ui/react-radio-group"],
-    files: [
-      {
-        path: "@/components/commerce-ui/variant-color-selector/variant-color-selector-01.tsx",
+        path: "@/components/commerce-ui/image-carousel/horizontal/image-carousel-horizontal.tsx",
         type: "registry:component",
       },
     ],
     component: React.lazy(
       () =>
         import(
-          "../components/commerce-ui/variant-color-selector/variant-color-selector-01"
+          "../components/commerce-ui/image-carousel/horizontal/image-carousel-horizontal"
         )
     ),
   },
 
   {
-    name: "image-carousel-01",
-    type: "registry:component",
-    dependencies: ["lucide-react", "@radix-ui/react-radio-group"],
-    registryDependencies: ["button"],
-    files: [
-      {
-        path: "@/components/commerce-ui/image-carousel/image-carousel-01.tsx",
-        type: "registry:component",
-      },
-    ],
-    component: React.lazy(
-      () => import("../components/commerce-ui/image-carousel/image-carousel-01")
-    ),
-  },
-
-  {
-    name: "price-format-01",
+    name: "price-format-basic",
     type: "registry:component",
     dependencies: ["lucide-react", "react-number-format"],
     registryDependencies: ["button"],
     files: [
       {
-        path: "@/components/commerce-ui/price-format/price-format-01.tsx",
+        path: "@/components/commerce-ui/price-format/basic/price-format-basic.tsx",
         type: "registry:component",
       },
     ],
     component: React.lazy(
-      () => import("../components/commerce-ui/price-format/price-format-01")
+      () =>
+        import(
+          "../components/commerce-ui/price-format/basic/price-format-basic"
+        )
+    ),
+  },
+
+  {
+    name: "rating-upvote-basic",
+    type: "registry:component",
+    dependencies: ["lucide-react"],
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "@/components/commerce-ui/rating-upvote/basic/rating-upvote-basic.tsx",
+        type: "registry:component",
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import(
+          "../components/commerce-ui/rating-upvote/basic/rating-upvote-basic"
+        )
+    ),
+  },
+
+  {
+    name: "rating-upvote-animated",
+    type: "registry:component",
+    dependencies: ["lucide-react", "@number-flow/react"],
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "@/components/commerce-ui/rating-upvote/animated/rating-upvote-animated.tsx",
+        type: "registry:component",
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import(
+          "../components/commerce-ui/rating-upvote/animated/rating-upvote-animated"
+        )
+    ),
+  },
+
+  {
+    name: "variant-selector-basic",
+    type: "registry:component",
+    dependencies: ["lucide-react", "@radix-ui/react-radio-group"],
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "@/components/commerce-ui/variant-selector/basic/variant-selector-basic.tsx",
+        type: "registry:component",
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import(
+          "../components/commerce-ui/variant-selector/basic/variant-selector-basic"
+        )
+    ),
+  },
+
+  {
+    name: "variant-selector-images",
+    type: "registry:component",
+    dependencies: ["lucide-react", "@radix-ui/react-radio-group"],
+    files: [
+      {
+        path: "@/components/commerce-ui/variant-selector/images/variant-selector-images.tsx",
+        type: "registry:component",
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import(
+          "../components/commerce-ui/variant-selector/images/variant-selector-images"
+        )
+    ),
+  },
+
+  {
+    name: "variant-selector-animated",
+    type: "registry:component",
+    dependencies: ["lucide-react", "@radix-ui/react-radio-group", "motion"],
+    files: [
+      {
+        path: "@/components/commerce-ui/variant-selector/animated/variant-selector-animated.tsx",
+        type: "registry:component",
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import(
+          "../components/commerce-ui/variant-selector/animated/variant-selector-animated"
+        )
+    ),
+  },
+
+  {
+    name: "variant-selector-multiple",
+    type: "registry:component",
+    dependencies: ["lucide-react", "@radix-ui/react-radio-group", "motion"],
+    files: [
+      {
+        path: "@/components/commerce-ui/variant-selector/multiple/variant-selector-multiple.tsx",
+        type: "registry:component",
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import(
+          "../components/commerce-ui/variant-selector/multiple/variant-selector-multiple"
+        )
     ),
   },
 ];

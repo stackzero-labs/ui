@@ -1,0 +1,15 @@
+{
+  "name": "face-rating-gradient-ex-01",
+  "type": "registry:example",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "files": [
+    {
+      "type": "registry:example",
+      "content": "\"use client\";\n\nimport FaceRatingGradient from \"@/components/commerce-ui/face-rating-gradient\";\nimport { useState } from \"react\";\n\nexport default function FaceRating_Gradient_Ex_01() {\n  const [rating, setRating] = useState(3);\n  return (\n    <div className=\"flex flex-col items-center gap-4\">\n      <FaceRatingGradient value={rating} onChange={setRating} />\n      <p>Rating: {rating}</p>\n    </div>\n  );\n}\n",
+      "path": "/components/commerce-ui/face-rating/gradient/face-rating-gradient-ex-01.tsx",
+      "target": "/components/commerce-ui/face-rating-gradient-ex-01.tsx"
+    }
+  ]
+}

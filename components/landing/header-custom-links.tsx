@@ -1,6 +1,5 @@
-import { ArrowUpRight, PartyPopper } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
-import { Suspense } from "react";
 
 export async function HeaderCustomLinks() {
   return (

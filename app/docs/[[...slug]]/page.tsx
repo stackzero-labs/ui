@@ -1,15 +1,13 @@
-import { source } from "@/lib/source";
-import {
-  DocsPage,
-  DocsBody,
-  DocsDescription,
-  DocsTitle,
-  DocsCategory,
-} from "fumadocs-ui/page";
-import { notFound } from "next/navigation";
-import defaultMdxComponents from "fumadocs-ui/mdx";
 import { getMDXComponents } from "@/components/docs/mdx-components";
 import { metadataImage } from "@/lib/metadata";
+import { source } from "@/lib/source";
+import {
+  DocsBody,
+  DocsDescription,
+  DocsPage,
+  DocsTitle,
+} from "fumadocs-ui/page";
+import { notFound } from "next/navigation";
 const StackzeroApiCta = () => {
   return (
     <div className="mt-6 flex flex-col gap-4 rounded-md border p-2">
@@ -32,6 +30,8 @@ export default async function Page(props: {
 }) {
   const params = await props.params;
   const page = source.getPage(params.slug);
+
+  console.log("page", page);
   if (!page) notFound();
 
   const MDX = page.data.body;

@@ -1,0 +1,17 @@
+{
+  "name": "variant-selector-multiple-ex-01",
+  "type": "registry:example",
+  "dependencies": [
+    "lucide-react",
+    "@radix-ui/react-radio-group",
+    "motion"
+  ],
+  "files": [
+    {
+      "type": "registry:example",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport VariantSelectorMultiple, {\n  VariantItem,\n} from \"@/components/commerce-ui/variant-selector-multiple\";\n\nconst variants: VariantItem[] = [\n  {\n    id: \"damage-protection\",\n    value: \"damage-protection\",\n    label: \"Damage Protection\",\n  },\n  {\n    id: \"extended-warranty\",\n    value: \"extended-warranty\",\n    label: \"Extended Warranty\",\n  },\n  {\n    id: \"theft-protection\",\n    value: \"theft-protection\",\n    label: \"Theft Protection\",\n  },\n];\n\nexport default function VariantSelector_Basic_Ex_01() {\n  const [selectedVariant, setSelectedVariant] = React.useState<string[]>([\n    \"extended-warranty\",\n  ]);\n\n  return (\n    <div className=\"space-y-8\">\n      <fieldset className=\"space-y-4\">\n        <legend className=\"mb-2 text-sm font-medium\">Select Size:</legend>\n        <VariantSelectorMultiple\n          values={selectedVariant}\n          onValuesChange={setSelectedVariant}\n          variants={variants}\n        />\n      </fieldset>\n    </div>\n  );\n}\n",
+      "path": "/components/commerce-ui/variant-selector/multiple/variant-selector-multiple-ex-01.tsx",
+      "target": "/components/commerce-ui/variant-selector-multiple-ex-01.tsx"
+    }
+  ]
+}

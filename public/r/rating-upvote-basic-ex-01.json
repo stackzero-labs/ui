@@ -1,0 +1,15 @@
+{
+  "name": "rating-upvote-basic-ex-01",
+  "type": "registry:example",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "files": [
+    {
+      "type": "registry:example",
+      "content": "\"use client\";\n\nimport { useState } from \"react\";\nimport RatingUpvote_Basic from \"@/components/commerce-ui/rating-upvote-basic\";\n\nexport default function RatingUpvote_Basic_Ex_01() {\n  const [upvotes, setUpvotes] = useState(100);\n  const [downvotes, setDownvotes] = useState(20);\n  const [upvoted, setUpvoted] = useState(false);\n  const [downvoted, setDownvoted] = useState(false);\n\n  return (\n    <div className=\"flex flex-col items-center gap-4\">\n      <RatingUpvote_Basic\n        upvotes={upvotes}\n        downvotes={downvotes}\n        upvoted={upvoted}\n        downvoted={downvoted}\n        onVoteChange={(newState) => {\n          setUpvotes(newState.upvotes);\n          setDownvotes(newState.downvotes);\n          setUpvoted(newState.upvoted);\n          setDownvoted(newState.downvoted);\n        }}\n      />\n    </div>\n  );\n}\n",
+      "path": "/components/commerce-ui/rating-upvote/basic/rating-upvote-basic-ex-01.tsx",
+      "target": "/components/commerce-ui/rating-upvote-basic-ex-01.tsx"
+    }
+  ]
+}
