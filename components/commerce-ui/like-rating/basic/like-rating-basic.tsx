@@ -6,24 +6,47 @@ import * as React from "react";
 const LIKE_COLOR = "#009e42";
 const DISLIKE_COLOR = "#a60021";
 
-const LikeDislikeRating_01 = () => {
-  // Using single state: 1 for like, -1 for dislike, 0 for neutral
-  const [rating, setRating] = React.useState<number>(0);
+export type Rating = "like" | "dislike" | null;
 
+interface LikeRatingBasicProps {
+  /**
+   * Current rating value
+   */
+  value: Rating;
+  /**
+   * Callback fired when the rating changes
+   */
+  onChange: (value: Rating) => void;
+  /**
+   * Optional CSS class to add to the container
+   */
+  className?: string;
+}
+
+const LikeRating_Basic = ({
+  value,
+  onChange,
+  className,
+}: LikeRatingBasicProps) => {
   const handleLike = () => {
-    setRating((current) => (current === 1 ? 0 : 1));
+    onChange(value === "like" ? null : "like");
   };
 
   const handleDislike = () => {
-    setRating((current) => (current === -1 ? 0 : -1));
+    onChange(value === "dislike" ? null : "dislike");
   };
 
   return (
-    <div className="inline-flex -space-x-px rounded-lg shadow-sm shadow-black/5 rtl:space-x-reverse">
+    <div
+      className={cn(
+        "inline-flex -space-x-px rounded-lg shadow-sm shadow-black/5 rtl:space-x-reverse",
+        className
+      )}
+    >
       <Button
         className={cn(
           "rounded-none shadow-none first:rounded-s-lg last:rounded-e-lg focus-visible:z-10",
-          rating === 1 && "text-[#009e42]"
+          value === "like" && "text-[#009e42]"
         )}
         variant="outline"
         size="icon"
@@ -34,13 +57,13 @@ const LikeDislikeRating_01 = () => {
           size={16}
           strokeWidth={2}
           aria-hidden="true"
-          className={cn(rating === 1 && "fill-[#009e42]")}
+          className={cn(value === "like" && "fill-[#009e42]")}
         />
       </Button>
       <Button
         className={cn(
           "rounded-none shadow-none first:rounded-s-lg last:rounded-e-lg focus-visible:z-10",
-          rating === -1 && "text-[#a60021]"
+          value === "dislike" && "text-[#a60021]"
         )}
         variant="outline"
         size="icon"
@@ -51,11 +74,11 @@ const LikeDislikeRating_01 = () => {
           size={16}
           strokeWidth={2}
           aria-hidden="true"
-          className={cn(rating === -1 && "fill-[#a60021]")}
+          className={cn(value === "dislike" && "fill-[#a60021]")}
         />
       </Button>
     </div>
   );
 };
 
-export default LikeDislikeRating_01;
+export default LikeRating_Basic;

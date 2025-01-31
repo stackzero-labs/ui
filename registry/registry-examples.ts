@@ -55,37 +55,19 @@ export const examples: Registry = [
   },
 
   {
-    name: "price-format-01-ex-01",
+    name: "price-format-basic-ex-01",
     type: "registry:example",
     dependencies: ["lucide-react"],
     files: [
       {
-        path: "@/components/commerce-ui/price-format/examples/price-format-01-ex-01.tsx",
+        path: "@/components/commerce-ui/price-format/basic/price-format-basic-ex-01.tsx",
         type: "registry:example",
       },
     ],
     component: React.lazy(
       () =>
         import(
-          "../components/commerce-ui/price-format/examples/price-format-01-ex-01"
-        )
-    ),
-  },
-
-  {
-    name: "face-rating-01-ex-01",
-    type: "registry:example",
-    dependencies: ["lucide-react"],
-    files: [
-      {
-        path: "@/components/commerce-ui/face-rating/examples/face-rating-01-ex-01.tsx",
-        type: "registry:example",
-      },
-    ],
-    component: React.lazy(
-      () =>
-        import(
-          "../components/commerce-ui/face-rating/examples/face-rating-01-ex-01"
+          "../components/commerce-ui/price-format/basic/price-format-basic-ex-01"
         )
     ),
   },
@@ -157,6 +139,40 @@ export const examples: Registry = [
       () =>
         import(
           "../components/commerce-ui/face-rating/gradient/face-rating-gradient-ex-01"
+        )
+    ),
+  },
+
+  {
+    name: "like-rating-basic-ex-01",
+    type: "registry:example",
+    dependencies: ["lucide-react"],
+    files: [
+      {
+        path: "@/components/commerce-ui/like-rating/basic/like-rating-ex-01.tsx",
+        type: "registry:example",
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import("../components/commerce-ui/like-rating/basic/like-rating-ex-01")
+    ),
+  },
+
+  {
+    name: "star-rating-basic-ex-01",
+    type: "registry:example",
+    dependencies: ["lucide-react"],
+    files: [
+      {
+        path: "@/components/commerce-ui/star-rating/basic/star-rating-basic-ex-01.tsx",
+        type: "registry:example",
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import(
+          "../components/commerce-ui/star-rating/basic/star-rating-basic-ex-01"
         )
     ),
   },

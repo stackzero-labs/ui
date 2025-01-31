@@ -1,0 +1,15 @@
+{
+  "name": "price-format-basic-ex-01",
+  "type": "registry:example",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "files": [
+    {
+      "type": "registry:example",
+      "content": "\"use client\";\n\nimport PriceFormat_Basic from \"./price-format-basic\";\n\nexport default function PriceFormat_Basic_Ex_01() {\n  return (\n    <div className=\"flex flex-col items-center gap-4\">\n      <PriceFormat_Basic value={1499.99} prefix=\"$\" />\n    </div>\n  );\n}\n",
+      "path": "/components/commerce-ui/price-format/basic/price-format-basic-ex-01.tsx",
+      "target": "/components/commerce-ui/price-format-basic-ex-01.tsx"
+    }
+  ]
+}

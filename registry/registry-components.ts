@@ -36,48 +36,6 @@ export const components: Registry = [
     ),
   },
   {
-    name: "face-rating-01",
-    type: "registry:component",
-    dependencies: ["lucide-react"],
-    files: [
-      {
-        path: "@/components/commerce-ui/face-rating/face-rating-01.tsx",
-        type: "registry:component",
-      },
-    ],
-    component: React.lazy(
-      () => import("../components/commerce-ui/face-rating/face-rating-01")
-    ),
-  },
-  {
-    name: "face-rating-02",
-    type: "registry:component",
-    dependencies: ["lucide-react"],
-    files: [
-      {
-        path: "@/components/commerce-ui/face-rating/face-rating-02.tsx",
-        type: "registry:component",
-      },
-    ],
-    component: React.lazy(
-      () => import("../components/commerce-ui/face-rating/face-rating-02")
-    ),
-  },
-  {
-    name: "face-rating-03",
-    type: "registry:component",
-    dependencies: ["lucide-react", "tailwindcss-motion"],
-    files: [
-      {
-        path: "@/components/commerce-ui/face-rating/face-rating-03.tsx",
-        type: "registry:component",
-      },
-    ],
-    component: React.lazy(
-      () => import("../components/commerce-ui/face-rating/face-rating-03")
-    ),
-  },
-  {
     name: "upvote-downvote-rating-01",
     type: "registry:component",
     dependencies: ["lucide-react"],
@@ -166,36 +124,35 @@ export const components: Registry = [
   },
 
   {
-    name: "star-rating-01",
+    name: "star-rating-basic",
     type: "registry:component",
     dependencies: ["lucide-react"],
     files: [
       {
-        path: "@/components/commerce-ui/star-rating/star-rating-01.tsx",
-        type: "registry:component",
-      },
-    ],
-    component: React.lazy(
-      () => import("../components/commerce-ui/star-rating/star-rating-01")
-    ),
-  },
-
-  {
-    name: "like-dislike-rating-01",
-    type: "registry:component",
-    dependencies: ["lucide-react"],
-    registryDependencies: ["button"],
-    files: [
-      {
-        path: "@/components/commerce-ui/like-dislike-rating/like-dislike-rating-01.tsx",
+        path: "@/components/commerce-ui/star-rating/basic/star-rating-basic.tsx",
         type: "registry:component",
       },
     ],
     component: React.lazy(
       () =>
-        import(
-          "../components/commerce-ui/like-dislike-rating/like-dislike-rating-01"
-        )
+        import("../components/commerce-ui/star-rating/basic/star-rating-basic")
+    ),
+  },
+
+  {
+    name: "like-rating-basic",
+    type: "registry:component",
+    dependencies: ["lucide-react"],
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "@/components/commerce-ui/like-rating/basic/like-rating-basic.tsx",
+        type: "registry:component",
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import("../components/commerce-ui/like-rating/basic/like-rating-basic")
     ),
   },
 
@@ -295,18 +252,21 @@ export const components: Registry = [
   },
 
   {
-    name: "price-format-01",
+    name: "price-format-basic",
     type: "registry:component",
     dependencies: ["lucide-react", "react-number-format"],
     registryDependencies: ["button"],
     files: [
       {
-        path: "@/components/commerce-ui/price-format/price-format-01.tsx",
+        path: "@/components/commerce-ui/price-format/basic/price-format-basic.tsx",
         type: "registry:component",
       },
     ],
     component: React.lazy(
-      () => import("../components/commerce-ui/price-format/price-format-01")
+      () =>
+        import(
+          "../components/commerce-ui/price-format/basic/price-format-basic"
+        )
     ),
   },
 ];

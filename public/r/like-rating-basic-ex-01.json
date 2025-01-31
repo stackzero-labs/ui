@@ -1,0 +1,15 @@
+{
+  "name": "like-rating-basic-ex-01",
+  "type": "registry:example",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "files": [
+    {
+      "type": "registry:example",
+      "content": "\"use client\";\n\nimport { type Rating } from \"@/components/commerce-ui/like-rating-basic\";\nimport LikeRatingBasic from \"@/components/commerce-ui/like-rating-basic\";\nimport { useState } from \"react\";\n\nexport default function LikeRating_Basic_Ex_01() {\n  const [rating, setRating] = useState<Rating>(null);\n  return (\n    <div className=\"flex w-full flex-col items-center gap-4\">\n      <LikeRatingBasic value={rating} onChange={setRating} />\n      <p>Rating: {rating ?? \"none\"}</p>\n    </div>\n  );\n}\n",
+      "path": "/components/commerce-ui/like-rating/basic/like-rating-ex-01.tsx",
+      "target": "/components/commerce-ui/like-rating-ex-01.tsx"
+    }
+  ]
+}

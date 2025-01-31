@@ -3,7 +3,7 @@
 import { cn } from "@/lib/utils";
 import { NumericFormat } from "react-number-format";
 
-interface PriceFormat01Props extends React.HTMLAttributes<HTMLDivElement> {
+interface PriceFormat_BasicProps extends React.HTMLAttributes<HTMLDivElement> {
   value: number;
   prefix?: string;
   thousandSeparator?: string;
@@ -11,8 +11,8 @@ interface PriceFormat01Props extends React.HTMLAttributes<HTMLDivElement> {
   decimalScale?: number;
 }
 
-const PriceFormat01: React.FC<PriceFormat01Props> = ({
-  value = 1499.99,
+const PriceFormat_Basic: React.FC<PriceFormat_BasicProps> = ({
+  value,
   prefix = "$",
   className,
   thousandSeparator = ".",
@@ -32,4 +32,4 @@ const PriceFormat01: React.FC<PriceFormat01Props> = ({
   );
 };
 
-export default PriceFormat01;
+export default PriceFormat_Basic;
