@@ -27,14 +27,10 @@ interface TypesMap {
 }
 
 interface PropsTableProps {
-  componentName: string;
   types: TypesMap;
 }
 
-export const ComponentPropsTable: React.FC<PropsTableProps> = ({
-  componentName,
-  types,
-}) => {
+export const ComponentPropsTable: React.FC<PropsTableProps> = ({ types }) => {
   console.log("propsComponentData", types);
 
   return (

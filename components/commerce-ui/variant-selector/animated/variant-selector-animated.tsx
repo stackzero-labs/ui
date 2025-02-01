@@ -29,25 +29,23 @@ const VariantSelectorAnimated = ({
   const [activeStyles, setActiveStyles] = React.useState({ left: 0, width: 0 });
   const itemsRef = React.useRef<Map<string, HTMLLabelElement>>(new Map());
 
-  // Function to get the position and width of the active element
-  const getActiveStyles = () => {
-    const activeElement = itemsRef.current.get(value);
-    if (!activeElement) return { left: 0, width: 0 };
-
-    const parent = activeElement.parentElement;
-    if (!parent) return { left: 0, width: 0 };
-
-    const parentRect = parent.getBoundingClientRect();
-    const activeRect = activeElement.getBoundingClientRect();
-
-    return {
-      left: activeRect.left - parentRect.left,
-      width: activeRect.width,
-    };
-  };
-
-  // Use useLayoutEffect to calculate initial position
   React.useLayoutEffect(() => {
+    const getActiveStyles = () => {
+      const activeElement = itemsRef.current.get(value);
+      if (!activeElement) return { left: 0, width: 0 };
+
+      const parent = activeElement.parentElement;
+      if (!parent) return { left: 0, width: 0 };
+
+      const parentRect = parent.getBoundingClientRect();
+      const activeRect = activeElement.getBoundingClientRect();
+
+      return {
+        left: activeRect.left - parentRect.left,
+        width: activeRect.width,
+      };
+    };
+
     const styles = getActiveStyles();
     setActiveStyles(styles);
   }, [value]);

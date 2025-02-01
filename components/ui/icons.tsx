@@ -67,7 +67,7 @@ export const Icons = {
   textCursor: TextCursor,
   scan: ScanEye,
 
-  logo: (props: IconProps) => (
+  logo: () => (
     <svg
       width="25"
       height="25"
@@ -222,7 +222,7 @@ export const Icons = {
       />
     </svg>
   ),
-  spinner: (props: IconProps) => (
+  spinner: () => (
     <svg
       data-testid="geist-icon"
       height="16"
@@ -462,7 +462,7 @@ export const SparkleSvg = ({
   );
 };
 
-export function LinearLogo(props: React.SVGProps<SVGSVGElement>) {
+export function LinearLogo() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -493,7 +493,7 @@ export function TwitterIcon(props: React.SVGProps<SVGSVGElement>) {
   );
 }
 
-export function AnimationsDev(props: React.SVGProps<SVGSVGElement>) {
+export function AnimationsDev() {
   return (
     <svg
       version="1.1"

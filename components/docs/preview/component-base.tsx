@@ -35,6 +35,7 @@ export function ComponentBase({
       open={isOpened}
       onOpenChange={setIsOpened}
       className="not-prose"
+      aria-label={name}
     >
       <div
         className={cn(

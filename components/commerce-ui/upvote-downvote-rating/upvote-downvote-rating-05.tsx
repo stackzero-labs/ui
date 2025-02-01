@@ -39,12 +39,6 @@ const UpvoteDownvoteRating_05 = () => {
     }
   };
 
-  const formatNumber = (number: number) => {
-    return number >= 1000
-      ? (number / 1000).toFixed(1) + "K"
-      : number.toLocaleString();
-  };
-
   const totalVotes = upvotes - downvotes;
 
   return (
