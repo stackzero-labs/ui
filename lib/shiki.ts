@@ -10,8 +10,8 @@ let highlighterPromise: Promise<Highlighter> | null = null;
 async function getHighlighter() {
   if (!highlighterPromise) {
     highlighterPromise = createHighlighter({
-      themes: ["github-dark-high-contrast", "github-light-high-contrast"],
       langs: [...Object.keys(bundledLanguages)],
+      themes: ["github-dark-high-contrast", "github-light-high-contrast"],
     });
   }
   return highlighterPromise;
