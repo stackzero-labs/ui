@@ -26,41 +26,56 @@ const VariantSelectorAnimated = ({
   value,
   variants,
 }: VariantSelectorAnimatedProps) => {
-  const [activeStyles, setActiveStyles] = React.useState({ left: 0, width: 0 });
+  const [activeStyles, setActiveStyles] = React.useState({
+    top: 0,
+    left: 0,
+    width: 0,
+    height: 0,
+  });
   const itemsRef = React.useRef<Map<string, HTMLLabelElement>>(new Map());
 
   React.useLayoutEffect(() => {
     const getActiveStyles = () => {
       const activeElement = itemsRef.current.get(value);
-      if (!activeElement) return { left: 0, width: 0 };
+      if (!activeElement) return { top: 0, left: 0, width: 0, height: 0 };
 
       const parent = activeElement.parentElement;
-      if (!parent) return { left: 0, width: 0 };
+      if (!parent) return { top: 0, left: 0, width: 0, height: 0 };
 
       const parentRect = parent.getBoundingClientRect();
       const activeRect = activeElement.getBoundingClientRect();
 
       return {
+        top: activeRect.top - parentRect.top,
         left: activeRect.left - parentRect.left,
         width: activeRect.width,
+        height: activeRect.height,
       };
     };
 
-    const styles = getActiveStyles();
-    setActiveStyles(styles);
+    // Use requestAnimationFrame to ensure DOM has updated
+    requestAnimationFrame(() => {
+      const styles = getActiveStyles();
+      setActiveStyles(styles);
+    });
   }, [value]);
 
   return (
     <RadioGroupPrimitive.Root
-      className={cn("relative flex gap-2", className)}
+      className={cn("relative flex flex-wrap gap-1.5 sm:gap-2", className)}
       value={value}
       onValueChange={onValueChange}
     >
       <AnimatePresence initial={false}>
         <motion.div
           layoutId="variant-background"
-          className="absolute inset-0 h-full rounded-lg border border-lime-300 bg-lime-300/30"
-          animate={activeStyles}
+          className="absolute rounded-lg border border-lime-300 bg-lime-300/30"
+          animate={{
+            top: activeStyles.top,
+            left: activeStyles.left,
+            width: activeStyles.width,
+            height: activeStyles.height,
+          }}
           transition={{
             bounce: 0.2,
             duration: 0.6,
@@ -79,7 +94,7 @@ const VariantSelectorAnimated = ({
               itemsRef.current.delete(variant.value);
             }
           }}
-          className="relative flex cursor-pointer flex-col items-center gap-3 rounded-lg px-4 py-3 text-center shadow-sm shadow-black/5 outline-offset-2 transition-colors has-[[data-disabled]]:cursor-not-allowed has-[[data-disabled]]:opacity-50 has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-ring/70"
+          className="relative flex min-w-[4rem] cursor-pointer flex-col items-center gap-2 rounded-lg px-2.5 py-2 text-center shadow-sm shadow-black/5 outline-offset-2 transition-colors has-[[data-disabled]]:cursor-not-allowed has-[[data-disabled]]:opacity-50 has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-ring/70 sm:min-w-[5rem] sm:gap-3 sm:px-4 sm:py-3"
         >
           <RadioGroupPrimitive.Item
             value={variant.value}

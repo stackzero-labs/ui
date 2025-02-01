@@ -15,26 +15,30 @@ const variants: VariantItem[] = [
   { id: "variant-xxl", label: "XXL", value: "variant-xxl" },
 ];
 
-export default function VariantSelector_Basic_Ex_01() {
-  const [selectedVariant, setSelectedVariant] = React.useState("variant-m");
+export default function VariantSelector_Basic_Ex_02() {
+  const [selectedVariant1, setSelectedVariant1] = React.useState("variant-m");
+  const [selectedVariant2, setSelectedVariant2] = React.useState("variant-m");
 
   return (
-    <div className="space-y-8">
-      <fieldset className="space-y-4">
+    <div className="flex items-center gap-6 space-y-8">
+      <fieldset className="max-w-sm">
         <legend className="mb-2 text-sm font-medium">Select Size:</legend>
         <VariantSelectorBasic
-          value={selectedVariant}
-          onValueChange={setSelectedVariant}
+          value={selectedVariant1}
+          onValueChange={setSelectedVariant1}
           variants={variants}
+          className="max-w-[100px] grid-cols-1 sm:grid-cols-1"
         />
       </fieldset>
-
-      <button
-        onClick={() => setSelectedVariant("variant-m")}
-        className="rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:bg-primary/90"
-      >
-        Reset to Medium
-      </button>
+      <fieldset className="max-w-sm">
+        <legend className="mb-2 text-sm font-medium">Select Size:</legend>
+        <VariantSelectorBasic
+          value={selectedVariant2}
+          onValueChange={setSelectedVariant2}
+          variants={variants}
+          className="grid-cols-7 sm:grid-cols-7"
+        />
+      </fieldset>
     </div>
   );
 }

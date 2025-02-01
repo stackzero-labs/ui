@@ -249,6 +249,25 @@ export const examples: Registry = [
         )
     ),
   },
+
+  {
+    name: "variant-selector-basic-ex-02",
+    type: "registry:example",
+    dependencies: ["lucide-react", "@radix-ui/react-radio-group"],
+    files: [
+      {
+        path: "@/components/commerce-ui/variant-selector/basic/variant-selector-basic-ex-02.tsx",
+        type: "registry:example",
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import(
+          "../components/commerce-ui/variant-selector/basic/variant-selector-basic-ex-02"
+        )
+    ),
+  },
+
   {
     name: "variant-selector-images-ex-01",
     type: "registry:example",
@@ -281,6 +300,24 @@ export const examples: Registry = [
       () =>
         import(
           "../components/commerce-ui/variant-selector/animated/variant-selector-animated-ex-01"
+        )
+    ),
+  },
+
+  {
+    name: "variant-selector-animated-ex-02",
+    type: "registry:example",
+    dependencies: ["lucide-react", "@radix-ui/react-radio-group", "motion"],
+    files: [
+      {
+        path: "@/components/commerce-ui/variant-selector/animated/variant-selector-animated-ex-02.tsx",
+        type: "registry:example",
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import(
+          "../components/commerce-ui/variant-selector/animated/variant-selector-animated-ex-02"
         )
     ),
   },

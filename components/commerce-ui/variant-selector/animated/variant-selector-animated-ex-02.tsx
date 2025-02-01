@@ -10,11 +10,11 @@ const variants = [
   { id: "variant-d", label: "ExtremeSilence™", value: "variant-d" },
 ];
 
-const VariantSelectorAnimated_Ex_01 = () => {
+const VariantSelectorAnimated_Ex_02 = () => {
   const [selectedVariant, setSelectedVariant] = React.useState("variant-b");
 
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex max-w-sm flex-col gap-4">
       <fieldset className="space-y-4">
         <legend className="mb-2 text-sm font-medium">Select Variant:</legend>
         <VariantSelectorAnimated
@@ -27,4 +27,4 @@ const VariantSelectorAnimated_Ex_01 = () => {
   );
 };
 
-export default VariantSelectorAnimated_Ex_01;
+export default VariantSelectorAnimated_Ex_02;

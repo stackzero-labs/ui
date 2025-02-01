@@ -30,7 +30,7 @@ const VariantSelectorImages = ({
 }: VariantSelectorImagesProps) => {
   return (
     <RadioGroupPrimitive.Root
-      className={cn("grid grid-cols-3 gap-2", className)}
+      className={cn("grid grid-cols-2 gap-2 sm:grid-cols-3", className)}
       value={value}
       onValueChange={onValueChange}
     >

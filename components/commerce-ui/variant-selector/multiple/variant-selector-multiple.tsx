@@ -27,7 +27,7 @@ const VariantSelectorMultiple = ({
   return (
     <ToggleGroup
       type="multiple"
-      className={cn("grid grid-cols-3 gap-2", className)}
+      className={cn("grid grid-cols-2 gap-2 sm:grid-cols-3", className)}
       value={values}
       onValueChange={onValuesChange}
     >
