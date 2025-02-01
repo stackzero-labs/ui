@@ -34,8 +34,8 @@ export default function Layout({ children }: { children: ReactNode }) {
 }
 
 export const metadata: Metadata = {
-  title: "Commerce UI",
   description:
     "The Commerce UI is a set of components and hooks that can be used to build a custom storefront for your commerce site.",
   metadataBase: new URL("https://ui.stackzero.co"),
+  title: "Commerce UI",
 };

@@ -4,12 +4,14 @@
   "private": true,
   "scripts": {
     "build": "next build",
-    "postbuild": "npm run build:registry",
+    "prebuild": "npm run build:registry",
     "build:registry": "tsx ./scripts/build-registry.ts",
+    "sort:registry": "tsx ./scripts/sort-registry.ts",
     "dev": "next dev",
     "start": "next start",
     "postinstall": "fumadocs-mdx",
     "lint": "next lint --no-cache",
+    "lint:fix": "next lint --fix",
     "format": "prettier --check .",
     "format:fix": "prettier --write ."
   },
@@ -52,6 +54,8 @@
     "zod": "^3.24.1"
   },
   "devDependencies": {
+    "@eslint/eslintrc": "^3.2.0",
+    "@eslint/js": "^9.19.0",
     "@fumadocs/cli": "^0.0.7",
     "@types/mdx": "^2.0.13",
     "@types/node": "22.10.7",
@@ -59,7 +63,7 @@
     "@types/react-dom": "^19.0.3",
     "@types/tinycolor2": "^1.4.6",
     "autoprefixer": "^10.4.20",
-    "eslint": "^8",
+    "eslint": "^9.19.0",
     "eslint-config-next": "15.1.5",
     "eslint-plugin-perfectionist": "^4.7.0",
     "postcss": "^8.5.1",

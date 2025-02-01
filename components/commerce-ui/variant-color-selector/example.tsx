@@ -41,7 +41,7 @@ const VariantSelectorItem = React.forwardRef<
     autoContrast?: boolean;
     color: string;
   }
->(({ className, color, autoContrast = true, children, ...props }, ref) => {
+>(({ autoContrast = true, children, className, color, ...props }, ref) => {
   const textColor = autoContrast ? getContrastYIQ(color) : undefined;
 
   console.log("textColor", textColor);
@@ -65,7 +65,7 @@ VariantSelectorItem.displayName = "VariantSelectorItem";
 const VariantSelectorIndicator = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
->(({ className, children, ...props }, ref) => (
+>(({ children, className, ...props }, ref) => (
   <RadioGroupPrimitive.Indicator
     ref={ref}
     className={cn("flex h-full items-center justify-center", className)}

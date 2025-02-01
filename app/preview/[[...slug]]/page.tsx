@@ -54,6 +54,7 @@ export default async function PreviewPage({
       </>
     );
   } catch (error) {
+    console.error("error", error);
     return notFound();
   }
 }

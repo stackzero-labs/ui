@@ -10,10 +10,10 @@ import { useState } from "react";
 import { CodeRenderer } from "../code-renderer";
 
 export function ComponentSource({
-  code,
-  highlightedCode,
   className,
+  code,
   expandButtonTitle = "Expand",
+  highlightedCode,
   maxHeight = "550px",
   ...props
 }: {

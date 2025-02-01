@@ -4,13 +4,13 @@ import VariantColorSelectorBasic, {
 } from "./variant-color-selector-basic";
 
 const variants: ColorVariantItem[] = [
-  { id: "color-black", value: "black", color: "#000000", label: "Black" },
-  { id: "color-white", value: "white", color: "#FFFFFF", label: "White" },
-  { id: "color-red", value: "red", color: "#FF0000", label: "Red" },
-  { id: "color-blue", value: "blue", color: "#0000FF", label: "Blue" },
-  { id: "color-green", value: "green", color: "#00FF00", label: "Green" },
-  { id: "color-yellow", value: "yellow", color: "#FFFF00", label: "Yellow" },
-  { id: "color-purple", value: "purple", color: "#800080", label: "Purple" },
+  { color: "#000000", id: "color-black", label: "Black", value: "black" },
+  { color: "#FFFFFF", id: "color-white", label: "White", value: "white" },
+  { color: "#FF0000", id: "color-red", label: "Red", value: "red" },
+  { color: "#0000FF", id: "color-blue", label: "Blue", value: "blue" },
+  { color: "#00FF00", id: "color-green", label: "Green", value: "green" },
+  { color: "#FFFF00", id: "color-yellow", label: "Yellow", value: "yellow" },
+  { color: "#800080", id: "color-purple", label: "Purple", value: "purple" },
 ];
 
 export default function VariantColorSelectorBasicExample() {

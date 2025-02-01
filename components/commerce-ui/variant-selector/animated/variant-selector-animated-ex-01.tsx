@@ -4,10 +4,10 @@ import * as React from "react";
 import VariantSelectorAnimated from "./variant-selector-animated";
 
 const variants = [
-  { id: "variant-a", value: "variant-a", label: "Sport" },
-  { id: "variant-b", value: "variant-b", label: "Pro" },
-  { id: "variant-c", value: "variant-c", label: "UltraQuite™" },
-  { id: "variant-d", value: "variant-d", label: "ExtremeSilence™" },
+  { id: "variant-a", label: "Sport", value: "variant-a" },
+  { id: "variant-b", label: "Pro", value: "variant-b" },
+  { id: "variant-c", label: "UltraQuite™", value: "variant-c" },
+  { id: "variant-d", label: "ExtremeSilence™", value: "variant-d" },
 ];
 
 const VariantSelectorAnimatedExample = () => {

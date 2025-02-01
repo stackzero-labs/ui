@@ -5,8 +5,8 @@ import { source } from "@/lib/source";
 
 const docsOptions: DocsLayoutProps = {
   ...baseOptions,
-  tree: source.pageTree,
   links: linkItems,
+  tree: source.pageTree,
 };
 
 export default function Layout({ children }: { children: ReactNode }) {

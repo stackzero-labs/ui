@@ -23,11 +23,11 @@ const prePath =
       siteConfig.url;
 
 export function ComponentPreview({
-  name,
-  code,
-  highlightedCode,
-  hasReTrigger = false,
   classNameComponentContainer,
+  code,
+  hasReTrigger = false,
+  highlightedCode,
+  name,
 }: ComponentPreviewProps) {
   const [activeTab, setActiveTab] = useState("preview");
   const [isTerminalCopied, setIsTerminalCopied] = useState(false);

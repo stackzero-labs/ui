@@ -22,13 +22,13 @@ export default async function Page(props: {
       <div
         className="container rounded-xl border py-12 md:px-8"
         style={{
+          backgroundBlendMode: "difference, difference, normal",
           backgroundColor: "black",
           backgroundImage: [
             "linear-gradient(140deg, hsla(274,94%,54%,0.3), transparent 50%)",
             "linear-gradient(to left top, hsla(260,90%,50%,0.8), transparent 50%)",
             "radial-gradient(circle at 100% 100%, hsla(240,100%,82%,1), hsla(240,40%,40%,1) 17%, hsla(240,40%,40%,0.5) 20%, transparent)",
           ].join(", "),
-          backgroundBlendMode: "difference, difference, normal",
         }}
       >
         <h1 className="mb-2 text-3xl font-bold text-white">
@@ -80,8 +80,8 @@ export async function generateMetadata(props: {
   // });
 
   return {
-    title: page.data.title,
     description,
+    title: page.data.title,
   };
 }
 

@@ -13,9 +13,9 @@ type ComponentLoaderProps = {
 };
 
 export function ComponentLoader({
-  name,
-  hasReTrigger = false,
   classNameComponentContainer,
+  hasReTrigger = false,
+  name,
 }: ComponentLoaderProps) {
   const [Component, setComponent] = useState<React.ComponentType | null>(null);
   const [reTriggerKey, setReTriggerKey] = useState<number>(Date.now());
@@ -53,11 +53,11 @@ export function ComponentLoader({
 }
 
 function ComponentDisplay({
+  className,
   component,
   hasReTrigger,
-  className,
-  reTriggerKey,
   reTrigger,
+  reTriggerKey,
 }: ComponentDisplayProps) {
   return (
     <div

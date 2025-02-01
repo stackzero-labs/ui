@@ -6,11 +6,11 @@ import { icons } from "lucide-react";
 
 export const source = loader({
   baseUrl: "/docs",
-  source: createMDXSource(docs, meta),
   icon(icon) {
     if (icon && icon in icons)
       return create({ icon: icons[icon as keyof typeof icons] });
   },
+  source: createMDXSource(docs, meta),
 });
 
 export const blog = loader({

@@ -5,9 +5,9 @@ import { useState } from "react";
 
 export default function FaceRating_Basic_Ex_03() {
   const [formData, setFormData] = useState({
-    rating: 3,
     comment: "",
     email: "",
+    rating: 3,
   });
 
   const handleSubmit = (e: React.FormEvent) => {

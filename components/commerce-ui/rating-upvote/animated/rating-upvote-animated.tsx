@@ -19,30 +19,30 @@ interface RatingUpvoteAnimatedProps {
 }
 
 const RatingUpvote_Animated = ({
-  upvotes,
-  downvotes,
-  upvoted,
   downvoted,
-  upvoteIncrement = 1,
   downvoteIncrement = 1,
+  downvotes,
   onVoteChange,
+  upvoted,
+  upvoteIncrement = 1,
+  upvotes,
 }: RatingUpvoteAnimatedProps) => {
   const handleUpvote = () => {
     if (upvoted) {
       // Undo upvote
       onVoteChange({
-        upvotes: upvotes - upvoteIncrement,
+        downvoted: false,
         downvotes,
         upvoted: false,
-        downvoted: false,
+        upvotes: upvotes - upvoteIncrement,
       });
     } else {
       // Add upvote and remove downvote if exists
       onVoteChange({
-        upvotes: upvotes + upvoteIncrement,
+        downvoted: false,
         downvotes: downvoted ? downvotes - downvoteIncrement : downvotes,
         upvoted: true,
-        downvoted: false,
+        upvotes: upvotes + upvoteIncrement,
       });
     }
   };
@@ -51,18 +51,18 @@ const RatingUpvote_Animated = ({
     if (downvoted) {
       // Undo downvote
       onVoteChange({
-        upvotes,
+        downvoted: false,
         downvotes: downvotes - downvoteIncrement,
         upvoted: false,
-        downvoted: false,
+        upvotes,
       });
     } else {
       // Add downvote and remove upvote if exists
       onVoteChange({
-        upvotes: upvoted ? upvotes - upvoteIncrement : upvotes,
+        downvoted: true,
         downvotes: downvotes + downvoteIncrement,
         upvoted: false,
-        downvoted: true,
+        upvotes: upvoted ? upvotes - upvoteIncrement : upvotes,
       });
     }
   };

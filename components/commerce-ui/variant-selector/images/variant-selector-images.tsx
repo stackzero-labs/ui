@@ -5,6 +5,7 @@ import * as RadioGroupPrimitive from "@radix-ui/react-radio-group";
 import { Circle } from "lucide-react";
 
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 export interface VariantItem {
   id: string;
@@ -22,10 +23,10 @@ interface VariantSelectorImagesProps {
 }
 
 const VariantSelectorImages = ({
-  value,
-  onValueChange,
-  variants,
   className,
+  onValueChange,
+  value,
+  variants,
 }: VariantSelectorImagesProps) => {
   return (
     <RadioGroupPrimitive.Root
@@ -47,7 +48,13 @@ const VariantSelectorImages = ({
               <Circle className="h-2.5 w-2.5 fill-current text-current" />
             </RadioGroupPrimitive.Indicator>
           </RadioGroupPrimitive.Item>
-          <img alt={variant.label} src={variant.url} width={150} height={150} />
+          <Image
+            alt={variant.label}
+            src={variant.url}
+            width={150}
+            height={150}
+            unoptimized
+          />
           <p className="text-xs text-muted-foreground">{variant.label}</p>
         </label>
       ))}

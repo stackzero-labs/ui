@@ -8,8 +8,8 @@ const DOWNVOTE_COLOR = "#ef4444";
 const UPVOTE_POINTS = 1;
 const DOWNVOTE_POINTS = 1;
 const format: Format = {
-  notation: "compact",
   compactDisplay: "short",
+  notation: "compact",
   roundingMode: "trunc",
 };
 
@@ -37,12 +37,6 @@ const UpvoteDownvoteRating_05 = () => {
         setUpvotes((prev) => prev - UPVOTE_POINTS);
       }
     }
-  };
-
-  const formatNumber = (number: number) => {
-    return number >= 1000
-      ? (number / 1000).toFixed(1) + "K"
-      : number.toLocaleString();
   };
 
   const totalVotes = upvotes - downvotes;

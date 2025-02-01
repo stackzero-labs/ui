@@ -19,10 +19,10 @@ interface VariantSelectorMultipleProps {
 }
 
 const VariantSelectorMultiple = ({
-  values,
-  onValuesChange,
-  variants,
   className,
+  onValuesChange,
+  values,
+  variants,
 }: VariantSelectorMultipleProps) => {
   return (
     <ToggleGroup

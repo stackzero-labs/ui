@@ -6,13 +6,13 @@ import VariantSelectorBasic, {
 } from "@/components/commerce-ui/variant-selector/basic/variant-selector-basic";
 
 const variants: VariantItem[] = [
-  { id: "variant-xxs", value: "variant-xxs", label: "XXS" },
-  { id: "variant-xs", value: "variant-xs", label: "XS" },
-  { id: "variant-s", value: "variant-s", label: "S" },
-  { id: "variant-m", value: "variant-m", label: "M" },
-  { id: "variant-l", value: "variant-l", label: "L" },
-  { id: "variant-xl", value: "variant-xl", label: "XL" },
-  { id: "variant-xxl", value: "variant-xxl", label: "XXL" },
+  { id: "variant-xxs", label: "XXS", value: "variant-xxs" },
+  { id: "variant-xs", label: "XS", value: "variant-xs" },
+  { id: "variant-s", label: "S", value: "variant-s" },
+  { id: "variant-m", label: "M", value: "variant-m" },
+  { id: "variant-l", label: "L", value: "variant-l" },
+  { id: "variant-xl", label: "XL", value: "variant-xl" },
+  { id: "variant-xxl", label: "XXL", value: "variant-xxl" },
 ];
 
 export default function VariantSelector_Basic_Ex_01() {

@@ -19,13 +19,13 @@ interface ComponentBaseProps extends ComponentPreviewProps {
 }
 
 export function ComponentBase({
-  code,
-  name,
-  highlightedCode,
-  expandButtonTitle = "Expand",
-  defaultExpanded = false,
-  maxHeight = "550px",
   className,
+  code,
+  defaultExpanded = false,
+  expandButtonTitle = "Expand",
+  highlightedCode,
+  maxHeight = "550px",
+  name,
   ...props
 }: ComponentBaseProps) {
   const [isOpened, setIsOpened] = React.useState(defaultExpanded);
@@ -35,6 +35,7 @@ export function ComponentBase({
       open={isOpened}
       onOpenChange={setIsOpened}
       className="not-prose"
+      aria-label={name}
     >
       <div
         className={cn(

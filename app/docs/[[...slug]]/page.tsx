@@ -39,9 +39,9 @@ export default async function Page(props: {
   return (
     <DocsPage
       tableOfContent={{
-        style: "clerk",
-        single: false,
         footer: <StackzeroApiCta />,
+        single: false,
+        style: "clerk",
       }}
       toc={page.data.toc}
       full={page.data.full}
@@ -69,7 +69,7 @@ export async function generateMetadata(props: {
   if (!page) notFound();
 
   return metadataImage.withImage(page.slugs, {
-    title: page.data.title,
     description: page.data.description,
+    title: page.data.title,
   });
 }
