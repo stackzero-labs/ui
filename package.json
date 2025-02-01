@@ -11,6 +11,7 @@
     "start": "next start",
     "postinstall": "fumadocs-mdx",
     "lint": "next lint --no-cache",
+    "lint:fix": "next lint --fix",
     "format": "prettier --check .",
     "format:fix": "prettier --write ."
   },

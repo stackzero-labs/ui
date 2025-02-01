@@ -21,10 +21,10 @@ interface VariantSelectorAnimatedProps {
 }
 
 const VariantSelectorAnimated = ({
-  value,
-  onValueChange,
-  variants,
   className,
+  onValueChange,
+  value,
+  variants,
 }: VariantSelectorAnimatedProps) => {
   const [activeStyles, setActiveStyles] = React.useState({ left: 0, width: 0 });
   const itemsRef = React.useRef<Map<string, HTMLLabelElement>>(new Map());
@@ -62,9 +62,9 @@ const VariantSelectorAnimated = ({
           className="absolute inset-0 h-full rounded-lg border border-lime-300 bg-lime-300/30"
           animate={activeStyles}
           transition={{
-            type: "spring",
             bounce: 0.2,
             duration: 0.6,
+            type: "spring",
           }}
         />
       </AnimatePresence>

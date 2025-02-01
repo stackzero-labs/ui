@@ -13,9 +13,9 @@ import * as React from "react";
 const DEFAULT_COLORS = {
   angry: "red",
   frown: "orange",
+  laugh: "green",
   meh: "yellow",
   smile: "lightgreen",
-  laugh: "green",
 };
 
 interface FaceRatingBasicProps {
@@ -26,10 +26,10 @@ interface FaceRatingBasicProps {
 }
 
 const FaceRating_Basic = ({
-  value,
-  onChange,
   className,
   iconSize = 24,
+  onChange,
+  value,
 }: FaceRatingBasicProps) => {
   const handleIconClick = (index: number) => {
     const newRating = index + 1;

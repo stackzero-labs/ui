@@ -35,7 +35,7 @@ const ImageContainer: React.FC<{
   alt: string;
   fit?: "cover" | "contain" | "fill";
   aspectRatio?: string;
-}> = ({ image, alt, fit = "cover", aspectRatio }) => {
+}> = ({ alt, aspectRatio, fit = "cover", image }) => {
   return (
     <div
       className={cn(
@@ -59,7 +59,7 @@ const ImageContainer: React.FC<{
 };
 
 const Thumb: React.FC<ThumbPropType> = (props) => {
-  const { selected, index, onClick, imgUrl } = props;
+  const { imgUrl, index, onClick, selected } = props;
 
   return (
     <div
@@ -100,14 +100,14 @@ interface ImageCarousel_HorizontalProps
 }
 
 const ImageCarousel_Horizontal: React.FC<ImageCarousel_HorizontalProps> = ({
+  aspectRatio = "wide",
+  className,
+  imageFit = "contain",
   images,
   opts,
   showControls = true,
-  className,
-  imageFit = "contain",
-  aspectRatio = "wide",
-  thumbPosition = "left",
   showThumbs = true,
+  thumbPosition = "left",
   ...props
 }) => {
   const [emblaRef, emblaApi] = useEmblaCarousel({
@@ -118,10 +118,10 @@ const ImageCarousel_Horizontal: React.FC<ImageCarousel_HorizontalProps> = ({
   const [emblaThumbsRef, emblaThumbsApi] = useEmblaCarousel(
     showThumbs
       ? {
-          containScroll: "keepSnaps",
-          dragFree: true,
           axis:
             thumbPosition === "left" || thumbPosition === "right" ? "y" : "x",
+          containScroll: "keepSnaps",
+          dragFree: true,
         }
       : undefined
   );
@@ -189,10 +189,10 @@ const ImageCarousel_Horizontal: React.FC<ImageCarousel_HorizontalProps> = ({
       className={cn(
         "relative w-full max-w-3xl",
         {
+          "flex-row-reverse": showThumbs && thumbPosition === "left",
           "flex gap-4":
             showThumbs &&
             (thumbPosition === "left" || thumbPosition === "right"),
-          "flex-row-reverse": showThumbs && thumbPosition === "left",
         },
         className
       )}

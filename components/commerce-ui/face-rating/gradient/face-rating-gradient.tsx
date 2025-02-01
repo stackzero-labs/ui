@@ -20,11 +20,11 @@ interface FaceRatingGradientProps {
 }
 
 const FaceRating_Gradient = ({
-  value,
-  onChange,
+  baseColor = "#22c55e", // Default green color
   className,
   iconSize = 24,
-  baseColor = "#22c55e", // Default green color
+  onChange,
+  value,
 }: FaceRatingGradientProps) => {
   const generateColorGradient = (baseColor: string, steps: number) => {
     const color = tinycolor(baseColor);

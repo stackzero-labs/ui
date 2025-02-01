@@ -6,21 +6,21 @@ import VariantSelectorImages from "./variant-selector-images";
 const variants = [
   {
     id: "cat-default",
-    value: "cat-default",
     label: "Default Cat",
     url: "/placeholders/cat-default.webp",
+    value: "cat-default",
   },
   {
     id: "cat-steampunk",
-    value: "cat-steampunk",
     label: "Steampunk Cat",
     url: "/placeholders/cat-steampunk.webp",
+    value: "cat-steampunk",
   },
   {
     id: "cat-cyberpunk",
-    value: "cat-cyberpunk",
     label: "Cyberpunk Cat",
     url: "/placeholders/cat-cyberpunk.webp",
+    value: "cat-cyberpunk",
   },
 ];
 

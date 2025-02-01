@@ -8,18 +8,18 @@ import VariantSelectorMultiple, {
 const variants: VariantItem[] = [
   {
     id: "damage-protection",
-    value: "damage-protection",
     label: "Damage Protection",
+    value: "damage-protection",
   },
   {
     id: "extended-warranty",
-    value: "extended-warranty",
     label: "Extended Warranty",
+    value: "extended-warranty",
   },
   {
     id: "theft-protection",
-    value: "theft-protection",
     label: "Theft Protection",
+    value: "theft-protection",
   },
 ];
 

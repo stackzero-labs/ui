@@ -21,10 +21,10 @@ interface VariantColorSelectorBasicProps {
 }
 
 const VariantColorSelectorBasic = ({
-  value,
-  onValueChange,
-  variants,
   className,
+  onValueChange,
+  value,
+  variants,
 }: VariantColorSelectorBasicProps) => {
   return (
     <RadioGroupPrimitive.Root

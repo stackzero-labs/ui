@@ -10,23 +10,23 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return [
     {
-      url: url("/"),
       changeFrequency: "monthly",
       priority: 1,
+      url: url("/"),
     },
     {
-      url: url("/docs"),
       changeFrequency: "monthly",
       priority: 0.8,
+      url: url("/docs"),
     },
 
     ...source.getPages().map<MetadataRoute.Sitemap[number]>((page) => ({
-      url: url(page.url),
+      changeFrequency: "weekly",
       lastModified: page.data.lastModified
         ? new Date(page.data.lastModified)
         : undefined,
-      changeFrequency: "weekly",
       priority: 0.5,
+      url: url(page.url),
     })),
   ];
 }

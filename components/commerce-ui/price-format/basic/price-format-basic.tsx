@@ -12,12 +12,12 @@ interface PriceFormat_BasicProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 const PriceFormat_Basic: React.FC<PriceFormat_BasicProps> = ({
-  value,
-  prefix = "$",
   className,
-  thousandSeparator = ".",
-  decimalSeparator = ",",
   decimalScale = 2,
+  decimalSeparator = ",",
+  prefix = "$",
+  thousandSeparator = ".",
+  value,
 }) => {
   return (
     <NumericFormat

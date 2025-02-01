@@ -13,11 +13,11 @@ import React, { useState } from "react";
 import type { ComponentPreviewProps } from "types/component";
 
 export function ComponentCollapse({
-  name,
-  code,
-  highlightedCode,
-  hasReTrigger = false,
   classNameComponentContainer,
+  code,
+  hasReTrigger = false,
+  highlightedCode,
+  name,
 }: ComponentPreviewProps) {
   const [isOpen, setIsOpen] = useState(false);
 

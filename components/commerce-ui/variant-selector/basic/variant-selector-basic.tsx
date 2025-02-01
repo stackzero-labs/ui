@@ -20,10 +20,10 @@ interface VariantSelectorBasicProps {
 }
 
 const VariantSelectorBasic = ({
-  value,
-  onValueChange,
-  variants,
   className,
+  onValueChange,
+  value,
+  variants,
 }: VariantSelectorBasicProps) => {
   return (
     <RadioGroupPrimitive.Root

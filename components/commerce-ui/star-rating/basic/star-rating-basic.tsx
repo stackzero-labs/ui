@@ -13,11 +13,11 @@ interface StarRatingBasicProps {
 }
 
 const StarRating_Basic = ({
-  value,
-  onChange,
   className,
   iconSize = 24,
   maxStars = 5,
+  onChange,
+  value,
 }: StarRatingBasicProps) => {
   const handleStarClick = (index: number) => {
     const newRating = index + 1;

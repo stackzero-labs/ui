@@ -23,10 +23,10 @@ interface VariantSelectorImagesProps {
 }
 
 const VariantSelectorImages = ({
-  value,
-  onValueChange,
-  variants,
   className,
+  onValueChange,
+  value,
+  variants,
 }: VariantSelectorImagesProps) => {
   return (
     <RadioGroupPrimitive.Root

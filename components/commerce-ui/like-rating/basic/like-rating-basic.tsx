@@ -21,9 +21,9 @@ interface LikeRatingBasicProps {
 }
 
 const LikeRating_Basic = ({
-  value,
-  onChange,
   className,
+  onChange,
+  value,
 }: LikeRatingBasicProps) => {
   const handleLike = () => {
     onChange(value === "like" ? null : "like");

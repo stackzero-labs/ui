@@ -29,43 +29,19 @@ const { AutoTypeTable } = createTypeTable();
 export function getMDXComponents(components: MDXComponents): MDXComponents {
   return {
     ...defaultComponents,
-    AutoTypeTable,
     Accordion,
     Accordions,
+    AutoTypeTable,
+    blockquote: (props) => <Callout>{props.children}</Callout>,
     Callout,
     Card,
     Cards,
-    Files,
-    File,
-    Folder,
-    Reference,
-    References,
-    Tabs,
-    Tab,
-    TypeTable,
-    ComponentPropsTable,
-    ImageZoom,
-    Steps,
-    Step,
-
-    ComponentPreview: async ({ name, ...props }: { name: string }) => {
-      const { code, highlightedCode } = await extractSourceCode(name);
-      return (
-        <ComponentPreview
-          name={name}
-          code={code}
-          highlightedCode={highlightedCode}
-          {...props}
-        />
-      );
-    },
-    ComponentInstall,
     CLIInstall,
-    ManualInstall,
-    ComponentSource: async ({ name, ...props }: { name: string }) => {
+    ComponentBase: async ({ name, ...props }: { name: string }) => {
       const { code, highlightedCode } = await extractSourceCode(name);
       return (
-        <ComponentSource
+        <ComponentBase
+          name={name}
           code={code}
           highlightedCode={highlightedCode}
           {...props}
@@ -83,10 +59,11 @@ export function getMDXComponents(components: MDXComponents): MDXComponents {
         />
       );
     },
-    ComponentBase: async ({ name, ...props }: { name: string }) => {
+    ComponentInstall,
+    ComponentPreview: async ({ name, ...props }: { name: string }) => {
       const { code, highlightedCode } = await extractSourceCode(name);
       return (
-        <ComponentBase
+        <ComponentPreview
           name={name}
           code={code}
           highlightedCode={highlightedCode}
@@ -94,14 +71,25 @@ export function getMDXComponents(components: MDXComponents): MDXComponents {
         />
       );
     },
-    pre: ({ ...props }) => (
-      <CodeBlock {...props}>
-        <Pre>{props.children}</Pre>
-      </CodeBlock>
-    ),
+    ComponentPropsTable,
+    ComponentSource: async ({ name, ...props }: { name: string }) => {
+      const { code, highlightedCode } = await extractSourceCode(name);
+      return (
+        <ComponentSource
+          code={code}
+          highlightedCode={highlightedCode}
+          {...props}
+        />
+      );
+    },
+    File,
+    Files,
+    Folder,
+    ImageZoom,
+
     InstallTabs: ({
-      items,
       children,
+      items,
     }: {
       items: string[];
       children: ReactNode;
@@ -110,7 +98,19 @@ export function getMDXComponents(components: MDXComponents): MDXComponents {
         {children}
       </Tabs>
     ),
-    blockquote: (props) => <Callout>{props.children}</Callout>,
+    ManualInstall,
+    pre: ({ ...props }) => (
+      <CodeBlock {...props}>
+        <Pre>{props.children}</Pre>
+      </CodeBlock>
+    ),
+    Reference,
+    References,
+    Step,
+    Steps,
+    Tab,
+    Tabs,
+    TypeTable,
     ...components,
   };
 }

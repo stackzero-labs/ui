@@ -8,8 +8,8 @@ const DOWNVOTE_COLOR = "#ef4444";
 const UPVOTE_POINTS = 1;
 const DOWNVOTE_POINTS = 1;
 const format: Format = {
-  notation: "compact",
   compactDisplay: "short",
+  notation: "compact",
   roundingMode: "trunc",
 };
 

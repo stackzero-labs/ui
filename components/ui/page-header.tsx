@@ -1,8 +1,8 @@
 import { cn } from "@/lib/utils";
 
 function PageHeader({
-  className,
   children,
+  className,
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) {
   return (
