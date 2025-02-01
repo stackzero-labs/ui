@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "build": "next build",
-    "postbuild": "npm run build:registry",
+    "prebuild": "npm run build:registry",
     "build:registry": "tsx ./scripts/build-registry.ts",
     "sort:registry": "tsx ./scripts/sort-registry.ts",
     "dev": "next dev",
