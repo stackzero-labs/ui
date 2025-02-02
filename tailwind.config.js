@@ -1,6 +1,6 @@
 // @ts-check
 import { createPreset } from "fumadocs-ui/tailwind-plugin";
-import animate from "tailwindcss-animate";
+// import animate from "tailwindcss-animate";
 import { fontFamily } from "tailwindcss/defaultTheme";
 
 /** @type {import('tailwindcss').Config} */
@@ -84,9 +84,4 @@ export default {
       keyframes: {},
     },
   },
-  plugins: [
-    animate,
-    require("tailwindcss-animate"),
-    require("tailwindcss-motion"),
-  ],
 };
