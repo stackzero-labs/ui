@@ -22,11 +22,11 @@ const getAspectRatioClass = (ratio?: string) => {
     case "video":
       return "aspect-video"; // 16:9
     case "wide":
-      return "aspect-[4/3]"; // 4:3
+      return "aspect-4/3"; // 4:3
     case "auto":
       return "aspect-auto"; // Natural image aspect ratio
     default:
-      return "aspect-[4/3]"; // Default 4:3
+      return "aspect-4/3"; // Default 4:3
   }
 };
 
@@ -253,7 +253,7 @@ const ImageCarousel_Horizontal: React.FC<ImageCarousel_HorizontalProps> = ({
             <Button
               variant="outline"
               size="icon"
-              className="absolute left-[2%] top-1/2 z-10 h-8 w-8 -translate-y-1/2 rounded-full bg-background/80 backdrop-blur-sm hover:bg-background disabled:opacity-50 dark:bg-background/80 hover:dark:bg-background"
+              className="absolute left-[2%] top-1/2 z-10 h-8 w-8 -translate-y-1/2 rounded-full bg-background/80 backdrop-blur-xs hover:bg-background disabled:opacity-50 dark:bg-background/80 dark:hover:bg-background"
               disabled={!canScrollPrev}
               onClick={scrollPrev}
             >
@@ -264,7 +264,7 @@ const ImageCarousel_Horizontal: React.FC<ImageCarousel_HorizontalProps> = ({
             <Button
               variant="outline"
               size="icon"
-              className="absolute right-[2%] top-1/2 z-10 h-8 w-8 -translate-y-1/2 rounded-full bg-background/80 backdrop-blur-sm hover:bg-background disabled:opacity-50 dark:bg-background/80 hover:dark:bg-background"
+              className="absolute right-[2%] top-1/2 z-10 h-8 w-8 -translate-y-1/2 rounded-full bg-background/80 backdrop-blur-xs hover:bg-background disabled:opacity-50 dark:bg-background/80 dark:hover:bg-background"
               disabled={!canScrollNext}
               onClick={scrollNext}
             >

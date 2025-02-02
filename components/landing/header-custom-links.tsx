@@ -11,13 +11,13 @@ export async function HeaderCustomLinks() {
           className="flex items-center justify-end gap-2 px-3 py-1.5 text-sm font-medium text-zinc-800 dark:text-zinc-200"
         >
           <span className="hidden items-center gap-2 md:flex">
-            <span className="bg-gradient-to-r from-teal-500 to-purple-500 bg-clip-text font-semibold text-transparent">
+            <span className="bg-linear-to-r from-teal-500 to-purple-500 bg-clip-text font-semibold text-transparent">
               Go full-stack
             </span>
           </span>
 
           <div className="group relative inline-flex items-center gap-2 rounded-lg bg-zinc-900 px-3 py-1 text-sm transition-colors dark:bg-zinc-100">
-            <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-indigo-500 via-purple-500 to-teal-500 opacity-60 blur transition-opacity duration-500 group-hover:opacity-80" />
+            <div className="absolute inset-0 rounded-lg bg-linear-to-r from-indigo-500 via-purple-500 to-teal-500 opacity-60 blur-sm transition-opacity duration-500 group-hover:opacity-80" />
             <div className="relative">
               <span className="text-white dark:text-zinc-900">
                 Commerce API

@@ -35,7 +35,7 @@ const VariantSelectorMultiple = ({
         <ToggleGroupItem
           key={variant.id}
           value={variant.value}
-          className="relative flex cursor-pointer flex-col items-center gap-3 rounded-lg border border-input px-2 py-3 text-center shadow-sm shadow-black/5 outline-offset-2 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-ring/70 disabled:cursor-not-allowed disabled:opacity-50 data-[state=on]:border-ring data-[state=on]:bg-accent"
+          className="relative flex cursor-pointer flex-col items-center gap-3 rounded-lg border border-input px-2 py-3 text-center shadow-xs shadow-black/5 outline-offset-2 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-ring/70 disabled:cursor-not-allowed disabled:opacity-50 data-[state=on]:border-ring data-[state=on]:bg-accent"
         >
           <p className="text-sm font-medium leading-none text-foreground">
             {variant.label}

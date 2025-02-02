@@ -58,7 +58,7 @@ export function ComponentSource({
 
         <div
           className={cn(
-            "absolute flex items-center justify-center bg-gradient-to-b from-background/30 to-background/90 p-2",
+            "absolute flex items-center justify-center bg-linear-to-b from-background/30 to-background/90 p-2",
             isOpened ? "inset-x-0 bottom-0 h-12" : "inset-0"
           )}
         >

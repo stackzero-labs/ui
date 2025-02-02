@@ -5,20 +5,25 @@ import { GeistMono } from "geist/font/mono";
 import { GeistSans } from "geist/font/sans";
 import { Metadata } from "next";
 import type { ReactNode } from "react";
+import localFont from "next/font/local";
 import "./global.css";
+
+const geistSans = localFont({
+  src: "./fonts/GeistVF.woff",
+  variable: "--font-geist-sans",
+  weight: "100 900",
+});
 
 export default function Layout({ children }: { children: ReactNode }) {
   return (
-    <html
-      lang="en"
-      suppressHydrationWarning
-      className={cn(
-        GeistSans.variable,
-        GeistMono.variable,
-        fontRedaction.variable
-      )}
-    >
-      <body className="relative flex min-h-screen flex-col bg-background font-sans antialiased">
+    <html lang="en" suppressHydrationWarning>
+      <body
+        className={cn(
+          GeistSans.variable,
+          geistSans.className,
+          "bg-background relative flex min-h-screen flex-col antialiased"
+        )}
+      >
         <RootProvider
           search={{
             options: {

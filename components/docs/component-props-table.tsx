@@ -80,7 +80,7 @@ export const ComponentPropsTable: React.FC<PropsTableProps> = ({ types }) => {
               <td className="whitespace-wrap px-6 py-4 font-mono text-sm text-gray-500">
                 <Badge
                   variant="secondary"
-                  className="rounded-sm py-2 font-mono font-normal tracking-wider"
+                  className="rounded-xs py-2 font-mono font-normal tracking-wider"
                 >
                   {" "}
                   {types[typeName].type}
