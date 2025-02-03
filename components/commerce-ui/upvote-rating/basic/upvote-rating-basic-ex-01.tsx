@@ -1,9 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import RatingUpvote_Basic from "@/components/commerce-ui/rating-upvote/basic/rating-upvote-basic";
+import UpvoteRating_Basic from "@/components/commerce-ui/upvote-rating/basic/upvote-rating-basic";
 
-export default function RatingUpvote_Basic_Ex_01() {
+export default function UpvoteRating_Basic_Ex_01() {
   const [upvotes, setUpvotes] = useState(100);
   const [downvotes, setDownvotes] = useState(20);
   const [upvoted, setUpvoted] = useState(false);
@@ -11,7 +11,7 @@ export default function RatingUpvote_Basic_Ex_01() {
 
   return (
     <div className="flex flex-col items-center gap-4">
-      <RatingUpvote_Basic
+      <UpvoteRating_Basic
         upvotes={upvotes}
         downvotes={downvotes}
         upvoted={upvoted}

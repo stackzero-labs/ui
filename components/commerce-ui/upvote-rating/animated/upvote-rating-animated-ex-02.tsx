@@ -1,9 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import RatingUpvote_Animated from "@/components/commerce-ui/rating-upvote/animated/rating-upvote-animated";
+import UpvoteRating_Animated from "@/components/commerce-ui/upvote-rating/animated/upvote-rating-animated";
 
-export default function RatingUpvote_Animated_Ex_02() {
+export default function UpvoteRating_Animated_Ex_02() {
   const [upvotes, setUpvotes] = useState(100);
   const [downvotes, setDownvotes] = useState(20);
   const [upvoted, setUpvoted] = useState(false);
@@ -11,7 +11,7 @@ export default function RatingUpvote_Animated_Ex_02() {
 
   return (
     <div className="flex flex-col items-center gap-4">
-      <RatingUpvote_Animated
+      <UpvoteRating_Animated
         upvotes={upvotes}
         downvotes={downvotes}
         upvoted={upvoted}

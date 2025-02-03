@@ -180,54 +180,54 @@ export const examples: Registry = [
   },
 
   {
-    name: "rating-upvote-basic-ex-01",
+    name: "upvote-rating-basic-ex-01",
     type: "registry:example",
     dependencies: ["lucide-react"],
     files: [
       {
-        path: "@/components/commerce-ui/rating-upvote/basic/rating-upvote-basic-ex-01.tsx",
+        path: "@/components/commerce-ui/upvote-rating/basic/upvote-rating-basic-ex-01.tsx",
         type: "registry:example",
       },
     ],
     component: React.lazy(
       () =>
         import(
-          "../components/commerce-ui/rating-upvote/basic/rating-upvote-basic-ex-01"
+          "../components/commerce-ui/upvote-rating/basic/upvote-rating-basic-ex-01"
         )
     ),
   },
   {
-    name: "rating-upvote-animated-ex-01",
+    name: "upvote-rating-animated-ex-01",
     type: "registry:example",
     dependencies: ["lucide-react", "@number-flow/react"],
     files: [
       {
-        path: "@/components/commerce-ui/rating-upvote/animated/rating-upvote-animated-ex-01.tsx",
+        path: "@/components/commerce-ui/upvote-rating/animated/upvote-rating-animated-ex-01.tsx",
         type: "registry:example",
       },
     ],
     component: React.lazy(
       () =>
         import(
-          "../components/commerce-ui/rating-upvote/animated/rating-upvote-animated-ex-01"
+          "../components/commerce-ui/upvote-rating/animated/upvote-rating-animated-ex-01"
         )
     ),
   },
 
   {
-    name: "rating-upvote-animated-ex-02",
+    name: "upvote-rating-animated-ex-02",
     type: "registry:example",
     dependencies: ["lucide-react", "@number-flow/react"],
     files: [
       {
-        path: "@/components/commerce-ui/rating-upvote/animated/rating-upvote-animated-ex-02.tsx",
+        path: "@/components/commerce-ui/upvote-rating/animated/upvote-rating-animated-ex-02.tsx",
         type: "registry:example",
       },
     ],
     component: React.lazy(
       () =>
         import(
-          "../components/commerce-ui/rating-upvote/animated/rating-upvote-animated-ex-02"
+          "../components/commerce-ui/upvote-rating/animated/upvote-rating-animated-ex-02"
         )
     ),
   },

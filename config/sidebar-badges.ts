@@ -1,6 +1,10 @@
 export const sidebarBadges = [
   {
-    page: "Face Rating",
+    page: "Image Carousel",
+    isNew: true,
+  },
+  {
+    page: "Price Format",
     isNew: true,
   },
 ];
