@@ -19,7 +19,7 @@ export async function HeaderCustomLinks() {
           <div className="group relative inline-flex items-center gap-2 rounded-lg bg-zinc-900 px-3 py-1 text-sm transition-colors dark:bg-zinc-100">
             <div className="absolute inset-0 rounded-lg bg-linear-to-r from-indigo-500 via-purple-500 to-teal-500 opacity-60 blur-sm transition-opacity duration-500 group-hover:opacity-80" />
             <div className="relative">
-              <span className="text-white dark:text-zinc-900">
+              <span className="text-nowrap text-white dark:text-zinc-900">
                 Commerce API
               </span>
             </div>

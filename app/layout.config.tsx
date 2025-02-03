@@ -67,10 +67,10 @@ export const baseOptions: BaseLayoutProps = {
     title: (
       <div className="relative flex items-center space-x-2">
         {/* <Icons.logo /> */}
-        <div className="text-sm font-semibold sm:inline-block">
+        <div className="text-sm font-semibold text-nowrap sm:inline-block">
           {siteConfig.name}
         </div>
-        <span className="ml-0.5 select-none rounded-full bg-secondary px-1.5 py-px text-[10px] font-medium text-foreground">
+        <span className="bg-secondary text-foreground ml-0.5 hidden rounded-full px-1.5 py-px text-[10px] font-medium select-none md:block">
           beta
         </span>
       </div>

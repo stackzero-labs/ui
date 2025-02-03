@@ -1,11 +1,30 @@
-"use client";
-
+import { cn } from "@/lib/utils";
 import * as CollapsiblePrimitive from "@radix-ui/react-collapsible";
+import { forwardRef } from "react";
 
 const Collapsible = CollapsiblePrimitive.Root;
 
 const CollapsibleTrigger = CollapsiblePrimitive.CollapsibleTrigger;
 
-const CollapsibleContent = CollapsiblePrimitive.CollapsibleContent;
+const CollapsibleContent = forwardRef<
+  React.ElementRef<typeof CollapsiblePrimitive.CollapsibleContent>,
+  React.ComponentPropsWithoutRef<typeof CollapsiblePrimitive.CollapsibleContent>
+>(({ children, ...props }, ref) => {
+  return (
+    <CollapsiblePrimitive.CollapsibleContent
+      ref={ref}
+      {...props}
+      className={cn(
+        "data-[state=closed]:animate-fd-collapsible-up data-[state=open]:animate-fd-collapsible-down overflow-hidden [--radix-collapsible-content-height:0px]",
+        props.className
+      )}
+    >
+      {children}
+    </CollapsiblePrimitive.CollapsibleContent>
+  );
+});
 
-export { Collapsible, CollapsibleContent, CollapsibleTrigger };
+CollapsibleContent.displayName =
+  CollapsiblePrimitive.CollapsibleContent.displayName;
+
+export { Collapsible, CollapsibleTrigger, CollapsibleContent };

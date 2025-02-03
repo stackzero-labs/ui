@@ -450,10 +450,10 @@ export const SparkleSvg = ({
       strokeLinejoin="round"
       className={cn(
         "absolute z-10 size-4 fill-black",
-        position === "top-right" && "-right-2 -top-2",
+        position === "top-right" && "-top-2 -right-2",
         position === "bottom-left" && "-bottom-2 -left-2",
-        position === "bottom-right" && "-bottom-2 -right-2",
-        position === "top-left" && "-left-2 -top-2",
+        position === "bottom-right" && "-right-2 -bottom-2",
+        position === "top-left" && "-top-2 -left-2",
         className
       )}
     >
@@ -573,11 +573,7 @@ export function create({
 }: {
   icon?: LucideIcon;
 }): React.ReactElement {
-  return (
-    <div className="rounded-md border bg-linear-to-b from-secondary p-1 shadow-xs">
-      {Icon ? <Icon /> : <TerminalIcon />}
-    </div>
-  );
+  return <div className="my-1">{Icon ? <Icon /> : <TerminalIcon />}</div>;
 }
 
 export const ExternalLinkIcon: React.FC<React.SVGProps<SVGSVGElement>> = (

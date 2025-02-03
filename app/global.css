@@ -99,13 +99,15 @@
 
 /* Fumadocs UI overrides */
 :root {
-  --color-fd-card: 0 0% 100%;
+  --color-fd-card: hsl(0 0% 98%);
   --color-fd-primary: hsl(262.1 83.3% 57.8%);
+  --color-fd-background: hsl(0 0% 98%);
 }
 
 .dark {
-  --color-fd-card: 224 71.4% 4.1%;
+  --color-fd-card: hsl(224 71.4% 6%);
   --color-fd-primary: hsl(262.1 83.3% 57.8%);
+  --color-fd-background: hsl(224 71.4% 6%);
 }
 
 @layer base {
