@@ -5,6 +5,9 @@
     "lucide-react",
     "@number-flow/react"
   ],
+  "registryDependencies": [
+    "https://ui.stackzero.co/r/upvote-rating-animated.json"
+  ],
   "files": [
     {
       "type": "registry:example",

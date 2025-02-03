@@ -4,6 +4,9 @@
   "dependencies": [
     "lucide-react"
   ],
+  "registryDependencies": [
+    "https://ui.stackzero.co/r/face-rating-gradient.json"
+  ],
   "files": [
     {
       "type": "registry:example",

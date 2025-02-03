@@ -5,6 +5,9 @@
     "lucide-react",
     "@radix-ui/react-radio-group"
   ],
+  "registryDependencies": [
+    "https://ui.stackzero.co/r/variant-selector-basic.json"
+  ],
   "files": [
     {
       "type": "registry:example",
