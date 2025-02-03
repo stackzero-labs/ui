@@ -6,6 +6,9 @@
     "@radix-ui/react-radio-group",
     "motion"
   ],
+  "registryDependencies": [
+    "https://ui.stackzero.co/r/variant-color-selector-basic.json"
+  ],
   "files": [
     {
       "type": "registry:example",

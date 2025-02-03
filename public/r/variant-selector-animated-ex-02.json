@@ -6,6 +6,9 @@
     "@radix-ui/react-radio-group",
     "motion"
   ],
+  "registryDependencies": [
+    "https://ui.stackzero.co/r/variant-selector-animated.json"
+  ],
   "files": [
     {
       "type": "registry:example",

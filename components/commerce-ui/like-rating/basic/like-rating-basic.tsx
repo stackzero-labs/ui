@@ -36,7 +36,7 @@ const LikeRating_Basic = ({
   return (
     <div
       className={cn(
-        "inline-flex -space-x-px rounded-lg shadow-sm shadow-black/5 rtl:space-x-reverse",
+        "inline-flex -space-x-px rounded-lg shadow-xs shadow-black/5 rtl:space-x-reverse",
         className
       )}
     >

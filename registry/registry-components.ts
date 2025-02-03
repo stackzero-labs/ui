@@ -213,39 +213,39 @@ export const components: Registry = [
   },
 
   {
-    name: "rating-upvote-basic",
+    name: "upvote-rating-basic",
     type: "registry:component",
     dependencies: ["lucide-react"],
     registryDependencies: ["button"],
     files: [
       {
-        path: "@/components/commerce-ui/rating-upvote/basic/rating-upvote-basic.tsx",
+        path: "@/components/commerce-ui/upvote-rating/basic/upvote-rating-basic.tsx",
         type: "registry:component",
       },
     ],
     component: React.lazy(
       () =>
         import(
-          "../components/commerce-ui/rating-upvote/basic/rating-upvote-basic"
+          "../components/commerce-ui/upvote-rating/basic/upvote-rating-basic"
         )
     ),
   },
 
   {
-    name: "rating-upvote-animated",
+    name: "upvote-rating-animated",
     type: "registry:component",
     dependencies: ["lucide-react", "@number-flow/react"],
     registryDependencies: ["button"],
     files: [
       {
-        path: "@/components/commerce-ui/rating-upvote/animated/rating-upvote-animated.tsx",
+        path: "@/components/commerce-ui/upvote-rating/animated/upvote-rating-animated.tsx",
         type: "registry:component",
       },
     ],
     component: React.lazy(
       () =>
         import(
-          "../components/commerce-ui/rating-upvote/animated/rating-upvote-animated"
+          "../components/commerce-ui/upvote-rating/animated/upvote-rating-animated"
         )
     ),
   },

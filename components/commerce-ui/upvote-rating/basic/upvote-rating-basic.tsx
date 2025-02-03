@@ -1,9 +1,8 @@
 import { cn } from "@/lib/utils";
 import { ArrowBigDown, ArrowBigUp } from "lucide-react";
 import * as React from "react";
-import NumberFlow from "@number-flow/react";
 
-interface RatingUpvoteAnimatedProps {
+interface UpvoteRatingBasicProps {
   upvotes: number;
   downvotes: number;
   upvoted: boolean;
@@ -18,7 +17,7 @@ interface RatingUpvoteAnimatedProps {
   }) => void;
 }
 
-const RatingUpvote_Animated = ({
+const UpvoteRating_Basic = ({
   downvoted,
   downvoteIncrement = 1,
   downvotes,
@@ -26,7 +25,7 @@ const RatingUpvote_Animated = ({
   upvoted,
   upvoteIncrement = 1,
   upvotes,
-}: RatingUpvoteAnimatedProps) => {
+}: UpvoteRatingBasicProps) => {
   const handleUpvote = () => {
     if (upvoted) {
       // Undo upvote
@@ -68,6 +67,10 @@ const RatingUpvote_Animated = ({
   };
 
   const totalVotes = upvotes - downvotes;
+  const formattedVotes =
+    totalVotes >= 1000
+      ? `${(totalVotes / 1000).toFixed(1)}K`
+      : totalVotes.toLocaleString();
 
   return (
     <div
@@ -88,11 +91,7 @@ const RatingUpvote_Animated = ({
       </button>
 
       <span className="min-w-8 p-1 text-center text-white">
-        <NumberFlow
-          format={{ notation: "compact" }}
-          value={totalVotes}
-          className="font-mono"
-        />
+        {formattedVotes}
       </span>
 
       <button
@@ -108,4 +107,4 @@ const RatingUpvote_Animated = ({
   );
 };
 
-export default RatingUpvote_Animated;
+export default UpvoteRating_Basic;

@@ -94,7 +94,7 @@ const VariantSelectorAnimated = ({
               itemsRef.current.delete(variant.value);
             }
           }}
-          className="relative flex min-w-[4rem] cursor-pointer flex-col items-center gap-2 rounded-lg px-2.5 py-2 text-center shadow-sm shadow-black/5 outline-offset-2 transition-colors has-[[data-disabled]]:cursor-not-allowed has-[[data-disabled]]:opacity-50 has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-ring/70 sm:min-w-[5rem] sm:gap-3 sm:px-4 sm:py-3"
+          className="relative flex min-w-[4rem] cursor-pointer flex-col items-center gap-2 rounded-lg px-2.5 py-2 text-center shadow-xs shadow-black/5 outline-offset-2 transition-colors has-data-disabled:cursor-not-allowed has-data-disabled:opacity-50 has-focus-visible:outline has-focus-visible:outline-2 has-focus-visible:outline-ring/70 sm:min-w-[5rem] sm:gap-3 sm:px-4 sm:py-3"
         >
           <RadioGroupPrimitive.Item
             value={variant.value}

@@ -40,9 +40,9 @@ const VariantColorSelectorBasic = ({
           <RadioGroupPrimitive.Item
             value={variant.value}
             className={cn(
-              "aspect-square size-6 rounded-full border-2 ring-offset-background focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
-              "has-[[data-state=checked]]:ring-4",
-              "has-[[data-state=checked]]:border-0"
+              "aspect-square size-6 rounded-full border-2 ring-offset-background focus:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
+              "has-data-[state=checked]:ring-4",
+              "has-data-[state=checked]:border-0"
             )}
             style={{
               backgroundColor: variant.color,

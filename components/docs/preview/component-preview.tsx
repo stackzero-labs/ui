@@ -62,7 +62,7 @@ export function ComponentPreview({
             Code
           </TabsTrigger>
 
-          <div className="flex-grow"></div>
+          <div className="grow"></div>
 
           <div className="align-center mb-2 hidden flex-row gap-2 lg:flex">
             <Button

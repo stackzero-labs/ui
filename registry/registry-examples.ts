@@ -6,6 +6,9 @@ export const examples: Registry = [
     name: "image-carousel-horizontal-ex-01",
     type: "registry:example",
     dependencies: ["lucide-react"],
+    registryDependencies: [
+      "https://ui.stackzero.co/r/image-carousel-horizontal.json",
+    ],
     files: [
       {
         path: "@/components/commerce-ui/image-carousel/horizontal/image-carousel-horizontal-ex-01.tsx",
@@ -24,6 +27,9 @@ export const examples: Registry = [
     name: "image-carousel-horizontal-ex-02",
     type: "registry:example",
     dependencies: ["lucide-react"],
+    registryDependencies: [
+      "https://ui.stackzero.co/r/image-carousel-horizontal.json",
+    ],
     files: [
       {
         path: "@/components/commerce-ui/image-carousel/horizontal/image-carousel-horizontal-ex-02.tsx",
@@ -42,6 +48,9 @@ export const examples: Registry = [
     name: "image-carousel-horizontal-ex-03",
     type: "registry:example",
     dependencies: ["lucide-react"],
+    registryDependencies: [
+      "https://ui.stackzero.co/r/image-carousel-horizontal.json",
+    ],
     files: [
       {
         path: "@/components/commerce-ui/image-carousel/horizontal/image-carousel-horizontal-ex-03.tsx",
@@ -60,6 +69,7 @@ export const examples: Registry = [
     name: "price-format-basic-ex-01",
     type: "registry:example",
     dependencies: ["lucide-react"],
+    registryDependencies: ["https://ui.stackzero.co/r/price-format-basic.json"],
     files: [
       {
         path: "@/components/commerce-ui/price-format/basic/price-format-basic-ex-01.tsx",
@@ -78,6 +88,7 @@ export const examples: Registry = [
     name: "face-rating-basic-ex-01",
     type: "registry:example",
     dependencies: ["lucide-react"],
+    registryDependencies: ["https://ui.stackzero.co/r/face-rating-basic.json"],
     files: [
       {
         path: "@/components/commerce-ui/face-rating/basic/face-rating-basic-ex-01.tsx",
@@ -96,6 +107,8 @@ export const examples: Registry = [
     name: "face-rating-basic-ex-02",
     type: "registry:example",
     dependencies: ["lucide-react"],
+    registryDependencies: ["https://ui.stackzero.co/r/face-rating-basic.json"],
+
     files: [
       {
         path: "@/components/commerce-ui/face-rating/basic/face-rating-basic-ex-02.tsx",
@@ -114,6 +127,7 @@ export const examples: Registry = [
     name: "face-rating-basic-ex-03",
     type: "registry:example",
     dependencies: ["lucide-react"],
+    registryDependencies: ["https://ui.stackzero.co/r/face-rating-basic.json"],
     files: [
       {
         path: "@/components/commerce-ui/face-rating/basic/face-rating-basic-ex-03.tsx",
@@ -131,6 +145,9 @@ export const examples: Registry = [
     name: "face-rating-gradient-ex-01",
     type: "registry:example",
     dependencies: ["lucide-react"],
+    registryDependencies: [
+      "https://ui.stackzero.co/r/face-rating-gradient.json",
+    ],
     files: [
       {
         path: "@/components/commerce-ui/face-rating/gradient/face-rating-gradient-ex-01.tsx",
@@ -149,6 +166,7 @@ export const examples: Registry = [
     name: "like-rating-basic-ex-01",
     type: "registry:example",
     dependencies: ["lucide-react"],
+    registryDependencies: ["https://ui.stackzero.co/r/like-rating-basic.json"],
     files: [
       {
         path: "@/components/commerce-ui/like-rating/basic/like-rating-ex-01.tsx",
@@ -165,6 +183,7 @@ export const examples: Registry = [
     name: "star-rating-basic-ex-01",
     type: "registry:example",
     dependencies: ["lucide-react"],
+    registryDependencies: ["https://ui.stackzero.co/r/star-rating-basic.json"],
     files: [
       {
         path: "@/components/commerce-ui/star-rating/basic/star-rating-basic-ex-01.tsx",
@@ -180,54 +199,63 @@ export const examples: Registry = [
   },
 
   {
-    name: "rating-upvote-basic-ex-01",
+    name: "upvote-rating-basic-ex-01",
     type: "registry:example",
     dependencies: ["lucide-react"],
+    registryDependencies: [
+      "https://ui.stackzero.co/r/upvote-rating-basic.json",
+    ],
     files: [
       {
-        path: "@/components/commerce-ui/rating-upvote/basic/rating-upvote-basic-ex-01.tsx",
+        path: "@/components/commerce-ui/upvote-rating/basic/upvote-rating-basic-ex-01.tsx",
         type: "registry:example",
       },
     ],
     component: React.lazy(
       () =>
         import(
-          "../components/commerce-ui/rating-upvote/basic/rating-upvote-basic-ex-01"
+          "../components/commerce-ui/upvote-rating/basic/upvote-rating-basic-ex-01"
         )
     ),
   },
   {
-    name: "rating-upvote-animated-ex-01",
+    name: "upvote-rating-animated-ex-01",
     type: "registry:example",
     dependencies: ["lucide-react", "@number-flow/react"],
+    registryDependencies: [
+      "https://ui.stackzero.co/r/upvote-rating-animated.json",
+    ],
     files: [
       {
-        path: "@/components/commerce-ui/rating-upvote/animated/rating-upvote-animated-ex-01.tsx",
+        path: "@/components/commerce-ui/upvote-rating/animated/upvote-rating-animated-ex-01.tsx",
         type: "registry:example",
       },
     ],
     component: React.lazy(
       () =>
         import(
-          "../components/commerce-ui/rating-upvote/animated/rating-upvote-animated-ex-01"
+          "../components/commerce-ui/upvote-rating/animated/upvote-rating-animated-ex-01"
         )
     ),
   },
 
   {
-    name: "rating-upvote-animated-ex-02",
+    name: "upvote-rating-animated-ex-02",
     type: "registry:example",
     dependencies: ["lucide-react", "@number-flow/react"],
+    registryDependencies: [
+      "https://ui.stackzero.co/r/upvote-rating-animated.json",
+    ],
     files: [
       {
-        path: "@/components/commerce-ui/rating-upvote/animated/rating-upvote-animated-ex-02.tsx",
+        path: "@/components/commerce-ui/upvote-rating/animated/upvote-rating-animated-ex-02.tsx",
         type: "registry:example",
       },
     ],
     component: React.lazy(
       () =>
         import(
-          "../components/commerce-ui/rating-upvote/animated/rating-upvote-animated-ex-02"
+          "../components/commerce-ui/upvote-rating/animated/upvote-rating-animated-ex-02"
         )
     ),
   },
@@ -236,6 +264,9 @@ export const examples: Registry = [
     name: "variant-selector-basic-ex-01",
     type: "registry:example",
     dependencies: ["lucide-react", "@radix-ui/react-radio-group"],
+    registryDependencies: [
+      "https://ui.stackzero.co/r/variant-selector-basic.json",
+    ],
     files: [
       {
         path: "@/components/commerce-ui/variant-selector/basic/variant-selector-basic-ex-01.tsx",
@@ -254,6 +285,9 @@ export const examples: Registry = [
     name: "variant-selector-basic-ex-02",
     type: "registry:example",
     dependencies: ["lucide-react", "@radix-ui/react-radio-group"],
+    registryDependencies: [
+      "https://ui.stackzero.co/r/variant-selector-basic.json",
+    ],
     files: [
       {
         path: "@/components/commerce-ui/variant-selector/basic/variant-selector-basic-ex-02.tsx",
@@ -272,6 +306,9 @@ export const examples: Registry = [
     name: "variant-selector-images-ex-01",
     type: "registry:example",
     dependencies: ["lucide-react", "@radix-ui/react-radio-group"],
+    registryDependencies: [
+      "https://ui.stackzero.co/r/variant-selector-images.json",
+    ],
     files: [
       {
         path: "@/components/commerce-ui/variant-selector/images/variant-selector-images-ex-01.tsx",
@@ -290,6 +327,9 @@ export const examples: Registry = [
     name: "variant-selector-animated-ex-01",
     type: "registry:example",
     dependencies: ["lucide-react", "@radix-ui/react-radio-group", "motion"],
+    registryDependencies: [
+      "https://ui.stackzero.co/r/variant-selector-animated.json",
+    ],
     files: [
       {
         path: "@/components/commerce-ui/variant-selector/animated/variant-selector-animated-ex-01.tsx",
@@ -308,6 +348,9 @@ export const examples: Registry = [
     name: "variant-selector-animated-ex-02",
     type: "registry:example",
     dependencies: ["lucide-react", "@radix-ui/react-radio-group", "motion"],
+    registryDependencies: [
+      "https://ui.stackzero.co/r/variant-selector-animated.json",
+    ],
     files: [
       {
         path: "@/components/commerce-ui/variant-selector/animated/variant-selector-animated-ex-02.tsx",
@@ -326,6 +369,9 @@ export const examples: Registry = [
     name: "variant-selector-multiple-ex-01",
     type: "registry:example",
     dependencies: ["lucide-react", "@radix-ui/react-radio-group", "motion"],
+    registryDependencies: [
+      "https://ui.stackzero.co/r/variant-selector-multiple.json",
+    ],
     files: [
       {
         path: "@/components/commerce-ui/variant-selector/multiple/variant-selector-multiple-ex-01.tsx",
@@ -344,6 +390,9 @@ export const examples: Registry = [
     name: "variant-color-selector-basic-ex-01",
     type: "registry:example",
     dependencies: ["lucide-react", "@radix-ui/react-radio-group", "motion"],
+    registryDependencies: [
+      "https://ui.stackzero.co/r/variant-color-selector-basic.json",
+    ],
     files: [
       {
         path: "@/components/commerce-ui/variant-color-selector/basic/variant-color-selector-basic-ex-01.tsx",

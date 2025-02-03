@@ -7,9 +7,9 @@ export function CodeRenderer({ code, highlightedCode }: CodePreviewProps) {
     <div className="group/item relative">
       <CopyButton componentSource={code} />
       <div className="max-h-[550px] overflow-auto rounded-md">
-        <div className="inline-block overflow-x-auto p-4 [&_pre]:!bg-transparent">
+        <div className="inline-block overflow-x-auto p-4 [&_pre]:bg-transparent!">
           <div
-            className="font-mono text-sm [&_.only-dark]:hidden [&_.only-dark]:dark:block [&_.only-light]:block [&_.only-light]:dark:hidden [&_.shiki]:!bg-transparent"
+            className="font-mono text-sm [&_.only-dark]:hidden dark:[&_.only-dark]:block [&_.only-light]:block dark:[&_.only-light]:hidden [&_.shiki]:bg-transparent!"
             dangerouslySetInnerHTML={{ __html: highlightedCode }}
           />
         </div>

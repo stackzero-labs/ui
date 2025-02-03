@@ -4,6 +4,9 @@
   "dependencies": [
     "lucide-react"
   ],
+  "registryDependencies": [
+    "https://ui.stackzero.co/r/like-rating-basic.json"
+  ],
   "files": [
     {
       "type": "registry:example",

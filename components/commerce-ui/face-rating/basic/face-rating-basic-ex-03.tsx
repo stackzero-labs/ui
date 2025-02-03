@@ -20,7 +20,7 @@ export default function FaceRating_Basic_Ex_03() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="mx-auto w-full max-w-md space-y-6 rounded-lg border border-border bg-background p-6 shadow-sm"
+      className="mx-auto w-full max-w-md space-y-6 rounded-lg border border-border bg-background p-6 shadow-xs"
     >
       <div className="space-y-2">
         <label className="block text-sm font-medium">

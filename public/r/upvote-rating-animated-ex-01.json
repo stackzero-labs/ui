@@ -1,0 +1,19 @@
+{
+  "name": "upvote-rating-animated-ex-01",
+  "type": "registry:example",
+  "dependencies": [
+    "lucide-react",
+    "@number-flow/react"
+  ],
+  "registryDependencies": [
+    "https://ui.stackzero.co/r/upvote-rating-animated.json"
+  ],
+  "files": [
+    {
+      "type": "registry:example",
+      "content": "\"use client\";\n\nimport { useState } from \"react\";\nimport UpvoteRating_Animated from \"@/components/commerce-ui/upvote-rating-animated\";\n\nexport default function UpvoteRating_Animated_Ex_01() {\n  const [upvotes, setUpvotes] = useState(100);\n  const [downvotes, setDownvotes] = useState(20);\n  const [upvoted, setUpvoted] = useState(false);\n  const [downvoted, setDownvoted] = useState(false);\n\n  return (\n    <div className=\"flex flex-col items-center gap-4\">\n      <UpvoteRating_Animated\n        upvotes={upvotes}\n        downvotes={downvotes}\n        upvoted={upvoted}\n        downvoted={downvoted}\n        onVoteChange={(newState) => {\n          setUpvotes(newState.upvotes);\n          setDownvotes(newState.downvotes);\n          setUpvoted(newState.upvoted);\n          setDownvoted(newState.downvoted);\n        }}\n      />\n    </div>\n  );\n}\n",
+      "path": "/components/commerce-ui/upvote-rating/animated/upvote-rating-animated-ex-01.tsx",
+      "target": "/components/commerce-ui/upvote-rating-animated-ex-01.tsx"
+    }
+  ]
+}

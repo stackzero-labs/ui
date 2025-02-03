@@ -4,6 +4,9 @@
   "dependencies": [
     "lucide-react"
   ],
+  "registryDependencies": [
+    "https://ui.stackzero.co/r/price-format-basic.json"
+  ],
   "files": [
     {
       "type": "registry:example",
