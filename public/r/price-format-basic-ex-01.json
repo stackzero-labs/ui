@@ -4,6 +4,9 @@
   "dependencies": [
     "lucide-react"
   ],
+  "registryDependencies": [
+    "https://6n4gr4k4-3000.euw.devtunnels.ms/r/price-format-basic.json"
+  ],
   "files": [
     {
       "type": "registry:example",
