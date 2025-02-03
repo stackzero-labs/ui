@@ -23,4 +23,9 @@ export const SIDEBAR_RENAMED_PAGES: RenamedPage[] = [
     pageName: "Variant Selector - Multiple",
     newPageName: "Multiple",
   },
+
+  {
+    pageName: "Variant Color Selector - Basic",
+    newPageName: "Basic",
+  },
 ];
