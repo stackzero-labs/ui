@@ -1,4 +1,17 @@
+<p align="center">
+  <a href="https://ui.stackzero.co" target="_blank">
+    <picture>
+      <source srcset="https://raw.githubusercontent.com/stackzero-labs/ui/refs/heads/main/public/logo.svg">
+      <img alt="commerce-ui" src="https://raw.githubusercontent.com/stackzero-labs/ui/refs/heads/main/public/logo.svg" width="350" height="120" style="max-width: 100%;">
+    </picture>
+  </a>
+</p>
+
 # commerce-ui
+
+A library of components for building e-commerce websites.
+
+## Getting Started
 
 For the documentation of the Commerce UI components, see the [Commerce UI documentation](https://ui.stackzero.co).
 
@@ -33,13 +46,3 @@ To just build the registry, run the following command:
 ```bash
 pnpm run build:registry
 ```
-
-## Learn More
-
-To learn more about Next.js and Fumadocs, take a look at the following
-resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js
-  features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-- [Fumadocs](https://fumadocs.vercel.app) - learn about Fumadocs
