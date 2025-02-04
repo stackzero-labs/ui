@@ -34,6 +34,11 @@ export const SIDEBAR_RENAMED_PAGES: RenamedPage[] = [
   },
 
   {
+    pageName: "Star Rating - Fractions",
+    newPageName: "Fractions",
+  },
+
+  {
     pageName: "Upvote Rating - Basic",
     newPageName: "Basic",
   },

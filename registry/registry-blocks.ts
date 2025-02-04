@@ -7,8 +7,9 @@ export const blocks: Registry = [
     type: "registry:block",
     dependencies: ["lucide-react"],
     registryDependencies: [
-      "https://ui.stackzero.co/r/face-rating-basic.json",
-      "https://ui.stackzero.co/r/star-rating-01.json",
+      "https://ui.stackzero.co/r/star-rating-fractions.json",
+      "https://ui.stackzero.co/r/image-carousel-horizontal.json",
+      "https://ui.stackzero.co/r/price-format-basic.json",
     ],
     files: [
       {

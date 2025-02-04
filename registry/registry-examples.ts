@@ -199,6 +199,48 @@ export const examples: Registry = [
   },
 
   {
+    name: "star-rating-fractions-ex-01",
+    type: "registry:example",
+    dependencies: ["lucide-react"],
+    registryDependencies: [
+      "https://ui.stackzero.co/r/star-rating-fractions.json",
+    ],
+    files: [
+      {
+        path: "@/components/commerce-ui/star-rating/fractions/star-rating-fractions-ex-01.tsx",
+        type: "registry:example",
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import(
+          "../components/commerce-ui/star-rating/fractions/star-rating-fractions-ex-01"
+        )
+    ),
+  },
+
+  {
+    name: "star-rating-fractions-ex-02",
+    type: "registry:example",
+    dependencies: ["lucide-react"],
+    registryDependencies: [
+      "https://ui.stackzero.co/r/star-rating-fractions.json",
+    ],
+    files: [
+      {
+        path: "@/components/commerce-ui/star-rating/fractions/star-rating-fractions-ex-02.tsx",
+        type: "registry:example",
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import(
+          "../components/commerce-ui/star-rating/fractions/star-rating-fractions-ex-02"
+        )
+    ),
+  },
+
+  {
     name: "upvote-rating-basic-ex-01",
     type: "registry:example",
     dependencies: ["lucide-react"],

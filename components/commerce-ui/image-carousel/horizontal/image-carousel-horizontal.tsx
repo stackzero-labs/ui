@@ -45,6 +45,8 @@ const ImageContainer: React.FC<{
     >
       <Image
         unoptimized
+        width={400}
+        height={600}
         src={image}
         alt={alt}
         className={cn(
@@ -253,7 +255,7 @@ const ImageCarousel_Horizontal: React.FC<ImageCarousel_HorizontalProps> = ({
             <Button
               variant="outline"
               size="icon"
-              className="absolute left-[2%] top-1/2 z-10 h-8 w-8 -translate-y-1/2 rounded-full bg-background/80 backdrop-blur-xs hover:bg-background disabled:opacity-50 dark:bg-background/80 dark:hover:bg-background"
+              className="bg-background/80 hover:bg-background dark:bg-background/80 dark:hover:bg-background absolute top-1/2 left-[2%] z-10 h-8 w-8 -translate-y-1/2 rounded-full backdrop-blur-xs disabled:opacity-50"
               disabled={!canScrollPrev}
               onClick={scrollPrev}
             >
@@ -264,7 +266,7 @@ const ImageCarousel_Horizontal: React.FC<ImageCarousel_HorizontalProps> = ({
             <Button
               variant="outline"
               size="icon"
-              className="absolute right-[2%] top-1/2 z-10 h-8 w-8 -translate-y-1/2 rounded-full bg-background/80 backdrop-blur-xs hover:bg-background disabled:opacity-50 dark:bg-background/80 dark:hover:bg-background"
+              className="bg-background/80 hover:bg-background dark:bg-background/80 dark:hover:bg-background absolute top-1/2 right-[2%] z-10 h-8 w-8 -translate-y-1/2 rounded-full backdrop-blur-xs disabled:opacity-50"
               disabled={!canScrollNext}
               onClick={scrollNext}
             >

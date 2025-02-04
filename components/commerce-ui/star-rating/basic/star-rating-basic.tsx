@@ -6,10 +6,11 @@ import * as React from "react";
 
 interface StarRatingBasicProps {
   value: number;
-  onChange: (value: number) => void;
+  onChange?: (value: number) => void;
   className?: string;
   iconSize?: number;
   maxStars?: number;
+  readOnly?: boolean;
 }
 
 const StarRating_Basic = ({
@@ -18,8 +19,10 @@ const StarRating_Basic = ({
   maxStars = 5,
   onChange,
   value,
+  readOnly = false,
 }: StarRatingBasicProps) => {
   const handleStarClick = (index: number) => {
+    if (readOnly || !onChange) return;
     const newRating = index + 1;
     onChange(newRating);
   };
@@ -33,8 +36,10 @@ const StarRating_Basic = ({
           fill={value > index ? "gold" : "transparent"}
           color={value > index ? "gold" : "gray"}
           onClick={() => handleStarClick(index)}
-          className="transition-transform duration-200 hover:scale-110"
-          style={{ cursor: "pointer" }}
+          className={cn(
+            "transition-transform duration-200",
+            !readOnly && "cursor-pointer hover:scale-110"
+          )}
         />
       ))}
     </div>

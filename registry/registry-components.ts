@@ -140,6 +140,24 @@ export const components: Registry = [
   },
 
   {
+    name: "star-rating-fractions",
+    type: "registry:component",
+    dependencies: ["lucide-react"],
+    files: [
+      {
+        path: "@/components/commerce-ui/star-rating/fractions/star-rating-fractions.tsx",
+        type: "registry:component",
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import(
+          "../components/commerce-ui/star-rating/fractions/star-rating-fractions"
+        )
+    ),
+  },
+
+  {
     name: "like-rating-basic",
     type: "registry:component",
     dependencies: ["lucide-react"],
