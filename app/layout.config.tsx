@@ -3,6 +3,7 @@ import { Icons } from "@/components/ui/icons";
 import { siteConfig } from "@/config/site";
 import { LinkItemType } from "fumadocs-ui/layouts/links";
 import type { BaseLayoutProps } from "fumadocs-ui/layouts/shared";
+import Image from "next/image";
 
 export const linkItems: LinkItemType[] = [
   {
@@ -54,19 +55,18 @@ export const linkItems: LinkItemType[] = [
   },
 ];
 
-/**
- * Shared layout configurations
- *
- * you can configure layouts individually from:
- * Home Layout: app/(home)/layout.tsx
- * Docs Layout: app/docs/layout.tsx
- */
 export const baseOptions: BaseLayoutProps = {
   links: [...linkItems],
   nav: {
     title: (
       <div className="relative flex items-center space-x-2">
-        {/* <Icons.logo /> */}
+        <Image
+          src="/logo.svg"
+          alt="logo"
+          width={24}
+          height={24}
+          className="hidden dark:block"
+        />
         <div className="text-sm font-semibold text-nowrap sm:inline-block">
           {siteConfig.name}
         </div>
