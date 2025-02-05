@@ -10,7 +10,7 @@
   "files": [
     {
       "type": "registry:example",
-      "content": "\"use client\";\n\nimport StarRatingFractions from \"@/components/commerce-ui/star-rating-fractions\";\nimport { useState } from \"react\";\n\nexport default function StarRating_Fractions_Ex_01() {\n  const [rating, setRating] = useState(4.3);\n  return (\n    <div className=\"flex flex-col items-center gap-4\">\n      <StarRatingFractions value={rating} onChange={setRating} maxStars={5} />\n      <p>Rating: {rating}</p>\n    </div>\n  );\n}\n",
+      "content": "\"use client\";\n\nimport StarRatingFractions from \"@/components/commerce-ui/star-rating-fractions\";\nimport { useState } from \"react\";\n\nexport default function StarRating_Fractions_Ex_01() {\n  const [rating, setRating] = useState(4.3);\n  return (\n    <div className=\"flex flex-row items-center gap-4\">\n      <StarRatingFractions value={rating} onChange={setRating} maxStars={5} />\n      <p>({rating})</p>\n    </div>\n  );\n}\n",
       "path": "/components/commerce-ui/star-rating/fractions/star-rating-fractions-ex-01.tsx",
       "target": "/components/commerce-ui/star-rating-fractions-ex-01.tsx"
     }

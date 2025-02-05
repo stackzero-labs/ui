@@ -1,0 +1,19 @@
+{
+  "name": "product-card-01",
+  "type": "registry:block",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "https://ui.stackzero.co/r/star-rating-fractions.json",
+    "https://ui.stackzero.co/r/image-carousel-horizontal.json"
+  ],
+  "files": [
+    {
+      "type": "registry:block",
+      "content": "import ImageCarousel_Horizontal from \"@/components/commerce-ui/image-carousel-horizontal\";\n\nconst images = [\n  \"https://prd.place/400/600?id=37\",\n  \"https://prd.place/400/600?id=38\",\n  \"https://prd.place/400/600?id=39\",\n  \"https://prd.place/800/1200?id=40\",\n  \"https://prd.place/800/300?id=41\",\n];\n\nfunction ProductCard_01() {\n  return (\n    <div>\n      <ImageCarousel_Horizontal\n        images={images}\n        imageFit=\"contain\"\n        showThumbs={false}\n      />\n    </div>\n  );\n}\n\nexport default ProductCard_01;\n",
+      "path": "/components/commerce-ui/blocks/product-cards/product-cards-01.tsx",
+      "target": "/components/commerce-ui/product-cards-01.tsx"
+    }
+  ]
+}

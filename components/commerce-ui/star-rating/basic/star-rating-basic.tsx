@@ -11,15 +11,17 @@ interface StarRatingBasicProps {
   iconSize?: number;
   maxStars?: number;
   readOnly?: boolean;
+  color?: string;
 }
 
 const StarRating_Basic = ({
   className,
+  color = "#FFD700",
   iconSize = 24,
   maxStars = 5,
   onChange,
-  value,
   readOnly = false,
+  value,
 }: StarRatingBasicProps) => {
   const handleStarClick = (index: number) => {
     if (readOnly || !onChange) return;
@@ -33,8 +35,8 @@ const StarRating_Basic = ({
         <Star
           key={index}
           size={iconSize}
-          fill={value > index ? "gold" : "transparent"}
-          color={value > index ? "gold" : "gray"}
+          fill={value > index ? color : "transparent"}
+          color={value > index ? color : "gray"}
           onClick={() => handleStarClick(index)}
           className={cn(
             "transition-transform duration-200",

@@ -1,0 +1,19 @@
+{
+  "name": "product-card-02-block",
+  "type": "registry:block",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "https://ui.stackzero.co/r/star-rating-fractions.json",
+    "https://ui.stackzero.co/r/image-carousel-horizontal.json"
+  ],
+  "files": [
+    {
+      "type": "registry:block",
+      "content": "import ImageCarousel_Horizontal from \"@/components/commerce-ui/image-carousel-horizontal\";\nimport PriceFormat_Basic from \"@/components/commerce-ui/price-format-basic\";\nimport { Button } from \"@/components/ui/button\";\nimport Link from \"next/link\";\nimport StarRatingFractions from \"@/components/commerce-ui/star-rating-fractions\";\n\nconst images = [\n  \"https://prd.place/400/600?id=37\",\n  \"https://prd.place/400/600?id=38\",\n  \"https://prd.place/400/600?id=39\",\n  \"https://prd.place/800/1200?id=40\",\n  \"https://prd.place/800/300?id=41\",\n];\n\nfunction ProductCard_02() {\n  return (\n    <div className=\"grid max-w-screen-lg grid-cols-4 gap-6 rounded-lg border p-4\">\n      <div className=\"relative col-span-4 w-full md:col-span-2\">\n        <div className=\"absolute top-2 left-2 z-10 w-fit rounded-lg bg-purple-500/80 p-2\">\n          <p className=\"text-xs font-semibold\">20% OFF</p>\n        </div>\n        <ImageCarousel_Horizontal\n          images={images}\n          imageFit=\"contain\"\n          showThumbs={true}\n          thumbPosition=\"bottom\"\n          showControls={true}\n        />\n      </div>\n\n      <div className=\"col-span-4 flex flex-col gap-6 md:col-span-2\">\n        <div className=\"flex flex-col gap-2\">\n          <p className=\"text-3xl font-semibold\">AeroTune X9</p>\n          <div className=\"flex flex-row items-center gap-2\">\n            <StarRatingFractions readOnly value={4.45} />\n            <p className=\"text-lg\">(4.45)</p>\n            <p className=\"text-muted-foreground\">362 reviews</p>\n          </div>\n          <p className=\"text-muted-foreground text-base\">\n            Experience next-level audio with the AeroTune X9, the world’s most\n            advanced wireless headset designed for audiophiles, gamers, and\n            music lovers alike. With QuantumBass™ technology, every beat, bass\n            drop, and whisper is delivered in studio-quality precision.\n          </p>\n        </div>\n\n        <div className=\"flex flex-col gap-2\">\n          <div className=\"flex flex-row items-center gap-2\">\n            <div className=\"w-fit rounded-lg border border-green-500 bg-green-500/30 px-2 py-1 text-sm font-semibold text-green-500 uppercase dark:border-green-300 dark:text-green-300\">\n              In Stock\n            </div>\n            <p className=\"text-muted-foreground\">+256 in stocks</p>\n          </div>\n\n          <p>\n            <Link\n              href=\"#\"\n              className=\"semibold underline underline-offset-4 opacity-80 hover:opacity-100\"\n            >\n              Free Shipping\n            </Link>{\" \"}\n            on all orders\n          </p>\n        </div>\n\n        <PriceFormat_Basic\n          prefix=\"$\"\n          value={39.59}\n          className=\"text-4xl font-semibold\"\n        />\n\n        <div className=\"flex flex-row gap-4\">\n          <Button variant=\"outline\" size=\"lg\">\n            Add to cart\n          </Button>\n          <Button size=\"lg\">Buy now</Button>\n        </div>\n      </div>\n    </div>\n  );\n}\n\nexport default ProductCard_02;\n",
+      "path": "/components/commerce-ui/blocks/product-cards/product-cards-02.tsx",
+      "target": "/components/commerce-ui/product-cards-02.tsx"
+    }
+  ]
+}

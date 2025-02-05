@@ -199,6 +199,44 @@ export const examples: Registry = [
   },
 
   {
+    name: "star-rating-basic-ex-02",
+    type: "registry:example",
+    dependencies: ["lucide-react"],
+    registryDependencies: ["https://ui.stackzero.co/r/star-rating-basic.json"],
+    files: [
+      {
+        path: "@/components/commerce-ui/star-rating/basic/star-rating-basic-ex-02.tsx",
+        type: "registry:example",
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import(
+          "../components/commerce-ui/star-rating/basic/star-rating-basic-ex-02"
+        )
+    ),
+  },
+
+  {
+    name: "star-rating-basic-ex-03",
+    type: "registry:example",
+    dependencies: ["lucide-react"],
+    registryDependencies: ["https://ui.stackzero.co/r/star-rating-basic.json"],
+    files: [
+      {
+        path: "@/components/commerce-ui/star-rating/basic/star-rating-basic-ex-03.tsx",
+        type: "registry:example",
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import(
+          "../components/commerce-ui/star-rating/basic/star-rating-basic-ex-03"
+        )
+    ),
+  },
+
+  {
     name: "star-rating-fractions-ex-01",
     type: "registry:example",
     dependencies: ["lucide-react"],
@@ -260,6 +298,28 @@ export const examples: Registry = [
         )
     ),
   },
+
+  {
+    name: "upvote-rating-basic-ex-02",
+    type: "registry:example",
+    dependencies: ["lucide-react"],
+    registryDependencies: [
+      "https://ui.stackzero.co/r/upvote-rating-basic.json",
+    ],
+    files: [
+      {
+        path: "@/components/commerce-ui/upvote-rating/basic/upvote-rating-basic-ex-02.tsx",
+        type: "registry:example",
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import(
+          "../components/commerce-ui/upvote-rating/basic/upvote-rating-basic-ex-02"
+        )
+    ),
+  },
+
   {
     name: "upvote-rating-animated-ex-01",
     type: "registry:example",
