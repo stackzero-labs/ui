@@ -1,8 +1,8 @@
 import { HeaderCustomLinks } from "@/components/landing/header-custom-links";
-import { Icons } from "@/components/ui/icons";
 import { siteConfig } from "@/config/site";
 import { LinkItemType } from "fumadocs-ui/layouts/links";
 import type { BaseLayoutProps } from "fumadocs-ui/layouts/shared";
+import { Album, Cuboid, Newspaper } from "lucide-react";
 import Image from "next/image";
 
 export const linkItems: LinkItemType[] = [
@@ -10,21 +10,15 @@ export const linkItems: LinkItemType[] = [
     items: [
       {
         description: "Getting started with commerce-ui",
-        icon: <Icons.album />,
+        icon: <Album />,
         text: "Getting Started",
         url: "/docs",
       },
       {
         description: "Collection of interactive components",
-        icon: <Icons.lab />,
+        icon: <Cuboid />,
         text: "Components",
         url: "/docs/components/rating-star/basic",
-      },
-      {
-        description: "Collection of text components",
-        icon: <Icons.caseLower />,
-        text: "Texts",
-        url: "/docs/texts/test",
       },
     ],
     text: "Docs",
@@ -33,7 +27,7 @@ export const linkItems: LinkItemType[] = [
   },
   {
     active: "nested-url",
-    icon: <Icons.news />,
+    icon: <Newspaper />,
     label: "Stackzero Blog",
     text: "Blog",
     url: "/blog",

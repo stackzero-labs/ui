@@ -1,16 +1,16 @@
 "use client";
 
-import { CodeRenderer } from "../code-renderer";
-import { ComponentLoader } from "../component-loader";
-import { cn } from "@/lib/utils";
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
-import { Icons } from "@/components/ui/icons";
-import React, { useState } from "react";
+import { cn } from "@/lib/utils";
+import { ChevronDown } from "lucide-react";
+import { useState } from "react";
 import type { ComponentPreviewProps } from "types/component";
+import { CodeRenderer } from "../code-renderer";
+import { ComponentLoader } from "../component-loader";
 
 export function ComponentCollapse({
   classNameComponentContainer,
@@ -36,8 +36,8 @@ export function ComponentCollapse({
           />
         </div>
         <CollapsibleTrigger asChild>
-          <div className="flex cursor-pointer items-center gap-2 rounded-b-md border-t bg-secondary px-4 py-2 text-sm text-muted-foreground hover:text-foreground">
-            <Icons.chevronDown
+          <div className="bg-secondary text-muted-foreground hover:text-foreground flex cursor-pointer items-center gap-2 rounded-b-md border-t px-4 py-2 text-sm">
+            <ChevronDown
               className={cn(
                 "h-4 w-4 transition-transform duration-200",
                 isOpen && "rotate-180"

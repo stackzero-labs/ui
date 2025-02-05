@@ -75,7 +75,7 @@ const UpvoteRating_Basic = ({
   return (
     <div
       className={cn(
-        "flex flex-row items-center gap-0 rounded-full border",
+        "flex w-fit flex-row items-center gap-0 rounded-full border",
         upvoted && "bg-[#009e42]",
         downvoted && "bg-[#a60021]"
       )}

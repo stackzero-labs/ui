@@ -1,8 +1,8 @@
 "use client";
 import { Button } from "@/components/ui/button";
-import { Icons } from "@/components/ui/icons";
 import { cn } from "@/lib/utils";
 import { getComponentByName } from "@/registry";
+import { RotateCw } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import type { ComponentDisplayProps } from "types/component";
 
@@ -34,8 +34,8 @@ export function ComponentLoader({
 
   if (!Component) {
     return (
-      <div className="flex items-center justify-center text-sm text-muted-foreground">
-        <Icons.loader className="mr-2 h-4 w-4 animate-spin" />
+      <div className="text-muted-foreground flex items-center justify-center text-sm">
+        <RotateCw className="mr-2 h-4 w-4 animate-spin" />
         Loading...
       </div>
     );
@@ -70,11 +70,11 @@ function ComponentDisplay({
         <Button
           variant="ghost"
           size="icon"
-          className="absolute right-2 top-2 cursor-pointer text-muted-foreground/80 hover:bg-transparent hover:text-foreground"
+          className="text-muted-foreground/80 hover:text-foreground absolute top-2 right-2 cursor-pointer hover:bg-transparent"
           onClick={reTrigger}
           aria-label="Refresh component"
         >
-          <Icons.refreshComponent className="h-4 w-4" />
+          <RotateCw className="h-4 w-4" />
         </Button>
       )}
       {hasReTrigger
