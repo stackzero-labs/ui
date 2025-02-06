@@ -39,7 +39,7 @@ export default async function Page(props: {
   return (
     <DocsPage
       tableOfContent={{
-        footer: <StackzeroApiCta />,
+        // footer: <StackzeroApiCta />,
         single: false,
         style: "clerk",
       }}

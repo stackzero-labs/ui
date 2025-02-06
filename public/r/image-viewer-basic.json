@@ -1,0 +1,15 @@
+{
+  "name": "image-viewer-basic",
+  "type": "registry:component",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "files": [
+    {
+      "type": "registry:component",
+      "content": "import {\n  Dialog,\n  DialogTrigger,\n  DialogPortal,\n  DialogOverlay,\n  DialogContent,\n  DialogClose,\n  DialogTitle,\n} from \"@radix-ui/react-dialog\";\nimport { X } from \"lucide-react\";\nimport Image from \"next/image\";\n\ninterface ImageViewerProps {\n  className?: string;\n  thumbnailUrl?: string;\n  imageUrl: string;\n}\n\nconst ImageViewer_Basic = ({\n  className,\n  thumbnailUrl,\n  imageUrl,\n}: ImageViewerProps) => {\n  return (\n    <Dialog>\n      <DialogTrigger asChild>\n        <div className={`cursor-pointer ${className || \"\"}`}>\n          <Image\n            unoptimized\n            src={thumbnailUrl || imageUrl}\n            alt=\"Preview\"\n            width={300}\n            height={300}\n            className=\"rounded-lg object-cover transition-opacity hover:opacity-90\"\n          />\n        </div>\n      </DialogTrigger>\n      <DialogPortal>\n        <DialogOverlay className=\"data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 fixed inset-0 z-50 bg-black/80\" />\n        <DialogContent className=\"data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 bg-background fixed top-1/2 left-1/2 z-50 w-[calc(100vw-2rem)] max-w-[90vw] -translate-x-1/2 -translate-y-1/2 p-0 sm:w-auto\">\n          <DialogTitle className=\"sr-only\">Image</DialogTitle>\n          <div className=\"relative flex min-h-[300px] items-center justify-center\">\n            <Image\n              unoptimized\n              src={imageUrl}\n              alt=\"Full size\"\n              width={1920}\n              height={1080}\n              className=\"h-auto max-h-[calc(100vh-4rem)] w-full object-contain\"\n              priority\n            />\n            <DialogClose asChild>\n              <button\n                className=\"absolute top-4 right-4 z-10 cursor-pointer rounded-full bg-black/50 p-2 text-white transition-colors hover:bg-black/70\"\n                aria-label=\"Close\"\n              >\n                <X className=\"size-6\" />\n              </button>\n            </DialogClose>\n          </div>\n        </DialogContent>\n      </DialogPortal>\n    </Dialog>\n  );\n};\n\nexport default ImageViewer_Basic;\n",
+      "path": "/components/commerce-ui/image-viewer/basic/image-viewer-basic.tsx",
+      "target": "/components/commerce-ui/image-viewer-basic.tsx"
+    }
+  ]
+}

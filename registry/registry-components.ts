@@ -35,6 +35,25 @@ export const components: Registry = [
         )
     ),
   },
+
+  {
+    name: "image-viewer-basic",
+    type: "registry:component",
+    dependencies: ["lucide-react"],
+    files: [
+      {
+        path: "@/components/commerce-ui/image-viewer/basic/image-viewer-basic.tsx",
+        type: "registry:component",
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import(
+          "../components/commerce-ui/image-viewer/basic/image-viewer-basic"
+        )
+    ),
+  },
+
   {
     name: "upvote-downvote-rating-01",
     type: "registry:component",

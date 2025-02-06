@@ -14,7 +14,7 @@ const images = [
 
 function ProductCard_02() {
   return (
-    <div className="grid max-w-screen-lg grid-cols-4 gap-6 rounded-lg border p-4">
+    <div className="bg-background grid max-w-screen-lg grid-cols-4 gap-6 rounded-lg border p-4">
       <div className="relative col-span-4 w-full md:col-span-2">
         <div className="absolute top-2 left-2 z-10 w-fit rounded-lg bg-purple-500/80 p-2">
           <p className="text-xs font-semibold">20% OFF</p>
@@ -31,7 +31,7 @@ function ProductCard_02() {
       <div className="col-span-4 flex flex-col gap-6 md:col-span-2">
         <div className="flex flex-col gap-2">
           <p className="text-3xl font-semibold">AeroTune X9</p>
-          <div className="flex flex-row items-center gap-2">
+          <div className="flex flex-row flex-wrap items-center gap-2">
             <StarRatingFractions readOnly value={4.45} />
             <p className="text-lg">(4.45)</p>
             <p className="text-muted-foreground">362 reviews</p>
@@ -69,11 +69,13 @@ function ProductCard_02() {
           className="text-4xl font-semibold"
         />
 
-        <div className="flex flex-row gap-4">
-          <Button variant="outline" size="lg">
+        <div className="flex flex-row flex-wrap gap-4">
+          <Button variant="outline" size="lg" className="w-full md:w-fit">
             Add to cart
           </Button>
-          <Button size="lg">Buy now</Button>
+          <Button size="lg" className="w-full md:w-fit">
+            Buy now
+          </Button>
         </div>
       </div>
     </div>

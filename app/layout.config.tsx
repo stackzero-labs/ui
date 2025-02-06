@@ -32,10 +32,10 @@ export const linkItems: LinkItemType[] = [
     text: "Blog",
     url: "/blog",
   },
-  {
-    children: <HeaderCustomLinks />,
-    type: "custom",
-  },
+  // {
+  //   children: <HeaderCustomLinks />,
+  //   type: "custom",
+  // },
   {
     external: true,
     icon: (
