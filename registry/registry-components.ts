@@ -39,7 +39,7 @@ export const components: Registry = [
   {
     name: "image-viewer-basic",
     type: "registry:component",
-    dependencies: ["lucide-react"],
+    dependencies: ["lucide-react", "@radix-ui/react-dialog"],
     files: [
       {
         path: "@/components/commerce-ui/image-viewer/basic/image-viewer-basic.tsx",

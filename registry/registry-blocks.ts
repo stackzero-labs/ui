@@ -72,7 +72,7 @@ export const blocks: Registry = [
     registryDependencies: [
       "button",
       "https://ui.stackzero.co/r/image-viewer-basic.json",
-      "https://ui.stackzero.co/r/price-format-basic.json",
+      "https://ui.stackzero.co/r/price-format-sale.json",
     ],
     files: [
       {
