@@ -14,6 +14,11 @@ export const SIDEBAR_RENAMED_PAGES: RenamedPage[] = [
   },
 
   {
+    pageName: "Price Format - Sale",
+    newPageName: "Sale",
+  },
+
+  {
     pageName: "Face Rating - Basic",
     newPageName: "Basic",
   },

@@ -18,8 +18,8 @@ export function LanguageToggle(props: LanguageSelectProps): React.ReactElement {
         {...props}
         className={cn(
           buttonVariants({
-            variant: "ghost",
             className: "gap-1.5 p-1.5",
+            variant: "ghost",
           }),
           props.className
         )}

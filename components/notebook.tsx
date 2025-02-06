@@ -41,16 +41,16 @@ export interface DocsLayoutProps extends BaseLayoutProps {
 }
 
 export function DocsLayout({
+  i18n = false,
   nav: { transparentMode, ...nav } = {},
   sidebar: {
-    collapsible: sidebarCollapsible = true,
-    tabs: tabOptions,
     banner: sidebarBanner,
-    footer: sidebarFooter,
+    collapsible: sidebarCollapsible = true,
     components: sidebarComponents,
+    footer: sidebarFooter,
+    tabs: tabOptions,
     ...sidebar
   } = {},
-  i18n = false,
   ...props
 }: DocsLayoutProps): ReactNode {
   checkPageTree(props.tree);
@@ -63,9 +63,9 @@ export function DocsLayout({
   );
 
   const pageStyles: PageStyles = {
-    tocNav: cn("xl:hidden"),
-    toc: cn("max-xl:hidden"),
     page: cn("mt-[var(--fd-nav-height)]"),
+    toc: cn("max-xl:hidden"),
+    tocNav: cn("xl:hidden"),
   };
 
   return (
@@ -132,10 +132,10 @@ export function DocsLayout({
 }
 
 function DocsNavbar({
-  sidebarCollapsible,
+  i18n,
   links,
   nav = {},
-  i18n,
+  sidebarCollapsible,
 }: {
   nav: DocsLayoutProps["nav"];
   sidebarCollapsible: boolean;
@@ -238,9 +238,9 @@ function NavbarLinkItem({
 }
 
 function SidebarHeaderItems({
+  children,
   links,
   nav = {},
-  children,
 }: SharedNavProps & {
   nav: DocsLayoutProps["nav"];
   links: LinkItemType[];

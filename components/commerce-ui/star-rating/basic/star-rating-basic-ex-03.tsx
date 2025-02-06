@@ -13,7 +13,6 @@ export default function StarRating_Basic_Ex_01() {
         maxStars={5}
         color="rgb(124, 70, 195)"
       />
-      <p>({rating})</p>
     </div>
   );
 }

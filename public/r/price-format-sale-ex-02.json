@@ -1,0 +1,18 @@
+{
+  "name": "price-format-sale-ex-02",
+  "type": "registry:example",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "https://ui.stackzero.co/r/price-format-sale.json"
+  ],
+  "files": [
+    {
+      "type": "registry:example",
+      "content": "\"use client\";\n\nimport PriceFormat_Sale from \"@/components/commerce-ui/price-format-sale\";\n\nexport default function PriceFormat_Sale_Ex_02() {\n  return (\n    <div className=\"flex flex-row items-center gap-4 text-lg\">\n      <PriceFormat_Sale\n        originalPrice={129.99}\n        salePrice={99.95}\n        prefix=\"$\"\n        showSavePercentage={true}\n        classNameSalePrice=\"text-4xl text-red-700\"\n        className=\"flex-col items-start\"\n      />\n    </div>\n  );\n}\n",
+      "path": "/components/commerce-ui/price-format/sale/price-format-sale-ex-02.tsx",
+      "target": "/components/commerce-ui/price-format-sale-ex-02.tsx"
+    }
+  ]
+}

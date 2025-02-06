@@ -12,7 +12,7 @@ export function SearchToggle({
 }: ButtonHTMLAttributes<HTMLButtonElement> & {
   hideIfDisabled?: boolean;
 }) {
-  const { setOpenSearch, enabled } = useSearchContext();
+  const { enabled, setOpenSearch } = useSearchContext();
   if (hideIfDisabled && !enabled) return null;
 
   return (

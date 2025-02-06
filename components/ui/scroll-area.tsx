@@ -48,7 +48,7 @@ ScrollBar.displayName = ScrollAreaPrimitive.ScrollAreaScrollbar.displayName;
 const ScrollViewport = React.forwardRef<
   React.ComponentRef<typeof ScrollAreaPrimitive.Viewport>,
   React.ComponentPropsWithoutRef<typeof ScrollAreaPrimitive.Viewport>
->(({ className, children, ...props }, ref) => (
+>(({ children, className, ...props }, ref) => (
   <ScrollAreaPrimitive.Viewport
     ref={ref}
     className={cn("size-full rounded-[inherit]", className)}

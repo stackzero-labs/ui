@@ -1,0 +1,19 @@
+{
+  "name": "price-format-sale",
+  "type": "registry:component",
+  "dependencies": [
+    "lucide-react",
+    "react-number-format"
+  ],
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "type": "registry:component",
+      "content": "\"use client\";\n\nimport { cn } from \"@/lib/utils\";\nimport { NumericFormat } from \"react-number-format\";\n\ninterface PriceFormat_SaleProps extends React.HTMLAttributes<HTMLDivElement> {\n  originalPrice: number;\n  salePrice: number;\n  prefix?: string;\n  thousandSeparator?: string;\n  decimalSeparator?: string;\n  decimalScale?: number;\n  showSavePercentage?: boolean;\n  classNameOriginalPrice?: string;\n  classNameSalePrice?: string;\n  classNameSalePercentage?: string;\n}\n\nconst PriceFormat_Sale: React.FC<PriceFormat_SaleProps> = ({\n  className,\n  classNameOriginalPrice,\n  classNameSalePercentage,\n  classNameSalePrice,\n  decimalScale = 2,\n  decimalSeparator = \",\",\n  originalPrice,\n  prefix = \"$\",\n  salePrice,\n  showSavePercentage = false,\n  thousandSeparator = \".\",\n}) => {\n  const savePercentage = ((originalPrice - salePrice) / originalPrice) * 100;\n\n  return (\n    <div className={cn(\"flex items-center gap-2\", className)}>\n      <NumericFormat\n        value={originalPrice}\n        thousandSeparator={thousandSeparator}\n        decimalSeparator={decimalSeparator}\n        decimalScale={decimalScale}\n        prefix={prefix}\n        displayType=\"text\"\n        className={cn(\n          \"font-medium text-gray-500 line-through\",\n          classNameOriginalPrice\n        )}\n      />\n      <NumericFormat\n        value={salePrice}\n        thousandSeparator={thousandSeparator}\n        decimalSeparator={decimalSeparator}\n        decimalScale={decimalScale}\n        prefix={prefix}\n        displayType=\"text\"\n        className={cn(\"text-[length:inherit] font-medium\", classNameSalePrice)}\n      />\n      {showSavePercentage && (\n        <span\n          className={cn(\n            \"rounded-sm bg-green-500/50 p-1 text-base text-sm font-medium\",\n            classNameSalePercentage\n          )}\n        >\n          Save {Math.round(savePercentage)}%\n        </span>\n      )}\n    </div>\n  );\n};\n\nexport default PriceFormat_Sale;\n",
+      "path": "/components/commerce-ui/price-format/sale/price-format-sale.tsx",
+      "target": "/components/commerce-ui/price-format-sale.tsx"
+    }
+  ]
+}

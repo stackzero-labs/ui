@@ -1,11 +1,8 @@
 "use client";
-import Link from "next/link";
-import { Button } from "../ui/button";
-import { motion } from "motion/react";
 import { ArrowRight } from "lucide-react";
+import { motion } from "motion/react";
+import { Button } from "../ui/button";
 import { Icons } from "../ui/icons";
-import StarRatingFractions from "../commerce-ui/star-rating/fractions/star-rating-fractions";
-import ComponentsShowcase from "./components-showcase";
 
 const heroText = "Build commerce sites and apps faster than ever";
 const heroSubText =
@@ -15,8 +12,8 @@ const HeroTitle = () => {
   const transition = { duration: 1, ease: [0.25, 0.1, 0.25, 1] };
   const words = heroText.split(" ");
   const variants = {
-    hidden: { filter: "blur(10px)", transform: "translateY(20%)", opacity: 0 },
-    visible: { filter: "blur(0)", transform: "translateY(0)", opacity: 1 },
+    hidden: { filter: "blur(10px)", opacity: 0, transform: "translateY(20%)" },
+    visible: { filter: "blur(0)", opacity: 1, transform: "translateY(0)" },
   };
   return (
     <>

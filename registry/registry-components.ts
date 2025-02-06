@@ -231,6 +231,23 @@ export const components: Registry = [
   },
 
   {
+    name: "price-format-sale",
+    type: "registry:component",
+    dependencies: ["lucide-react", "react-number-format"],
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "@/components/commerce-ui/price-format/sale/price-format-sale.tsx",
+        type: "registry:component",
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import("../components/commerce-ui/price-format/sale/price-format-sale")
+    ),
+  },
+
+  {
     name: "upvote-rating-basic",
     type: "registry:component",
     dependencies: ["lucide-react"],

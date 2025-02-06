@@ -1,0 +1,18 @@
+{
+  "name": "star-rating-fractions-ex-03",
+  "type": "registry:example",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "https://ui.stackzero.co/r/star-rating-fractions.json"
+  ],
+  "files": [
+    {
+      "type": "registry:example",
+      "content": "\"use client\";\n\nimport StarRatingFractions from \"@/components/commerce-ui/star-rating-fractions\";\nimport { useState } from \"react\";\n\nexport default function StarRating_Fractions_Ex_02() {\n  const [rating, setRating] = useState(4.3);\n  return (\n    <div className=\"flex flex-row items-center gap-4\">\n      <StarRatingFractions\n        value={rating}\n        onChange={setRating}\n        maxStars={5}\n        color=\"rgb(0, 225, 173)\"\n      />\n    </div>\n  );\n}\n",
+      "path": "/components/commerce-ui/star-rating/fractions/star-rating-fractions-ex-03.tsx",
+      "target": "/components/commerce-ui/star-rating-fractions-ex-03.tsx"
+    }
+  ]
+}

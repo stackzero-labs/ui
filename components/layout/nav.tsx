@@ -38,8 +38,8 @@ const NavContext = createContext<NavContextType>({
 });
 
 export function NavProvider({
-  transparentMode = 'none',
   children,
+  transparentMode = 'none',
 }: NavProviderProps & { children: ReactNode }) {
   const [transparent, setTransparent] = useState(transparentMode !== 'none');
 

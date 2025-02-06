@@ -165,10 +165,10 @@ function getSidebarTabs(
 
       if (index?.type === "page") {
         const option: Option = {
-          url: index.url,
-          title: node.name,
-          icon: node.icon,
           description: node.description,
+          icon: node.icon,
+          title: node.name,
+          url: index.url,
 
           urls: getFolderUrls(node, new Set()),
         };

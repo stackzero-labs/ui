@@ -1,11 +1,9 @@
-import { fontRedaction } from "@/lib/fonts";
 import { cn } from "@/lib/utils";
 import { RootProvider } from "fumadocs-ui/provider";
-import { GeistMono } from "geist/font/mono";
 import { GeistSans } from "geist/font/sans";
 import { Metadata } from "next";
-import type { ReactNode } from "react";
 import localFont from "next/font/local";
+import type { ReactNode } from "react";
 import "./global.css";
 
 const geistSans = localFont({

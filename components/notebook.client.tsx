@@ -8,7 +8,7 @@ import { buttonVariants } from "./ui/button";
 import { Menu, X } from "lucide-react";
 
 export function Navbar(props: HTMLAttributes<HTMLElement>) {
-  const { open, collapsed } = useSidebar();
+  const { collapsed, open } = useSidebar();
   const { isTransparent } = useNav();
 
   return (
@@ -45,8 +45,8 @@ export function NavbarSidebarTrigger(
       {...props}
       className={cn(
         buttonVariants({
-          variant: "ghost",
           size: "icon",
+          variant: "ghost",
         }),
         props.className
       )}

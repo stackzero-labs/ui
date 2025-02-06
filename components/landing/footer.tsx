@@ -6,16 +6,16 @@ import Link from "next/link";
 
 const footerLinks = [
   {
-    title: "Overview",
     href: "/docs",
+    title: "Overview",
   },
   {
-    title: "Installation",
     href: "/docs/installation",
+    title: "Installation",
   },
   {
-    title: "Components",
     href: "/docs/components/rating-star/basic",
+    title: "Components",
   },
 ];
 
@@ -44,7 +44,7 @@ const Footer = () => {
             </div>
 
             <ul className="mt-6 flex flex-wrap items-center gap-4">
-              {footerLinks.map(({ title, href }) => (
+              {footerLinks.map(({ href, title }) => (
                 <li key={title}>
                   <Link
                     href={href}

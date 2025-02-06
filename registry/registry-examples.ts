@@ -85,6 +85,44 @@ export const examples: Registry = [
   },
 
   {
+    name: "price-format-sale-ex-01",
+    type: "registry:example",
+    dependencies: ["lucide-react"],
+    registryDependencies: ["https://ui.stackzero.co/r/price-format-sale.json"],
+    files: [
+      {
+        path: "@/components/commerce-ui/price-format/sale/price-format-sale-ex-01.tsx",
+        type: "registry:example",
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import(
+          "../components/commerce-ui/price-format/sale/price-format-sale-ex-01"
+        )
+    ),
+  },
+
+  {
+    name: "price-format-sale-ex-02",
+    type: "registry:example",
+    dependencies: ["lucide-react"],
+    registryDependencies: ["https://ui.stackzero.co/r/price-format-sale.json"],
+    files: [
+      {
+        path: "@/components/commerce-ui/price-format/sale/price-format-sale-ex-02.tsx",
+        type: "registry:example",
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import(
+          "../components/commerce-ui/price-format/sale/price-format-sale-ex-02"
+        )
+    ),
+  },
+
+  {
     name: "face-rating-basic-ex-01",
     type: "registry:example",
     dependencies: ["lucide-react"],
@@ -274,6 +312,27 @@ export const examples: Registry = [
       () =>
         import(
           "../components/commerce-ui/star-rating/fractions/star-rating-fractions-ex-02"
+        )
+    ),
+  },
+
+  {
+    name: "star-rating-fractions-ex-03",
+    type: "registry:example",
+    dependencies: ["lucide-react"],
+    registryDependencies: [
+      "https://ui.stackzero.co/r/star-rating-fractions.json",
+    ],
+    files: [
+      {
+        path: "@/components/commerce-ui/star-rating/fractions/star-rating-fractions-ex-03.tsx",
+        type: "registry:example",
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import(
+          "../components/commerce-ui/star-rating/fractions/star-rating-fractions-ex-03"
         )
     ),
   },

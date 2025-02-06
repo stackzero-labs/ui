@@ -8,8 +8,8 @@ import { cn } from '../../lib/cn';
 const itemVariants = cva('size-7 rounded-full p-1.5 text-fd-muted-foreground', {
   variants: {
     active: {
-      true: 'bg-fd-accent text-fd-accent-foreground',
       false: 'text-fd-muted-foreground',
+      true: 'bg-fd-accent text-fd-accent-foreground',
     },
   },
 });
@@ -21,7 +21,7 @@ export function ThemeToggle({
 }: HTMLAttributes<HTMLElement> & {
   mode?: 'light-dark' | 'light-dark-system';
 }) {
-  const { setTheme, theme, resolvedTheme } = useTheme();
+  const { resolvedTheme, setTheme, theme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
   useLayoutEffect(() => {

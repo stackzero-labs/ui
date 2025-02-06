@@ -10,7 +10,7 @@
   "files": [
     {
       "type": "registry:example",
-      "content": "\"use client\";\n\nimport StarRatingBasic from \"@/components/commerce-ui/star-rating-basic\";\nimport { useState } from \"react\";\n\nexport default function StarRating_Basic_Ex_01() {\n  const [rating, setRating] = useState(7);\n  return (\n    <div className=\"flex flex-row items-center gap-4\">\n      <StarRatingBasic\n        value={rating}\n        onChange={setRating}\n        maxStars={5}\n        color=\"rgb(124, 70, 195)\"\n      />\n      <p>({rating})</p>\n    </div>\n  );\n}\n",
+      "content": "\"use client\";\n\nimport StarRatingBasic from \"@/components/commerce-ui/star-rating-basic\";\nimport { useState } from \"react\";\n\nexport default function StarRating_Basic_Ex_01() {\n  const [rating, setRating] = useState(7);\n  return (\n    <div className=\"flex flex-row items-center gap-4\">\n      <StarRatingBasic\n        value={rating}\n        onChange={setRating}\n        maxStars={5}\n        color=\"rgb(124, 70, 195)\"\n      />\n    </div>\n  );\n}\n",
       "path": "/components/commerce-ui/star-rating/basic/star-rating-basic-ex-03.tsx",
       "target": "/components/commerce-ui/star-rating-basic-ex-03.tsx"
     }

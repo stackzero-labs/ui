@@ -67,9 +67,9 @@ const itemVariants = cva(
   {
     variants: {
       active: {
-        true: "bg-fd-primary/10 text-fd-primary",
         false:
           "transition-colors hover:bg-fd-accent/50 hover:text-fd-accent-foreground/80 hover:transition-none",
+        true: "bg-fd-primary/10 text-fd-primary",
       },
     },
   }
@@ -136,15 +136,15 @@ export function CollapsibleSidebar(props: SidebarProps) {
 
 export function Sidebar({
   defaultOpenLevel = 0,
-  prefetch = true,
   inner,
+  prefetch = true,
   ...props
 }: SidebarProps & { inner?: HTMLAttributes<HTMLDivElement> }) {
   const context = useMemo<InternalContext>(() => {
     return {
       defaultOpenLevel,
-      prefetch,
       level: 1,
+      prefetch,
     };
   }, [defaultOpenLevel, prefetch]);
 
@@ -247,7 +247,7 @@ export function SidebarItem({
   const pathname = usePathname();
   const active =
     props.href !== undefined && isActive(props.href, pathname, false);
-  const { prefetch, level } = useInternalContext();
+  const { level, prefetch } = useInternalContext();
 
   return (
     <Link
@@ -333,7 +333,7 @@ export function SidebarFolderTrigger({
 
 export function SidebarFolderLink(props: LinkProps) {
   const { open, setOpen } = useFolderContext();
-  const { prefetch, level } = useInternalContext();
+  const { level, prefetch } = useInternalContext();
 
   const pathname = usePathname();
   const active =
@@ -405,8 +405,8 @@ export function SidebarCollapseTrigger(
       {...props}
       className={cn(
         buttonVariants({
-          variant: "ghost",
           size: "icon",
+          variant: "ghost",
         }),
         props.className
       )}
@@ -444,7 +444,7 @@ export function SidebarPageTree(props: {
   console.log("root", root);
 
   return useMemo(() => {
-    const { Separator, Item, Folder } = props.components ?? {};
+    const { Folder, Item, Separator } = props.components ?? {};
 
     function renderSidebarList(
       items: PageTree.Node[],
@@ -540,7 +540,7 @@ function getOffset(level: number) {
   return `calc(var(--spacing) * ${(level > 1 ? level : 0) * 2 + 2})`;
 }
 
-function Border({ level, active }: { level: number; active?: boolean }) {
+function Border({ active, level }: { level: number; active?: boolean }) {
   if (level <= 1) return null;
 
   return (

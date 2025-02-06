@@ -1,9 +1,8 @@
 "use client";
 
-import StarRating from "@/components/commerce-ui/star-rating/fractions/star-rating-fractions";
-import { useState } from "react";
 import ImageCarousel_Horizontal from "@/components/commerce-ui/image-carousel/horizontal/image-carousel-horizontal";
 import PriceFormat_Basic from "@/components/commerce-ui/price-format/basic/price-format-basic";
+import StarRating from "@/components/commerce-ui/star-rating/fractions/star-rating-fractions";
 
 const images = [
   "https://prd.place/400/600?id=37",

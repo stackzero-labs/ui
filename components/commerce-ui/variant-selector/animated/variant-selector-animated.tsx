@@ -27,29 +27,29 @@ const VariantSelectorAnimated = ({
   variants,
 }: VariantSelectorAnimatedProps) => {
   const [activeStyles, setActiveStyles] = React.useState({
-    top: 0,
-    left: 0,
-    width: 0,
     height: 0,
+    left: 0,
+    top: 0,
+    width: 0,
   });
   const itemsRef = React.useRef<Map<string, HTMLLabelElement>>(new Map());
 
   React.useLayoutEffect(() => {
     const getActiveStyles = () => {
       const activeElement = itemsRef.current.get(value);
-      if (!activeElement) return { top: 0, left: 0, width: 0, height: 0 };
+      if (!activeElement) return { height: 0, left: 0, top: 0, width: 0 };
 
       const parent = activeElement.parentElement;
-      if (!parent) return { top: 0, left: 0, width: 0, height: 0 };
+      if (!parent) return { height: 0, left: 0, top: 0, width: 0 };
 
       const parentRect = parent.getBoundingClientRect();
       const activeRect = activeElement.getBoundingClientRect();
 
       return {
-        top: activeRect.top - parentRect.top,
-        left: activeRect.left - parentRect.left,
-        width: activeRect.width,
         height: activeRect.height,
+        left: activeRect.left - parentRect.left,
+        top: activeRect.top - parentRect.top,
+        width: activeRect.width,
       };
     };
 
@@ -71,10 +71,10 @@ const VariantSelectorAnimated = ({
           layoutId="variant-background"
           className="absolute rounded-lg border border-lime-300 bg-lime-300/30"
           animate={{
-            top: activeStyles.top,
-            left: activeStyles.left,
-            width: activeStyles.width,
             height: activeStyles.height,
+            left: activeStyles.left,
+            top: activeStyles.top,
+            width: activeStyles.width,
           }}
           transition={{
             bounce: 0.2,

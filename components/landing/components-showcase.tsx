@@ -2,12 +2,9 @@
 
 import { useState } from "react";
 import StarRatingFractions from "../commerce-ui/star-rating/fractions/star-rating-fractions";
-
-import { motion } from "motion/react";
 import FaceRating_Basic from "../commerce-ui/face-rating/basic/face-rating-basic";
-import UpvoteRating_Animated from "../commerce-ui/upvote-rating/animated/upvote-rating-animated";
-import ImageCarousel_Horizontal_Ex_01 from "../commerce-ui/image-carousel/horizontal/image-carousel-horizontal-ex-01";
 import ImageCarousel_Horizontal_Ex_02 from "../commerce-ui/image-carousel/horizontal/image-carousel-horizontal-ex-02";
+import UpvoteRating_Animated from "../commerce-ui/upvote-rating/animated/upvote-rating-animated";
 
 function ComponentsShowcase() {
   const [faceRatingValue, setFaceRatingValue] = useState(4);

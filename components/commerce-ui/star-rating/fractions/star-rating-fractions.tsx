@@ -11,6 +11,7 @@ interface StarRatingBasicProps {
   iconSize?: number;
   maxStars?: number;
   readOnly?: boolean;
+  color?: string;
 }
 
 const StarIcon = React.memo(
@@ -48,11 +49,12 @@ StarIcon.displayName = "StarIcon";
 
 const StarRating_Fractions = ({
   className,
+  color = "#FFD700",
   iconSize = 24,
   maxStars = 5,
   onChange,
-  value,
   readOnly = false,
+  value,
 }: StarRatingBasicProps) => {
   const [hoverRating, setHoverRating] = React.useState<number | null>(null);
 
@@ -111,14 +113,14 @@ const StarRating_Fractions = ({
       const difference = ratingToUse - index;
 
       if (difference <= 0) return { color: "gray", fill: "transparent" };
-      if (difference >= 1) return { color: "gold", fill: "gold" };
+      if (difference >= 1) return { color: color, fill: color };
 
       return {
-        color: "gold",
+        color: color,
         fill: `url(#${componentId.current}-star-fill-${index})`,
       } as React.CSSProperties;
     },
-    [readOnly, hoverRating, value]
+    [readOnly, hoverRating, value, color]
   );
 
   const gradientDefs = React.useMemo(() => {
@@ -145,12 +147,12 @@ const StarRating_Fractions = ({
           x2="100%"
           y2="0%"
         >
-          <stop offset={`${percentage}%`} stopColor="gold" />
+          <stop offset={`${percentage}%`} stopColor={color} />
           <stop offset={`${percentage}%`} stopColor="transparent" />
         </linearGradient>
       );
     });
-  }, [maxStars, readOnly, hoverRating, value]);
+  }, [maxStars, readOnly, hoverRating, value, color]);
 
   const stars = React.useMemo(() => {
     return Array.from({ length: maxStars }).map((_, index) => {
