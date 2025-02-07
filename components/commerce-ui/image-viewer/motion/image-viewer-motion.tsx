@@ -1,29 +1,23 @@
-"use client";
-
-import { cn } from "@/lib/utils";
 import {
   Dialog,
-  DialogClose,
-  DialogContent,
-  DialogOverlay,
-  DialogPortal,
-  DialogTitle,
   DialogTrigger,
+  DialogPortal,
+  DialogOverlay,
+  DialogContent,
+  DialogClose,
+  DialogTitle,
 } from "@radix-ui/react-dialog";
 import { X } from "lucide-react";
+import Image from "next/image";
 
 interface ImageViewerProps {
   className?: string;
-  classNameImageViewer?: string;
-  classNameThumbnailViewer?: string;
-  imageUrl: string;
   thumbnailUrl?: string;
+  imageUrl: string;
 }
 
 const ImageViewer_Basic = ({
   className,
-  classNameImageViewer,
-  classNameThumbnailViewer,
   imageUrl,
   thumbnailUrl,
 }: ImageViewerProps) => {
@@ -36,16 +30,13 @@ const ImageViewer_Basic = ({
             alt="Preview"
             width={300}
             height={300}
-            className={cn(
-              "rounded-lg object-cover transition-opacity hover:opacity-90",
-              classNameThumbnailViewer
-            )}
+            className="rounded-lg object-cover transition-opacity hover:opacity-90"
           />
         </div>
       </DialogTrigger>
       <DialogPortal>
-        <DialogOverlay className="fixed inset-0 z-50 bg-black/80" />
-        <DialogContent className="bg-background fixed top-1/2 left-1/2 z-50 w-[calc(100vw-2rem)] max-w-[90vw] -translate-x-1/2 -translate-y-1/2 p-0 sm:w-auto">
+        <DialogOverlay className="motion-preset-fade motion-duration-150 fixed inset-0 z-50 bg-black/80" />
+        <DialogContent className="bg-background motion-scale-in-[0.5] motion-rotate-in-[-10deg] motion-blur-in-[5px] motion-duration-150 motion-duration-150/scale motion-duration-150/translate motion-duration-[0.00s]/rotate fixed top-1/2 left-1/2 z-50 w-[calc(100vw-2rem)] max-w-[90vw] -translate-x-1/2 -translate-y-1/2 p-0 sm:w-auto">
           <DialogTitle className="sr-only">Image</DialogTitle>
           <div className="relative flex min-h-[300px] items-center justify-center">
             {/* You can swap this with your preferred image optization technique, like using  next/image */}
@@ -54,10 +45,7 @@ const ImageViewer_Basic = ({
               alt="Full size"
               width={1920}
               height={1080}
-              className={cn(
-                "h-auto max-h-[calc(100vh-4rem)] w-full object-contain",
-                classNameImageViewer
-              )}
+              className="h-auto max-h-[calc(100vh-4rem)] w-full object-contain"
             />
             <DialogClose asChild>
               <button

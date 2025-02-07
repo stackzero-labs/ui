@@ -10,7 +10,7 @@
   "files": [
     {
       "type": "registry:example",
-      "content": "import ImageCarouselHorizontal from \"@/components/commerce-ui/image-carousel-horizontal\";\n\nconst images = [\n  \"https://prd.place/400/600?id=37\",\n  \"https://prd.place/400/600?id=38\",\n  \"https://prd.place/400/600?id=39\",\n  \"https://prd.place/800/1200?id=40\",\n  \"https://prd.place/800/300?id=41\",\n];\n\nexport default function ImageCarousel_Horizontal_Ex_01() {\n  return (\n    <ImageCarouselHorizontal\n      images={images}\n      imageFit=\"contain\"\n      thumbPosition=\"right\"\n    />\n  );\n}\n",
+      "content": "import ImageCarouselHorizontal from \"@/components/commerce-ui/image-carousel-horizontal\";\n\nconst images = [\n  \"https://prd.place/3000/2500?id=37\",\n  \"https://prd.place/400/600?id=38\",\n  \"https://prd.place/400/600?id=39\",\n  \"https://prd.place/800/1200?id=40\",\n  \"https://prd.place/800/300?id=41\",\n];\n\nexport default function ImageCarousel_Horizontal_Ex_01() {\n  return (\n    <ImageCarouselHorizontal\n      images={images}\n      imageFit=\"contain\"\n      thumbPosition=\"right\"\n    />\n  );\n}\n",
       "path": "/components/commerce-ui/image-carousel/horizontal/image-carousel-horizontal-ex-01.tsx",
       "target": "/components/commerce-ui/image-carousel-horizontal-ex-01.tsx"
     }

@@ -10,7 +10,7 @@
   "files": [
     {
       "type": "registry:component",
-      "content": "\"use client\";\n\nimport { type Rating } from \"@/components/commerce-ui/like-rating-basic\";\nimport ImageViewer from \"@/components/commerce-ui/image-viewer-basic\";\nimport { useState } from \"react\";\n\nconst EXAMPLE_IMAGE_URL = \"https://picsum.photos/1080/900\";\nconst EXAMPLE_THUMBNAIL_URL = \"https://picsum.photos/300/300\";\n\nexport default function ImageViewer_Basic_Ex_01() {\n  return (\n    <div className=\"flex w-full flex-col items-center gap-4\">\n      {/* Example with both thumbnail and full image */}\n      <ImageViewer\n        thumbnailUrl={EXAMPLE_THUMBNAIL_URL}\n        imageUrl={EXAMPLE_IMAGE_URL}\n        className=\"max-w-[300px]\"\n      />\n\n      {/* Example using the same image for thumbnail and full view */}\n      {/* <ImageViewer imageUrl={EXAMPLE_IMAGE_URL} className=\"max-w-[300px]\" /> */}\n    </div>\n  );\n}\n",
+      "content": "\"use client\";\nimport ImageViewer from \"@/components/commerce-ui/image-viewer-basic\";\n\nconst EXAMPLE_IMAGE_URL = \"https://picsum.photos/1080/900\";\nconst EXAMPLE_THUMBNAIL_URL = \"https://picsum.photos/300/300\";\n\nexport default function ImageViewer_Basic_Ex_01() {\n  return (\n    <div className=\"flex w-full flex-col items-center gap-4\">\n      <ImageViewer\n        thumbnailUrl={EXAMPLE_THUMBNAIL_URL}\n        imageUrl={EXAMPLE_IMAGE_URL}\n        className=\"max-w-[300px]\"\n      />\n    </div>\n  );\n}\n",
       "path": "/components/commerce-ui/image-viewer/basic/image-viewer-basic-ex-01.tsx",
       "target": "/components/commerce-ui/image-viewer-basic-ex-01.tsx"
     }

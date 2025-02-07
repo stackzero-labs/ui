@@ -1,10 +1,19 @@
 export const sidebarBadges = [
   {
     page: "Image Carousel",
-    isNew: true,
+    alpha: true,
+  },
+  {
+    page: "Image Viewer",
+    alpha: true,
   },
   {
     page: "Price Format",
     isNew: true,
+  },
+
+  {
+    page: "Product Cards",
+    alpha: true,
   },
 ];

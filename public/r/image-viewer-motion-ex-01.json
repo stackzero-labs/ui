@@ -1,0 +1,18 @@
+{
+  "name": "image-viewer-motion-ex-01",
+  "type": "registry:component",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "https://ui.stackzero.co/r/image-viewer-motion.json"
+  ],
+  "files": [
+    {
+      "type": "registry:component",
+      "content": "\"use client\";\nimport ImageViewer from \"@/components/commerce-ui/image-viewer-motion\";\n\nconst EXAMPLE_IMAGE_URL = \"https://picsum.photos/1080/900\";\nconst EXAMPLE_THUMBNAIL_URL = \"https://picsum.photos/300/300\";\n\nexport default function ImageViewer_Basic_Ex_01() {\n  return (\n    <div className=\"flex w-full flex-col items-center gap-4\">\n      <ImageViewer\n        thumbnailUrl={EXAMPLE_THUMBNAIL_URL}\n        imageUrl={EXAMPLE_IMAGE_URL}\n        className=\"max-w-[300px]\"\n      />\n    </div>\n  );\n}\n",
+      "path": "/components/commerce-ui/image-viewer/motion/image-viewer-motion-ex-01.tsx",
+      "target": "/components/commerce-ui/image-viewer-motion-ex-01.tsx"
+    }
+  ]
+}

@@ -3,6 +3,7 @@ import { ArrowRight } from "lucide-react";
 import { motion } from "motion/react";
 import { Button } from "../ui/button";
 import { Icons } from "../ui/icons";
+import Link from "next/link";
 
 const heroText = "Build commerce sites and apps faster than ever";
 const heroSubText =
@@ -50,14 +51,16 @@ const HeroTitle = () => {
         </motion.p>
         <div className="flex items-center justify-center gap-6 align-middle">
           <motion.div transition={transition} variants={variants}>
-            <Button variant="secondary" className="font-bold">
-              View Docs
+            <Button variant="secondary" className="font-bold" asChild>
+              <Link href="/docs"> View Docs</Link>
             </Button>
           </motion.div>
           <motion.div transition={transition} variants={variants}>
-            <Button className="group/arrow font-bold">
-              Browse Components
-              <ArrowRight className="ml-2 size-5 transition-transform group-hover/arrow:translate-x-1" />
+            <Button className="group/arrow font-bold" asChild>
+              <Link href="/docs/components/rating-star/basic">
+                View Docs
+                <ArrowRight className="ml-2 size-5 transition-transform group-hover/arrow:translate-x-1" />
+              </Link>
             </Button>
           </motion.div>
         </div>

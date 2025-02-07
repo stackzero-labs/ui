@@ -55,6 +55,24 @@ export const components: Registry = [
   },
 
   {
+    name: "image-viewer-motion",
+    type: "registry:component",
+    dependencies: ["lucide-react", "@radix-ui/react-dialog"],
+    files: [
+      {
+        path: "@/components/commerce-ui/image-viewer/motion/image-viewer-motion.tsx",
+        type: "registry:component",
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import(
+          "../components/commerce-ui/image-viewer/motion/image-viewer-motion"
+        )
+    ),
+  },
+
+  {
     name: "upvote-downvote-rating-01",
     type: "registry:component",
     dependencies: ["lucide-react"],

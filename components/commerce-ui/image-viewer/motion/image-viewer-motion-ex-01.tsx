@@ -1,5 +1,5 @@
 "use client";
-import ImageViewer from "@/components/commerce-ui/image-viewer/basic/image-viewer-basic";
+import ImageViewer from "@/components/commerce-ui/image-viewer/motion/image-viewer-motion";
 
 const EXAMPLE_IMAGE_URL = "https://picsum.photos/1080/900";
 const EXAMPLE_THUMBNAIL_URL = "https://picsum.photos/300/300";

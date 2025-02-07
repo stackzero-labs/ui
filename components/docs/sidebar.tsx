@@ -240,9 +240,11 @@ export function SidebarSeparator(props: HTMLAttributes<HTMLParagraphElement>) {
 
 export function SidebarItem({
   icon,
+  name,
   ...props
 }: LinkProps & {
   icon?: ReactNode;
+  name: ReactNode;
 }) {
   const pathname = usePathname();
   const active =
@@ -263,6 +265,17 @@ export function SidebarItem({
       <Border level={level} active={active} />
       {icon ?? (props.external ? <ExternalLink /> : null)}
       {props.children}
+
+      {sidebarBadges.find((badge) => badge.page === name)?.alpha && (
+        <div className="ms-auto flex items-center gap-2">
+          <Badge
+            variant="outline"
+            className="rounded-sm border-gray-500/50 px-[0.3rem] text-sm"
+          >
+            <p className="text-xs text-gray-500">Alpha</p>
+          </Badge>
+        </div>
+      )}
     </Link>
   );
 }
@@ -320,6 +333,17 @@ export function SidebarFolderTrigger({
             className="rounded-sm border-teal-500/50 px-[0.3rem] text-sm"
           >
             <p className="text-xs text-teal-500">New</p>
+          </Badge>
+        </div>
+      )}
+
+      {sidebarBadges.find((badge) => badge.page === name)?.alpha && (
+        <div className="ms-auto flex items-center gap-2">
+          <Badge
+            variant="outline"
+            className="rounded-sm border-gray-500/50 px-[0.3rem] text-sm"
+          >
+            <p className="text-xs text-gray-500">Alpha</p>
           </Badge>
         </div>
       )}
@@ -485,6 +509,7 @@ export function SidebarPageTree(props: {
             href={item.url}
             external={item.external}
             icon={item.icon}
+            name={item.name}
           >
             {/* {item.name} */}
 

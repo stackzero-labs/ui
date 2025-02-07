@@ -1,7 +1,7 @@
 import ImageCarouselHorizontal from "@/components/commerce-ui/image-carousel/horizontal/image-carousel-horizontal";
 
 const images = [
-  "https://prd.place/400/600?id=37",
+  "https://prd.place/3000/2500?id=37",
   "https://prd.place/400/600?id=38",
   "https://prd.place/400/600?id=39",
   "https://prd.place/800/1200?id=40",

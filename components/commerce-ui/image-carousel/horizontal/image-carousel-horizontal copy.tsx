@@ -52,7 +52,7 @@ const ImageContainer: React.FC<{
         getAspectRatioClass(aspectRatio)
       )}
     >
-      {/* <Image
+      <Image
         unoptimized
         width={400}
         height={600}
@@ -64,43 +64,7 @@ const ImageContainer: React.FC<{
           fit === "cover" && "object-cover",
           fit === "fill" && "object-fill"
         )}
-      /> */}
-
-      <Dialog>
-        <DialogTrigger asChild>
-          <div className={`cursor-pointer`}>
-            <img
-              src={image}
-              alt="Preview"
-              width={400}
-              height={600}
-              className={cn(
-                "absolute inset-0 h-full w-full",
-                fit === "contain" && "object-contain",
-                fit === "cover" && "object-cover",
-                fit === "fill" && "object-fill"
-              )}
-            />
-          </div>
-        </DialogTrigger>
-
-        <DialogPortal>
-          <DialogOverlay className="fixed inset-0 z-50 bg-black/80" />
-          <DialogContent className="fixed top-1/2 left-1/2 z-50 w-[calc(100vw-2rem)] max-w-[90vw] -translate-x-1/2 -translate-y-1/2 bg-gray-100 p-0 sm:w-auto">
-            <DialogTitle className="sr-only">Image</DialogTitle>
-
-            <img
-              src={image}
-              alt="Full size"
-              width="3000px"
-              height="3000px"
-              className={cn(
-                "h-auto max-h-[calc(100vh-4rem)] w-full object-contain"
-              )}
-            />
-          </DialogContent>
-        </DialogPortal>
-      </Dialog>
+      />
     </div>
   );
 };
@@ -124,26 +88,12 @@ const Thumb: React.FC<ThumbPropType> = (props) => {
         className="relative w-full cursor-pointer touch-manipulation appearance-none overflow-hidden rounded-md border-0 bg-transparent p-0"
         type="button"
       >
-        {/* <ImageContainer
+        <ImageContainer
           image={imgUrl}
           alt={`Thumbnail ${index + 1}`}
           fit="cover"
           aspectRatio="square"
-        /> */}
-        <div
-          className={cn(
-            "relative w-full overflow-hidden rounded-lg bg-gray-100",
-            getAspectRatioClass("square")
-          )}
-        >
-          <img
-            src={imgUrl}
-            alt={`Thumbnail ${index + 1}`}
-            width={400}
-            height={600}
-            className={cn("h-full w-full object-cover")}
-          />
-        </div>
+        />
       </button>
     </div>
   );
