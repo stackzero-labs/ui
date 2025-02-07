@@ -244,7 +244,7 @@ export function SidebarItem({
   ...props
 }: LinkProps & {
   icon?: ReactNode;
-  name: ReactNode;
+  name?: ReactNode;
 }) {
   const pathname = usePathname();
   const active =
