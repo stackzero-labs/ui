@@ -1,6 +1,10 @@
 {
   "title": "Image Carousel",
-  "icon": "GalleryThumbnails"
+  "icon": "GalleryThumbnails",
+  "pages" : [
+    "...",
+    "!horizontal"
+  ]
 }
 
 

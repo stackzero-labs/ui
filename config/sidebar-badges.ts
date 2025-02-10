@@ -1,7 +1,7 @@
 export const sidebarBadges = [
   {
     page: "Image Carousel",
-    alpha: true,
+    upcoming: true,
   },
   {
     page: "Image Viewer",
@@ -15,5 +15,9 @@ export const sidebarBadges = [
   {
     page: "Product Cards",
     alpha: true,
+  },
+  {
+    page: "Variant Selector",
+    isNew: true,
   },
 ];

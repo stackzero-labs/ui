@@ -13,6 +13,10 @@ export const SIDEBAR_RENAMED_PAGES: RenamedPage[] = [
     newPageName: "Basic",
   },
   {
+    pageName: "Image Viewer - Motion",
+    newPageName: "Motion",
+  },
+  {
     pageName: "Price Format - Basic",
     newPageName: "Basic",
   },

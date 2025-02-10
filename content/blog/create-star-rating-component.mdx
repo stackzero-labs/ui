@@ -1,0 +1,214 @@
+---
+title: Building a Star Rating Component in React - A Step-by-Step Tutorial
+description:  Create a customizable Star Rating component for your web projects and ecommerce sites. 
+date: 2025-02-10
+author: mnove
+---
+
+
+In this tutorial, we'll build a reusable Star Rating component using React. This component will support both interactive and read-only modes, custom colors, and hover effects.
+
+This is the kind of component that you often see in ecommerce sites or reviews apps.
+
+## Key features and requirements
+
+1. **Interactivity**: The component switches between interactive and read-only modes based on the `readOnly` prop.
+
+2. **Hover Effects**: In interactive mode, hovering over stars shows a preview of the rating.
+
+3. **Customization**: Supports custom colors, sizes, and number of stars.
+
+4. **Performance**: Uses `React.memo` and `useMemo` to optimize rendering performance.
+
+5. **Accessibility**: Includes proper cursor styles and visual feedback for interactive elements.
+
+
+## Step 1: Setting Up the Component Interface
+
+First, let's define the props interface for our component. This will help us understand what customization options our component will support.
+
+```tsx
+interface StarRatingBasicProps {
+  value: number;              // Current rating value
+  onChange?: (value: number) => void;  // Callback when rating changes
+  className?: string;         // Custom CSS classes
+  iconSize?: number;          // Size of star icons
+  maxStars?: number;         // Maximum number of stars
+  readOnly?: boolean;        // Whether rating can be changed
+  color?: string;           // Color of filled stars
+}
+```
+
+## Step 2: Creating the Star Icon Component
+
+Let's create a memoized Star icon component that will be reused for each star in the rating. This helps with performance optimization.
+
+```tsx
+const StarIcon = React.memo(({
+  iconSize,
+  index,
+  isInteractive,
+  onClick,
+  onMouseEnter,
+  style,
+}: {
+  index: number;
+  style: React.CSSProperties;
+  iconSize: number;
+  onClick: () => void;
+  onMouseEnter: () => void;
+  isInteractive: boolean;
+}) => (
+  <Star
+    key={index}
+    size={iconSize}
+    fill={style.fill}
+    color={style.color}
+    onClick={onClick}
+    onMouseEnter={onMouseEnter}
+    className={cn(
+      "transition-colors duration-200",
+      isInteractive && "cursor-pointer hover:scale-110"
+    )}
+    style={style}
+  />
+));
+```
+
+## Step 3: Setting Up the Main Component State
+
+Now, let's set up the main component with its state and default props:
+
+```tsx
+const StarRating_Basic = ({
+  className,
+  color = "#FFD700",      // Default gold color
+  iconSize = 24,          // Default size
+  maxStars = 5,          // Default max stars
+  onChange,
+  readOnly = false,
+  value,
+}: StarRatingBasicProps) => {
+  const [hoverRating, setHoverRating] = React.useState<number | null>(null);
+```
+
+I have added some defaults, but you can of course change then to your liking. 
+
+
+## Step 4: Implementing Interactive Handlers
+
+Let's add the handlers for click and hover interactions. These will be needed to create a nice hover offect, in a way creating a sort of rating "preview", before the new rating is clicked.
+
+Since we just want to preview a rating on hover, when the mouse leaves the component we want to display the original rating. Thus we implement a `handleMouseLeave` handler to reset the `hoverRating` to `null`.
+
+The handlers must also check for the `readOnly` condition to avoid updating the rating when not needed. 
+
+```tsx
+  const handleStarClick = React.useCallback(
+    (index: number) => {
+      if (readOnly || !onChange) return;
+      const newRating = index + 1;
+      onChange(newRating);
+    },
+    [readOnly, onChange]
+  );
+
+  const handleStarHover = React.useCallback(
+    (index: number) => {
+      if (!readOnly) {
+        setHoverRating(index + 1);
+      }
+    },
+    [readOnly]
+  );
+
+  const handleMouseLeave = React.useCallback(() => {
+    if (!readOnly) {
+      setHoverRating(null);
+    }
+  }, [readOnly]);
+```
+
+## Step 5: Star Styling Logic
+
+Add the logic to determine each star's appearance:
+
+```tsx
+  const getStarStyle = React.useCallback(
+    (index: number) => {
+      const ratingToUse =
+        !readOnly && hoverRating !== null ? hoverRating : value;
+      return {
+        color: ratingToUse > index ? color : "gray",
+        fill: ratingToUse > index ? color : "transparent",
+      } as React.CSSProperties;
+    },
+    [readOnly, hoverRating, value, color]
+  );  
+  
+```
+
+We assign a const `ratingToUse` and then we use such variable to determine which color / fill a "star" should have. 
+
+
+## Step 6: Generating the Stars
+
+Then, all we need to do is do display the star icons as a dynamic array whose lenght is determined by the `maxStars` prop.
+
+So we create the array of star components using the styling and interaction handlers:
+
+```tsx
+  const stars = React.useMemo(() => {
+    return Array.from({ length: maxStars }).map((_, index) => {
+      const style = getStarStyle(index);
+      return (
+        <StarIcon
+          key={index}
+          index={index}
+          style={style}
+          iconSize={iconSize}
+          onClick={() => handleStarClick(index)}
+          onMouseEnter={() => handleStarHover(index)}
+          isInteractive={!readOnly}
+        />
+      );
+    });
+  }, [maxStars, getStarStyle, iconSize, handleStarClick, handleStarHover, readOnly]);
+
+```
+
+##  Step 7: Final Component Assembly
+
+Finally, let's put it all together in the return statement:
+
+```tsx
+  return (
+    <div
+      className={cn("flex items-center gap-x-0.5", className)}
+      onMouseLeave={handleMouseLeave}
+    >
+      {stars}
+    </div>
+  );
+  ```
+
+
+##  Usage Example
+
+```tsx
+// Interactive rating
+<StarRating_Basic
+  value={3}
+  onChange={(newValue) => console.log(`New rating: ${newValue}`)} />
+// Read-only rating with custom color
+<StarRating_Basic
+  value={4.5}
+  readOnly={true}
+  color="#FF0000"
+  iconSize={32}
+/>
+```
+
+## Full Source Code + Examples
+
+Here you can get the [full source code](/docs/components/rating-star/basic) with examples! 

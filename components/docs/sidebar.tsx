@@ -266,13 +266,35 @@ export function SidebarItem({
       {icon ?? (props.external ? <ExternalLink /> : null)}
       {props.children}
 
+      {sidebarBadges.find((badge) => badge.page === name)?.isNew && (
+        <div className="ms-auto flex items-center gap-2">
+          <Badge
+            variant="outline"
+            className="rounded-sm border-teal-500/50 px-[0.3rem] text-sm"
+          >
+            <p className="text-xs text-teal-500">New</p>
+          </Badge>
+        </div>
+      )}
+
       {sidebarBadges.find((badge) => badge.page === name)?.alpha && (
+        <div className="ms-auto flex items-center gap-2">
+          <Badge
+            variant="outline"
+            className="rounded-sm border-indigo-500/50 px-[0.3rem] text-sm"
+          >
+            <p className="text-xs text-indigo-500">Alpha</p>
+          </Badge>
+        </div>
+      )}
+
+      {sidebarBadges.find((badge) => badge.page === name)?.upcoming && (
         <div className="ms-auto flex items-center gap-2">
           <Badge
             variant="outline"
             className="rounded-sm border-gray-500/50 px-[0.3rem] text-sm"
           >
-            <p className="text-xs text-gray-500">Alpha</p>
+            <p className="text-xs text-gray-500">Upcoming</p>
           </Badge>
         </div>
       )}
@@ -341,9 +363,20 @@ export function SidebarFolderTrigger({
         <div className="ms-auto flex items-center gap-2">
           <Badge
             variant="outline"
+            className="rounded-sm border-indigo-500/50 px-[0.3rem] text-sm"
+          >
+            <p className="text-xs text-indigo-500">Alpha</p>
+          </Badge>
+        </div>
+      )}
+
+      {sidebarBadges.find((badge) => badge.page === name)?.upcoming && (
+        <div className="ms-auto flex items-center gap-2">
+          <Badge
+            variant="outline"
             className="rounded-sm border-gray-500/50 px-[0.3rem] text-sm"
           >
-            <p className="text-xs text-gray-500">Alpha</p>
+            <p className="text-xs text-gray-500">Upcoming</p>
           </Badge>
         </div>
       )}

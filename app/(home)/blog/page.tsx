@@ -9,20 +9,20 @@ export default function Page(): React.ReactElement {
   );
 
   return (
-    <main className="container max-sm:px-0 md:py-12">
-      <div className="grid grid-cols-1 border md:grid-cols-3 lg:grid-cols-4">
+    <main className="container py-2 max-sm:px-2 md:py-12">
+      <div className="grid grid-cols-1 gap-3 md:grid-cols-3 lg:grid-cols-4">
         {posts.map((post) => (
           <Link
             key={post.url}
             href={post.url}
-            className="flex flex-col bg-fd-card p-4 transition-colors hover:bg-fd-accent hover:text-fd-accent-foreground"
+            className="bg-fd-card hover:bg-fd-accent hover:text-fd-accent-foreground flex flex-col rounded-xl border p-4 transition-colors"
           >
             <p className="font-medium">{post.data.title}</p>
-            <p className="text-sm text-fd-muted-foreground">
+            <p className="text-fd-muted-foreground text-sm">
               {post.data.description}
             </p>
 
-            <p className="mt-auto pt-4 text-xs text-fd-muted-foreground">
+            <p className="text-fd-muted-foreground mt-auto pt-4 text-xs">
               {new Date(post.data.date ?? post.file.name).toDateString()}
             </p>
           </Link>
