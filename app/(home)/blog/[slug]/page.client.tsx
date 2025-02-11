@@ -112,7 +112,7 @@ export function BlogTitle({
         <motion.div
           style={{
             position: "sticky",
-            top: 56,
+            top: isMobile ? 56 : 66,
             left: 0,
             right: 0,
             padding: inViewport ? "3rem" : "1rem",

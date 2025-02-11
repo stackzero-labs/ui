@@ -23,7 +23,7 @@ import {
   ManualInstall,
 } from "./preview/components-install";
 import { ComponentSource } from "./preview/component-source";
-
+import { ComponentLoader } from "./component-loader";
 const { AutoTypeTable } = createTypeTable();
 
 export function getMDXComponents(components: MDXComponents): MDXComponents {
@@ -111,6 +111,17 @@ export function getMDXComponents(components: MDXComponents): MDXComponents {
     Tab,
     Tabs,
     TypeTable,
+    ...components,
+  };
+}
+
+export function getBlogMDXComponents(components: MDXComponents): MDXComponents {
+  return {
+    ...defaultComponents,
+    Accordion,
+    Accordions,
+    ComponentLoader,
+    ImageZoom,
     ...components,
   };
 }

@@ -8,7 +8,14 @@ author: mnove
 
 In this tutorial, we'll build a reusable Star Rating component using React. This component will support both interactive and read-only modes, custom colors, and hover effects.
 
-This is the kind of component that you often see in ecommerce sites or reviews apps.
+This is the kind of component that you often see in e-commerce sites or review apps.
+
+## Preview 
+<ComponentLoader
+  name="star-rating-basic-ex-01"     
+  classNameComponentContainer='min-h-[200px] border' 
+/>
+
 
 ## Key features and requirements
 
@@ -92,12 +99,12 @@ const StarRating_Basic = ({
   const [hoverRating, setHoverRating] = React.useState<number | null>(null);
 ```
 
-I have added some defaults, but you can of course change then to your liking. 
+I have added some defaults, but you can of course change them to your liking. 
 
 
 ## Step 4: Implementing Interactive Handlers
 
-Let's add the handlers for click and hover interactions. These will be needed to create a nice hover offect, in a way creating a sort of rating "preview", before the new rating is clicked.
+Let's add the handlers for click and hover interactions. These will be needed to create a nice hover effect, in a way creating a sort of rating "preview", before the new rating is clicked.
 
 Since we just want to preview a rating on hover, when the mouse leaves the component we want to display the original rating. Thus we implement a `handleMouseLeave` handler to reset the `hoverRating` to `null`.
 
@@ -148,12 +155,12 @@ Add the logic to determine each star's appearance:
   
 ```
 
-We assign a const `ratingToUse` and then we use such variable to determine which color / fill a "star" should have. 
+We assign a const `ratingToUse` and then we use such a variable to determine which color / fill a "star" should have. 
 
 
 ## Step 6: Generating the Stars
 
-Then, all we need to do is do display the star icons as a dynamic array whose lenght is determined by the `maxStars` prop.
+Then, all we need to do is display the star icons as a dynamic array whose length is determined by the `maxStars` prop.
 
 So we create the array of star components using the styling and interaction handlers:
 
