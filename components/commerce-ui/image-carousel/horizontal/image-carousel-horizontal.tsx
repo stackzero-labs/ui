@@ -1,21 +1,19 @@
 "use client";
 
-import React, { useState, useCallback, useEffect } from "react";
-import { type EmblaOptionsType } from "embla-carousel";
-import useEmblaCarousel from "embla-carousel-react";
-import { ArrowLeft, ArrowRight } from "lucide-react";
-import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 import {
   Dialog,
-  DialogClose,
   DialogContent,
   DialogOverlay,
   DialogPortal,
   DialogTitle,
   DialogTrigger,
 } from "@radix-ui/react-dialog";
-import Image from "next/image";
+import { type EmblaOptionsType } from "embla-carousel";
+import useEmblaCarousel from "embla-carousel-react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
+import React, { useCallback, useEffect, useState } from "react";
 
 type ThumbPropType = {
   selected: boolean;

@@ -5,12 +5,13 @@ import Footer from "@/components/landing/footer";
 
 export default function Layout({ children }: { children: ReactNode }) {
   return (
-    <HomeLayout {...baseOptions}>
-      {children}
-
+    <>
+      <div className="min-h-screen">
+        <HomeLayout {...baseOptions}>{children}</HomeLayout>
+      </div>
       <div>
         <Footer />
       </div>
-    </HomeLayout>
+    </>
   );
 }

@@ -33,7 +33,7 @@ const Footer = () => {
                 alt="logo"
                 width={24}
                 height={24}
-                className="hidden dark:block"
+                className="block"
               />
               <div className="text-sm font-semibold text-nowrap sm:inline-block">
                 {siteConfig.name}
