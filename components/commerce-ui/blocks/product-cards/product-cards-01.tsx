@@ -12,7 +12,7 @@ const images = [
 
 function ProductCard_01() {
   return (
-    <div className="flex w-[250px] flex-col gap-4 rounded-lg border p-2">
+    <div className="flex w-full flex-col gap-4 rounded-lg border p-2">
       <div className="relative w-full">
         <div className="absolute top-2 left-2 z-10 w-fit rounded-lg bg-teal-500/80 p-2">
           <p className="text-xs font-semibold">20% OFF</p>

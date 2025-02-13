@@ -1,13 +1,11 @@
 <p align="center">
   <a href="https://ui.stackzero.co" target="_blank">
     <picture>
-      <source srcset="https://raw.githubusercontent.com/stackzero-labs/ui/bf3caca969b34ce1181ec0d8720f44afc2146c17/public/logo.svg">
-      <img alt="commerce-ui" src="https://raw.githubusercontent.com/stackzero-labs/ui/bf3caca969b34ce1181ec0d8720f44afc2146c17/public/logo.svg" width="350" height="120" style="max-width: 100%;">
+      <source srcset="https://raw.githubusercontent.com/stackzero-labs/ui/7bbd9e82ee6cde50eabf8f90cca27317deadb7f2/public/logo.svg">
+      <img alt="commerce-ui" src="https://raw.githubusercontent.com/stackzero-labs/ui/7bbd9e82ee6cde50eabf8f90cca27317deadb7f2/public/logo.svg" width="350" height="120" style="max-width: 100%;">
     </picture>
   </a>
 </p>
-
-
 
 # commerce-ui (beta)
 

@@ -4,6 +4,7 @@ import { motion } from "motion/react";
 import { Button } from "../ui/button";
 import { Icons } from "../ui/icons";
 import Link from "next/link";
+import ComponentsShowcase from "./components-showcase";
 
 const heroText = "Build commerce sites and apps faster than ever";
 const heroSubText =
@@ -22,7 +23,7 @@ const HeroTitle = () => {
         initial="hidden"
         whileInView="visible"
         transition={{ staggerChildren: 0.08 }}
-        className="flex flex-col items-center"
+        className="items-left flex flex-col"
       >
         <motion.div
           className="text-muted-foreground bg-background text-md mb-8 flex w-fit flex-row items-center gap-2 rounded-lg border p-2 text-center font-normal tracking-wider shadow-md shadow-cyan-500/20"
@@ -33,7 +34,7 @@ const HeroTitle = () => {
           <p>Tailwindcss v.4 ready</p>
         </motion.div>
 
-        <h1 className="mb-8 text-4xl font-medium tracking-tight text-gray-600 md:text-6xl dark:text-gray-50">
+        <h1 className="mb-8 text-3xl font-medium tracking-tight text-gray-600 md:text-5xl dark:text-gray-50">
           <motion.span
             className="inline-block bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent dark:from-white dark:to-gray-300"
             transition={transition}
@@ -49,7 +50,7 @@ const HeroTitle = () => {
         >
           {heroSubText}
         </motion.p>
-        <div className="flex items-center justify-center gap-6 align-middle">
+        <div className="items-left flex flex-wrap items-center justify-start gap-6 align-middle">
           <motion.div transition={transition} variants={variants}>
             <Button variant="secondary" className="font-bold" asChild>
               <Link href="/docs"> View Docs</Link>
@@ -62,6 +63,11 @@ const HeroTitle = () => {
                 <ArrowRight className="ml-2 size-5 transition-transform group-hover/arrow:translate-x-1" />
               </Link>
             </Button>
+          </motion.div>
+          <motion.div transition={transition} variants={variants}>
+            <p>
+              100% free and <span className="font-semibold">Open Source</span>
+            </p>
           </motion.div>
         </div>
       </motion.div>
@@ -101,20 +107,15 @@ export function HeroSection() {
     //   </div>
     // </div>
     <>
-      <section className="relative border-0 border-b border-zinc-800 px-4">
-        <div className="absolute top-0 right-0 bottom-0 left-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
-        <div className="mx-auto grid place-items-center gap-8 py-20 md:py-32 lg:max-w-screen-xl">
-          <div className="relative z-20 max-w-screen-md space-y-8 text-center">
+      <section className="relative rounded-xl px-4 md:px-0">
+        <div className="absolute top-0 right-0 bottom-0 left-0 rounded-xl bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
+        <div className="place-items-left mx-auto grid gap-8 py-6 md:py-12">
+          <div className="relative z-20 max-w-screen-md space-y-8 text-left">
             <HeroTitle />
           </div>
-
-          <div className="group relative mt-14">
-            {/* <div className="z-20">
-              <ComponentsShowcase />
-            </div> */}
-            {/* <div className="bg-primary/50 absolute top-2 left-1/2 z-10 mx-auto h-24 w-[90%] -translate-x-1/2 transform rounded-full blur-3xl lg:-top-8 lg:h-80" /> */}
-          </div>
         </div>
+        {/* 
+        <ComponentsShowcase /> */}
       </section>
     </>
   );

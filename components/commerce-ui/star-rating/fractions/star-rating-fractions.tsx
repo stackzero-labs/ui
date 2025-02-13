@@ -4,6 +4,11 @@ import { cn } from "@/lib/utils";
 import { Star } from "lucide-react";
 import * as React from "react";
 
+// Add ID generator outside component to maintain counter
+let nextId = 0;
+const generateStarIds = (count: number) =>
+  Array.from({ length: count }, () => `star-${nextId++}`);
+
 interface StarRatingBasicProps {
   value: number;
   onChange?: (value: number) => void;
@@ -57,11 +62,8 @@ const StarRating_Fractions = ({
   value,
 }: StarRatingBasicProps) => {
   const [hoverRating, setHoverRating] = React.useState<number | null>(null);
-
-  // Generate a unique ID for this component instance
-  const componentId = React.useRef(
-    `star-rating-${Math.random().toString(36).substr(2, 9)}`
-  );
+  // Generate stable IDs on component mount
+  const [starIds] = React.useState(() => generateStarIds(maxStars));
 
   const calculateRating = React.useCallback(
     (index: number, event: React.MouseEvent<SVGElement>) => {
@@ -117,49 +119,41 @@ const StarRating_Fractions = ({
 
       return {
         color: color,
-        fill: `url(#${componentId.current}-star-fill-${index})`,
+        fill: `url(#${starIds[index]})`,
       } as React.CSSProperties;
     },
-    [readOnly, hoverRating, value, color]
+    [readOnly, hoverRating, value, color, starIds]
   );
 
-  const gradientDefs = React.useMemo(() => {
-    return Array.from({ length: maxStars }).map((_, index) => {
-      const ratingToUse =
-        !readOnly && hoverRating !== null ? hoverRating : value;
-      const difference = ratingToUse - index;
-      let percentage = 0;
+  const renderGradientDefs = () => {
+    const ratingToUse = !readOnly && hoverRating !== null ? hoverRating : value;
+    const partialStarIndex = Math.floor(ratingToUse);
+    const partialFill = (ratingToUse % 1) * 100;
 
-      if (difference > 0) {
-        if (difference >= 1) {
-          percentage = 100;
-        } else {
-          percentage = difference * 100;
-        }
-      }
-
+    // Only create gradient for partial star
+    if (partialFill > 0) {
       return (
         <linearGradient
-          key={index}
-          id={`${componentId.current}-star-fill-${index}`}
+          id={starIds[partialStarIndex]}
           x1="0%"
           y1="0%"
           x2="100%"
           y2="0%"
         >
-          <stop offset={`${percentage}%`} stopColor={color} />
-          <stop offset={`${percentage}%`} stopColor="transparent" />
+          <stop offset={`${partialFill}%`} stopColor={color} />
+          <stop offset={`${partialFill}%`} stopColor="transparent" />
         </linearGradient>
       );
-    });
-  }, [maxStars, readOnly, hoverRating, value, color]);
+    }
+    return null;
+  };
 
-  const stars = React.useMemo(() => {
+  const renderStars = () => {
     return Array.from({ length: maxStars }).map((_, index) => {
       const style = getStarStyle(index);
       return (
         <StarIcon
-          key={index}
+          key={starIds[index]}
           index={index}
           style={style}
           iconSize={iconSize}
@@ -169,14 +163,7 @@ const StarRating_Fractions = ({
         />
       );
     });
-  }, [
-    maxStars,
-    getStarStyle,
-    iconSize,
-    handleStarClick,
-    handleStarHover,
-    readOnly,
-  ]);
+  };
 
   return (
     <div
@@ -184,11 +171,11 @@ const StarRating_Fractions = ({
       onMouseLeave={handleMouseLeave}
     >
       <svg width="0" height="0" style={{ position: "absolute" }}>
-        <defs>{gradientDefs}</defs>
+        <defs>{renderGradientDefs()}</defs>
       </svg>
-      {stars}
+      {renderStars()}
     </div>
   );
 };
 
-export default React.memo(StarRating_Fractions);
+export default StarRating_Fractions;
