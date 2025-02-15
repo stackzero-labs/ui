@@ -5,12 +5,17 @@ import { Button } from "../ui/button";
 import { Icons } from "../ui/icons";
 import Link from "next/link";
 import ComponentsShowcase from "./components-showcase";
+import { LineShadowText } from "../magicui/line-shadow-text";
+import { useTheme } from "next-themes";
 
 const heroText = "Build commerce sites and apps faster than ever";
 const heroSubText =
-  "Reusable components that you can copy and paste into your react projects";
+  "Copy-paste components, blocks and examples that you can use in your next e-commerce project.";
 
 const HeroTitle = () => {
+  const theme = useTheme();
+  const shadowColor = theme.resolvedTheme === "dark" ? "white" : "black";
+
   const transition = { duration: 1, ease: [0.25, 0.1, 0.25, 1] };
   const words = heroText.split(" ");
   const variants = {
@@ -19,58 +24,48 @@ const HeroTitle = () => {
   };
   return (
     <>
-      <motion.div
-        initial="hidden"
-        whileInView="visible"
-        transition={{ staggerChildren: 0.08 }}
-        className="items-left flex flex-col"
-      >
-        <motion.div
-          className="text-muted-foreground bg-background text-md mb-8 flex w-fit flex-row items-center gap-2 rounded-lg border p-2 text-center font-normal tracking-wider shadow-md shadow-cyan-500/20"
-          transition={transition}
-          variants={variants}
-        >
+      <div className="items-left flex flex-col">
+        <div className="text-muted-foreground bg-background text-md mb-8 flex w-fit flex-row items-center gap-2 rounded-lg border p-2 text-center font-normal tracking-wider shadow-md shadow-cyan-500/20">
           <Icons.tailwind className="h-4 w-4" />
           <p>Tailwindcss v.4 ready</p>
-        </motion.div>
+        </div>
 
-        <h1 className="mb-8 text-3xl font-medium tracking-tight text-gray-600 md:text-5xl dark:text-gray-50">
-          <motion.span
-            className="inline-block bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent dark:from-white dark:to-gray-300"
-            transition={transition}
-            variants={variants}
-          >
-            {words.join(" ")}
-          </motion.span>
+        <h1 className="mb-4 text-4xl leading-none font-semibold tracking-tighter text-balance sm:text-5xl md:text-6xl lg:text-7xl">
+          Build{" "}
+          <span className="bg-gradient-to-r from-violet-500 to-teal-500 bg-clip-text text-transparent">
+            commerce
+          </span>{" "}
+          sites and apps
+          <LineShadowText className="italic" shadowColor={shadowColor}>
+            faster
+          </LineShadowText>
         </h1>
-        <motion.p
-          className="text-muted-foreground mb-8 text-xl font-light"
-          transition={transition}
-          variants={variants}
-        >
-          {heroSubText}
-        </motion.p>
+
+        <p className="text-muted-foreground mb-8 text-xl font-light text-balance">
+          Copy-paste components and blocks that you can use in your next
+          e-commerce project.
+        </p>
         <div className="items-left flex flex-wrap items-center justify-start gap-6 align-middle">
-          <motion.div transition={transition} variants={variants}>
+          <div>
             <Button variant="secondary" className="font-bold" asChild>
-              <Link href="/docs"> View Docs</Link>
+              <Link href="/docs"> Get started</Link>
             </Button>
-          </motion.div>
-          <motion.div transition={transition} variants={variants}>
+          </div>
+          <div>
             <Button className="group/arrow font-bold" asChild>
               <Link href="/docs/components/rating-star/basic">
-                View Docs
+                Browse Components
                 <ArrowRight className="ml-2 size-5 transition-transform group-hover/arrow:translate-x-1" />
               </Link>
             </Button>
-          </motion.div>
-          <motion.div transition={transition} variants={variants}>
+          </div>
+          <div>
             <p>
               100% free and <span className="font-semibold">Open Source</span>
             </p>
-          </motion.div>
+          </div>
         </div>
-      </motion.div>
+      </div>
     </>
   );
 };
@@ -109,13 +104,13 @@ export function HeroSection() {
     <>
       <section className="relative rounded-xl px-4 md:px-0">
         <div className="absolute top-0 right-0 bottom-0 left-0 rounded-xl bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
-        <div className="place-items-left mx-auto grid gap-8 py-6 md:py-12">
+        <div className="place-items-left mx-auto my-6 grid gap-8 py-6 md:py-12">
           <div className="relative z-20 max-w-screen-md space-y-8 text-left">
             <HeroTitle />
           </div>
         </div>
-        {/* 
-        <ComponentsShowcase /> */}
+
+        <ComponentsShowcase />
       </section>
     </>
   );

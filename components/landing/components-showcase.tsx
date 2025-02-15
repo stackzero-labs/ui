@@ -4,6 +4,7 @@ import { useState } from "react";
 import ProductCard_01 from "../commerce-ui/blocks/product-cards/product-cards-01";
 import FaceRating_Basic from "../commerce-ui/face-rating/basic/face-rating-basic";
 import StarRatingFractions from "../commerce-ui/star-rating/fractions/star-rating-fractions";
+import Review_01 from "../commerce-ui/blocks/reviews/review-01";
 
 function ComponentsShowcase() {
   const [faceRatingValue, setFaceRatingValue] = useState(4);
@@ -37,7 +38,7 @@ function ComponentsShowcase() {
             <ProductCard_01 />
           </div>
           <div>
-            <ProductCard_01 />
+            <Review_01 />
           </div>
         </div>
       </div>
@@ -141,7 +142,12 @@ const StarRating2 = () => {
 
   return (
     <>
-      <StarRatingFractions value={rating} onChange={setRating} maxStars={5} />
+      <StarRatingFractions
+        value={rating}
+        onChange={setRating}
+        maxStars={5}
+        iconSize={36}
+      />
       <p>({rating})</p>
     </>
   );
@@ -152,12 +158,7 @@ const StarRating3 = () => {
 
   return (
     <>
-      <StarRatingFractions
-        value={rating}
-        onChange={setRating}
-        maxStars={10}
-        iconSize={36}
-      />
+      <StarRatingFractions value={rating} onChange={setRating} maxStars={10} />
       <p>({rating})</p>
     </>
   );
