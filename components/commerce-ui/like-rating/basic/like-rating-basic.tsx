@@ -13,24 +13,33 @@ interface LikeRatingBasicProps {
   /**
    * Callback fired when the rating changes
    */
-  onChange: (value: Rating) => void;
+  onChange?: (value: Rating) => void;
   /**
    * Optional CSS class to add to the container
    */
   className?: string;
+  /**
+   * If true, the rating cannot be changed
+   */
+  readOnly?: boolean;
 }
 
 const LikeRating_Basic = ({
   className,
   onChange,
   value,
+  readOnly = false,
 }: LikeRatingBasicProps) => {
   const handleLike = () => {
-    onChange(value === "like" ? null : "like");
+    if (!readOnly) {
+      onChange?.(value === "like" ? null : "like");
+    }
   };
 
   const handleDislike = () => {
-    onChange(value === "dislike" ? null : "dislike");
+    if (!readOnly) {
+      onChange?.(value === "dislike" ? null : "dislike");
+    }
   };
 
   return (
@@ -43,12 +52,14 @@ const LikeRating_Basic = ({
       <Button
         className={cn(
           "rounded-none shadow-none first:rounded-s-lg last:rounded-e-lg focus-visible:z-10",
-          value === "like" && "text-[#009e42]"
+          value === "like" && "text-[#009e42]",
+          readOnly && "cursor-default"
         )}
         variant="outline"
         size="icon"
         aria-label="Like"
         onClick={handleLike}
+        disabled={readOnly}
       >
         <ThumbsUp
           size={16}
@@ -60,12 +71,14 @@ const LikeRating_Basic = ({
       <Button
         className={cn(
           "rounded-none shadow-none first:rounded-s-lg last:rounded-e-lg focus-visible:z-10",
-          value === "dislike" && "text-[#a60021]"
+          value === "dislike" && "text-[#a60021]",
+          readOnly && "cursor-default"
         )}
         variant="outline"
         size="icon"
         aria-label="Dislike"
         onClick={handleDislike}
+        disabled={readOnly}
       >
         <ThumbsDown
           size={16}

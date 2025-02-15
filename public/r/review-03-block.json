@@ -1,0 +1,20 @@
+{
+  "name": "review-03-block",
+  "type": "registry:block",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "button",
+    "https://ui.stackzero.co/r/star-rating-fractions",
+    "https://ui.stackzero.co/r/like-rating-basic"
+  ],
+  "files": [
+    {
+      "type": "registry:block",
+      "content": "\"use client\";\n\nimport { Star } from \"lucide-react\";\nimport { Button } from \"@/components/ui/button\";\nimport StarRating from \"@/components/commerce-ui/star-rating-basic\";\nimport { useState } from \"react\";\nimport LikeRating, {\n  Rating,\n} from \"@/components/commerce-ui/like-rating-basic\";\n\nfunction Review_03() {\n  const rating = 5;\n  const [isExpanded, setIsExpanded] = useState(false);\n  const [likeRating, setLikeRating] = useState<Rating>(\"like\");\n\n  return (\n    <div className=\"items-left flex w-full flex-col gap-6 rounded-lg border px-6 py-4\">\n      <div className=\"flex flex-row flex-wrap items-end justify-between gap-4\">\n        <div className=\"flex flex-row items-end justify-between gap-4\">\n          <img\n            src=\"https://docs.material-tailwind.com/img/face-2.jpg\"\n            alt=\"avatar\"\n            className=\"relative inline-block h-12 w-12 !rounded-full object-cover object-center\"\n          />\n          <div>\n            <p className=\"text-sm font-semibold\">Adam Smith</p>\n            <p className=\"font-base text-muted-foreground text-sm\">\n              CEO ACME Inc.\n            </p>\n          </div>\n        </div>\n\n        <div className=\"text-muted-foreground max-w-[15ch] grow-0 text-sm\">\n          <span className=\"font-semibold\">11 people </span>found this helpful\n        </div>\n      </div>\n      <div className=\"flex flex-col gap-4\">\n        <StarRating value={rating} readOnly />\n        <div>\n          <h2 className=\"mb-2 text-xl font-semibold\">\n            Wished I bought this thing sooner!!\n          </h2>\n          <p\n            className={`text-muted-foreground ${isExpanded ? \"\" : \"line-clamp-3\"} text-ellipsis`}\n          >\n            I recently got my hands on the [Backpack Name], and after using it\n            for a while, I can confidently say it is a solid choice for\n            travelling. Verdict: If you are looking for an amazing backpack that\n            balances comfort, organization, and durability, this is a great\n            investment. Would definitely recommend it to anyone in need of a\n            reliable bag! 🎒💼\n          </p>\n        </div>\n        <Button\n          className=\"px-0\"\n          variant=\"link\"\n          onClick={() => setIsExpanded(!isExpanded)}\n        >\n          {isExpanded ? \"Show less\" : \"Show more\"}\n        </Button>\n      </div>\n\n      <div>\n        <LikeRating\n          value={likeRating}\n          onChange={(rating) => setLikeRating(rating)}\n        />\n      </div>\n    </div>\n  );\n}\n\nexport default Review_03;\n\ninterface RatingLevelProps {\n  level: number;\n  value: number;\n  total: number;\n}\n\nconst RatingLevel = ({ level, value, total }: RatingLevelProps) => {\n  return (\n    <div>\n      <div className=\"flex flex-row items-center gap-4\">\n        <div className=\"flex flex-row items-center gap-2\">\n          <Star size=\"16px\" fill=\"gray\" stroke=\"gray\" />\n          <p className=\"text-sm\">{level}</p>\n        </div>\n\n        <div className=\"grow\">\n          <div className=\"h-2.5 w-full rounded-full bg-gray-200 dark:bg-gray-700\">\n            <div\n              className=\"width: 45% h-2.5 rounded-full\"\n              style={{ width: `${value}%`, backgroundColor: \"#e4c616\" }}\n            ></div>\n          </div>\n        </div>\n        <div className=\"min-w-[80px]\">\n          <p className=\"text-sm\">\n            {value}% <span className=\"text-muted-foreground\">({total})</span>\n          </p>\n        </div>\n      </div>\n    </div>\n  );\n};\n",
+      "path": "/components/commerce-ui/blocks/reviews/review-03.tsx",
+      "target": "/components/commerce-ui/review-03.tsx"
+    }
+  ]
+}

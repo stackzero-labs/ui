@@ -67,4 +67,73 @@ export const blocks: Registry = [
         )
     ),
   },
+  {
+    name: "review-01-block",
+    type: "registry:block",
+    dependencies: ["lucide-react"],
+    registryDependencies: ["https://ui.stackzero.co/r/star-rating-basic"],
+    files: [
+      {
+        path: "@/components/commerce-ui/blocks/reviews/review-01.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/commerce-ui/blocks/reviews/review-01")
+    ),
+  },
+  {
+    name: "review-02-block",
+    type: "registry:block",
+    dependencies: ["lucide-react"],
+    registryDependencies: [
+      "button",
+      "https://ui.stackzero.co/r/star-rating-fractions",
+    ],
+    files: [
+      {
+        path: "@/components/commerce-ui/blocks/reviews/review-02.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/commerce-ui/blocks/reviews/review-02")
+    ),
+  },
+
+  {
+    name: "review-03-block",
+    type: "registry:block",
+    dependencies: ["lucide-react"],
+    registryDependencies: [
+      "button",
+      "https://ui.stackzero.co/r/star-rating-fractions",
+      "https://ui.stackzero.co/r/like-rating-basic",
+    ],
+    files: [
+      {
+        path: "@/components/commerce-ui/blocks/reviews/review-03.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/commerce-ui/blocks/reviews/review-03")
+    ),
+  },
+
+  {
+    name: "review-04-block",
+    type: "registry:block",
+    dependencies: ["lucide-react"],
+    registryDependencies: ["https://ui.stackzero.co/r/star-rating-fractions"],
+    files: [
+      {
+        path: "@/components/commerce-ui/blocks/reviews/review-04.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/commerce-ui/blocks/reviews/review-04")
+    ),
+  },
 ];

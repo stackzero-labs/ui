@@ -58,7 +58,7 @@ export function BlogTitle({
   name: string;
 }) {
   const pinned = useHeadroom({ fixedAt: 120 });
-  const [scroll, scrollTo] = useWindowScroll();
+  const [_scroll, scrollTo] = useWindowScroll();
 
   const { inViewport, ref } = useInViewport();
   const isMobile = useIsMobile();

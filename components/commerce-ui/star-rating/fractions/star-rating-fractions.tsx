@@ -54,7 +54,7 @@ StarIcon.displayName = "StarIcon";
 
 const StarRating_Fractions = ({
   className,
-  color = "#FFD700",
+  color = "#e4c616",
   iconSize = 24,
   maxStars = 5,
   onChange,
