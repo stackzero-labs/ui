@@ -3,11 +3,9 @@ import PriceFormat_Basic from "../../price-format/basic/price-format-basic";
 import { Button } from "@/components/ui/button";
 
 const images = [
-  "https://prd.place/400/600?id=37",
-  "https://prd.place/400/600?id=38",
-  "https://prd.place/400/600?id=39",
-  "https://prd.place/800/1200?id=40",
-  "https://prd.place/800/300?id=41",
+  "/placeholders/headphone-1.jpg",
+  "/placeholders/headphone-1.jpg",
+  "/placeholders/headphone-1.jpg",
 ];
 
 function ProductCard_01() {
