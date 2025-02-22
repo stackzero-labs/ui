@@ -33,7 +33,7 @@ export default async function PreviewPage({
       <ComponentLoader name={componentName} hasReTrigger={false} />
     ) : (
       <>
-        <header className="fixed left-0 top-0 z-10 flex w-full items-center justify-between gap-4 border-b border-neutral-800 bg-neutral-950 p-4 shadow-md">
+        <header className="fixed top-0 left-0 z-10 flex w-full items-center justify-between gap-4 border-b border-neutral-800 bg-neutral-950 p-4 shadow-md">
           <div>
             <Button asChild size="sm" variant="default">
               <Link href={`/docs`}>Back to Docs</Link>
@@ -44,7 +44,7 @@ export default async function PreviewPage({
             <p className="font-mono">{componentName}</p>
           </div>
 
-          <p>Stackzero UI</p>
+          <p>Commerce UI</p>
         </header>
         <div className="h-screen bg-neutral-950" style={{ height: "100vh" }}>
           <div className="flex h-full items-center justify-center">
