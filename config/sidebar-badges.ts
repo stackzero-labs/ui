@@ -17,6 +17,10 @@ export const sidebarBadges = [
     alpha: true,
   },
   {
+    page: "Reviews",
+    alpha: true,
+  },
+  {
     page: "Variant Selector",
     isNew: true,
   },

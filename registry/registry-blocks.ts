@@ -6,9 +6,7 @@ export const blocks: Registry = [
     name: "product-card-01-block",
     type: "registry:block",
     dependencies: ["lucide-react"],
-    registryDependencies: [
-      "https://ui.stackzero.co/r/image-carousel-horizontal.json",
-    ],
+    registryDependencies: ["https://ui.stackzero.co/r/image-viewer-basic.json"],
     files: [
       {
         path: "@/components/commerce-ui/blocks/product-cards/product-cards-01.tsx",
@@ -29,7 +27,7 @@ export const blocks: Registry = [
     dependencies: ["lucide-react"],
     registryDependencies: [
       "https://ui.stackzero.co/r/star-rating-fractions.json",
-      "https://ui.stackzero.co/r/image-carousel-horizontal.json",
+      "https://ui.stackzero.co/r/image-viewer-basic.json",
     ],
     files: [
       {

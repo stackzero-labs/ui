@@ -1,26 +1,18 @@
-import ImageCarousel_Horizontal from "@/components/commerce-ui/image-carousel/horizontal/image-carousel-horizontal";
-import PriceFormat_Basic from "../../price-format/basic/price-format-basic";
+import ImageViewer from "@/components/commerce-ui/image-viewer/basic/image-viewer-basic";
+import PriceFormat from "@/components/commerce-ui/price-format/basic/price-format-basic";
 import { Button } from "@/components/ui/button";
 
-const images = [
-  "/placeholders/headphone-1.jpg",
-  "/placeholders/headphone-1.jpg",
-  "/placeholders/headphone-1.jpg",
-];
+const IMAGE_URL =
+  "https://raw.githubusercontent.com/stackzero-labs/ui/refs/heads/main/public/placeholders/headphone-1.jpg";
 
 function ProductCard_01() {
   return (
-    <div className="flex w-full flex-col gap-4 rounded-lg border p-2">
+    <div className="flex w-[350px] flex-col gap-4 rounded-lg border p-2">
       <div className="relative w-full">
         <div className="absolute top-2 left-2 z-10 w-fit rounded-lg bg-teal-500/80 p-2">
           <p className="text-xs font-semibold">20% OFF</p>
         </div>
-        <ImageCarousel_Horizontal
-          images={images}
-          imageFit="contain"
-          showThumbs={false}
-          showControls={true}
-        />
+        <ImageViewer imageUrl={IMAGE_URL} />
       </div>
 
       <div>
@@ -28,7 +20,7 @@ function ProductCard_01() {
         <p className="text-muted-foreground text-sm">Shipped in 2-3 days</p>
       </div>
 
-      <PriceFormat_Basic
+      <PriceFormat
         prefix="$"
         value={98.96}
         className="text-2xl font-semibold"

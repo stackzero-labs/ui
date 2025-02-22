@@ -1,16 +1,11 @@
-import ImageCarousel_Horizontal from "@/components/commerce-ui/image-carousel/horizontal/image-carousel-horizontal";
-import PriceFormat_Basic from "@/components/commerce-ui/price-format/basic/price-format-basic";
+import ImageViewer from "@/components/commerce-ui/image-viewer/basic/image-viewer-basic";
+import PriceFormat from "@/components/commerce-ui/price-format/basic/price-format-basic";
+import StarRatingFractions from "@/components/commerce-ui/star-rating/fractions/star-rating-fractions";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import StarRatingFractions from "@/components/commerce-ui/star-rating/fractions/star-rating-fractions";
 
-const images = [
-  "https://prd.place/400/600?id=37",
-  "https://prd.place/400/600?id=38",
-  "https://prd.place/400/600?id=39",
-  "https://prd.place/800/1200?id=40",
-  "https://prd.place/800/300?id=41",
-];
+const IMAGE_URL =
+  "https://raw.githubusercontent.com/stackzero-labs/ui/refs/heads/main/public/placeholders/headphone-1.jpg";
 
 function ProductCard_02() {
   return (
@@ -19,13 +14,7 @@ function ProductCard_02() {
         <div className="absolute top-2 left-2 z-10 w-fit rounded-lg bg-purple-500/80 p-2">
           <p className="text-xs font-semibold">20% OFF</p>
         </div>
-        <ImageCarousel_Horizontal
-          images={images}
-          imageFit="contain"
-          showThumbs={true}
-          thumbPosition="bottom"
-          showControls={true}
-        />
+        <ImageViewer imageUrl={IMAGE_URL} />
       </div>
 
       <div className="col-span-4 flex flex-col gap-6 md:col-span-2">
@@ -63,7 +52,7 @@ function ProductCard_02() {
           </p>
         </div>
 
-        <PriceFormat_Basic
+        <PriceFormat
           prefix="$"
           value={39.59}
           className="text-4xl font-semibold"

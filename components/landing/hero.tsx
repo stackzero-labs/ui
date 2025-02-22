@@ -19,7 +19,7 @@ const HeroTitle = () => {
           <span className="bg-gradient-to-r from-violet-500 to-teal-500 bg-clip-text text-transparent">
             commerce
           </span>{" "}
-          sites and apps
+          sites and apps{" "}
           <LineShadowText className="italic" shadowColor={shadowColor}>
             faster
           </LineShadowText>

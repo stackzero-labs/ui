@@ -13,6 +13,9 @@ import {
 import { X } from "lucide-react";
 import { TransformComponent, TransformWrapper } from "react-zoom-pan-pinch";
 
+const DEFAULT_PLACEHOLDER_URL =
+  "https://raw.githubusercontent.com/stackzero-labs/ui/refs/heads/main/public/placeholders/headphone-2.jpg";
+
 interface ImageViewerProps {
   className?: string;
   classNameImageViewer?: string;
@@ -20,6 +23,8 @@ interface ImageViewerProps {
   imageTitle?: string;
   imageUrl: string;
   thumbnailUrl?: string;
+  placeholderUrl?: string;
+  Placeholder?: React.ComponentType<{ className?: string }>;
 }
 
 const ImageViewer_Basic = ({
@@ -29,7 +34,13 @@ const ImageViewer_Basic = ({
   imageTitle,
   imageUrl,
   thumbnailUrl,
+  placeholderUrl = DEFAULT_PLACEHOLDER_URL,
 }: ImageViewerProps) => {
+  const handleImgError = (event: React.SyntheticEvent<HTMLImageElement>) => {
+    console.error("Image failed to load", event.currentTarget.src);
+    event.currentTarget.src = placeholderUrl;
+  };
+
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -37,13 +48,14 @@ const ImageViewer_Basic = ({
           {/* You can swap this with your preferred image optization technique, like using  next/image */}
           <img
             src={thumbnailUrl || imageUrl}
-            alt={`${imageTitle} - Preview`}
-            width={300}
+            alt={`${imageTitle ?? "Image"} - Preview`}
+            width="100%"
             height={300}
             className={cn(
               "rounded-lg object-cover transition-opacity hover:opacity-90",
               classNameThumbnailViewer
             )}
+            onError={handleImgError}
           />
         </div>
       </DialogTrigger>
@@ -63,8 +75,9 @@ const ImageViewer_Basic = ({
                     {/* You can swap this with your preferred image optization technique, like using  next/image */}
                     <img
                       src={imageUrl}
-                      alt="Full size"
+                      alt={`${imageTitle ?? "Image"} - Full`}
                       className={classNameImageViewer}
+                      onError={handleImgError}
                     />
                   </TransformComponent>
                 </>

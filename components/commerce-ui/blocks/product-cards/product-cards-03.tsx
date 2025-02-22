@@ -2,17 +2,23 @@ import ImageViewer from "@/components/commerce-ui/image-viewer/basic/image-viewe
 import PriceFormatSale from "@/components/commerce-ui/price-format/sale/price-format-sale";
 import { Button } from "@/components/ui/button";
 
+const IMAGE_URL =
+  "https://raw.githubusercontent.com/stackzero-labs/ui/refs/heads/main/public/placeholders/headphone-1.jpg";
+
 function ProductCard_03() {
   return (
-    <div className="flex w-[250px] flex-col gap-4 rounded-lg border p-0">
+    <div className="flex w-[250px] flex-col rounded-lg border p-0">
       <div className="w-full rounded-tl-lg rounded-tr-lg bg-gray-500/50 p-2">
         <p className="text-center text-xs font-semibold">NEW COLLECTION</p>
       </div>
       <div className="relative w-full">
-        <ImageViewer imageUrl="https://prd.place/1920/1080?id=37" />
+        <ImageViewer
+          imageUrl={IMAGE_URL}
+          classNameThumbnailViewer="rounded-none"
+        />
       </div>
 
-      <div className="flex flex-col gap-4 p-2">
+      <div className="mt-2 flex flex-col gap-4 p-2">
         <div>
           <p className="text-xl font-semibold">Wireless headset</p>
         </div>
