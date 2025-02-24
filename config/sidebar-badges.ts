@@ -15,10 +15,12 @@ export const sidebarBadges = [
   {
     page: "Product Cards",
     alpha: true,
+    count: 3,
   },
   {
     page: "Reviews",
     alpha: true,
+    count: 4,
   },
   {
     page: "Variant Selector",

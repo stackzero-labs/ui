@@ -7,6 +7,7 @@ import { GridPattern } from "../magicui/grid-pattern";
 import { LineShadowText } from "../magicui/line-shadow-text";
 import { Button } from "../ui/button";
 import { TechStatck } from "./tech-stack";
+import { Icons } from "../ui/icons";
 
 const HeroTitle = () => {
   const theme = useTheme();
@@ -80,7 +81,8 @@ const HeroTitle = () => {
 
         <div className="mt-10 flex flex-col items-center gap-4">
           <TechStatck />
-          <div className="text-muted-foreground bg-background text-md mb-8 flex w-fit flex-row items-center gap-2 rounded-full border p-2 px-6 text-center font-normal tracking-wider uppercase shadow-md shadow-cyan-500/20">
+          <div className="mb-8 flex w-fit flex-row items-center gap-2 rounded-full border border-cyan-500 bg-cyan-500/20 p-2 px-6 text-center text-sm font-normal tracking-wider uppercase shadow-md">
+            <Icons.tailwind className="h-6 w-6" />
             <p>Tailwindcss v.4 ready</p>
           </div>
         </div>

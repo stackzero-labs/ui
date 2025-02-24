@@ -266,6 +266,19 @@ export function SidebarItem({
       {icon ?? (props.external ? <ExternalLink /> : null)}
       {props.children}
 
+      {sidebarBadges.find((badge) => badge.page === name)?.count && (
+        <div className="flex items-center gap-2">
+          <Badge
+            variant="outline"
+            className="rounded-full border-gray-500/50 px-[0.3rem] text-sm"
+          >
+            <p className="text-mono text-xs text-gray-500">
+              +{sidebarBadges.find((badge) => badge.page === name)?.count}
+            </p>
+          </Badge>
+        </div>
+      )}
+
       {sidebarBadges.find((badge) => badge.page === name)?.isNew && (
         <div className="ms-auto flex items-center gap-2">
           <Badge

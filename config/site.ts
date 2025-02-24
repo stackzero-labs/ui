@@ -18,7 +18,7 @@ export const siteConfig = {
   ],
   links: {
     portfolio: "https://stackzero.co",
-    github: "https://github.com/stackzero-labs",
+    github: "https://github.com/stackzero-labs/ui",
   },
 };
 

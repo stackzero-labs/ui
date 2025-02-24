@@ -130,33 +130,33 @@ function ComponentsShowcase() {
 
       <div className="relative flex flex-col gap-4">
         <div className="grid w-full grid-cols-3 gap-4">
-          <div className="col-span-3 mx-auto flex min-h-[250px] w-full items-center justify-center space-y-4 rounded-lg border border-zinc-900 px-4 md:col-span-1 md:px-12">
+          <div className="col-span-3 mx-auto flex min-h-[250px] w-full items-center justify-center space-y-4 rounded-lg border px-4 md:col-span-1 md:px-12 dark:border-zinc-900">
             <StarRating1 />
           </div>
-          <div className="col-span-3 mx-auto flex min-h-[250px] w-full items-center justify-center space-y-4 rounded-lg border border-zinc-900 px-4 md:col-span-1 md:px-12">
+          <div className="col-span-3 mx-auto flex min-h-[250px] w-full items-center justify-center space-y-4 rounded-lg border px-4 md:col-span-1 md:px-12 dark:border-zinc-900">
             <StarRating2 />
           </div>
-          <div className="col-span-3 mx-auto flex min-h-[250px] w-full items-center justify-center space-y-4 rounded-lg border border-zinc-900 px-4 md:col-span-1 md:px-12">
+          <div className="col-span-3 mx-auto flex min-h-[250px] w-full items-center justify-center space-y-4 rounded-lg border px-4 md:col-span-1 md:px-12 dark:border-zinc-900">
             <StarRating3 />
           </div>
         </div>
 
         <div className="grid w-full grid-cols-2 gap-4">
-          <div className="col-span-2 mx-auto flex min-h-[500px] w-full items-center justify-center space-y-4 rounded-lg border border-zinc-900 px-4 py-4 md:col-span-1">
+          <div className="col-span-2 mx-auto flex min-h-[500px] w-full items-center justify-center space-y-4 rounded-lg border px-4 py-4 md:col-span-1 dark:border-zinc-900">
             <ProductCard_01 />
           </div>
-          <div className="col-span-2 mx-auto flex min-h-[500px] w-full flex-col items-center justify-center space-y-4 rounded-lg border border-zinc-900 px-4 py-4 md:col-span-1 md:px-12">
+          <div className="col-span-2 mx-auto flex min-h-[500px] w-full flex-col items-center justify-center space-y-4 rounded-lg border px-4 py-4 md:col-span-1 md:px-12 dark:border-zinc-900">
             <Review_01 />
           </div>
         </div>
-        <div className="col-span-2 mx-auto flex min-h-[600px] w-full items-center justify-center space-y-4 rounded-lg border border-zinc-900 px-4 py-4 md:col-span-1">
+        <div className="col-span-2 mx-auto flex min-h-[600px] w-full items-center justify-center space-y-4 rounded-lg border px-4 py-4 md:col-span-1 dark:border-zinc-900">
           <ProductCard_02 />
         </div>
         <div className="grid w-full grid-cols-2 gap-4">
-          <div className="col-span-2 mx-auto flex min-h-[700px] w-full items-center justify-center space-y-4 rounded-lg border border-zinc-900 px-4 py-4 md:col-span-1">
+          <div className="col-span-2 mx-auto flex min-h-[700px] w-full items-center justify-center space-y-4 rounded-lg border px-4 py-4 md:col-span-1 dark:border-zinc-900">
             <ProductCard_03 />
           </div>
-          <div className="col-span-2 mx-auto flex min-h-[500px] w-full flex-col items-center justify-center space-y-4 rounded-lg border border-zinc-900 px-4 md:col-span-1 md:px-12">
+          <div className="col-span-2 mx-auto flex min-h-[500px] w-full flex-col items-center justify-center space-y-4 rounded-lg border px-4 md:col-span-1 md:px-12 dark:border-zinc-900">
             <Review_02 />
           </div>
         </div>
