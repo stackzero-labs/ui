@@ -92,7 +92,7 @@ const HeroTitle = () => {
 export function HeroSection() {
   return (
     <section className="relative rounded-xl px-4 md:px-0">
-      <div className="absolute flex size-full h-[600px] items-center justify-center overflow-hidden [mask-image:radial-gradient(circle,#000_10%,transparent_80%)]">
+      <div className="absolute hidden size-full h-[600px] w-full items-center justify-center overflow-hidden [mask-image:radial-gradient(circle,#000_10%,transparent_80%)] md:flex">
         <GridPattern
           width={20}
           height={20}
