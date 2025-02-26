@@ -1,2 +1,2 @@
-commerceui
-A collection of modern, interactive, customizable UI components built with Shadcn & Tailwind CSS. Ready to make your next project faster and beautiful.
+stackzero/commerce-ui
+stackzero/commerce-ui is a collection of components to build e-commerce sites and commerce apps.
