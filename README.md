@@ -51,9 +51,11 @@
 
 ## About The Project
 
-[![stackzero/commerce-ui][product-screenshot]](https://raw.githubusercontent.com/stackzero-labs/ui/refs/heads/main/app/opengraph-image.jpg)
+  <a href="public/cover.jpeg">
+    <img src="public/cover.jpeg" alt="stackzero/commerce-ui" width="100%" height="auto">
+  </a>
 
-stackzero/commerce-ui is a collection of components to build e-commerce sites and commerce apps. It is built for React, Next.js, Tailwind CSS and shadcn/ui.
+**stackzero/commerce-ui** is a collection of components to build e-commerce sites and commerce apps. It is built for React, Next.js, Tailwind CSS and shadcn/ui.
 
 You can just copy and paste the components into your project and start building your e-commerce site. The components are built with Tailwind CSS and shadcn/ui.
 
