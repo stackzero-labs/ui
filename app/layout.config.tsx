@@ -9,7 +9,7 @@ export const linkItems: LinkItemType[] = [
   {
     items: [
       {
-        description: "Getting started with commerce-ui",
+        description: "Getting started with stackzero/commerce-ui",
         icon: <Album />,
         text: "Getting Started",
         url: "/docs",
@@ -32,10 +32,10 @@ export const linkItems: LinkItemType[] = [
     text: "Blog",
     url: "/blog",
   },
-  // {
-  //   children: <HeaderCustomLinks />,
-  //   type: "custom",
-  // },
+  {
+    children: <HeaderCustomLinks />,
+    type: "custom",
+  },
   {
     external: true,
     icon: (

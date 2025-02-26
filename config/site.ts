@@ -1,10 +1,10 @@
 export const siteConfig = {
   name: "commerce-ui",
-  creator: "@stackzero",
+  creator: "@stackzero-labs",
   url: process.env.NEXT_PUBLIC_APP_URL ?? "https://ui.stackzero.co",
   ogImage: "https://ui.stackzero.co/opengraph-image.png",
   description:
-    "commerce-ui is a set of components and hooks that can be used to build a custom storefront for your commerce site.",
+    "stackzero/commerce-ui is a set of components and hooks that can be used to build a custom storefront for your commerce site.",
   keywords: [
     "Next.js",
     "React",

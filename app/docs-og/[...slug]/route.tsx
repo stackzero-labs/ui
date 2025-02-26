@@ -4,7 +4,7 @@ import { metadataImage } from "@/lib/metadata";
 export const GET = metadataImage.createAPI((page) => {
   return generateOGImage({
     description: page.data.description,
-    site: "Commerce UI",
+    site: "stackzero/commerce-ui",
     title: page.data.title,
   });
 });

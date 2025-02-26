@@ -1,4 +1,5 @@
 import { getMDXComponents } from "@/components/docs/mdx-components";
+import { ShimmerButton } from "@/components/magicui/shimmer-button";
 import { metadataImage } from "@/lib/metadata";
 import { source } from "@/lib/source";
 import {
@@ -7,6 +8,9 @@ import {
   DocsPage,
   DocsTitle,
 } from "fumadocs-ui/page";
+import { ArrowUpRight } from "lucide-react";
+import Link from "next/link";
+
 import { notFound } from "next/navigation";
 const StackzeroApiCta = () => {
   return (
@@ -16,11 +20,22 @@ const StackzeroApiCta = () => {
         Create a fully functional commerce website or apps in minutes with the
         official API integration.
       </p>
-      {/* <ShimmerButton className="shadow-2xl">
-        <span className="whitespace-pre-wrap text-center text-sm font-medium leading-none tracking-tight text-white dark:from-white dark:to-slate-900/10 lg:text-lg">
-          Deploy now
-        </span>
-      </ShimmerButton> */}
+
+      <Link
+        className="flex items-center gap-2"
+        href="https://stackzero.co"
+        target="_blank"
+      >
+        <div className="group relative inline-flex items-center gap-2 rounded-lg bg-zinc-900 px-3 py-1 text-sm transition-colors dark:bg-zinc-100">
+          <div className="absolute inset-0 rounded-lg bg-linear-to-r from-indigo-500 via-purple-500 to-teal-500 opacity-60 blur-sm transition-opacity duration-500 group-hover:opacity-80" />
+          <div className="relative">
+            <span className="text-nowrap text-white dark:text-zinc-900">
+              Commerce API
+            </span>
+          </div>
+          <ArrowUpRight className="relative h-3.5 w-3.5 text-white/90 dark:text-zinc-900/90" />
+        </div>
+      </Link>
     </div>
   );
 };
@@ -39,7 +54,7 @@ export default async function Page(props: {
   return (
     <DocsPage
       tableOfContent={{
-        // footer: <StackzeroApiCta />,
+        footer: <StackzeroApiCta />,
         single: false,
         style: "clerk",
       }}
