@@ -4,14 +4,15 @@ import { Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import StarRating from "@/components/commerce-ui/star-rating/basic/star-rating-basic";
 import { useState } from "react";
-import LikeRating, {
-  Rating,
-} from "@/components/commerce-ui/like-rating/basic/like-rating-basic";
+import LikeRating from "@/components/commerce-ui/like-rating/basic/like-rating-basic";
 
 function Review_03() {
   const rating = 5;
   const [isExpanded, setIsExpanded] = useState(false);
-  const [likeRating, setLikeRating] = useState<Rating>("like");
+  const [likes, setLikes] = useState(11);
+  const [dislikes, setDislikes] = useState(1);
+  const [isLiked, setIsLiked] = useState(true);
+  const [isDisliked, setIsDisliked] = useState(false);
 
   return (
     <div className="items-left flex w-full flex-col gap-6 rounded-lg border px-6 py-4">
@@ -31,7 +32,8 @@ function Review_03() {
         </div>
 
         <div className="text-muted-foreground max-w-[15ch] grow-0 text-sm">
-          <span className="font-semibold">11 people </span>found this helpful
+          <span className="font-semibold">{likes} people </span>found this
+          helpful
         </div>
       </div>
       <div className="flex flex-col gap-4">
@@ -62,8 +64,16 @@ function Review_03() {
 
       <div>
         <LikeRating
-          value={likeRating}
-          onChange={(rating) => setLikeRating(rating)}
+          dislikes={dislikes}
+          isDisliked={isDisliked}
+          isLiked={isLiked}
+          likes={likes}
+          onRatingChange={(newState) => {
+            setLikes(newState.likes);
+            setDislikes(newState.dislikes);
+            setIsLiked(newState.isLiked);
+            setIsDisliked(newState.isDisliked);
+          }}
         />
       </div>
     </div>

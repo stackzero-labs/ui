@@ -3,90 +3,118 @@ import { cn } from "@/lib/utils";
 import { ThumbsDown, ThumbsUp } from "lucide-react";
 import * as React from "react";
 
-export type Rating = "like" | "dislike" | null;
-
 interface LikeRatingBasicProps {
-  /**
-   * Current rating value
-   */
-  value: Rating;
-  /**
-   * Callback fired when the rating changes
-   */
-  onChange?: (value: Rating) => void;
-  /**
-   * Optional CSS class to add to the container
-   */
+  likes: number;
+  dislikes: number;
+  isLiked: boolean;
+  isDisliked: boolean;
+  likeIncrement?: number;
+  dislikeIncrement?: number;
+  onRatingChange: (newState: {
+    likes: number;
+    dislikes: number;
+    isLiked: boolean;
+    isDisliked: boolean;
+  }) => void;
   className?: string;
-  /**
-   * If true, the rating cannot be changed
-   */
-  readOnly?: boolean;
 }
 
 const LikeRating_Basic = ({
   className,
-  onChange,
-  value,
-  readOnly = false,
+  likes = 0,
+  dislikes = 0,
+  isLiked,
+  isDisliked,
+  likeIncrement = 1,
+  dislikeIncrement = 1,
+  onRatingChange,
 }: LikeRatingBasicProps) => {
   const handleLike = () => {
-    if (!readOnly) {
-      onChange?.(value === "like" ? null : "like");
+    if (isLiked) {
+      // Undo like
+      onRatingChange({
+        isLiked: false,
+        isDisliked: false,
+        likes: likes - likeIncrement,
+        dislikes,
+      });
+    } else {
+      // Add like and remove dislike if exists
+      onRatingChange({
+        isLiked: true,
+        isDisliked: false,
+        likes: likes + likeIncrement,
+        dislikes: isDisliked ? dislikes - dislikeIncrement : dislikes,
+      });
     }
   };
 
   const handleDislike = () => {
-    if (!readOnly) {
-      onChange?.(value === "dislike" ? null : "dislike");
+    if (isDisliked) {
+      // Undo dislike
+      onRatingChange({
+        isLiked: false,
+        isDisliked: false,
+        likes,
+        dislikes: dislikes - dislikeIncrement,
+      });
+    } else {
+      // Add dislike and remove like if exists
+      onRatingChange({
+        isLiked: false,
+        isDisliked: true,
+        likes: isLiked ? likes - likeIncrement : likes,
+        dislikes: dislikes + dislikeIncrement,
+      });
     }
   };
+
+  const formatCount = (count: number) =>
+    count >= 1000 ? `${(count / 1000).toFixed(1)}K` : count.toLocaleString();
 
   return (
     <div
       className={cn(
-        "inline-flex -space-x-px rounded-lg shadow-xs shadow-black/5 rtl:space-x-reverse",
+        "inline-flex cursor-pointer -space-x-px rounded-lg shadow-xs shadow-black/5 rtl:space-x-reverse",
         className
       )}
     >
-      <Button
+      <div
         className={cn(
-          "rounded-none shadow-none first:rounded-s-lg last:rounded-e-lg focus-visible:z-10",
-          value === "like" && "text-[#009e42]",
-          readOnly && "cursor-default"
+          "flex min-w-[4rem] flex-row items-center justify-center rounded-none border px-2 py-1 font-mono shadow-none first:rounded-s-lg last:rounded-e-lg hover:bg-[#009e42]/20 focus-visible:z-10",
+          isLiked && "bg-[#009e42]/20 text-white"
         )}
-        variant="outline"
-        size="icon"
-        aria-label="Like"
         onClick={handleLike}
-        disabled={readOnly}
+        aria-label="Like"
+        aria-labelledby="like-count"
+        title="Like"
       >
         <ThumbsUp
           size={16}
           strokeWidth={2}
           aria-hidden="true"
-          className={cn(value === "like" && "fill-[#009e42]")}
+          className={cn("mr-2", isLiked && "text-[#009e42]")}
         />
-      </Button>
-      <Button
+        {formatCount(likes)}
+      </div>
+      <div
         className={cn(
-          "rounded-none shadow-none first:rounded-s-lg last:rounded-e-lg focus-visible:z-10",
-          value === "dislike" && "text-[#a60021]",
-          readOnly && "cursor-default"
+          "flex min-w-[4rem] flex-row items-center justify-center rounded-none border px-2 py-1 font-mono shadow-none first:rounded-s-lg last:rounded-e-lg hover:bg-[#a60021]/20 focus-visible:z-10",
+          isDisliked && "bg-[#a60021]/20 text-white"
         )}
-        variant="outline"
-        size="icon"
         aria-label="Dislike"
+        aria-labelledby="dislike-count"
+        title="Dislike"
         onClick={handleDislike}
-        disabled={readOnly}
       >
         <ThumbsDown
           size={16}
           strokeWidth={2}
           aria-hidden="true"
-          className={cn(value === "dislike" && "fill-[#a60021]")}
+          className={cn("mr-2", isDisliked && "text-[#a60021]")}
         />
-      </Button>
+        {formatCount(dislikes)}
+      </div>
     </div>
   );
 };

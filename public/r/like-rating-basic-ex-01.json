@@ -10,7 +10,7 @@
   "files": [
     {
       "type": "registry:example",
-      "content": "\"use client\";\n\nimport { type Rating } from \"@/components/commerce-ui/like-rating-basic\";\nimport LikeRatingBasic from \"@/components/commerce-ui/like-rating-basic\";\nimport { useState } from \"react\";\n\nexport default function LikeRating_Basic_Ex_01() {\n  const [rating, setRating] = useState<Rating>(null);\n  return (\n    <div className=\"flex w-full flex-col items-center gap-4\">\n      <LikeRatingBasic value={rating} onChange={setRating} />\n      <p>Rating: {rating ?? \"none\"}</p>\n    </div>\n  );\n}\n",
+      "content": "\"use client\";\n\nimport LikeRatingBasic from \"@/components/commerce-ui/like-rating-basic\";\nimport { useState } from \"react\";\n\nexport default function LikeRating_Basic_Ex_01() {\n  const [likes, setLikes] = useState(1100);\n  const [dislikes, setDislikes] = useState(260);\n  const [isLiked, setIsLiked] = useState(true);\n  const [isDisliked, setIsDisliked] = useState(false);\n\n  return (\n    <div className=\"flex w-full flex-col items-center gap-4\">\n      <LikeRatingBasic\n        dislikes={dislikes}\n        isDisliked={isDisliked}\n        isLiked={isLiked}\n        likes={likes}\n        onRatingChange={(newState) => {\n          setLikes(newState.likes);\n          setDislikes(newState.dislikes);\n          setIsLiked(newState.isLiked);\n          setIsDisliked(newState.isDisliked);\n        }}\n      />\n    </div>\n  );\n}\n",
       "path": "/components/commerce-ui/like-rating/basic/like-rating-ex-01.tsx",
       "target": "/components/commerce-ui/like-rating-ex-01.tsx"
     }
