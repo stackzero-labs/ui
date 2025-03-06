@@ -18,8 +18,12 @@ export const sidebarBadges = [
     count: 3,
   },
   {
-    page: "Reviews",
+    page: "Product Variants",
     alpha: true,
+    count: 1,
+  },
+  {
+    page: "Reviews",
     count: 4,
   },
   {
