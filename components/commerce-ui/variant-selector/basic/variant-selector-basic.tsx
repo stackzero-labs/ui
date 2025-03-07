@@ -27,27 +27,27 @@ const VariantSelectorBasic = ({
 }: VariantSelectorBasicProps) => {
   return (
     <RadioGroupPrimitive.Root
-      className={cn("grid grid-cols-2 gap-2 sm:grid-cols-3", className)}
+      className={cn("flex flex-wrap gap-3", className)}
       value={value}
       onValueChange={onValueChange}
     >
       {variants.map((variant) => (
-        <label
-          key={variant.id}
-          className="relative flex cursor-pointer flex-col items-center gap-3 rounded-lg border border-input px-2 py-3 text-center shadow-xs shadow-black/5 outline-offset-2 transition-colors has-data-disabled:cursor-not-allowed has-data-[state=checked]:border-ring has-data-[state=checked]:bg-accent has-data-disabled:opacity-50 has-focus-visible:outline has-focus-visible:outline-2 has-focus-visible:outline-ring/70"
-        >
+        <div key={variant.id} className="flex items-center">
           <RadioGroupPrimitive.Item
+            id={variant.id}
             value={variant.value}
-            className="sr-only after:absolute after:inset-0"
+            className={cn(
+              "peer relative h-10 w-full min-w-[80px] rounded-md border border-gray-300 px-3 py-2 text-center text-sm transition-all",
+              "dark:border-gray-600 dark:text-gray-100",
+              "data-[state=checked]:border-2 data-[state=checked]:border-black dark:data-[state=checked]:border-white",
+              "focus:ring-2 focus:ring-black focus:ring-offset-2 focus:outline-none",
+              "dark:focus:ring-white dark:focus:ring-offset-gray-900",
+              "cursor-pointer disabled:cursor-not-allowed disabled:opacity-50"
+            )}
           >
-            <RadioGroupPrimitive.Indicator className="flex items-center justify-center">
-              <Circle className="h-2.5 w-2.5 fill-current text-current" />
-            </RadioGroupPrimitive.Indicator>
+            <span className="font-medium">{variant.label}</span>
           </RadioGroupPrimitive.Item>
-          <p className="text-sm font-medium leading-none text-foreground">
-            {variant.label}
-          </p>
-        </label>
+        </div>
       ))}
     </RadioGroupPrimitive.Root>
   );

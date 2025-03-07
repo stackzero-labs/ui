@@ -97,7 +97,7 @@ function ProductVariant_01({
 
       <div className="flex flex-col gap-6">
         <div>
-          <h2 className="text-2xl font-bold">{title}</h2>
+          <h2 className="text-2xl font-bold tracking-tight">{title}</h2>
           <p className="text-muted-foreground mt-2">{description}</p>
         </div>
 

@@ -1,3 +1,5 @@
+"use client";
+
 import ImageViewer from "@/components/commerce-ui/image-viewer/basic/image-viewer-basic";
 import PriceFormatSale from "@/components/commerce-ui/price-format/sale/price-format-sale";
 import { Button } from "@/components/ui/button";
