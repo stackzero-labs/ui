@@ -82,7 +82,9 @@ You can use the components in your project by copying and pasting the components
 
 This project uses `tailwindcss` v.4 as the utility-first CSS framework. Please follow the official [tailwind documentation](https://tailwindcss.com/docs/installation/using-vite) to get started using tailwindcss.
 
-Some components also rely on `shadcn/ui` for the design system and `motion/react` for animations. You can install these dependencies by running the following command:
+Some components also rely on `shadcn/ui` for the design system and `motion/react` for animations.
+
+Check the [installation guide](https://ui.stackzero.co/docs/installation) for more information.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

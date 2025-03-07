@@ -21,7 +21,7 @@ export const components: Registry = [
   {
     name: "face-rating-gradient",
     type: "registry:component",
-    dependencies: ["lucide-react"],
+    dependencies: ["lucide-react", "tinycolor2"],
     files: [
       {
         path: "@/components/commerce-ui/face-rating/gradient/face-rating-gradient.tsx",
@@ -39,7 +39,11 @@ export const components: Registry = [
   {
     name: "image-viewer-basic",
     type: "registry:component",
-    dependencies: ["lucide-react", "@radix-ui/react-dialog"],
+    dependencies: [
+      "@radix-ui/react-dialog",
+      "lucide-react",
+      "react-zoom-pan-pinch",
+    ],
     files: [
       {
         path: "@/components/commerce-ui/image-viewer/basic/image-viewer-basic.tsx",
@@ -57,7 +61,11 @@ export const components: Registry = [
   {
     name: "image-viewer-motion",
     type: "registry:component",
-    dependencies: ["lucide-react", "@radix-ui/react-dialog"],
+    dependencies: [
+      "@radix-ui/react-dialog",
+      "lucide-react",
+      "react-zoom-pan-pinch",
+    ],
     files: [
       {
         path: "@/components/commerce-ui/image-viewer/motion/image-viewer-motion.tsx",
@@ -198,7 +206,6 @@ export const components: Registry = [
     name: "like-rating-basic",
     type: "registry:component",
     dependencies: ["lucide-react"],
-    registryDependencies: ["button"],
     files: [
       {
         path: "@/components/commerce-ui/like-rating/basic/like-rating-basic.tsx",

@@ -2,7 +2,8 @@
   "name": "face-rating-gradient",
   "type": "registry:component",
   "dependencies": [
-    "lucide-react"
+    "lucide-react",
+    "tinycolor2"
   ],
   "files": [
     {

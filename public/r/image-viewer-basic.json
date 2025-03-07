@@ -2,8 +2,9 @@
   "name": "image-viewer-basic",
   "type": "registry:component",
   "dependencies": [
+    "@radix-ui/react-dialog",
     "lucide-react",
-    "@radix-ui/react-dialog"
+    "react-zoom-pan-pinch"
   ],
   "files": [
     {

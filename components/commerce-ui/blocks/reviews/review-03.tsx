@@ -1,32 +1,74 @@
 "use client";
 
-import { Star } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import StarRating from "@/components/commerce-ui/star-rating/basic/star-rating-basic";
-import { useState } from "react";
 import LikeRating from "@/components/commerce-ui/like-rating/basic/like-rating-basic";
+import StarRating from "@/components/commerce-ui/star-rating/basic/star-rating-basic";
+import { Button } from "@/components/ui/button";
+import { useState, useRef, useEffect } from "react";
 
-function Review_03() {
-  const rating = 5;
+interface Review_03Props {
+  defaultRating?: number;
+  reviewerName?: string;
+  reviewerTitle?: string;
+  reviewerAvatar?: string;
+  initialLikes?: number;
+  initialDislikes?: number;
+  initialIsLiked?: boolean;
+  initialIsDisliked?: boolean;
+  reviewTitle?: string;
+  reviewContent?: string;
+}
+
+function Review_03({
+  defaultRating = 5,
+  reviewerName = "Adam Smith",
+  reviewerTitle = "CEO ACME Inc.",
+  reviewerAvatar = "https://docs.material-tailwind.com/img/face-2.jpg",
+  initialLikes = 11,
+  initialDislikes = 1,
+  initialIsLiked = true,
+  initialIsDisliked = false,
+  reviewTitle = "Wished I bought this thing sooner!!",
+  reviewContent = "I recently got my hands on this amazing bag, and after using it for a while, I can confidently say it is a solid choice for travelling. Verdict: If you are looking for an amazing backpack that balances comfort, organization, and durability, this is a great investment. Would definitely recommend it to anyone in need of a reliable bag! 🎒💼",
+}: Review_03Props = {}) {
   const [isExpanded, setIsExpanded] = useState(false);
-  const [likes, setLikes] = useState(11);
-  const [dislikes, setDislikes] = useState(1);
-  const [isLiked, setIsLiked] = useState(true);
-  const [isDisliked, setIsDisliked] = useState(false);
+  const [likes, setLikes] = useState(initialLikes);
+  const [dislikes, setDislikes] = useState(initialDislikes);
+  const [isLiked, setIsLiked] = useState(initialIsLiked);
+  const [isDisliked, setIsDisliked] = useState(initialIsDisliked);
+  const [isContentOverflowing, setIsContentOverflowing] = useState(false);
+  const contentRef = useRef<HTMLParagraphElement>(null);
 
+  // Check if content overflows when component mounts or content changes
+  useEffect(() => {
+    const checkOverflow = () => {
+      if (contentRef.current) {
+        // Check if scrollHeight is greater than clientHeight
+        const isOverflowing =
+          contentRef.current.scrollHeight > contentRef.current.clientHeight;
+        setIsContentOverflowing(isOverflowing);
+      }
+    };
+
+    // Run the check after render
+    checkOverflow();
+
+    // Also check on window resize in case layout changes
+    window.addEventListener("resize", checkOverflow);
+    return () => window.removeEventListener("resize", checkOverflow);
+  }, [reviewContent]);
   return (
-    <div className="items-left flex w-full flex-col gap-6 rounded-lg border px-6 py-4">
+    <div className="items-left flex max-w-2xl flex-col gap-6 rounded-lg border px-6 py-4">
       <div className="flex flex-row flex-wrap items-end justify-between gap-4">
         <div className="flex flex-row items-end justify-between gap-4">
           <img
-            src="https://docs.material-tailwind.com/img/face-2.jpg"
+            src={reviewerAvatar}
             alt="avatar"
             className="relative inline-block h-12 w-12 !rounded-full object-cover object-center"
           />
           <div>
-            <p className="text-sm font-semibold">Adam Smith</p>
+            <p className="text-sm font-semibold">{reviewerName}</p>
             <p className="font-base text-muted-foreground text-sm">
-              CEO ACME Inc.
+              {reviewerTitle}
             </p>
           </div>
         </div>
@@ -37,29 +79,25 @@ function Review_03() {
         </div>
       </div>
       <div className="flex flex-col gap-4">
-        <StarRating value={rating} readOnly />
+        <StarRating value={defaultRating} readOnly />
         <div>
-          <h2 className="mb-2 text-xl font-semibold">
-            Wished I bought this thing sooner!!
-          </h2>
+          <h2 className="mb-2 text-xl font-semibold">{reviewTitle}</h2>
           <p
+            ref={contentRef}
             className={`text-muted-foreground ${isExpanded ? "" : "line-clamp-3"} text-ellipsis`}
           >
-            I recently got my hands on the [Backpack Name], and after using it
-            for a while, I can confidently say it is a solid choice for
-            travelling. Verdict: If you are looking for an amazing backpack that
-            balances comfort, organization, and durability, this is a great
-            investment. Would definitely recommend it to anyone in need of a
-            reliable bag! 🎒💼
+            {reviewContent}
           </p>
         </div>
-        <Button
-          className="px-0"
-          variant="link"
-          onClick={() => setIsExpanded(!isExpanded)}
-        >
-          {isExpanded ? "Show less" : "Show more"}
-        </Button>
+        {isContentOverflowing && (
+          <Button
+            className="px-0"
+            variant="link"
+            onClick={() => setIsExpanded(!isExpanded)}
+          >
+            {isExpanded ? "Show less" : "Show more"}
+          </Button>
+        )}
       </div>
 
       <div>
@@ -81,36 +119,4 @@ function Review_03() {
 }
 
 export default Review_03;
-
-interface RatingLevelProps {
-  level: number;
-  value: number;
-  total: number;
-}
-
-const RatingLevel = ({ level, value, total }: RatingLevelProps) => {
-  return (
-    <div>
-      <div className="flex flex-row items-center gap-4">
-        <div className="flex flex-row items-center gap-2">
-          <Star size="16px" fill="gray" stroke="gray" />
-          <p className="text-sm">{level}</p>
-        </div>
-
-        <div className="grow">
-          <div className="h-2.5 w-full rounded-full bg-gray-200 dark:bg-gray-700">
-            <div
-              className="width: 45% h-2.5 rounded-full"
-              style={{ width: `${value}%`, backgroundColor: "#e4c616" }}
-            ></div>
-          </div>
-        </div>
-        <div className="min-w-[80px]">
-          <p className="text-sm">
-            {value}% <span className="text-muted-foreground">({total})</span>
-          </p>
-        </div>
-      </div>
-    </div>
-  );
-};
+export type { Review_03Props };

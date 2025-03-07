@@ -85,7 +85,7 @@ function ProductVariant_01({
     basePrice;
 
   return (
-    <div className="bg-background grid max-w-screen-lg grid-cols-1 gap-6 rounded-lg border p-6 md:grid-cols-2">
+    <div className="bg-card grid max-w-screen-lg grid-cols-1 gap-12 rounded-lg border p-6 md:grid-cols-2">
       <div className="relative w-full">
         {badge && (
           <Badge className="bg-primary absolute top-4 left-4 z-10">

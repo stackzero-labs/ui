@@ -6,7 +6,11 @@ export const blocks: Registry = [
     name: "product-card-01-block",
     type: "registry:block",
     dependencies: ["lucide-react"],
-    registryDependencies: ["https://ui.stackzero.co/r/image-viewer-basic.json"],
+    registryDependencies: [
+      "button",
+      "https://ui.stackzero.co/r/image-viewer-basic.json",
+      "https://ui.stackzero.co/r/price-format-basic.json",
+    ],
     files: [
       {
         path: "@/components/commerce-ui/blocks/product-cards/product-cards-01.tsx",
@@ -26,7 +30,9 @@ export const blocks: Registry = [
     type: "registry:block",
     dependencies: ["lucide-react"],
     registryDependencies: [
+      "button",
       "https://ui.stackzero.co/r/star-rating-fractions.json",
+      "https://ui.stackzero.co/r/price-format-basic.json",
       "https://ui.stackzero.co/r/image-viewer-basic.json",
     ],
     files: [
@@ -95,7 +101,7 @@ export const blocks: Registry = [
     name: "review-01-block",
     type: "registry:block",
     dependencies: ["lucide-react"],
-    registryDependencies: ["https://ui.stackzero.co/r/star-rating-basic"],
+    registryDependencies: ["https://ui.stackzero.co/r/star-rating-basic.json"],
     files: [
       {
         path: "@/components/commerce-ui/blocks/reviews/review-01.tsx",
@@ -112,7 +118,7 @@ export const blocks: Registry = [
     dependencies: ["lucide-react"],
     registryDependencies: [
       "button",
-      "https://ui.stackzero.co/r/star-rating-fractions",
+      "https://ui.stackzero.co/r/star-rating-fractions.json",
     ],
     files: [
       {
@@ -131,8 +137,8 @@ export const blocks: Registry = [
     dependencies: ["lucide-react"],
     registryDependencies: [
       "button",
-      "https://ui.stackzero.co/r/star-rating-fractions",
-      "https://ui.stackzero.co/r/like-rating-basic",
+      "https://ui.stackzero.co/r/star-rating-basic.json",
+      "https://ui.stackzero.co/r/like-rating-basic.json",
     ],
     files: [
       {
@@ -149,7 +155,9 @@ export const blocks: Registry = [
     name: "review-04-block",
     type: "registry:block",
     dependencies: ["lucide-react"],
-    registryDependencies: ["https://ui.stackzero.co/r/star-rating-fractions"],
+    registryDependencies: [
+      "https://ui.stackzero.co/r/star-rating-fractions.json",
+    ],
     files: [
       {
         path: "@/components/commerce-ui/blocks/reviews/review-04.tsx",

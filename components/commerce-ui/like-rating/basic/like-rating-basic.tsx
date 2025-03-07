@@ -1,7 +1,5 @@
-import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { ThumbsDown, ThumbsUp } from "lucide-react";
-import * as React from "react";
 
 interface LikeRatingBasicProps {
   likes: number;
@@ -82,7 +80,7 @@ const LikeRating_Basic = ({
       <div
         className={cn(
           "flex min-w-[4rem] flex-row items-center justify-center rounded-none border px-2 py-1 font-mono shadow-none first:rounded-s-lg last:rounded-e-lg hover:bg-[#009e42]/20 focus-visible:z-10",
-          isLiked && "bg-[#009e42]/20 text-white"
+          isLiked && "bg-[#009e42]/20 text-[#009e42]"
         )}
         onClick={handleLike}
         aria-label="Like"
@@ -100,7 +98,7 @@ const LikeRating_Basic = ({
       <div
         className={cn(
           "flex min-w-[4rem] flex-row items-center justify-center rounded-none border px-2 py-1 font-mono shadow-none first:rounded-s-lg last:rounded-e-lg hover:bg-[#a60021]/20 focus-visible:z-10",
-          isDisliked && "bg-[#a60021]/20 text-white"
+          isDisliked && "bg-[#a60021]/20 text-[#a60021]"
         )}
         aria-label="Dislike"
         aria-labelledby="dislike-count"

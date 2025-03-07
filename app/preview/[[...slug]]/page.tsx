@@ -47,7 +47,7 @@ export default async function PreviewPage({
           <p>Commerce UI</p>
         </header>
         <div className="h-screen bg-neutral-950" style={{ height: "100vh" }}>
-          <div className="flex h-full items-center justify-center">
+          <div className="container flex h-full items-center justify-center">
             <ComponentLoader name={componentName} hasReTrigger={false} />
           </div>
         </div>
