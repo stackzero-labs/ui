@@ -4,7 +4,8 @@
   "dependencies": [
     "@radix-ui/react-dialog",
     "lucide-react",
-    "react-zoom-pan-pinch"
+    "react-zoom-pan-pinch",
+    "tailwind-motion"
   ],
   "files": [
     {

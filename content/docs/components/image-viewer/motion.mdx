@@ -4,15 +4,16 @@ description: A component to display images in a modal, animated with tailwindcss
 ---
 
 
-<References>
-  <Reference label="tailwindcss-motion" link="https://rombo.co/tailwind" />
-</References>
-
 <ComponentPreview 
   name="image-viewer-motion-ex-01"     
   classNameComponentContainer='min-h-[200px]' 
 />
 
+<References>
+  <Reference label="@radix-ui/react-dialog" link="https://www.radix-ui.com/primitives/docs/components/dialog"/>
+  <Reference label="react-zoom-pan-pinch" link="https://github.com/BetterTyped/react-zoom-pan-pinch"/>
+  <Reference label="tailwindcss-motion" link="https://rombo.co/tailwind" />
+</References>
 
 ## Install
 
@@ -30,8 +31,45 @@ description: A component to display images in a modal, animated with tailwindcss
 
 <Step>
 
+Install the following dependencies:
 
-Copy and paste the following code into your project
+<Tabs items={["pnpm", "npm", "bun"]}>
+    ```bash tab="pnpm"
+    pnpm add @radix-ui/react-dialog react-zoom-pan-pinch
+    ```
+    ```bash tab="npm"
+    npm install @radix-ui/react-dialog react-zoom-pan-pinch
+    ```
+    ```bash tab="bun"
+    bun add @radix-ui/react-dialog react-zoom-pan-pinch
+    ```
+</Tabs>
+</Step>
+
+<Step>
+
+Install `tailwind-motion`
+
+<Tabs items={["pnpm", "npm", "bun"]}>
+    ```bash tab="pnpm"
+    pnpm add -D tailwind-motion
+    ```
+    ```bash tab="npm"
+    npm install -D tailwind-motion
+    ```
+    ```bash tab="bun"
+    bun add -D tailwind-motion
+    ```
+</Tabs>
+
+For more information, follow the official installation guide: https://rombo.co/tailwind
+</Step>
+
+
+<Step>
+
+
+Copy and paste the following code into your project:
 
 
 </Step>
@@ -40,7 +78,7 @@ Copy and paste the following code into your project
 
 <Step>
 
-Update the import paths to match your project setup
+Update the import paths to match your project setup.
 
 </Step>
 
@@ -53,9 +91,6 @@ Update the import paths to match your project setup
 </ComponentInstall>
 
 
-## Examples
-
-Todo
 
 
 

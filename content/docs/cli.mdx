@@ -1,0 +1,77 @@
+---
+title: CLI
+description: Use the CLI to add components, blocks and pages to your project.
+icon: Terminal
+---
+
+<Callout>
+We rely on `shadcn` CLI to add components and blocks to your project.
+</Callout>
+
+The CLI provides an easy, interactive way to add components, blocks and pages to your project.
+Installing components using the CLI ensures that you have the latest version of the component and its dependencies.
+
+## `init` command
+
+You can use the `init` command to initialize configuration and dependencies for a new project.
+
+The `init` command installs dependencies, adds the `cn` util and configures CSS variables for the project.
+
+<Tabs items={["pnpm", "npm", "bun"]}>
+    ```bash tab="pnpm"
+    pnpm dlx shadcn@latest init
+    ```
+    ```bash tab="npm"
+    npx shadcn@latest init
+    ```
+    ```bash tab="bun"
+    bun x --bun shadcn@latest init
+    ```
+</Tabs>
+
+You will be asked a few questions to initialize the project.
+
+## `add` command
+
+You can use the `add` command to add components, blocks and pages to your project.
+
+The `add` command installs dependencies, adds the component, block or page to your project and updates the configuration.
+
+<Tabs items={["pnpm", "npm", "bun"]}>
+    ```bash tab="pnpm"
+    pnpm dlx shadcn@latest add https://ui.stackzero.co/r/product-card-01-block.json
+    ```
+    ```bash tab="npm"
+    npx shadcn@latest add https://ui.stackzero.co/r/product-card-01-block.json
+    ```
+    ```bash tab="bun"
+    bun x --bun shadcn@latest add https://ui.stackzero.co/r/product-card-01-block.json
+    ```
+</Tabs>
+
+You can use the same command to add shadcn/ui components. 
+
+To see a list of all available options, please refer to the [shadcn/ui documentation](https://ui.shadcn.com/docs/cli).
+
+
+## Monorepo support
+
+If you need to install the components in a monorepo, you can use the optional `-c` flag. 
+This will allow you to specify the path to the project where you want to install the component.
+
+<Tabs items={["pnpm", "npm", "bun"]}>
+    ```bash tab="pnpm"
+    pnpm dlx shadcn@latest add https://ui.stackzero.co/r/product-card-01-block.json -c ./apps/www
+    ```
+    ```bash tab="npm"
+    npx shadcn@latest add https://ui.stackzero.co/r/product-card-01-block.json -c ./apps/www
+    ```
+    ```bash tab="bun"
+    bun x --bun shadcn@latest add https://ui.stackzero.co/r/product-card-01-block.json -c ./apps/www
+    ```
+</Tabs>
+
+Read more about monorepo support using the `shadcn` CLI in the [shadcn/ui documentation](https://ui.shadcn.com/docs/monorepo).
+
+
+

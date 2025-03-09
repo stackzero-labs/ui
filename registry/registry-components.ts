@@ -65,6 +65,7 @@ export const components: Registry = [
       "@radix-ui/react-dialog",
       "lucide-react",
       "react-zoom-pan-pinch",
+      "tailwind-motion",
     ],
     files: [
       {
@@ -387,7 +388,7 @@ export const components: Registry = [
   {
     name: "variant-selector-multiple",
     type: "registry:component",
-    dependencies: ["lucide-react", "@radix-ui/react-radio-group", "motion"],
+    dependencies: ["lucide-react", "@radix-ui/react-toggle-group"],
     files: [
       {
         path: "@/components/commerce-ui/variant-selector/multiple/variant-selector-multiple.tsx",

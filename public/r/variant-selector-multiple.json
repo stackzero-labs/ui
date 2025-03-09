@@ -3,8 +3,7 @@
   "type": "registry:component",
   "dependencies": [
     "lucide-react",
-    "@radix-ui/react-radio-group",
-    "motion"
+    "@radix-ui/react-toggle-group"
   ],
   "files": [
     {

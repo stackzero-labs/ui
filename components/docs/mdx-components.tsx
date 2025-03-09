@@ -94,7 +94,7 @@ export function getMDXComponents(components: MDXComponents): MDXComponents {
       items: string[];
       children: ReactNode;
     }) => (
-      <Tabs items={items} id="package-manager">
+      <Tabs items={items} id="package-manager" className="cursor-pointer">
         {children}
       </Tabs>
     ),

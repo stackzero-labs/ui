@@ -4,34 +4,35 @@ description: A simple guide to set up commerce ui with the required dependencies
 icon: PackagePlus
 ---
 
-This project is built with **Next.js**, using **TypeScript** and **Tailwind CSS** for all components. Some components also rely on [shadcn/ui](https://ui.shadcn.com/docs/installation) and [Motion](https://motion.dev).  
+This project is built with **Next.js**, using **TypeScript** and **Tailwind CSS** for all components.
 
-
+## 
 
 <Steps>
   <Step>
     ### Install Tailwind CSS
 
-    The components are styled using **Tailwind CSS**.  
-    Follow the official [installation guide](https://tailwindcss.com/docs/installation) to set it up in your project.
+    The components are styled using **Tailwind CSS v.4**.
+
+    Follow the official [installation guide](https://tailwindcss.com/docs/installation) to set it up in your project. If you are still using Tailwind CSS v.3, you can follow the [Tailwindcss v.4 migration guide](https://tailwindcss.com/docs/upgrade-guide).
   </Step>
 
   <Step>
-    ### Install Motion
+    ### Install `lucide-react` icons
 
-    To use components with animations, you’ll need to add **Motion** to your project.
+    For the components that use icons, we use **Lucide React** icons.
 
-    <InstallTabs items={['npm', 'pnpm', 'bun']}>
+    <Tabs items={['npm', 'pnpm', 'bun']}>
     ```bash tab="npm"
-    npm install motion
+    npm install lucide-react
     ```
     ```bash tab="pnpm"
-    pnpm add motion
+    pnpm add lucide-react
     ```
     ```bash tab="bun"
-    bun add motion
+    bun add lucide-react
     ```
-    </InstallTabs>
+    </Tabs>
   </Step>
 
   <Step>
@@ -47,7 +48,84 @@ This project is built with **Next.js**, using **TypeScript** and **Tailwind CSS*
       return twMerge(clsx(inputs))
     }
     ```
+    
+    You might need to install the `clsx` and `tailwind-merge` packages.
+
+    <Tabs items={['npm', 'pnpm', 'bun']}>
+    ```bash tab="npm"
+    npm install clsx tailwind-merge
+    ```
+    ```bash tab="pnpm"
+    pnpm add clsx tailwind-merge
+    ```
+    ```bash tab="bun"
+    bun add clsx tailwind-merge
+    ```
+    </Tabs>
+    
+  </Step>
+
+  <Step>
+   ### Add your first component
+
+    Now that you have set up the required dependencies, you can start adding components to your project.
+    
+    For example, to add the `StarRating` component, you can just:
+    <Tabs items={['pnpm', 'npm','bun']}>
+    ```bash tab="pnpm"
+    pnpm shadcn@latest add https://ui.stackzero.co/r/star-rating-basic-ex-01.json
+    ```
+    ```bash tab="npm"
+    npx shadcn@latest add https://ui.stackzero.co/r/star-rating-basic-ex-01.json
+    ```
+    ```bash tab="bun"
+    bun shadcn@latest add https://ui.stackzero.co/r/star-rating-basic-ex-01.json
+    ```
+    </Tabs>
+
+    And then import the component in your project like: 
+
+    ```ts title="layouts/review.tsx"
+    "use client";
+
+    import StarRatingBasic from "@/components/commerce-ui/star-rating/basic/star-rating-basic";
+    import { useState } from "react";
+
+    export default function Rating() {
+      const [rating, setRating] = useState(3);
+      return (
+        <div className="flex flex-row items-center gap-4">
+          <StarRatingBasic value={rating} onChange={setRating} maxStars={5} />
+          <p>({rating})</p>
+           {/* Rest of your code... */}
+        </div>
+      );
+    }
+        ```
+
+
+
+
+  
+
+  <Step>
+
+  ## Done! 🎉
+      
+      You can now manually *copy-paste* the components or use the [CLI](/docs/cli) to add components, blocks, and pages to your project.
+
+      Some components also rely on other third-party libraries like [shadcn/ui](https://ui.shadcn.com/docs/installation) and [Motion](https://motion.dev). These dependencies are specified in the component documentation.
+
+    <Callout title="We recommend using the CLI">
+      If you are using the CLI to add components, you don't need to worry about the dependencies. The CLI will take care of installing them for you. See the [CLI documentation](/docs/cli) for more information.
+    </Callout>
+  
+  </Step>
+
   </Step>
 </Steps>
 
-You're good to go!
+
+
+
+
