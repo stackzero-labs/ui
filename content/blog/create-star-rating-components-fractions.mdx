@@ -1,0 +1,388 @@
+---
+title: How to build a Fractional Star Rating Component with just React / Tailwindcss
+description: Learn how to create a star rating component that supports fractional ratings (0.25, 0.5, 0.75) for precise product reviews and feedback systems. Powered by React and Tailwind CSS.
+date: 2025-03-01
+author: marcello
+---
+
+# How to build a Fractional Star Rating Component with just React / Tailwindcss
+
+In this tutorial, we'll take star rating components to the next level by implementing fractional ratings. Unlike basic star ratings that only support whole numbers, our component will allow for quarter-star precision (0.25, 0.5, 0.75), providing a more nuanced rating experience.
+
+This component uses only React and Tailwind CSS, making it easy to integrate into your web projects.
+
+## Interactive Preview
+<ComponentLoader
+  name="star-rating-fractions-ex-01"     
+  classNameComponentContainer='min-h-[200px] border' 
+/>
+
+## Why Fractional Star Ratings?
+
+Fractional star ratings offer greater precision for review systems, especially in contexts where small differences matter:
+
+- E-commerce product reviews
+- Movie and book rating systems
+- Restaurant and service reviews
+- Performance evaluations
+
+## Key Features
+
+1. **Quarter-star Precision**: Support for 0.25, 0.5, and 0.75 increments
+2. **SVG Gradients**: Using SVG gradients to visually represent partial stars
+3. **Interactive Selection**: Click position determines the fraction
+4. **Visual Feedback**: Hover states show what rating will be selected
+5. **Fully Customizable**: Adjustable colors, sizes, and number of stars
+
+## Step 1: Setting Up the Component Interface
+
+First, let's define our component's props interface:
+
+```tsx
+interface StarRatingBasicProps {
+  value: number;              // Current rating value (can be fractional)
+  onChange?: (value: number) => void;  // Callback when rating changes
+  className?: string;         // Custom CSS classes
+  iconSize?: number;          // Size of star icons
+  maxStars?: number;          // Maximum number of stars
+  readOnly?: boolean;         // Whether rating can be changed
+  color?: string;             // Color of filled stars
+}
+```
+
+## Step 2: Creating a Unique ID Generator
+
+We'll need unique IDs for our SVG gradients to ensure they don't interfere with each other when multiple rating components are used:
+
+```tsx
+// Add ID generator outside component to maintain counter
+let nextId = 0;
+const generateStarIds = (count: number) =>
+  Array.from({ length: count }, () => `star-${nextId++}`);
+```
+
+## Step 3: Creating the Star Icon Component
+
+Now we need to create the star icon component that will be reused for each star in the rating.
+This component will handle click and hover interactions as well as the star's visual appearance.
+
+Just like in the basic star rating component, we'll also add an `inInteractive` prop to determine if the star should respond to user interactions or not. This is useful when we want to set the component to read-only mode.
+
+Let's create a memoized Star icon component for better performance:
+
+```tsx
+const StarIcon = React.memo(
+  ({
+    iconSize,
+    index,
+    isInteractive,
+    onClick,
+    onMouseMove,
+    style,
+  }: {
+    index: number;
+    style: React.CSSProperties;
+    iconSize: number;
+    onClick: (e: React.MouseEvent<SVGElement>) => void;
+    onMouseMove: (e: React.MouseEvent<SVGElement>) => void;
+    isInteractive: boolean;
+  }) => (
+    <Star
+      key={index}
+      size={iconSize}
+      fill={style.fill}
+      color={style.color}
+      onClick={onClick}
+      onMouseMove={onMouseMove}
+      className={cn(
+        "transition-colors duration-200",
+        isInteractive && "cursor-pointer"
+      )}
+      style={style}
+    />
+  )
+);
+StarIcon.displayName = "StarIcon";
+```
+👉 Notice how we're using `onMouseMove` instead of `onMouseEnter`. This is crucial for detecting the precise location within each star.
+
+
+
+## Step 4: Setting Up the Main Component
+
+Let's initialize our component with its state and default props:
+
+```tsx
+const StarRating_Fractions = ({
+  className,
+  color = "#e4c616",
+  iconSize = 24,
+  maxStars = 5,
+  onChange,
+  readOnly = false,
+  value,
+}: StarRatingBasicProps) => {
+  const [hoverRating, setHoverRating] = React.useState<number | null>(null);
+  // Generate stable IDs on component mount
+  const [starIds] = React.useState(() => generateStarIds(maxStars));
+```
+I have added some defaults, but you can of course change them to your liking. 
+
+## Step 5: Implementing the Fractional Rating Calculator
+
+This is where the magic happens. We calculate the fraction based on where the user clicks within the star:
+
+```tsx
+  const calculateRating = React.useCallback(
+    (index: number, event: React.MouseEvent<SVGElement>) => {
+      const star = event.currentTarget;
+      const rect = star.getBoundingClientRect();
+      const x = event.clientX - rect.left;
+      const width = rect.width;
+      const clickPosition = x / width;
+
+      let fraction = 1;
+      if (clickPosition <= 0.25) fraction = 0.25;
+      else if (clickPosition <= 0.5) fraction = 0.5;
+      else if (clickPosition <= 0.75) fraction = 0.75;
+
+      return index + fraction;
+    },
+    []
+  );
+```
+
+We're doing some geometry here:
+1. Get the position of the click relative to the star element
+2. Calculate the click position as a ratio of the star width. In this case, 0.25, 0.5, or 0.75 as we have four quarters.
+3. Determine which quarter of the star was clicked
+4. Return the base index plus the appropriate fraction
+
+So for example, if the user clicks in the second quarter of the third star, the calculated rating would be 2.5. Thus, the star rating can now be fractional!
+
+You could of course adjust the fraction granularity to your needs, such as thirds or tenths.
+But I think quarters are a good balance between precision and usability.
+
+## Step 6: Implementing Interactive Handlers
+
+Now we need to call the function `calculateRating` we just created whenever 
+the user clicks on a star. This will calculate the new rating based on the click position.
+
+So let's add the handlers for click and hover interactions:
+
+```tsx
+  const handleStarClick = React.useCallback(
+    (index: number, event: React.MouseEvent<SVGElement>) => {
+      if (readOnly || !onChange) return;
+      const newRating = calculateRating(index, event);
+      onChange(newRating);
+    },
+    [readOnly, onChange, calculateRating]
+  );
+
+  const handleStarHover = React.useCallback(
+    (index: number, event: React.MouseEvent<SVGElement>) => {
+      if (!readOnly) {
+        const previewRating = calculateRating(index, event);
+        setHoverRating(previewRating);
+      }
+    },
+    [readOnly, calculateRating]
+  );
+
+  const handleMouseLeave = React.useCallback(() => {
+    if (!readOnly) {
+      setHoverRating(null);
+    }
+  }, [readOnly]);
+```
+
+## Step 7: Star Styling Logic
+
+Unlike basic star ratings, fractional ratings require special styling with SVG gradients.
+
+For example, if the rating is 3.75, the first three stars should be filled, and the fourth star should be 75% filled.
+
+Based on this scenarios, there are essentially three types of "star styles" cases to consider:
+1. When the rating is **less than** the current star index (difference ≤ 0) =  Unfilled star
+2. When the rating is **greater than** the current star index (difference ≥ 1) = Fully filled star
+3. When the rating is **between** the current star index and the next (0 < difference < 1) = Partially filled star
+
+Thus, we create a function to handle these 3 cases:
+
+
+```tsx
+  const getStarStyle = React.useCallback(
+    (index: number) => {
+      const ratingToUse =
+        !readOnly && hoverRating !== null ? hoverRating : value;
+      const difference = ratingToUse - index;
+
+      if (difference <= 0) return { color: "gray", fill: "transparent" };
+      if (difference >= 1) return { color: color, fill: color };
+
+      return {
+        color: color,
+        fill: `url(#${starIds[index]})`,
+      } as React.CSSProperties;
+    },
+    [readOnly, hoverRating, value, color, starIds]
+  );
+```
+
+This function determines how each individual star should be styled:
+- Unfilled stars (difference ≤ 0): gray outline, transparent fill
+- Fully filled stars (difference ≥ 1): colored outline and fill
+- Partially filled stars (0 < difference < 1): uses SVG gradient
+
+The first two cases are straightforward, but the third case requires a bit more work. We use an SVG gradient to fill the star with the appropriate percentage of color.
+Thus, for the third case, we return an object with the fill property set to a linear gradient URL.
+
+The `#` symbol in `url(#${starIds[index]})` indicates a reference to an element with that ID within the same document, connecting the star to its specific gradient. This is how we link the star to its partial fill gradient (more on this below).
+
+This is just an example, you can customize the styling to fit your design. 
+For example, you could use different colors for the outline and fill, or even add animations.
+
+## Step 8: Creating SVG Gradient Definitions
+
+To render partial stars, we need to create SVG gradient definitions. 
+
+We will later insert this gradient definition into the DOM using an invisible SVG element with `<defs>`.
+
+```tsx
+  const renderGradientDefs = () => {
+    const ratingToUse = !readOnly && hoverRating !== null ? hoverRating : value;
+    const partialStarIndex = Math.floor(ratingToUse);
+    const partialFill = (ratingToUse % 1) * 100;
+
+    // Only create gradient for partial star
+    if (partialFill > 0) {
+      return (
+        <linearGradient
+          id={starIds[partialStarIndex]}
+          x1="0%"
+          y1="0%"
+          x2="100%"
+          y2="0%"
+        >
+          <stop offset={`${partialFill}%`} stopColor={color} />
+          <stop offset={`${partialFill}%`} stopColor="transparent" />
+        </linearGradient>
+      );
+    }
+    return null;
+  };
+```
+
+This creates a linear gradient that fills exactly the percentage of the star that should be colored.
+
+## Step 9: Generating the Stars
+
+Now, let's create the array of star components:
+
+```tsx
+  const renderStars = () => {
+    return Array.from({ length: maxStars }).map((_, index) => {
+      const style = getStarStyle(index);
+      return (
+        <StarIcon
+          key={starIds[index]}
+          index={index}
+          style={style}
+          iconSize={iconSize}
+          onClick={(e) => handleStarClick(index, e)}
+          onMouseMove={(e) => handleStarHover(index, e)}
+          isInteractive={!readOnly}
+        />
+      );
+    });
+  };
+```
+
+This just maps over the number of stars and generates the star components with the appropriate style and interaction handlers.
+
+## Step 10: Final Component Assembly
+
+Finally, let's put it all together in the return statement:
+
+```tsx
+  return (
+    <div
+      className={cn("relative flex items-center gap-x-0.5", className)}
+      onMouseLeave={handleMouseLeave}
+    >
+      <svg width="0" height="0" style={{ position: "absolute" }}>
+        <defs>{renderGradientDefs()}</defs>
+      </svg>
+      {renderStars()}
+    </div>
+  );
+};
+```
+
+Notice how we include an **invisible SVG with our gradient definitions**, followed by the rendered stars. 
+
+This essentially inserts the gradient definitions into the DOM without affecting the visual layout while allowing the stars to reference them (Remeber the `url(#${starIds[index]})` in the `getStarStyle` function).
+
+## Usage Examples
+
+```tsx
+// Interactive fractional rating
+<StarRating_Fractions
+  value={3.75}
+  onChange={(newValue) => console.log(`New rating: ${newValue}`)} 
+/>
+
+// Read-only fractional rating with custom color
+<StarRating_Fractions
+  value={4.25}
+  readOnly={true}
+  color="#ff6b00"
+  iconSize={32}
+/>
+```
+
+## Technical Challenges and Solutions
+
+### Challenge 1: Accurate Fractional Selection
+The component needs to detect where within the star the user clicked to determine the fraction.
+
+**Solution**: We use getBoundingClientRect() and calculate click position as a ratio of the star's width.
+
+### Challenge 2: Visually Representing Partial Stars
+We need a way to fill only part of a star.
+
+**Solution**: SVG gradients! We create a linear gradient that fills exactly the right percentage of the star.
+
+### Challenge 3: Linking Stars to Gradients
+Each star needs to reference its unique gradient.
+
+**Solution**: We insert into the DOM an invisible SVG element with `<defs>` containing the gradient definitions. We then link each star to its corresponding gradient using a unique ID and the `url(#id)` syntax.
+
+### Challenge 4: Handling Multiple Instances
+Multiple rating components on the same page would have conflicting gradient IDs.
+
+**Solution**: We generate unique IDs for each star's gradient using a counter.
+
+## Accessibility Considerations
+
+- Use semantic markup and ARIA attributes for better screen reader support
+- Ensure keyboard navigability for users who can't use a mouse
+- Provide sufficient color contrast for visibility
+
+## Possible Enhancements
+
+- Supporting different fractions (thirds, tenths, etc.)
+- Adding animation effects during rating changes
+- Implementing half-star ratings for simpler use cases
+- Adding tooltips to display the exact numerical rating
+
+## Conclusion
+
+Fractional star ratings add a level of precision and polish to your user interface that whole-star ratings cannot match. While they require more complex implementation with SVG gradients and click position detection, the enhanced user experience is worth the effort.
+
+With this component, you can offer your users a more refined and expressive way to provide ratings and feedback.
+
+## Full Source Code + More Examples
+
+Here you can get the [full source code](/docs/components/rating-star/fractions) with more examples!

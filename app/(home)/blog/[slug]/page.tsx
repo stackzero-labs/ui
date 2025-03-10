@@ -6,6 +6,7 @@ import {
 import { getBlogMDXComponents } from "@/components/docs/mdx-components";
 import { ScrollProgress } from "@/components/docs/scroll-progress";
 import { siteConfig } from "@/config/site";
+import { metadataImageBlog } from "@/lib/metadata";
 import { blog } from "@/lib/source";
 import { InlineTOC } from "fumadocs-ui/components/inline-toc";
 import type { Metadata } from "next";
@@ -63,10 +64,14 @@ export async function generateMetadata(props: {
   //   description,
   // });
 
-  return {
-    description,
+  // return {
+  //   description,
+  //   title: page.data.title,
+  // };
+  return metadataImageBlog.withImage(page.slugs, {
     title: page.data.title,
-  };
+    description: description,
+  });
 }
 
 export function generateStaticParams(): { slug: string }[] {
