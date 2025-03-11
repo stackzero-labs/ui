@@ -33,7 +33,7 @@ export function ComponentSource({
     >
       <div
         className={cn(
-          "group/item relative my-4 overflow-hidden rounded-lg border bg-card text-card-foreground",
+          "group/item bg-card text-card-foreground relative my-4 overflow-hidden rounded-lg border",
           className
         )}
         {...props}
@@ -58,7 +58,7 @@ export function ComponentSource({
 
         <div
           className={cn(
-            "absolute flex items-center justify-center bg-linear-to-b from-background/30 to-background/90 p-2",
+            "from-background/30 to-background/90 absolute flex items-center justify-center bg-linear-to-b p-2",
             isOpened ? "inset-x-0 bottom-0 h-12" : "inset-0"
           )}
         >

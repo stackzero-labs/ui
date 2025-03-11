@@ -1,4 +1,5 @@
 "use client";
+import { Badge } from "@/components/ui/badge";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { useIsMobile } from "@/hooks/use-mobile";
@@ -50,12 +51,14 @@ export function BlogTitle({
   description,
   name,
   title,
+  tags,
 }: {
   title: string;
   description: string | undefined;
   author: string | undefined;
   date: string | Date | undefined;
   name: string;
+  tags: string[] | undefined;
 }) {
   const pinned = useHeadroom({ fixedAt: 120 });
   const [_scroll, scrollTo] = useWindowScroll();
@@ -115,6 +118,21 @@ export function BlogTitle({
                 <p className="font-medium">
                   {new Date(date ?? name).toDateString()}
                 </p>
+              </div>
+
+              <div className="flex gap-2">
+                <p className="mb-1">Tags:</p>
+                <div className="flex gap-2">
+                  {tags?.map((tag) => (
+                    <Badge
+                      variant="secondary"
+                      key={tag}
+                      className="bg-gray-200 font-medium text-zinc-800"
+                    >
+                      {tag}
+                    </Badge>
+                  ))}
+                </div>
               </div>
             </div>
           </div>

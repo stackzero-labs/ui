@@ -1,0 +1,426 @@
+---
+title: Building an Animated Upvote Rating Component with React
+description: Learn how to create a professional upvote/downvote rating system with smooth animations for interactive feedback features in your web applications.
+date: 2025-03-04
+author: marcello
+tags: ["react", "tutorial", "rating"]
+---
+
+# Building an Animated Upvote Rating Component with React
+
+In today's social-media-driven web, upvote/downvote systems have become a standard way for users to express their opinions on content. From Reddit to Stack Overflow, these simple yet effective rating mechanisms help identify valuable content while engaging users.
+
+In this tutorial, we'll create a sleek, animated upvote rating component using React and Tailwind CSS. Our component will include color feedback, smooth number transitions, and a clean UI that fits modern web applications.
+
+## Interactive Preview
+<ComponentLoader
+  name="upvote-rating-animated-ex-01"     
+  classNameComponentContainer='min-h-[200px] border flex items-center justify-center bg-zinc-900' 
+/>
+
+## Why Build a Custom Upvote Component?
+
+While there are many rating libraries available, building your own upvote component offers several advantages:
+
+1. **Complete customization**: Match your exact design requirements
+2. **Lightweight**: No unnecessary dependencies
+3. **Better understanding**: Learn how these interactive components work under the hood
+4. **Animations**: Add engaging visual feedback specific to your needs
+5. **Integration**: Seamlessly integrate with your existing state management
+
+## Key Features of Our Component
+
+- Interactive upvote/downvote buttons
+- Color feedback based on vote status
+- Animated vote count transitions
+- Compact, mobile-friendly design
+- Support for compact number formatting (e.g., 1.5k instead of 1,500)
+- Flexible API for easy integration
+
+## Step 1: Setting Up the Component Interface
+
+First, let's define our component's props interface to establish what data and callbacks it will need:
+
+```tsx
+interface UpvoteRatingAnimatedProps {
+  upvotes: number;          // Current upvote count
+  downvotes: number;        // Current downvote count
+  upvoted: boolean;         // Whether the current user has upvoted
+  downvoted: boolean;       // Whether the current user has downvoted
+  upvoteIncrement?: number; // How much each upvote increases the count
+  downvoteIncrement?: number; // How much each downvote increases the count
+  onVoteChange: (newState: {
+    upvotes: number;
+    downvotes: number;
+    upvoted: boolean;
+    downvoted: boolean;
+  }) => void;               // Callback when votes change
+}
+```
+
+This interface gives us flexibility to handle both the UI state and the actual vote counts, with a callback to inform the parent component when votes change.
+
+## Step 2: Basic Component Structure
+
+Now, let's create the shell of our upvote rating component:
+
+```tsx
+import { cn } from "@/lib/utils";
+import { ArrowBigDown, ArrowBigUp } from "lucide-react";
+import * as React from "react";
+import NumberFlow from "@number-flow/react";
+
+const UpvoteRating_Animated = ({
+  downvoted,
+  downvoteIncrement = 1,
+  downvotes,
+  onVoteChange,
+  upvoted,
+  upvoteIncrement = 1,
+  upvotes,
+}: UpvoteRatingAnimatedProps) => {
+  // Event handlers will go here
+  
+  const totalVotes = upvotes - downvotes;
+  
+  return (
+    <div className="flex w-fit flex-row items-center gap-0 rounded-full border">
+      {/* Upvote button */}
+      {/* Vote count */}
+      {/* Downvote button */}
+    </div>
+  );
+};
+
+export default UpvoteRating_Animated;
+```
+
+We're using:
+- `lucide-react` for the arrow icons
+- `@number-flow/react` for animated number transitions
+- A utility `cn` function for conditional class name merging (similar to the `clsx` library)
+
+## Step 3: Implementing Vote Handlers
+
+The heart of our component is the voting logic. We need to handle several scenarios:
+
+1. User clicks upvote when nothing is selected → Increment upvotes
+2. User clicks upvote when already upvoted → Remove upvote
+3. User clicks upvote when downvoted → Remove downvote and add upvote
+4. Similar logic for downvotes
+
+Let's implement the handlers:
+
+```tsx
+const handleUpvote = () => {
+  if (upvoted) {
+    // Undo upvote
+    onVoteChange({
+      downvoted: false,
+      downvotes,
+      upvoted: false,
+      upvotes: upvotes - upvoteIncrement,
+    });
+  } else {
+    // Add upvote and remove downvote if exists
+    onVoteChange({
+      downvoted: false,
+      downvotes: downvoted ? downvotes - downvoteIncrement : downvotes,
+      upvoted: true,
+      upvotes: upvotes + upvoteIncrement,
+    });
+  }
+};
+
+const handleDownvote = () => {
+  if (downvoted) {
+    // Undo downvote
+    onVoteChange({
+      downvoted: false,
+      downvotes: downvotes - downvoteIncrement,
+      upvoted: false,
+      upvotes,
+    });
+  } else {
+    // Add downvote and remove upvote if exists
+    onVoteChange({
+      downvoted: true,
+      downvotes: downvotes + downvoteIncrement,
+      upvoted: false,
+      upvotes: upvoted ? upvotes - upvoteIncrement : upvotes,
+    });
+  }
+};
+```
+
+These handlers encapsulate all the voting logic and call our `onVoteChange` callback with the new state, allowing the parent component to update accordingly.
+
+## Step 4: Building the UI with Visual Feedback
+
+Now let's create the UI with appropriate visual feedback for the current state:
+
+```tsx
+return (
+  <div
+    className={cn(
+      "flex w-fit flex-row items-center gap-0 rounded-full border",
+      upvoted && "bg-[#009e42]",     // Green background when upvoted
+      downvoted && "bg-[#a60021]"    // Red background when downvoted
+    )}
+  >
+    <button
+      onClick={handleUpvote}
+      className="rounded-full p-1 hover:bg-zinc-800/30"
+    >
+      <ArrowBigUp
+        size={24}
+        className={cn("text-white", upvoted && "fill-white")}
+      />
+    </button>
+
+    <span className="min-w-8 p-1 text-center text-white">
+      <NumberFlow
+        format={{ notation: "compact" }}
+        value={totalVotes}
+        className="font-mono"
+      />
+    </span>
+
+    <button
+      onClick={handleDownvote}
+      className="rounded-full p-1 hover:bg-zinc-800/30"
+    >
+      <ArrowBigDown
+        size={24}
+        className={cn("text-white", downvoted && "fill-white")}
+      />
+    </button>
+  </div>
+);
+```
+
+Key UI features:
+1. **Background color changes** based on vote state (green for upvote, red for downvote)
+2. **Icon fill** changes to provide additional feedback
+3. **Hover effects** on buttons for better interactivity
+4. **Minimum width** on the vote count to prevent layout shifts
+5. **NumberFlow component** for smooth number transitions
+6. **Compact notation** for large numbers (1k instead of 1000)
+
+## Step 5: Adding Animation with NumberFlow
+
+One unique aspect of our component is the animated number transitions. We're using the `NumberFlow` component to smoothly animate between values:
+
+```tsx
+<NumberFlow
+  format={{ notation: "compact" }}
+  value={totalVotes}
+  className="font-mono"
+/>
+```
+
+This provides a satisfying visual effect when votes change, enhancing the user experience.
+
+The `format` prop with `notation: "compact"` ensures that large numbers are displayed in a readable way:
+- 1,500 becomes 1.5K
+- 1,000,000 becomes 1M
+
+## Step 6: Enhancing the Component with Accessibility
+
+Let's improve accessibility by adding appropriate ARIA attributes and keyboard support:
+
+```tsx
+<button
+  onClick={handleUpvote}
+  aria-label="Upvote"
+  aria-pressed={upvoted}
+  className="rounded-full p-1 hover:bg-zinc-800/30"
+>
+  <ArrowBigUp
+    size={24}
+    className={cn("text-white", upvoted && "fill-white")}
+  />
+</button>
+
+<span 
+  className="min-w-8 p-1 text-center text-white"
+  aria-live="polite"
+  aria-atomic="true"
+>
+  <NumberFlow
+    format={{ notation: "compact" }}
+    value={totalVotes}
+    className="font-mono"
+  />
+</span>
+
+<button
+  onClick={handleDownvote}
+  aria-label="Downvote"
+  aria-pressed={downvoted}
+  className="rounded-full p-1 hover:bg-zinc-800/30"
+>
+  <ArrowBigDown
+    size={24}
+    className={cn("text-white", downvoted && "fill-white")}
+  />
+</button>
+```
+
+The addition of `aria-label`, `aria-pressed`, and `aria-live` attributes helps screen readers understand the component's purpose and state.
+
+## Technical Considerations and Edge Cases
+
+### Managing Single Vote Limitation
+
+Our component enforces that a user can only upvote OR downvote, not both simultaneously. When a user switches their vote, we need to:
+
+1. Remove their previous vote
+2. Apply their new vote
+3. Update the counters accordingly
+
+The `onVoteChange` callback makes this clean by sending a complete new state object each time.
+
+### Handling Vote Increments
+
+Different applications might want different vote weights. For example, a premium user's vote might count as 5 votes. Our `upvoteIncrement` and `downvoteIncrement` props support this flexibility.
+
+### Preventing Count Flickering
+
+The `min-w-8` class on the vote count container ensures it maintains a consistent width even as the number of digits changes, preventing layout shifts.
+
+## Usage Examples
+
+### Basic Usage
+
+```tsx
+function Demo() {
+  const [voteState, setVoteState] = React.useState({
+    upvotes: 5,
+    downvotes: 2,
+    upvoted: false,
+    downvoted: false
+  });
+
+  return (
+    <UpvoteRating_Animated
+      {...voteState}
+      onVoteChange={setVoteState}
+    />
+  );
+}
+```
+
+### With Custom Vote Weights
+
+```tsx
+function PremiumUserDemo() {
+  const [voteState, setVoteState] = React.useState({
+    upvotes: 120,
+    downvotes: 45,
+    upvoted: false,
+    downvoted: false
+  });
+
+  // Premium users get 5x vote power
+  return (
+    <UpvoteRating_Animated
+      {...voteState}
+      upvoteIncrement={5}
+      downvoteIncrement={5}
+      onVoteChange={setVoteState}
+    />
+  );
+}
+```
+
+### With Server Integration
+
+```tsx
+function ServerIntegratedDemo() {
+  const [voteState, setVoteState] = React.useState({
+    upvotes: 230,
+    downvotes: 120,
+    upvoted: false,
+    downvoted: false
+  });
+
+  const handleVoteChange = async (newState) => {
+    // Update local state immediately for responsive UI
+    setVoteState(newState);
+    
+    // Then send to server
+    try {
+      await api.updateVotes({
+        contentId: "post-123",
+        upvoted: newState.upvoted,
+        downvoted: newState.downvoted
+      });
+    } catch (error) {
+      // If server request fails, revert to previous state
+      setVoteState(voteState);
+      showErrorToast("Failed to update vote");
+    }
+  };
+
+  return (
+    <UpvoteRating_Animated
+      {...voteState}
+      onVoteChange={handleVoteChange}
+    />
+  );
+}
+```
+
+## Styling Variations
+
+You can easily customize the appearance of the component:
+
+### Dark Theme
+
+```tsx
+<UpvoteRating_Animated
+  {...voteState}
+  onVoteChange={setVoteState}
+  className="bg-zinc-900 border-zinc-700"
+/>
+```
+
+### Custom Colors
+
+```tsx
+<UpvoteRating_Animated
+  {...voteState}
+  onVoteChange={setVoteState}
+  className={cn(
+    "border-blue-500",
+    voteState.upvoted && "bg-blue-600", 
+    voteState.downvoted && "bg-orange-600"
+  )}
+/>
+```
+
+## Potential Enhancements
+
+1. **Animation Customization**: Allow customizing the duration and easing of number animations
+2. **Tooltip Support**: Show exact vote counts in tooltips when using compact notation
+3. **Vertical Orientation**: Option to display the component vertically (common in forums)
+4. **Feedback Effects**: Add subtle effects when votes are cast, like ripples or flashes
+5. **Vote Locking**: Add logic to prevent voting again for a certain period
+6. **Accessibility Modes**: High-contrast version for better accessibility
+
+## Conclusion
+
+Building a custom upvote component gives you complete control over the user experience while keeping your bundle size small. With animated transitions and visual feedback, your voting system will feel responsive and engaging.
+
+The component we've built is:
+- Flexible enough to handle various use cases
+- Responsive with good mobile support
+- Accessible to all users
+- Visually appealing with animations and color feedback
+
+By understanding how each piece works, you can now customize this component to suit your specific application needs or extend it with additional features.
+
+## Full Source Code + More Examples
+
+Here you can get the [full source code](/docs/components/upvote-rating/animated) with more examples!

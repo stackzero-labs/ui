@@ -30,6 +30,7 @@ export default async function Page(props: {
         author={page.data.author}
         date={page.data.date}
         name={page.file.name}
+        tags={page.data.tags}
       />
       <article className="container flex flex-col px-0 lg:flex-row lg:px-4 lg:py-8">
         <div className="min-w-0 flex-1 p-4">

@@ -1,0 +1,238 @@
+---
+title: Why Handling Numbers in React is Hard. A Multi-Currency Challenge for E-Commerce
+description: Exploring the complexities of handling number inputs in React applications, especially for multi-currency e-commerce platforms.
+date: 2025-03-04
+author: marcello
+tags: ["react", "currencies", "form-inputs"]
+
+# tags: ["react", "javascript", "e-commerce", "currencies", "form-inputs"]
+---
+
+# Why Handling Numbers in React is Hard: A Multi-Currency Challenge for E-Commerce
+
+When building e-commerce applications in React, one of the most deceptively complex challenges is properly handling number inputs, especially when dealing with multiple currencies. What seems like a straightforward task—displaying and manipulating numbers—becomes surprisingly intricate when you consider formatting, validation, localization, and precision requirements.
+ 
+
+<div className='w-full flex items-center justify-center '>
+  <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExb2c0YWx2cm5yZXQyMHQ0bDk4cjFzcm81dzRjbXZrdDR6cm5nNnFkNSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/j6qMqGnOZ9x0atp6Ug/giphy.gif" width="400" height="150" />
+</div>
+Let me walk you through the challenges and how specialized libraries can help solve them.
+
+## The Challenges of Number Input in JavaScript and React
+
+### 1. JavaScript's Floating-Point Precision Issues
+
+
+
+JavaScript stores numbers as 64-bit floating point values, which leads to infamous precision errors:
+
+```javascript
+0.1 + 0.2 // Returns 0.30000000000000004, not 0.3
+```
+
+In an e-commerce context, these small errors can compound into significant accounting problems.
+
+### 2. Formatting Differences Across Currencies
+
+Different currencies have different formatting conventions:
+- USD: $1,234.56
+- EUR: €1.234,56 
+- JPY: ¥1,235 (no decimal places)
+
+### 3. Input vs. Display Format
+
+Users need to input numbers in a natural way, but the application needs to store and calculate with the raw numeric values.
+
+### 4. Validation Requirements
+
+Numbers need constraints like:
+- Minimum/maximum values
+- Decimal place limitations
+- Preventing non-numeric characters
+
+## Solutions with Specialized Libraries
+
+### Using react-number-format
+
+[react-number-format](https://github.com/s-yadav/react-number-format) provides a comprehensive solution for formatting and manipulating number inputs.
+
+Here's a basic example for a price input:
+
+```jsx
+import NumberFormat from 'react-number-format';
+
+function PriceInput({ value, onChange, currency }) {
+  const formats = {
+    USD: { prefix: '$', thousandSeparator: ',', decimalSeparator: '.' },
+    EUR: { suffix: ' €', thousandSeparator: '.', decimalSeparator: ',' },
+    JPY: { prefix: '¥', thousandSeparator: ',', decimalScale: 0 }
+  };
+  
+  return (
+    <NumberFormat
+      value={value}
+      onValueChange={(values) => onChange(values.floatValue)}
+      displayType="input"
+      decimalScale={currency === 'JPY' ? 0 : 2}
+      fixedDecimalScale
+      {...formats[currency]}
+    />
+  );
+}
+```
+
+This component handles:
+- Currency-specific prefixes/suffixes
+- Appropriate thousand and decimal separators
+- Different decimal precision based on currency
+
+### Using @number-flow/react
+
+[@number-flow/react](https://github.com/number-flow/number-flow) offers a more modern approach with features specifically designed for complex number handling scenarios.
+
+Here's an example of implementing a multi-currency price input:
+
+```jsx
+import { NumberInput } from '@number-flow/react';
+
+function MultiCurrencyInput({ value, onChange, currency }) {
+  const getCurrencyConfig = (currency) => {
+    switch (currency) {
+      case 'USD':
+        return {
+          prefix: '$',
+          thousandSeparator: ',',
+          decimalSeparator: '.',
+          precision: 2
+        };
+      case 'EUR':
+        return {
+          suffix: ' €',
+          thousandSeparator: '.',
+          decimalSeparator: ',',
+          precision: 2
+        };
+      case 'JPY':
+        return {
+          prefix: '¥',
+          thousandSeparator: ',',
+          precision: 0
+        };
+      default:
+        return {};
+    }
+  };
+  
+  return (
+    <NumberInput
+      value={value}
+      onChange={onChange}
+      {...getCurrencyConfig(currency)}
+      allowNegative={false}
+      min={0}
+    />
+  );
+}
+```
+
+The `@number-flow/react` library excels at:
+- Consistent behavior across browsers and devices
+- Handling cursor position intelligently when formatting
+- Built-in accessibility features
+- Efficient rendering optimizations
+
+## Advanced Usage: Currency Conversion Widget
+
+Here's a more complex example showing a currency conversion widget:
+
+```jsx
+import React, { useState, useEffect } from 'react';
+import { NumberInput } from '@number-flow/react';
+
+function CurrencyConverter() {
+  const [amount, setAmount] = useState(100);
+  const [fromCurrency, setFromCurrency] = useState('USD');
+  const [toCurrency, setToCurrency] = useState('EUR');
+  const [result, setResult] = useState(null);
+  
+  // Simplified exchange rates (in real app, you would fetch these)
+  const rates = {
+    USD: { EUR: 0.85, JPY: 110.2 },
+    EUR: { USD: 1.18, JPY: 129.5 },
+    JPY: { USD: 0.0091, EUR: 0.0077 }
+  };
+  
+  useEffect(() => {
+    if (fromCurrency === toCurrency) {
+      setResult(amount);
+    } else {
+      setResult(amount * rates[fromCurrency][toCurrency]);
+    }
+  }, [amount, fromCurrency, toCurrency]);
+  
+  const currencyConfig = {
+    USD: { prefix: '$', precision: 2 },
+    EUR: { suffix: ' €', precision: 2 },
+    JPY: { prefix: '¥', precision: 0 }
+  };
+  
+  return (
+    <div className="converter">
+      <div className="input-group">
+        <NumberInput
+          value={amount}
+          onChange={value => setAmount(value)}
+          {...currencyConfig[fromCurrency]}
+          min={0}
+        />
+        <select 
+          value={fromCurrency} 
+          onChange={e => setFromCurrency(e.target.value)}
+        >
+          <option value="USD">USD</option>
+          <option value="EUR">EUR</option>
+          <option value="JPY">JPY</option>
+        </select>
+      </div>
+      
+      <div>↓</div>
+      
+      <div className="result">
+        {result !== null && (
+          <NumberInput
+            value={result}
+            readOnly
+            {...currencyConfig[toCurrency]}
+          />
+        )}
+        <select 
+          value={toCurrency} 
+          onChange={e => setToCurrency(e.target.value)}
+        >
+          <option value="USD">USD</option>
+          <option value="EUR">EUR</option>
+          <option value="JPY">JPY</option>
+        </select>
+      </div>
+    </div>
+  );
+}
+```
+
+## Conclusion
+
+Properly handling numeric inputs in React applications—especially in multi-currency e-commerce scenarios—is much more challenging than it initially appears. The complexities of number formatting, localization, validation, and JavaScript's inherent floating-point limitations make this a genuine problem space.
+
+Libraries like react-number-format and @number-flow/react abstract away these complexities, providing robust, user-friendly solutions that handle:
+
+1. Currency-specific formatting
+2. Locale-aware separators
+3. Proper decimal precision
+4. Clean user input experience
+5. Underlying numeric value management
+
+By leveraging these specialized tools, you can focus on building your e-commerce features rather than fighting with the intricacies of number representation and manipulation across different currencies.
+
+<div className='w-full flex items-center justify-center '>
+  <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExdnp0Y20zMXB6cTY5ZWVvZWVzc3dhM3l2cG1vMnoxamdlNGF6NmpqdiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/5bivKwxhVzshNk2Rjw/giphy.gif" width="400" height="150" />
+</div>
