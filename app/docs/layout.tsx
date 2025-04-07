@@ -8,6 +8,7 @@ const docsOptions: DocsLayoutProps = {
   ...baseOptions,
   links: linkItems,
   tree: source.pageTree,
+  i18n: false,
 };
 
 export default function Layout({ children }: { children: ReactNode }) {

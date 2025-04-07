@@ -20,7 +20,7 @@ export default function FaceRating_Basic_Ex_03() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="mx-auto w-full max-w-md space-y-6 rounded-lg border border-border bg-background p-6 shadow-xs"
+      className="border-border bg-background mx-auto w-full max-w-md space-y-6 rounded-lg border p-6 shadow-xs"
     >
       <div className="space-y-2">
         <label className="block text-sm font-medium">
@@ -43,7 +43,7 @@ export default function FaceRating_Basic_Ex_03() {
         <textarea
           id="comment"
           rows={3}
-          className="w-full rounded-md border border-ring px-3 py-2"
+          className="border-ring w-full rounded-md border px-3 py-2"
           value={formData.comment}
           onChange={(e) =>
             setFormData((prev) => ({ ...prev, comment: e.target.value }))
@@ -59,7 +59,7 @@ export default function FaceRating_Basic_Ex_03() {
         <input
           type="email"
           id="email"
-          className="w-full rounded-md border border-ring px-3 py-2"
+          className="border-ring w-full rounded-md border px-3 py-2"
           value={formData.email}
           onChange={(e) =>
             setFormData((prev) => ({ ...prev, email: e.target.value }))

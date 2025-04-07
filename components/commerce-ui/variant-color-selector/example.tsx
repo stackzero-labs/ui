@@ -44,13 +44,11 @@ const VariantSelectorItem = React.forwardRef<
 >(({ autoContrast = true, children, className, color, ...props }, ref) => {
   const textColor = autoContrast ? getContrastYIQ(color) : undefined;
 
-  console.log("textColor", textColor);
-
   return (
     <RadioGroupPrimitive.Item
       ref={ref}
       className={cn(
-        "aspect-square size-6 rounded-full border border-primary text-primary ring-offset-background focus:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
+        "border-primary text-primary ring-offset-background focus-visible:ring-ring aspect-square size-6 rounded-full border focus:outline-hidden focus-visible:ring-2 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
         className
       )}
       style={{ backgroundColor: color, borderColor: color, color: textColor }}
@@ -103,7 +101,7 @@ const VariantGroupLegend = React.forwardRef<
   <legend
     ref={ref}
     className={cn(
-      "text-sm font-medium leading-none text-foreground",
+      "text-foreground text-sm leading-none font-medium",
       className
     )}
     {...props}

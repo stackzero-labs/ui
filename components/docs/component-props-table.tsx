@@ -31,8 +31,6 @@ interface PropsTableProps {
 }
 
 export const ComponentPropsTable: React.FC<PropsTableProps> = ({ types }) => {
-  console.log("propsComponentData", types);
-
   return (
     <div className="overflow-x-auto">
       <table className="min-w-full divide-y divide-gray-200">
@@ -55,9 +53,9 @@ export const ComponentPropsTable: React.FC<PropsTableProps> = ({ types }) => {
         <tbody className="divide-y divide-gray-200">
           {Object.keys(types).map((typeName) => (
             <tr key={typeName}>
-              <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-500">
+              <td className="px-6 py-4 text-sm whitespace-nowrap text-gray-500">
                 <div className="flex flex-row items-start gap-1 align-middle">
-                  <code className="rounded-md bg-fd-primary/10 p-1 text-fd-primary">
+                  <code className="bg-fd-primary/10 text-fd-primary rounded-md p-1">
                     {typeName}
                   </code>
                   {types[typeName].required && (
@@ -99,7 +97,7 @@ export const ComponentPropsTable: React.FC<PropsTableProps> = ({ types }) => {
                 )}
               </td>
 
-              <td className="whitespace-nowrap px-6 py-4 font-mono text-sm text-gray-500">
+              <td className="px-6 py-4 font-mono text-sm whitespace-nowrap text-gray-500">
                 {types[typeName].defaultValue?.value ||
                   types[typeName].default ||
                   "-"}

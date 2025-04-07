@@ -38,6 +38,8 @@ export interface DocsLayoutProps extends BaseLayoutProps {
   sidebar?: Omit<Partial<SidebarOptions>, "component" | "enabled">;
 
   containerProps?: HTMLAttributes<HTMLDivElement>;
+
+  i18n: boolean;
 }
 
 export function DocsLayout({
