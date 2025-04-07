@@ -291,6 +291,24 @@ export const components: Registry = [
         import("../components/commerce-ui/price-format/sale/price-format-sale")
     ),
   },
+  {
+    name: "quantity-",
+    type: "registry:component",
+    dependencies: ["lucide-react"],
+    registryDependencies: ["button"],
+    files: [
+      {
+        path: "@/components/commerce-ui/quantity-input/basic/quantity-input-basic.tsx",
+        type: "registry:component",
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import(
+          "../components/commerce-ui/quantity-input/basic/quantity-input-basic"
+        )
+    ),
+  },
 
   {
     name: "upvote-rating-basic",

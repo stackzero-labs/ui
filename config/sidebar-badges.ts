@@ -7,10 +7,6 @@ export const sidebarBadges = [
     page: "Image Viewer",
     alpha: true,
   },
-  {
-    page: "Price Format",
-    isNew: true,
-  },
 
   {
     page: "Product Cards",
@@ -26,7 +22,7 @@ export const sidebarBadges = [
     count: 4,
   },
   {
-    page: "Variant Selector",
+    page: "Quantity Input",
     isNew: true,
   },
 ];

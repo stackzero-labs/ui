@@ -163,6 +163,69 @@ export const examples: Registry = [
   },
 
   {
+    name: "quantity-input-basic-ex-01",
+    type: "registry:example",
+    dependencies: ["lucide-react"],
+    registryDependencies: [
+      "https://ui.stackzero.co/r/quantity-input-basic.json",
+    ],
+    files: [
+      {
+        path: "@/components/commerce-ui/quantity-input/basic/quantity-input-ex-01.tsx",
+        type: "registry:example",
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import(
+          "../components/commerce-ui/quantity-input/basic/quantity-input-ex-01"
+        )
+    ),
+  },
+
+  {
+    name: "quantity-input-basic-ex-02",
+    type: "registry:example",
+    dependencies: ["lucide-react"],
+    registryDependencies: [
+      "https://ui.stackzero.co/r/quantity-input-basic.json",
+    ],
+    files: [
+      {
+        path: "@/components/commerce-ui/quantity-input/basic/quantity-input-ex-02.tsx",
+        type: "registry:example",
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import(
+          "../components/commerce-ui/quantity-input/basic/quantity-input-ex-02"
+        )
+    ),
+  },
+
+  {
+    name: "quantity-input-basic-ex-03",
+    type: "registry:example",
+    dependencies: ["lucide-react"],
+    registryDependencies: [
+      "https://ui.stackzero.co/r/quantity-input-basic.json",
+    ],
+    files: [
+      {
+        path: "@/components/commerce-ui/quantity-input/basic/quantity-input-ex-03.tsx",
+        type: "registry:example",
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import(
+          "../components/commerce-ui/quantity-input/basic/quantity-input-ex-03"
+        )
+    ),
+  },
+
+  {
     name: "face-rating-basic-ex-01",
     type: "registry:example",
     dependencies: ["lucide-react"],

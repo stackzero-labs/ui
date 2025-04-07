@@ -1,0 +1,18 @@
+{
+  "name": "quantity-selector-basic-ex-03",
+  "type": "registry:example",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "https://ui.stackzero.co/r/quantity-selector-basic.json"
+  ],
+  "files": [
+    {
+      "type": "registry:example",
+      "content": "\"use client\";\n\nimport { useState } from \"react\";\nimport QuantitySelectorBasic from \"@/components/commerce-ui/quantity-selector-basic\";\n\nexport default function QuantitySelector_Basic_Ex_03() {\n  const [quantity, setQuantity] = useState(1);\n\n  const handleQuantityChange = (newQuantity: number) => {\n    setQuantity(newQuantity);\n  };\n\n  return (\n    <>\n      <QuantitySelectorBasic\n        quantity={quantity}\n        onChange={handleQuantityChange}\n        min={1}\n        max={30}\n        step={3}\n      />\n    </>\n  );\n}\n",
+      "path": "/components/commerce-ui/quantity-selector/basic/quantity-selector-ex-03.tsx",
+      "target": "/components/commerce-ui/quantity-selector-ex-03.tsx"
+    }
+  ]
+}

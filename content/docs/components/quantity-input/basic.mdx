@@ -1,0 +1,98 @@
+---
+title: Quantity Input - Basic
+description: A quantity input component with min, max validation
+---
+
+
+
+<ComponentPreview 
+  name="quantity-input-basic-ex-01"     
+  classNameComponentContainer='min-h-[200px]' 
+/>
+
+
+
+{/* <References>
+  <Reference label="react-number-format" link="https://github.com/s-yadav/react-number-format"/>
+</References> */}
+
+## Install
+<ComponentInstall
+  name="quantity-input-basic"     
+  classNameComponentContainer='min-h-[200px]' 
+>
+<CLIInstall  name="quantity-input-basic"   />
+
+<ManualInstall>
+
+<Steps>
+
+<Step>
+
+Install the following dependencies:
+
+<Tabs items={["pnpm", "npm", "bun"]}>
+    ```bash tab="pnpm"
+    pnpm add react-number-format
+    ```
+    ```bash tab="npm"
+    npm install react-number-format
+    ```
+    ```bash tab="bun"
+    bun add react-number-format
+    ```
+</Tabs>
+</Step>
+
+
+<Step>
+
+Copy and paste the following code into your project:
+
+</Step>
+
+<ComponentSource name="quantity-input-basic-basic"/>
+
+<Step>
+
+Update the import paths to match your project setup
+
+</Step>
+
+</Steps>
+
+
+</ManualInstall>
+
+
+</ComponentInstall>
+
+## Examples
+
+### With min, max
+
+You can set a `max` and `min` value to the quantity selector. The component will not allow the user to select a value outside of this range.
+
+This is usefull to limit the quantity of items a user can buy. For example, if you have a limited stock of an item, you can set the `max` value to the number of items in stock.
+
+<ComponentPreview 
+  name="quantity-input-basic-ex-02"     
+  classNameComponentContainer='min-h-[200px]' 
+/>
+
+
+### With custom steps
+
+You can set a `step` value to the quantity selector. The component will only allow the user to select values that are multiples of this step.
+
+This is usefull if you have a set of items that can only be bought in certain quantities. 
+
+<ComponentPreview 
+  name="quantity-input-basic-ex-03"     
+  classNameComponentContainer='min-h-[200px]' 
+/>
+
+
+
+
+

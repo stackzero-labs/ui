@@ -84,4 +84,9 @@ export const SIDEBAR_RENAMED_PAGES: RenamedPage[] = [
     pageName: "Variant Color Selector - Basic",
     newPageName: "Basic",
   },
+
+  {
+    pageName: "Quantity Input - Basic",
+    newPageName: "Basic",
+  },
 ];
