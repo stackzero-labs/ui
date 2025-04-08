@@ -292,11 +292,11 @@ Create an MDX file for documenting your block in `content/docs/blocks/your-block
 title: Your Block
 description: A description of your block and its usage
 ---
-```
 
 ### Your Block - 01
 
 <ComponentPreview name="your-block-01-block" />
+```
 
 That's it! You have successfully added a new block to the library.
 
@@ -321,7 +321,3 @@ the following categories:
   categories
 
 Thank you for contributing to stackzero/commerce-ui and helping us create amazing components!
-
-```
-
-```
