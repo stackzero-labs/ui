@@ -96,6 +96,8 @@ Any contributions you make are **greatly appreciated**!
 
 If you have suggestions or have found a bug, feel free to open an issue.
 
+For contributions please check the `CONTRIBUTING.md` file.
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- LICENSE -->
