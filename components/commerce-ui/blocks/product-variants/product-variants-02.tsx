@@ -1,6 +1,8 @@
 "use client";
 
 import ImageViewer from "@/components/commerce-ui/image-viewer/basic/image-viewer-basic";
+import PriceFormat_Sale from "@/components/commerce-ui/price-format/sale/price-format-sale";
+import QuantityInputBasic from "@/components/commerce-ui/quantity-input/basic/quantity-input-basic";
 import VariantSelectorBasic, {
   VariantItem,
 } from "@/components/commerce-ui/variant-selector/basic/variant-selector-basic";
@@ -9,7 +11,6 @@ import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import Link from "next/link";
 import { useState } from "react";
-import PriceFormat_Sale from "../../price-format/sale/price-format-sale";
 
 // Default data
 const DEFAULT_COLOR_VARIANTS: VariantItem[] = [
@@ -76,6 +77,7 @@ function ProductVariant_02({
 }: ProductVariant01Props) {
   const [selectedColor, setSelectedColor] = useState(initialColor);
   const [selectedSize, setSelectedSize] = useState(initialSize);
+  const [quantity, setQuantity] = useState(1);
 
   // Get current image based on selected color
   const currentImage =
@@ -167,6 +169,15 @@ function ProductVariant_02({
           {shippingInfo && (
             <p className="text-muted-foreground mt-1 text-sm">{shippingInfo}</p>
           )}
+
+          <div className="flex items-center gap-2">
+            <label className="mb-2 block text-sm font-medium">Quantity: </label>
+            <QuantityInputBasic
+              quantity={quantity}
+              onChange={setQuantity}
+              max={10}
+            />
+          </div>
 
           <div className="mt-2 flex w-full flex-col gap-4">
             <Button variant="outline" className="w-full" onClick={onAddToCart}>

@@ -8,7 +8,7 @@
     "build:registry": "tsx ./scripts/build-registry.ts",
     "sort:registry": "tsx ./scripts/sort-registry.ts",
     "dev": "next dev",
-    "start": "next start",
+    "start": "npx serve@latest out",
     "postinstall": "fumadocs-mdx",
     "lint": "next lint --no-cache",
     "lint:fix": "next lint --fix",

@@ -1,11 +1,12 @@
 "use client";
 import { cn } from "../lib/cn";
 import type { ButtonHTMLAttributes, HTMLAttributes } from "react";
-import { useSidebar } from "fumadocs-ui/provider";
+import { PageStyles, StylesProvider, useSidebar } from "fumadocs-ui/provider";
 import { useNav } from "./layout/nav";
 import { SidebarTrigger } from "fumadocs-core/sidebar";
 import { buttonVariants } from "./ui/button";
 import { Menu, X } from "lucide-react";
+import { useParams } from "next/navigation";
 
 export function Navbar(props: HTMLAttributes<HTMLElement>) {
   const { collapsed, open } = useSidebar();
@@ -54,4 +55,24 @@ export function NavbarSidebarTrigger(
       {open ? <X /> : <Menu />}
     </SidebarTrigger>
   );
+}
+
+export function Inset({ children }: { children: React.ReactNode }) {
+  const params = useParams();
+
+  const { slug } = params as { slug: string[] };
+
+  const isBlock = slug?.includes("blocks");
+
+  console.log("isBlock", isBlock);
+
+  console.log("params", params);
+  const pageStyles: PageStyles = {
+    article: cn("w-full", isBlock ? "!max-w-[1450px]" : ""),
+    page: cn("mt-[var(--fd-nav-height)]"),
+    toc: cn("max-xl:hidden"),
+    tocNav: cn("xl:hidden"),
+  };
+
+  return <StylesProvider {...pageStyles}>{children}</StylesProvider>;
 }

@@ -1,13 +1,14 @@
 "use client";
 
-import { useState } from "react";
 import ImageViewer from "@/components/commerce-ui/image-viewer/basic/image-viewer-basic";
 import PriceFormat from "@/components/commerce-ui/price-format/basic/price-format-basic";
+import QuantityInputBasic from "@/components/commerce-ui/quantity-input/basic/quantity-input-basic";
 import VariantSelectorBasic, {
   VariantItem,
 } from "@/components/commerce-ui/variant-selector/basic/variant-selector-basic";
-import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { useState } from "react";
 
 // Default data
 const DEFAULT_COLOR_VARIANTS: VariantItem[] = [
@@ -73,6 +74,8 @@ function ProductVariant_01({
   const [selectedColor, setSelectedColor] = useState(initialColor);
   const [selectedSize, setSelectedSize] = useState(initialSize);
 
+  const [quantity, setQuantity] = useState(1);
+
   // Get current image based on selected color
   const currentImage =
     colorImages[selectedColor as keyof typeof colorImages] ||
@@ -134,6 +137,14 @@ function ProductVariant_01({
           </div>
         </div>
 
+        <div>
+          <label className="mb-2 block text-sm font-medium">Quantity</label>
+          <QuantityInputBasic
+            quantity={quantity}
+            onChange={setQuantity}
+            max={10}
+          />
+        </div>
         <div className="mt-2 flex flex-row gap-4">
           <Button variant="outline" className="w-1/2" onClick={onAddToCart}>
             Add to Cart

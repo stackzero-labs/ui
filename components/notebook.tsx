@@ -29,8 +29,9 @@ import {
   type SidebarOptions,
 } from "./docs/shared";
 import type { PageTree } from "fumadocs-core/server";
-import { Navbar, NavbarSidebarTrigger } from "./notebook.client";
+import { Inset, Navbar, NavbarSidebarTrigger } from "./notebook.client";
 import { type PageStyles, StylesProvider } from "fumadocs-ui/provider";
+import { useParams } from "next/navigation";
 
 export interface DocsLayoutProps extends BaseLayoutProps {
   tree: PageTree.Root;
@@ -65,6 +66,7 @@ export function DocsLayout({
   );
 
   const pageStyles: PageStyles = {
+    article: "w-full !max-w-[1450px]",
     page: cn("mt-[var(--fd-nav-height)]"),
     toc: cn("max-xl:hidden"),
     tocNav: cn("xl:hidden"),
@@ -126,7 +128,8 @@ export function DocsLayout({
             i18n={i18n}
             sidebarCollapsible={sidebarCollapsible}
           />
-          <StylesProvider {...pageStyles}>{props.children}</StylesProvider>
+          {/* <StylesProvider {...pageStyles}>{props.children}</StylesProvider> */}
+          <Inset>{props.children}</Inset>
         </main>
       </NavProvider>
     </TreeContextProvider>

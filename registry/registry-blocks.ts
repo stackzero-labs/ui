@@ -82,6 +82,7 @@ export const blocks: Registry = [
       "https://ui.stackzero.co/r/image-viewer-basic.json",
       "https://ui.stackzero.co/r/price-format-basic.json",
       "https://ui.stackzero.co/r/variant-selector-basic.json",
+      "https://ui.stackzero.co/r/quantity-input-basic.json",
     ],
     files: [
       {
@@ -108,6 +109,7 @@ export const blocks: Registry = [
       "https://ui.stackzero.co/r/image-viewer-basic.json",
       "https://ui.stackzero.co/r/price-format-sale.json",
       "https://ui.stackzero.co/r/variant-selector-basic.json",
+      "https://ui.stackzero.co/r/quantity-input-basic.json",
     ],
     files: [
       {
