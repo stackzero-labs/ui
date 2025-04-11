@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils";
 import { Minus, Plus } from "lucide-react";
 import { ChangeEvent, useState, useEffect } from "react";
 
-interface QuantitySelectorBasicProps {
+interface QuantityInputBasicProps {
   quantity: number;
   min?: number;
   max?: number;
@@ -13,7 +13,7 @@ interface QuantitySelectorBasicProps {
   className?: string;
 }
 
-const QuantitySelectorBasic = ({
+const QuantityInputBasic = ({
   className,
   disabled = false,
   max = 99,
@@ -21,7 +21,7 @@ const QuantitySelectorBasic = ({
   onChange,
   quantity,
   step = 1,
-}: QuantitySelectorBasicProps) => {
+}: QuantityInputBasicProps) => {
   // Internal state to handle input field text during editing
   const [inputValue, setInputValue] = useState(quantity.toString());
 
@@ -115,4 +115,4 @@ const QuantitySelectorBasic = ({
   );
 };
 
-export default QuantitySelectorBasic;
+export default QuantityInputBasic;

@@ -1,9 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import QuantitySelectorBasic from "@/components/commerce-ui/quantity-input/basic/quantity-input-basic";
+import QuantityInputBasic from "@/components/commerce-ui/quantity-input/basic/quantity-input-basic";
 
-export default function QuantitySelector_Basic_Ex_03() {
+export default function QuantityInput_Basic_Ex_03() {
   const [quantity, setQuantity] = useState(1);
 
   const handleQuantityChange = (newQuantity: number) => {
@@ -12,7 +12,7 @@ export default function QuantitySelector_Basic_Ex_03() {
 
   return (
     <>
-      <QuantitySelectorBasic
+      <QuantityInputBasic
         quantity={quantity}
         onChange={handleQuantityChange}
         min={1}

@@ -292,10 +292,10 @@ export const components: Registry = [
     ),
   },
   {
-    name: "quantity-",
+    name: "quantity-input-basic",
     type: "registry:component",
     dependencies: ["lucide-react"],
-    registryDependencies: ["button"],
+    registryDependencies: [],
     files: [
       {
         path: "@/components/commerce-ui/quantity-input/basic/quantity-input-basic.tsx",
