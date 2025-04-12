@@ -91,8 +91,8 @@ function ProductVariant_02({
     basePrice;
 
   return (
-    <div className="grid grid-cols-3 gap-4">
-      <div className="col-span-2">
+    <div className="grid grid-cols-1 gap-6 md:grid-cols-3 md:gap-8">
+      <div className="col-span-1 md:col-span-2">
         <div>
           <div className="relative w-full">
             {badge && (
@@ -103,10 +103,14 @@ function ProductVariant_02({
             <ImageViewer imageUrl={currentImage} />
           </div>
         </div>
-        <div className="mt-6 flex flex-col gap-6">
+        <div className="mt-4 flex flex-col gap-4 md:mt-6 md:gap-6">
           <div>
-            <h2 className="text-2xl font-bold tracking-tight">{title}</h2>
-            <p className="text-muted-foreground mt-2">{description}</p>
+            <h2 className="text-xl font-bold tracking-tight sm:text-2xl">
+              {title}
+            </h2>
+            <p className="text-muted-foreground mt-2 text-sm sm:text-base">
+              {description}
+            </p>
           </div>
 
           <div className="space-y-4">
@@ -116,7 +120,7 @@ function ProductVariant_02({
                 value={selectedColor}
                 onValueChange={setSelectedColor}
                 variants={colorVariants}
-                className="grid-cols-3 sm:grid-cols-3"
+                className="grid-cols-3"
               />
             </div>
 
@@ -126,12 +130,12 @@ function ProductVariant_02({
                 value={selectedSize}
                 onValueChange={setSelectedSize}
                 variants={sizeVariants}
-                className="grid-cols-4 sm:grid-cols-4"
+                className="grid-cols-4"
               />
             </div>
           </div>
 
-          <div className="mt-4">
+          <div className="mt-2 md:mt-4">
             <p className="text-sm font-medium">Selected Configuration:</p>
             <p className="text-muted-foreground text-sm">
               {colorVariants.find((v) => v.value === selectedColor)?.label} /{" "}
@@ -141,9 +145,9 @@ function ProductVariant_02({
           </div>
         </div>
       </div>
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col gap-4 md:gap-2">
         <div className="rounded-md text-sm outline outline-lime-500">
-          <div className="rounded-md rounded-b-none bg-lime-500/50 p-2">
+          <div className="rounded-md rounded-b-none bg-lime-500/50 p-3">
             <p className="font-semibold">
               Get Free Shipping and 1-day delivery!
             </p>
@@ -179,18 +183,25 @@ function ProductVariant_02({
             />
           </div>
 
-          <div className="mt-2 flex w-full flex-col gap-4">
-            <Button variant="outline" className="w-full" onClick={onAddToCart}>
+          <div className="flex w-full flex-col gap-3 sm:gap-4">
+            <Button
+              variant="outline"
+              className="w-full py-5 text-base sm:py-2 sm:text-sm"
+              onClick={onAddToCart}
+            >
               Add to Cart
             </Button>
-            <Button className="w-full" onClick={onBuyNow}>
+            <Button
+              className="w-full py-5 text-base sm:py-2 sm:text-sm"
+              onClick={onBuyNow}
+            >
               Buy Now
             </Button>
           </div>
 
           <Separator className="my-4" />
 
-          <div className="grid grid-cols-3 gap-2 text-sm">
+          <div className="grid grid-cols-3 gap-2 text-xs sm:text-sm">
             <div className="col-span-1">Sold by:</div>
             <div className="col-span-2">
               <Link href="/" className="text-primary hover:underline">

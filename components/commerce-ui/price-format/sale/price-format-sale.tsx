@@ -32,7 +32,7 @@ const PriceFormat_Sale: React.FC<PriceFormat_SaleProps> = ({
   const savePercentage = ((originalPrice - salePrice) / originalPrice) * 100;
 
   return (
-    <div className={cn("flex items-center gap-2", className)}>
+    <div className={cn("flex flex-wrap items-center gap-2", className)}>
       <NumericFormat
         value={originalPrice}
         thousandSeparator={thousandSeparator}
@@ -57,7 +57,7 @@ const PriceFormat_Sale: React.FC<PriceFormat_SaleProps> = ({
       {showSavePercentage && (
         <span
           className={cn(
-            "rounded-sm bg-green-500/50 p-1 text-base text-sm font-medium",
+            "rounded-sm bg-green-500/50 p-1 text-sm font-medium",
             classNameSalePercentage
           )}
         >
