@@ -1,0 +1,16 @@
+{
+  "name": "checkout-page",
+  "type": "registry:component",
+  "dependencies": [
+    "lucide-react",
+    "@radix-ui/react-toggle-group"
+  ],
+  "files": [
+    {
+      "type": "registry:component",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { ToggleGroup, ToggleGroupItem } from \"@radix-ui/react-toggle-group\";\n\nimport { cn } from \"@/lib/utils\";\n\nexport interface VariantItem {\n  id: string;\n  value: string;\n  label: string;\n}\n\ninterface VariantSelectorMultipleProps {\n  values: string[];\n  onValuesChange: (values: string[]) => void;\n  variants: VariantItem[];\n  className?: string;\n}\n\nconst VariantSelectorMultiple = ({\n  className,\n  onValuesChange,\n  values,\n  variants,\n}: VariantSelectorMultipleProps) => {\n  return (\n    <ToggleGroup\n      type=\"multiple\"\n      className={cn(\"grid grid-cols-2 gap-2 sm:grid-cols-3\", className)}\n      value={values}\n      onValueChange={onValuesChange}\n    >\n      {variants.map((variant) => (\n        <ToggleGroupItem\n          key={variant.id}\n          value={variant.value}\n          className=\"relative flex cursor-pointer flex-col items-center gap-3 rounded-lg border border-input px-2 py-3 text-center shadow-xs shadow-black/5 outline-offset-2 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-ring/70 disabled:cursor-not-allowed disabled:opacity-50 data-[state=on]:border-ring data-[state=on]:bg-accent\"\n        >\n          <p className=\"text-sm font-medium leading-none text-foreground\">\n            {variant.label}\n          </p>\n        </ToggleGroupItem>\n      ))}\n    </ToggleGroup>\n  );\n};\n\nexport default VariantSelectorMultiple;\n",
+      "path": "/components/commerce-ui/checkout-page/checkout-page.tsx",
+      "target": "/components/commerce-ui/checkout-page/checkout-page.tsx"
+    }
+  ]
+}

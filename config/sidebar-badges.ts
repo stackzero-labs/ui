@@ -25,4 +25,8 @@ export const sidebarBadges = [
     page: "Quantity Input",
     isNew: true,
   },
+  {
+    page: "Checkout Page",
+    isNew: true,
+  },
 ];
