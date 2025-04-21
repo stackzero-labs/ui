@@ -64,9 +64,8 @@ export function Inset({ children }: { children: React.ReactNode }) {
 
   const isBlock = slug?.includes("blocks");
 
-  console.log("isBlock", isBlock);
+  // console.log("isBlock", isBlock);
 
-  console.log("params", params);
   const pageStyles: PageStyles = {
     article: cn("w-full", isBlock ? "!max-w-[1450px]" : ""),
     page: cn("mt-[var(--fd-nav-height)]"),
