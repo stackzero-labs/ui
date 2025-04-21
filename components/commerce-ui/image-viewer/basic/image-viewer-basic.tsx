@@ -10,7 +10,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@radix-ui/react-dialog";
-import { X } from "lucide-react";
+import { MinusCircle, PlusCircle, X } from "lucide-react";
 import { TransformComponent, TransformWrapper } from "react-zoom-pan-pinch";
 
 const DEFAULT_PLACEHOLDER_URL =
@@ -25,6 +25,7 @@ interface ImageViewerProps {
   thumbnailUrl?: string;
   placeholderUrl?: string;
   Placeholder?: React.ComponentType<{ className?: string }>;
+  showControls?: boolean;
 }
 
 const ImageViewer_Basic = ({
@@ -35,6 +36,7 @@ const ImageViewer_Basic = ({
   imageUrl,
   thumbnailUrl,
   placeholderUrl = DEFAULT_PLACEHOLDER_URL,
+  showControls = true,
 }: ImageViewerProps) => {
   const handleImgError = (event: React.SyntheticEvent<HTMLImageElement>) => {
     console.error("Image failed to load", event.currentTarget.src);
@@ -69,7 +71,7 @@ const ImageViewer_Basic = ({
               initialPositionX={0}
               initialPositionY={0}
             >
-              {() => (
+              {({ zoomIn, zoomOut }) => (
                 <>
                   <TransformComponent>
                     {/* You can swap this with your preferred image optization technique, like using  next/image */}
@@ -80,6 +82,24 @@ const ImageViewer_Basic = ({
                       onError={handleImgError}
                     />
                   </TransformComponent>
+                  {showControls && (
+                    <div className="absolute bottom-4 left-1/2 z-10 flex -translate-x-1/2 gap-2">
+                      <button
+                        onClick={() => zoomOut()}
+                        className="cursor-pointer rounded-full bg-black/50 p-2 text-white transition-colors hover:bg-black/70"
+                        aria-label="Zoom out"
+                      >
+                        <MinusCircle className="size-6" />
+                      </button>
+                      <button
+                        onClick={() => zoomIn()}
+                        className="cursor-pointer rounded-full bg-black/50 p-2 text-white transition-colors hover:bg-black/70"
+                        aria-label="Zoom in"
+                      >
+                        <PlusCircle className="size-6" />
+                      </button>
+                    </div>
+                  )}
                 </>
               )}
             </TransformWrapper>
