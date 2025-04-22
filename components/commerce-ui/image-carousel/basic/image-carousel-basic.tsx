@@ -1,11 +1,7 @@
 "use client";
 
-import React, { useState, useCallback, useEffect } from "react";
-import { type EmblaOptionsType } from "embla-carousel";
-import useEmblaCarousel from "embla-carousel-react";
-import { ArrowLeft, ArrowRight } from "lucide-react";
-import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 import {
   Dialog,
   DialogClose,
@@ -15,13 +11,24 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@radix-ui/react-dialog";
-import Image from "next/image";
+import { type EmblaOptionsType } from "embla-carousel";
+import useEmblaCarousel from "embla-carousel-react";
+import {
+  ArrowLeft,
+  ArrowRight,
+  MinusCircle,
+  PlusCircle,
+  X,
+} from "lucide-react";
+import React, { useCallback, useEffect, useState } from "react";
+import { TransformComponent, TransformWrapper } from "react-zoom-pan-pinch";
 
 type ThumbPropType = {
   selected: boolean;
   index: number;
   onClick: () => void;
   imgUrl: string;
+  title?: string;
 };
 
 const getAspectRatioClass = (ratio?: string) => {
@@ -40,11 +47,12 @@ const getAspectRatioClass = (ratio?: string) => {
 };
 
 const ImageContainer: React.FC<{
-  image: string;
+  image: { url: string; title?: string };
   alt: string;
   fit?: "cover" | "contain" | "fill";
   aspectRatio?: string;
-}> = ({ alt, aspectRatio, fit = "cover", image }) => {
+  showImageControls?: boolean;
+}> = ({ alt, aspectRatio, fit = "cover", image, showImageControls }) => {
   return (
     <div
       className={cn(
@@ -52,25 +60,82 @@ const ImageContainer: React.FC<{
         getAspectRatioClass(aspectRatio)
       )}
     >
-      <Image
-        unoptimized
-        width={400}
-        height={600}
-        src={image}
-        alt={alt}
-        className={cn(
-          "absolute inset-0 h-full w-full",
-          fit === "contain" && "object-contain",
-          fit === "cover" && "object-cover",
-          fit === "fill" && "object-fill"
-        )}
-      />
+      <Dialog>
+        <DialogTrigger asChild>
+          <div className={`cursor-pointer`}>
+            <img
+              src={image.url}
+              alt={image.title || alt}
+              width={400}
+              height={600}
+              className={cn(
+                "absolute inset-0 h-full w-full",
+                fit === "contain" && "object-contain",
+                fit === "cover" && "object-cover",
+                fit === "fill" && "object-fill"
+              )}
+            />
+          </div>
+        </DialogTrigger>
+
+        <DialogPortal>
+          <DialogOverlay className="fixed inset-0 z-50 bg-black/80" />
+          <DialogContent className="bg-background fixed inset-0 z-50 flex flex-col items-center justify-center p-0">
+            <DialogTitle className="sr-only">
+              {image.title || "Image"}
+            </DialogTitle>
+
+            <div className="relative flex h-screen w-screen items-center justify-center">
+              <TransformWrapper
+                initialScale={1}
+                initialPositionX={0}
+                initialPositionY={0}
+              >
+                {({ zoomIn, zoomOut }) => (
+                  <>
+                    <TransformComponent>
+                      {/* You can swap this with your preferred image optization technique, like using  next/image */}
+                      <img src={image.url} alt={image.title || "Full size"} />
+                    </TransformComponent>
+                    {showImageControls && (
+                      <div className="absolute bottom-4 left-1/2 z-10 flex -translate-x-1/2 gap-2">
+                        <button
+                          onClick={() => zoomOut()}
+                          className="cursor-pointer rounded-full bg-black/50 p-2 text-white transition-colors hover:bg-black/70"
+                          aria-label="Zoom out"
+                        >
+                          <MinusCircle className="size-6" />
+                        </button>
+                        <button
+                          onClick={() => zoomIn()}
+                          className="cursor-pointer rounded-full bg-black/50 p-2 text-white transition-colors hover:bg-black/70"
+                          aria-label="Zoom in"
+                        >
+                          <PlusCircle className="size-6" />
+                        </button>
+                      </div>
+                    )}
+                  </>
+                )}
+              </TransformWrapper>
+              <DialogClose asChild>
+                <button
+                  className="absolute top-4 right-4 z-10 cursor-pointer rounded-full border bg-black/50 p-2 text-white transition-colors hover:bg-black/70"
+                  aria-label="Close"
+                >
+                  <X className="size-6" />
+                </button>
+              </DialogClose>
+            </div>
+          </DialogContent>
+        </DialogPortal>
+      </Dialog>
     </div>
   );
 };
 
 const Thumb: React.FC<ThumbPropType> = (props) => {
-  const { imgUrl, index, onClick, selected } = props;
+  const { imgUrl, index, onClick, selected, title } = props;
 
   return (
     <div
@@ -88,39 +153,63 @@ const Thumb: React.FC<ThumbPropType> = (props) => {
         className="relative w-full cursor-pointer touch-manipulation appearance-none overflow-hidden rounded-md border-0 bg-transparent p-0"
         type="button"
       >
-        <ImageContainer
-          image={imgUrl}
-          alt={`Thumbnail ${index + 1}`}
-          fit="cover"
-          aspectRatio="square"
-        />
+        <div
+          className={cn(
+            "relative w-full overflow-hidden rounded-lg bg-gray-100",
+            getAspectRatioClass("square")
+          )}
+        >
+          <img
+            src={imgUrl}
+            alt={title || `Thumbnail ${index + 1}`}
+            width={400}
+            height={600}
+            className={cn("h-full w-full object-cover")}
+          />
+        </div>
       </button>
     </div>
   );
 };
 
-interface ImageCarousel_HorizontalProps
+type CarouselImage = {
+  title?: string;
+  url: string;
+};
+
+type CarouselImages = CarouselImage[];
+interface ImageCarousel_BasicProps
   extends React.HTMLAttributes<HTMLDivElement> {
-  images: string[];
+  images: CarouselImages;
   opts?: EmblaOptionsType;
-  showControls?: boolean;
+  showCarouselControls?: boolean;
+  showImageControls?: boolean;
   imageFit?: "cover" | "contain" | "fill";
   aspectRatio?: "square" | "video" | "wide" | "auto";
   thumbPosition?: "bottom" | "top" | "left" | "right";
   showThumbs?: boolean;
+  // Controlled mode props
+  selectedIndex?: number;
+  onSlideChange?: (index: number) => void;
 }
 
-const ImageCarousel_Horizontal: React.FC<ImageCarousel_HorizontalProps> = ({
+const ImageCarousel_Basic: React.FC<ImageCarousel_BasicProps> = ({
   aspectRatio = "wide",
   className,
   imageFit = "contain",
   images,
   opts,
-  showControls = true,
+  showCarouselControls = true,
+  showImageControls = true,
   showThumbs = true,
-  thumbPosition = "left",
+  thumbPosition = "bottom",
+  // Controlled mode props
+  selectedIndex: controlledIndex,
+  onSlideChange,
   ...props
 }) => {
+  const isControlled = controlledIndex !== undefined;
+
   const [emblaRef, emblaApi] = useEmblaCarousel({
     ...opts,
     axis: "x",
@@ -140,23 +229,41 @@ const ImageCarousel_Horizontal: React.FC<ImageCarousel_HorizontalProps> = ({
   const onThumbClick = useCallback(
     (index: number) => {
       if (!emblaApi || !showThumbs || !emblaThumbsApi) return;
-      emblaApi.scrollTo(index);
-      emblaThumbsApi.scrollTo(index);
+
+      if (isControlled && onSlideChange) {
+        onSlideChange(index);
+      } else {
+        emblaApi.scrollTo(index);
+        emblaThumbsApi.scrollTo(index);
+      }
     },
-    [emblaApi, emblaThumbsApi, showThumbs]
+    [emblaApi, emblaThumbsApi, showThumbs, isControlled, onSlideChange]
   );
 
   const [canScrollPrev, setCanScrollPrev] = useState(false);
   const [canScrollNext, setCanScrollNext] = useState(false);
-  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [internalSelectedIndex, setInternalSelectedIndex] = useState(0);
+
+  // Use either controlled or internal state
+  const currentIndex = isControlled ? controlledIndex : internalSelectedIndex;
 
   const scrollPrev = useCallback(() => {
-    if (emblaApi) emblaApi.scrollPrev();
-  }, [emblaApi]);
+    if (isControlled && onSlideChange) {
+      const prevIndex = Math.max(0, currentIndex - 1);
+      onSlideChange(prevIndex);
+    } else if (emblaApi) {
+      emblaApi.scrollPrev();
+    }
+  }, [emblaApi, isControlled, onSlideChange, currentIndex]);
 
   const scrollNext = useCallback(() => {
-    if (emblaApi) emblaApi.scrollNext();
-  }, [emblaApi]);
+    if (isControlled && onSlideChange && images) {
+      const nextIndex = Math.min(images.length - 1, currentIndex + 1);
+      onSlideChange(nextIndex);
+    } else if (emblaApi) {
+      emblaApi.scrollNext();
+    }
+  }, [emblaApi, isControlled, onSlideChange, currentIndex, images]);
 
   const handleKeyDown = useCallback(
     (event: React.KeyboardEvent<HTMLDivElement>) => {
@@ -173,14 +280,42 @@ const ImageCarousel_Horizontal: React.FC<ImageCarousel_HorizontalProps> = ({
 
   const onSelect = useCallback(() => {
     if (!emblaApi) return;
-    setSelectedIndex(emblaApi.selectedScrollSnap());
+
+    const selectedSlideIndex = emblaApi.selectedScrollSnap();
     setCanScrollPrev(emblaApi.canScrollPrev());
     setCanScrollNext(emblaApi.canScrollNext());
 
-    if (showThumbs && emblaThumbsApi) {
-      emblaThumbsApi.scrollTo(emblaApi.selectedScrollSnap());
+    if (!isControlled) {
+      setInternalSelectedIndex(selectedSlideIndex);
+    } else if (onSlideChange && selectedSlideIndex !== controlledIndex) {
+      onSlideChange(selectedSlideIndex);
     }
-  }, [emblaApi, emblaThumbsApi, showThumbs]);
+
+    if (showThumbs && emblaThumbsApi) {
+      emblaThumbsApi.scrollTo(selectedSlideIndex);
+    }
+  }, [
+    emblaApi,
+    emblaThumbsApi,
+    showThumbs,
+    isControlled,
+    onSlideChange,
+    controlledIndex,
+  ]);
+
+  // Effect for controlled mode to update carousel position
+  useEffect(() => {
+    if (
+      isControlled &&
+      emblaApi &&
+      emblaApi.selectedScrollSnap() !== controlledIndex
+    ) {
+      emblaApi.scrollTo(controlledIndex);
+      if (showThumbs && emblaThumbsApi) {
+        emblaThumbsApi.scrollTo(controlledIndex);
+      }
+    }
+  }, [controlledIndex, emblaApi, emblaThumbsApi, isControlled, showThumbs]);
 
   useEffect(() => {
     if (!emblaApi) return;
@@ -220,9 +355,10 @@ const ImageCarousel_Horizontal: React.FC<ImageCarousel_HorizontalProps> = ({
                 <Thumb
                   key={index}
                   onClick={() => onThumbClick(index)}
-                  selected={index === selectedIndex}
+                  selected={index === currentIndex}
                   index={index}
-                  imgUrl={image}
+                  imgUrl={image.url}
+                  title={image.title}
                 />
               ))}
             </div>
@@ -253,13 +389,14 @@ const ImageCarousel_Horizontal: React.FC<ImageCarousel_HorizontalProps> = ({
                   alt={`Slide ${index + 1}`}
                   fit={imageFit}
                   aspectRatio={aspectRatio}
+                  showImageControls={showImageControls}
                 />
               </div>
             ))}
           </div>
         </div>
 
-        {showControls && (
+        {showCarouselControls && (
           <>
             <Button
               variant="outline"
@@ -316,9 +453,10 @@ const ImageCarousel_Horizontal: React.FC<ImageCarousel_HorizontalProps> = ({
                   <Thumb
                     key={index}
                     onClick={() => onThumbClick(index)}
-                    selected={index === selectedIndex}
+                    selected={index === currentIndex}
                     index={index}
-                    imgUrl={image}
+                    imgUrl={image.url}
+                    title={image.title}
                   />
                 ))}
               </div>
@@ -329,4 +467,5 @@ const ImageCarousel_Horizontal: React.FC<ImageCarousel_HorizontalProps> = ({
   );
 };
 
-export default ImageCarousel_Horizontal;
+export default ImageCarousel_Basic;
+export type { CarouselImage, CarouselImages };

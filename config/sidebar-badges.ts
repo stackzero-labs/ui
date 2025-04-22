@@ -1,28 +1,32 @@
-export const sidebarBadges = [
-  {
-    page: "Image Carousel",
-    upcoming: true,
-  },
-  {
-    page: "Image Viewer",
-    alpha: true,
-  },
+type SidebarBadge = {
+  page: string;
+  alpha?: boolean;
+  isNew?: boolean;
+  count?: number;
+  upcoming?: boolean;
+};
 
+export const sidebarBadges: SidebarBadge[] = [
   {
-    page: "Product Cards",
+    alpha: true,
+    isNew: true,
+    page: "Image Carousel",
+  },
+  {
     count: 3,
+    page: "Product Cards",
   },
   {
-    page: "Product Variants",
-    isNew: true,
     count: 2,
-  },
-  {
-    page: "Reviews",
-    count: 4,
-  },
-  {
-    page: "Quantity Input",
     isNew: true,
+    page: "Product Variants",
+  },
+  {
+    count: 4,
+    page: "Reviews",
+  },
+  {
+    isNew: true,
+    page: "Quantity Input",
   },
 ];

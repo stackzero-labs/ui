@@ -259,6 +259,7 @@ export function SidebarItem({
       prefetch={prefetch}
       style={{
         paddingInlineStart: getOffset(level),
+
         ...props.style,
       }}
     >
@@ -294,7 +295,7 @@ export function SidebarItem({
         <div className="ms-auto flex items-center gap-2">
           <Badge
             variant="outline"
-            className="rounded-sm border-indigo-500/50 px-[0.3rem] text-sm"
+            className="rounded-sm border-indigo-500/50 px-[0.3rem] text-sm whitespace-nowrap"
           >
             <p className="text-xs text-indigo-500">Alpha</p>
           </Badge>
@@ -584,6 +585,7 @@ function PageTreeFolder({
       defaultOpen={
         (item.defaultOpen ?? defaultOpenLevel >= level) || path.includes(item)
       }
+      className="text-nowrap"
     >
       {item.index ? (
         <SidebarFolderLink

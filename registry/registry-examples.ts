@@ -3,64 +3,84 @@ import * as React from "react";
 
 export const examples: Registry = [
   {
-    name: "image-carousel-horizontal-ex-01",
+    name: "image-carousel-basic-ex-01",
     type: "registry:example",
     dependencies: ["lucide-react"],
     registryDependencies: [
-      "https://ui.stackzero.co/r/image-carousel-horizontal.json",
+      "https://ui.stackzero.co/r/image-carousel-basic.json",
     ],
     files: [
       {
-        path: "@/components/commerce-ui/image-carousel/horizontal/image-carousel-horizontal-ex-01.tsx",
+        path: "@/components/commerce-ui/image-carousel/basic/image-carousel-basic-ex-01.tsx",
         type: "registry:example",
       },
     ],
     component: React.lazy(
       () =>
         import(
-          "../components/commerce-ui/image-carousel/horizontal/image-carousel-horizontal-ex-01"
+          "../components/commerce-ui/image-carousel/basic/image-carousel-basic-ex-01"
         )
     ),
   },
 
   {
-    name: "image-carousel-horizontal-ex-02",
+    name: "image-carousel-basic-ex-02",
     type: "registry:example",
     dependencies: ["lucide-react"],
     registryDependencies: [
-      "https://ui.stackzero.co/r/image-carousel-horizontal.json",
+      "https://ui.stackzero.co/r/image-carousel-basic.json",
     ],
     files: [
       {
-        path: "@/components/commerce-ui/image-carousel/horizontal/image-carousel-horizontal-ex-02.tsx",
+        path: "@/components/commerce-ui/image-carousel/basic/image-carousel-basic-ex-02.tsx",
         type: "registry:example",
       },
     ],
     component: React.lazy(
       () =>
         import(
-          "../components/commerce-ui/image-carousel/horizontal/image-carousel-horizontal-ex-02"
+          "../components/commerce-ui/image-carousel/basic/image-carousel-basic-ex-02"
         )
     ),
   },
 
   {
-    name: "image-carousel-horizontal-ex-03",
+    name: "image-carousel-basic-ex-03",
     type: "registry:example",
     dependencies: ["lucide-react"],
     registryDependencies: [
-      "https://ui.stackzero.co/r/image-carousel-horizontal.json",
+      "https://ui.stackzero.co/r/image-carousel-basic.json",
     ],
     files: [
       {
-        path: "@/components/commerce-ui/image-carousel/horizontal/image-carousel-horizontal-ex-03.tsx",
+        path: "@/components/commerce-ui/image-carousel/basic/image-carousel-basic-ex-03.tsx",
         type: "registry:example",
       },
     ],
     component: React.lazy(
       () =>
         import(
-          "../components/commerce-ui/image-carousel/horizontal/image-carousel-horizontal-ex-03"
+          "../components/commerce-ui/image-carousel/basic/image-carousel-basic-ex-03"
+        )
+    ),
+  },
+  {
+    name: "image-carousel-basic-ex-04",
+    type: "registry:example",
+    dependencies: ["lucide-react"],
+    registryDependencies: [
+      "https://ui.stackzero.co/r/image-carousel-basic.json",
+    ],
+    files: [
+      {
+        path: "@/components/commerce-ui/image-carousel/basic/image-carousel-basic-ex-04.tsx",
+        type: "registry:example",
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import(
+          "../components/commerce-ui/image-carousel/basic/image-carousel-basic-ex-04"
         )
     ),
   },

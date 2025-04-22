@@ -1,25 +1,25 @@
 ---
-title: Image Carousel - Horizontal
-description: A horizontal image carousel component
+title: Image Carousel - Basic
+description: An image carousel component to display images as a slideshow
 ---
+<ComponentPreview 
+  name="image-carousel-basic-ex-01"     
+  classNameComponentContainer='min-h-[200px]' 
+/>
 
 <References>
   <Reference label="embla-carousel" link="https://www.embla-carousel.com/" />
+    <Reference label="@radix-ui/react-dialog" link="https://www.radix-ui.com/primitives/docs/components/dialog"/>
+  <Reference label="react-zoom-pan-pinch" link="https://github.com/BetterTyped/react-zoom-pan-pinch"/>
 </References>
-
-
-<ComponentPreview 
-  name="image-carousel-horizontal-ex-01"     
-  classNameComponentContainer='min-h-[200px]' 
-/>
 
 
 ## Install
 <ComponentInstall
-  name="image-carousel-horizontal"     
+  name="image-carousel-basic"     
   classNameComponentContainer='min-h-[200px]' 
 >
-<CLIInstall  name="image-carousel-horizontal"   />
+<CLIInstall  name="image-carousel-basic"   />
 
 <ManualInstall>
 
@@ -27,11 +27,30 @@ description: A horizontal image carousel component
 
 <Step>
 
+Install the following dependencies:
+
+<Tabs items={["pnpm", "npm", "bun"]}>
+    ```bash tab="pnpm"
+    pnpm add @radix-ui/react-dialog embla-carousel embla-carousel-react react-zoom-pan-pinch
+    ```
+    ```bash tab="npm"
+    npm install @radix-ui/react-dialog embla-carousel embla-carousel-react react-zoom-pan-pinch
+    ```
+    ```bash tab="bun"
+    bun add @radix-ui/react-dialog embla-carousel embla-carousel-react react-zoom-pan-pinch
+    ```
+</Tabs>
+</Step>
+
+
+
+<Step>
+
 Copy and paste the following code into your project
 
 </Step>
 
-<ComponentSource name="image-carousel-horizontal"/>
+<ComponentSource name="image-carousel-basic"/>
 
 <Step>
 
@@ -53,12 +72,22 @@ Update the import paths to match your project setup
 ### Change thumbnail position
 
 <ComponentPreview 
-  name="image-carousel-horizontal-ex-02"     
+  name="image-carousel-basic-ex-02"     
   classNameComponentContainer='min-h-[200px]' 
 />
 
 ### Hide thumbnails 
 <ComponentPreview 
-  name="image-carousel-horizontal-ex-03"     
+  name="image-carousel-basic-ex-03"     
+  classNameComponentContainer='min-h-[200px]' 
+/>
+
+### Controlled
+In some cases you might want to control the carousel from outside. For example, you might want to trigger a slide change when the user selects a different product variant and you want to show immediately the corresponding image. 
+
+You can control the carousel using `selectedIndex` and `onSlideChange` props.
+
+<ComponentPreview 
+  name="image-carousel-basic-ex-04"     
   classNameComponentContainer='min-h-[200px]' 
 />

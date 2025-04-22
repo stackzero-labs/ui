@@ -3,7 +3,7 @@
   "icon": "GalleryThumbnails",
   "pages" : [
     "...",
-    "!horizontal"
+    "basic"
   ]
 }
 

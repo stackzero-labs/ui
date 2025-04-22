@@ -1,0 +1,18 @@
+{
+  "name": "image-carousel-basic-ex-04",
+  "type": "registry:example",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "https://ui.stackzero.co/r/image-carousel-basic.json"
+  ],
+  "files": [
+    {
+      "type": "registry:example",
+      "content": "\"use client\";\n\nimport { useState } from \"react\";\nimport ImageCarouselBasic, {\n  CarouselImages,\n} from \"@/components/commerce-ui/image-carousel-basic\";\n\nconst images: CarouselImages = [\n  {\n    title: \"Headphone 1\",\n    url: \"https://raw.githubusercontent.com/stackzero-labs/ui/refs/heads/main/public/placeholders/headphone-1.jpg\",\n  },\n  {\n    title: \"Headphone 2\",\n    url: \"https://raw.githubusercontent.com/stackzero-labs/ui/refs/heads/main/public/placeholders/headphone-2.jpg\",\n  },\n  {\n    title: \"Headphone 3\",\n    url: \"https://raw.githubusercontent.com/stackzero-labs/ui/refs/heads/main/public/placeholders/headphone-3.jpg\",\n  },\n];\n\nexport default function ImageCarousel_Basic_Ex_04() {\n  const [selectedIndex, setSelectedIndex] = useState(0);\n\n  return (\n    <div className=\"space-y-8\">\n      <div>\n        <div className=\"mb-4 flex w-full flex-wrap items-center justify-between gap-2\">\n          <button\n            className=\"cursor-pointer rounded border px-3 py-1\"\n            onClick={() => setSelectedIndex(Math.max(0, selectedIndex - 1))}\n          >\n            Previous\n          </button>\n          <span className=\"font-mono\">Current Slide: {selectedIndex + 1}</span>\n          <button\n            className=\"cursor-pointer rounded border px-3 py-1\"\n            onClick={() =>\n              setSelectedIndex(Math.min(images.length - 1, selectedIndex + 1))\n            }\n          >\n            Next\n          </button>\n        </div>\n        <ImageCarouselBasic\n          images={images}\n          imageFit=\"contain\"\n          selectedIndex={selectedIndex}\n          onSlideChange={setSelectedIndex}\n        />\n      </div>\n    </div>\n  );\n}\n",
+      "path": "/components/commerce-ui/image-carousel/basic/image-carousel-basic-ex-04.tsx",
+      "target": "/components/commerce-ui/image-carousel-basic-ex-04.tsx"
+    }
+  ]
+}

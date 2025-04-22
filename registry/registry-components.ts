@@ -238,20 +238,26 @@ export const components: Registry = [
   },
 
   {
-    name: "image-carousel-horizontal",
+    name: "image-carousel-basic",
     type: "registry:component",
-    dependencies: ["lucide-react", "embla-carousel-react", "embla-carousel"],
+    dependencies: [
+      "@radix-ui/react-dialog",
+      "lucide-react",
+      "embla-carousel-react",
+      "embla-carousel",
+      "react-zoom-pan-pinch",
+    ],
     registryDependencies: ["button"],
     files: [
       {
-        path: "@/components/commerce-ui/image-carousel/horizontal/image-carousel-horizontal.tsx",
+        path: "@/components/commerce-ui/image-carousel/basic/image-carousel-basic.tsx",
         type: "registry:component",
       },
     ],
     component: React.lazy(
       () =>
         import(
-          "../components/commerce-ui/image-carousel/horizontal/image-carousel-horizontal"
+          "../components/commerce-ui/image-carousel/basic/image-carousel-basic"
         )
     ),
   },
