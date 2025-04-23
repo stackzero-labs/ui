@@ -22,11 +22,11 @@ export const sidebarBadges: SidebarBadge[] = [
     page: "Product Variants",
   },
   {
-    count: 4,
-    page: "Reviews",
+    alpha: true,
+    page: "Product Variants Carousel",
   },
   {
-    isNew: true,
-    page: "Quantity Input",
+    count: 4,
+    page: "Reviews",
   },
 ];

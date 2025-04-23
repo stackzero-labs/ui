@@ -13,81 +13,76 @@ import Link from "next/link";
 import { useState } from "react";
 
 // Default data
-const DEFAULT_COLOR_VARIANTS: VariantItem[] = [
-  { id: "color-black", value: "color-black", label: "Black" },
-  { id: "color-white", value: "color-white", label: "White" },
-  { id: "color-pink", value: "color-pink", label: "Pink" },
+const DEFAULT_MODEL_VARIANTS: VariantItem[] = [
+  { id: "model-sport", label: "Sport", value: "model-sport" },
+  { id: "model-prosound", label: "ProSound", value: "model-prosound" },
+  { id: "model-ultraquite", label: "UltraQuite™", value: "model-ultraquite" },
+  {
+    id: "model-extremesilence",
+    label: "ExtremeSilence™",
+    value: "model-extremesilence",
+  },
 ];
 
-const DEFAULT_SIZE_VARIANTS: VariantItem[] = [
-  { id: "size-s", value: "size-s", label: "S" },
-  { id: "size-m", value: "size-m", label: "M" },
-  { id: "size-l", value: "size-l", label: "L" },
-  { id: "size-xl", value: "size-xl", label: "XL" },
-];
-
-const DEFAULT_COLOR_IMAGES = {
-  "color-black":
+const DEFAULT_MODEL_IMAGES = {
+  "model-extremesilence":
     "https://raw.githubusercontent.com/stackzero-labs/ui/refs/heads/main/public/placeholders/headphone-1.jpg",
-  "color-white":
+  "model-prosound":
     "https://raw.githubusercontent.com/stackzero-labs/ui/refs/heads/main/public/placeholders/headphone-1.jpg",
-  "color-pink":
+  "model-sport":
+    "https://raw.githubusercontent.com/stackzero-labs/ui/refs/heads/main/public/placeholders/headphone-1.jpg",
+  "model-ultraquite":
     "https://raw.githubusercontent.com/stackzero-labs/ui/refs/heads/main/public/placeholders/headphone-1.jpg",
 };
 
-const DEFAULT_SIZE_PRICES = {
-  "size-s": 89.99,
-  "size-m": 99.99,
-  "size-l": 109.99,
-  "size-xl": 119.99,
+const DEFAULT_MODEL_PRICES = {
+  "model-extremesilence": 119.99,
+  "model-prosound": 99.99,
+  "model-sport": 109.99,
+  "model-ultraquite": 89.99,
 };
 
 export interface ProductVariant01Props {
   badge?: string | null;
   basePrice?: number;
-  colorImages?: Record<string, string>;
-  colorVariants?: VariantItem[];
+  modelImages?: Record<string, string>;
+  modelVariants?: VariantItem[];
   description?: string;
-  initialColor?: string;
-  initialSize?: string;
+  initialModel?: string;
   onAddToCart?: () => void;
   onBuyNow?: () => void;
   salePrice?: number;
   shippingInfo?: string;
-  sizePrices?: Record<string, number>;
-  sizeVariants?: VariantItem[];
+  modelPrices?: Record<string, number>;
   title?: string;
 }
 
 function ProductVariant_02({
   badge = "New Arrival",
   basePrice = 99.99,
-  colorImages = DEFAULT_COLOR_IMAGES,
-  colorVariants = DEFAULT_COLOR_VARIANTS,
   description = "Experience crystal-clear sound with our premium wireless headphones. Perfect for music lovers, gamers, and professionals.",
-  initialColor = "color-black",
-  initialSize = "size-m",
+  initialModel = "model-sport",
+  modelImages = DEFAULT_MODEL_IMAGES,
+  modelPrices = DEFAULT_MODEL_PRICES,
+  modelVariants = DEFAULT_MODEL_VARIANTS,
   onAddToCart = () => {},
   onBuyNow = () => {},
   salePrice = 89.99,
   shippingInfo = "Eligible for free shipping",
-  sizePrices = DEFAULT_SIZE_PRICES,
-  sizeVariants = DEFAULT_SIZE_VARIANTS,
   title = "Premium Wireless Headphones",
 }: ProductVariant01Props) {
-  const [selectedColor, setSelectedColor] = useState(initialColor);
-  const [selectedSize, setSelectedSize] = useState(initialSize);
+  const [selectedModel, setSelectedModel] = useState(initialModel);
   const [quantity, setQuantity] = useState(1);
 
-  // Get current image based on selected color
+  // Get current image based on selected model
   const currentImage =
-    colorImages[selectedColor as keyof typeof colorImages] ||
-    colorImages[Object.keys(colorImages)[0] || initialColor];
+    modelImages[selectedModel as keyof typeof modelImages] ||
+    modelImages[Object.keys(modelImages)[0] || initialModel];
 
-  // Get current price based on selected size
+  // Get current price based on selected model
   const currentPrice =
-    sizePrices[selectedSize as keyof typeof sizePrices] ||
-    sizePrices[Object.keys(sizePrices)[0] || initialSize] ||
+    modelPrices[selectedModel as keyof typeof modelPrices] ||
+    modelPrices[Object.keys(modelPrices)[0] || initialModel] ||
     basePrice;
 
   return (
@@ -115,22 +110,12 @@ function ProductVariant_02({
 
           <div className="space-y-4">
             <div>
-              <label className="mb-2 block text-sm font-medium">Color</label>
+              <label className="mb-2 block text-sm font-medium">Model</label>
               <VariantSelectorBasic
-                value={selectedColor}
-                onValueChange={setSelectedColor}
-                variants={colorVariants}
-                className="grid-cols-3"
-              />
-            </div>
-
-            <div>
-              <label className="mb-2 block text-sm font-medium">Size</label>
-              <VariantSelectorBasic
-                value={selectedSize}
-                onValueChange={setSelectedSize}
-                variants={sizeVariants}
-                className="grid-cols-4"
+                value={selectedModel}
+                onValueChange={setSelectedModel}
+                variants={modelVariants}
+                className="grid-cols-2 sm:grid-cols-2"
               />
             </div>
           </div>
@@ -138,8 +123,7 @@ function ProductVariant_02({
           <div className="mt-2 md:mt-4">
             <p className="text-sm font-medium">Selected Configuration:</p>
             <p className="text-muted-foreground text-sm">
-              {colorVariants.find((v) => v.value === selectedColor)?.label} /{" "}
-              {sizeVariants.find((v) => v.value === selectedSize)?.label} - $
+              {modelVariants.find((v) => v.value === selectedModel)?.label} - $
               {currentPrice}
             </p>
           </div>
