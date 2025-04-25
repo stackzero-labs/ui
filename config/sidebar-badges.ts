@@ -8,6 +8,10 @@ type SidebarBadge = {
 
 export const sidebarBadges: SidebarBadge[] = [
   {
+    isNew: true,
+    page: "Banners",
+  },
+  {
     alpha: true,
     isNew: true,
     page: "Image Carousel",
