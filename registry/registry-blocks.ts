@@ -3,6 +3,198 @@ import * as React from "react";
 
 export const blocks: Registry = [
   {
+    name: "banner-01-block",
+    type: "registry:block",
+    dependencies: [],
+    registryDependencies: [],
+    files: [
+      {
+        path: "@/components/commerce-ui/blocks/banners/banner-01.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/commerce-ui/blocks/banners/banner-01")
+    ),
+  },
+
+  {
+    name: "banner-02-block",
+    type: "registry:block",
+    dependencies: [],
+    registryDependencies: [],
+    files: [
+      {
+        path: "@/components/commerce-ui/blocks/banners/banner-02.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/commerce-ui/blocks/banners/banner-02")
+    ),
+  },
+
+  {
+    name: "banner-03-block",
+    type: "registry:block",
+    dependencies: [],
+    registryDependencies: [],
+    files: [
+      {
+        path: "@/components/commerce-ui/blocks/banners/banner-03.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/commerce-ui/blocks/banners/banner-03")
+    ),
+  },
+
+  {
+    name: "banner-04-block",
+    type: "registry:block",
+    dependencies: [],
+    registryDependencies: [],
+    files: [
+      {
+        path: "@/components/commerce-ui/blocks/banners/banner-04.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/commerce-ui/blocks/banners/banner-04")
+    ),
+  },
+
+  {
+    name: "banner-05-block",
+    type: "registry:block",
+    dependencies: [],
+    registryDependencies: [],
+    files: [
+      {
+        path: "@/components/commerce-ui/blocks/banners/banner-05.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/commerce-ui/blocks/banners/banner-05")
+    ),
+  },
+
+  {
+    name: "banner-06-block",
+    type: "registry:block",
+    dependencies: [],
+    registryDependencies: [],
+    files: [
+      {
+        path: "@/components/commerce-ui/blocks/banners/banner-06.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/commerce-ui/blocks/banners/banner-06")
+    ),
+  },
+
+  {
+    name: "banner-07-block",
+    type: "registry:block",
+    dependencies: ["@number-flow/react"],
+    registryDependencies: [],
+    files: [
+      {
+        path: "@/components/commerce-ui/blocks/banners/banner-07.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/commerce-ui/blocks/banners/banner-07")
+    ),
+  },
+
+  {
+    name: "banner-08-block",
+    type: "registry:block",
+    dependencies: [],
+    registryDependencies: [],
+    files: [
+      {
+        path: "@/components/commerce-ui/blocks/banners/banner-08.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/commerce-ui/blocks/banners/banner-08")
+    ),
+  },
+
+  {
+    name: "banner-09-block",
+    type: "registry:block",
+    dependencies: ["lucide-react"],
+    registryDependencies: [],
+    files: [
+      {
+        path: "@/components/commerce-ui/blocks/banners/banner-09.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/commerce-ui/blocks/banners/banner-09")
+    ),
+  },
+
+  {
+    name: "banner-10-block",
+    type: "registry:block",
+    dependencies: [],
+    registryDependencies: [],
+    files: [
+      {
+        path: "@/components/commerce-ui/blocks/banners/banner-10.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/commerce-ui/blocks/banners/banner-10")
+    ),
+  },
+
+  {
+    name: "banner-11-block",
+    type: "registry:block",
+    dependencies: [],
+    registryDependencies: [],
+    files: [
+      {
+        path: "@/components/commerce-ui/blocks/banners/banner-11.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/commerce-ui/blocks/banners/banner-11")
+    ),
+  },
+
+  {
+    name: "banner-12-block",
+    type: "registry:block",
+    dependencies: [],
+    registryDependencies: [],
+    files: [
+      {
+        path: "@/components/commerce-ui/blocks/banners/banner-12.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/commerce-ui/blocks/banners/banner-12")
+    ),
+  },
+
+  {
     name: "product-card-01-block",
     type: "registry:block",
     dependencies: ["lucide-react"],

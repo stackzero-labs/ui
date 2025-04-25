@@ -1,0 +1,14 @@
+{
+  "name": "banner-01-block",
+  "type": "registry:block",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "type": "registry:block",
+      "content": "\"use client\";\n\nimport React, { useState, useEffect } from \"react\";\n\nfunction Banner_01() {\n  const [isLoaded, setIsLoaded] = useState(false);\n\n  useEffect(() => {\n    const timer = setTimeout(() => {\n      setIsLoaded(true);\n    }, 100);\n\n    return () => clearTimeout(timer);\n  }, []);\n\n  return (\n    <div className=\"relative w-full overflow-hidden rounded-lg bg-gradient-to-r from-blue-600 to-violet-600 p-8 text-white shadow-xl\">\n      {/* Animated background elements */}\n      <div className=\"absolute inset-0 overflow-hidden\">\n        <div className=\"absolute -top-16 -left-16 h-32 w-32 animate-pulse rounded-full bg-white opacity-10\"></div>\n        <div className=\"absolute top-5 right-10 h-12 w-12 rounded-full bg-white opacity-10\"></div>\n        <div className=\"absolute -right-8 -bottom-8 h-32 w-32 animate-pulse rounded-full bg-blue-400 opacity-20 delay-300\"></div>\n      </div>\n\n      <div className=\"relative z-10 flex flex-col items-center justify-between space-y-6 md:flex-row md:space-y-0\">\n        <div\n          className={`transition-all duration-700 ${isLoaded ? \"translate-y-0 opacity-100\" : \"translate-y-4 opacity-0\"}`}\n        >\n          <p className=\"mb-2 inline-block rounded-full bg-white/20 px-3 py-1 text-sm font-semibold tracking-wider backdrop-blur-sm\">\n            JUST RELEASED\n          </p>\n          <h1 className=\"text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl\">\n            New Collection <span className=\"text-blue-200\">Launch</span>\n          </h1>\n          <p className=\"mt-3 max-w-md text-sm text-blue-100 md:text-base\">\n            Exclusive designs at special introductory prices. Limited time offer\n            ending soon. Don&apos;t miss out.\n          </p>\n        </div>\n\n        <div\n          className={`transition-all delay-300 duration-700 ${isLoaded ? \"translate-y-0 opacity-100\" : \"translate-y-4 opacity-0\"}`}\n        >\n          <button className=\"group relative overflow-hidden rounded-full bg-white px-8 py-3 font-medium text-blue-600 shadow-md transition-all hover:shadow-lg\">\n            <span className=\"absolute inset-0 h-full w-1/2 -translate-x-full transform bg-gradient-to-r from-blue-400/20 via-transparent to-transparent transition-transform duration-300 group-hover:translate-x-full\"></span>\n            Shop Now\n            <span className=\"ml-2 inline-block transition-transform group-hover:translate-x-1\">\n              →\n            </span>\n          </button>\n        </div>\n      </div>\n    </div>\n  );\n}\n\nexport default Banner_01;\n",
+      "path": "/components/commerce-ui/blocks/banners/banner-01.tsx",
+      "target": "/components/commerce-ui/banner-01.tsx"
+    }
+  ]
+}
