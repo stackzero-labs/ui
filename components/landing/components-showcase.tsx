@@ -1,13 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import ProductCard_01 from "../commerce-ui/blocks/product-cards/product-cards-01";
+import ProductCard_01 from "../commerce-ui/blocks/product-card/product-card-01";
 import FaceRating_Basic from "../commerce-ui/face-rating/basic/face-rating-basic";
 import StarRatingFractions from "../commerce-ui/star-rating/fractions/star-rating-fractions";
 import Review_01 from "../commerce-ui/blocks/reviews/review-01";
-import ProductCard_02 from "../commerce-ui/blocks/product-cards/product-cards-02";
+import ProductCard_02 from "../commerce-ui/blocks/product-card/product-card-02";
 import Review_02 from "../commerce-ui/blocks/reviews/review-02";
-import ProductCard_03 from "../commerce-ui/blocks/product-cards/product-cards-03";
+import ProductCard_03 from "../commerce-ui/blocks/product-card/product-card-03";
 
 function ComponentsShowcase() {
   const [faceRatingValue, setFaceRatingValue] = useState(4);

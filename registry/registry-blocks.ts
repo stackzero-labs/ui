@@ -197,30 +197,29 @@ export const blocks: Registry = [
   {
     name: "product-card-01-block",
     type: "registry:block",
-    dependencies: ["lucide-react"],
+    dependencies: [],
     registryDependencies: [
       "button",
       "https://ui.stackzero.co/r/image-viewer-basic.json",
       "https://ui.stackzero.co/r/price-format-basic.json",
+      "https://ui.stackzero.co/r/star-rating-fractions.json",
     ],
     files: [
       {
-        path: "@/components/commerce-ui/blocks/product-cards/product-cards-01.tsx",
+        path: "@/components/commerce-ui/blocks/product-card/product-card-01.tsx",
         type: "registry:block",
       },
     ],
     component: React.lazy(
       () =>
-        import(
-          "../components/commerce-ui/blocks/product-cards/product-cards-01"
-        )
+        import("../components/commerce-ui/blocks/product-card/product-card-01")
     ),
   },
 
   {
     name: "product-card-02-block",
     type: "registry:block",
-    dependencies: ["lucide-react"],
+    dependencies: [],
     registryDependencies: [
       "button",
       "https://ui.stackzero.co/r/star-rating-fractions.json",
@@ -229,22 +228,64 @@ export const blocks: Registry = [
     ],
     files: [
       {
-        path: "@/components/commerce-ui/blocks/product-cards/product-cards-02.tsx",
+        path: "@/components/commerce-ui/blocks/product-card/product-card-02.tsx",
         type: "registry:block",
       },
     ],
     component: React.lazy(
       () =>
-        import(
-          "../components/commerce-ui/blocks/product-cards/product-cards-02"
-        )
+        import("../components/commerce-ui/blocks/product-card/product-card-02")
     ),
   },
 
   {
     name: "product-card-03-block",
     type: "registry:block",
-    dependencies: ["lucide-react"],
+    dependencies: [],
+    registryDependencies: [
+      "button",
+      "https://ui.stackzero.co/r/image-viewer-basic.json",
+      "https://ui.stackzero.co/r/price-format-sale.json",
+      "https://ui.stackzero.co/r/star-rating-fractions.json",
+    ],
+    files: [
+      {
+        path: "@/components/commerce-ui/blocks/product-card/product-card-03.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import("../components/commerce-ui/blocks/product-card/product-card-03")
+    ),
+  },
+
+  {
+    name: "product-card-04-block",
+    type: "registry:block",
+    dependencies: [],
+    registryDependencies: [
+      "button",
+      "https://ui.stackzero.co/r/image-viewer-basic.json",
+      "https://ui.stackzero.co/r/price-format-sale.json",
+      "https://ui.stackzero.co/r/star-rating-fractions.json",
+    ],
+    files: [
+      {
+        path: "@/components/commerce-ui/blocks/product-card/product-card-04.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import("../components/commerce-ui/blocks/product-card/product-card-04")
+    ),
+  },
+
+  {
+    name: "product-card-05-block",
+    type: "registry:block",
+    dependencies: [],
     registryDependencies: [
       "button",
       "https://ui.stackzero.co/r/image-viewer-basic.json",
@@ -252,15 +293,163 @@ export const blocks: Registry = [
     ],
     files: [
       {
-        path: "@/components/commerce-ui/blocks/product-cards/product-cards-03.tsx",
+        path: "@/components/commerce-ui/blocks/product-card/product-card-05.tsx",
         type: "registry:block",
       },
     ],
     component: React.lazy(
       () =>
-        import(
-          "../components/commerce-ui/blocks/product-cards/product-cards-03"
-        )
+        import("../components/commerce-ui/blocks/product-card/product-card-05")
+    ),
+  },
+
+  {
+    name: "product-card-06-block",
+    type: "registry:block",
+    dependencies: [],
+    registryDependencies: [
+      "button",
+      "https://ui.stackzero.co/r/image-viewer-basic.json",
+      "https://ui.stackzero.co/r/price-format-basic.json",
+    ],
+    files: [
+      {
+        path: "@/components/commerce-ui/blocks/product-card/product-card-06.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import("../components/commerce-ui/blocks/product-card/product-card-06")
+    ),
+  },
+
+  {
+    name: "product-card-07-block",
+    type: "registry:block",
+    dependencies: [],
+    registryDependencies: [
+      "button",
+      "https://ui.stackzero.co/r/image-viewer-basic.json",
+      "https://ui.stackzero.co/r/price-format-basic.json",
+      "https://ui.stackzero.co/r/star-rating-fractions.json",
+    ],
+    files: [
+      {
+        path: "@/components/commerce-ui/blocks/product-card/product-card-07.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import("../components/commerce-ui/blocks/product-card/product-card-07")
+    ),
+  },
+
+  {
+    name: "product-card-08-block",
+    type: "registry:block",
+    dependencies: [],
+    registryDependencies: [
+      "button",
+      "https://ui.stackzero.co/r/image-viewer-basic.json",
+      "https://ui.stackzero.co/r/price-format-basic.json",
+    ],
+    files: [
+      {
+        path: "@/components/commerce-ui/blocks/product-card/product-card-08.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import("../components/commerce-ui/blocks/product-card/product-card-08")
+    ),
+  },
+
+  {
+    name: "product-card-09-block",
+    type: "registry:block",
+    dependencies: [],
+    registryDependencies: [
+      "button",
+      "https://ui.stackzero.co/r/image-viewer-basic.json",
+      "https://ui.stackzero.co/r/price-format-basic.json",
+      "https://ui.stackzero.co/r/star-rating-fractions.json",
+    ],
+    files: [
+      {
+        path: "@/components/commerce-ui/blocks/product-card/product-card-09.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import("../components/commerce-ui/blocks/product-card/product-card-09")
+    ),
+  },
+
+  {
+    name: "product-card-10-block",
+    type: "registry:block",
+    dependencies: [],
+    registryDependencies: [
+      "button",
+      "https://ui.stackzero.co/r/image-viewer-basic.json",
+      "https://ui.stackzero.co/r/price-format-sale.json",
+    ],
+    files: [
+      {
+        path: "@/components/commerce-ui/blocks/product-card/product-card-10.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import("../components/commerce-ui/blocks/product-card/product-card-10")
+    ),
+  },
+
+  {
+    name: "product-card-11-block",
+    type: "registry:block",
+    dependencies: [],
+    registryDependencies: [
+      "button",
+      "https://ui.stackzero.co/r/image-viewer-basic.json",
+      "https://ui.stackzero.co/r/price-format-sale.json",
+    ],
+    files: [
+      {
+        path: "@/components/commerce-ui/blocks/product-card/product-card-11.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import("../components/commerce-ui/blocks/product-card/product-card-11")
+    ),
+  },
+
+  {
+    name: "product-card-12-block",
+    type: "registry:block",
+    dependencies: [],
+    registryDependencies: [
+      "button",
+      "https://ui.stackzero.co/r/image-viewer-basic.json",
+      "https://ui.stackzero.co/r/price-format-sale.json",
+      "https://ui.stackzero.co/r/star-rating-fractions.json",
+    ],
+    files: [
+      {
+        path: "@/components/commerce-ui/blocks/product-card/product-card-12.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import("../components/commerce-ui/blocks/product-card/product-card-12")
     ),
   },
 

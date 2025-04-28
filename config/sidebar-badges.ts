@@ -8,6 +8,7 @@ type SidebarBadge = {
 
 export const sidebarBadges: SidebarBadge[] = [
   {
+    count: 12,
     isNew: true,
     page: "Banners",
   },
@@ -17,12 +18,12 @@ export const sidebarBadges: SidebarBadge[] = [
     page: "Image Carousel",
   },
   {
-    count: 3,
-    page: "Product Cards",
+    count: 12,
+    isNew: true,
+    page: "Product Card",
   },
   {
     count: 2,
-    isNew: true,
     page: "Product Variants",
   },
   {

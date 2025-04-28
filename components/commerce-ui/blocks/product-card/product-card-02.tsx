@@ -4,10 +4,9 @@ import ImageViewer from "@/components/commerce-ui/image-viewer/basic/image-viewe
 import PriceFormat from "@/components/commerce-ui/price-format/basic/price-format-basic";
 import StarRatingFractions from "@/components/commerce-ui/star-rating/fractions/star-rating-fractions";
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
 
 const DEFAULT_IMAGE_URL =
-  "https://raw.githubusercontent.com/stackzero-labs/ui/refs/heads/main/public/placeholders/headphone-1.jpg";
+  "https://raw.githubusercontent.com/stackzero-labs/ui/refs/heads/main/public/placeholders/headphone-4.jpg";
 
 interface ProductCard_02Props {
   imageUrl?: string;
@@ -27,20 +26,20 @@ interface ProductCard_02Props {
 }
 
 function ProductCard_02({
-  imageUrl = DEFAULT_IMAGE_URL,
-  discount = "20% OFF",
-  title = "AeroTune X9",
-  rating = 4.45,
-  reviewCount = 362,
   description = "Experience next-level audio with the AeroTune X9, the world's most advanced wireless headset designed for audiophiles, gamers, and music lovers alike. With QuantumBass™ technology, every beat, bass drop, and whisper is delivered in studio-quality precision.",
-  inStock = true,
-  stockCount = 256,
+  discount = "20% OFF",
   hasShipping = true,
-  shippingText = "Free Shipping",
-  price = 39.59,
-  prefix = "$",
+  imageUrl = DEFAULT_IMAGE_URL,
+  inStock = true,
   onAddToCart = () => {},
   onBuyNow = () => {},
+  prefix = "$",
+  price = 39.59,
+  rating = 4.45,
+  reviewCount = 362,
+  shippingText = "Free Shipping",
+  stockCount = 256,
+  title = "AeroTune X9",
 }: ProductCard_02Props = {}) {
   return (
     <div className="bg-card grid max-w-screen-lg grid-cols-4 gap-6 rounded-lg border p-4">
@@ -80,12 +79,12 @@ function ProductCard_02({
 
           {hasShipping && (
             <p>
-              <Link
+              <a
                 href="#"
                 className="semibold underline underline-offset-4 opacity-80 hover:opacity-100"
               >
                 {shippingText}
-              </Link>{" "}
+              </a>{" "}
               on all orders
             </p>
           )}
@@ -116,3 +115,4 @@ function ProductCard_02({
 }
 
 export default ProductCard_02;
+export type { ProductCard_02Props };
