@@ -53,7 +53,7 @@ function ProductCard_10({
   return (
     <div className="group flex flex-col overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm transition-all duration-300 hover:shadow-md sm:flex-row dark:border-gray-800 dark:bg-gray-900">
       {/* Image section */}
-      <div className="relative h-52 w-full bg-gradient-to-br from-amber-50 via-lime-50 to-emerald-50 sm:h-full sm:w-2/5 dark:from-gray-900 dark:via-emerald-950/20 dark:to-gray-900">
+      <div className="relative h-52 w-full bg-gradient-to-br from-amber-50 via-lime-50 to-emerald-50 sm:h-auto sm:w-2/5 dark:from-gray-900 dark:via-emerald-950/20 dark:to-gray-900">
         {newProduct && (
           <div className="absolute top-3 left-3 z-10 flex items-center justify-center">
             <div className="rounded-full bg-emerald-600 px-3 py-1 text-xs font-bold tracking-wider text-white uppercase shadow-md">
@@ -69,11 +69,11 @@ function ProductCard_10({
         </div>
 
         {/* Image with hover effect */}
-        <div className="flex h-full items-center justify-center p-4">
-          <div className="transition-all duration-500 group-hover:scale-[1.05] group-hover:rotate-1">
+        <div className="flex h-full w-full items-center justify-center p-4">
+          <div className="h-full w-full transition-all duration-500 group-hover:scale-[1.05] group-hover:rotate-1">
             <ImageViewer
               imageUrl={imageUrl}
-              classNameThumbnailViewer="rounded-lg h-full object-contain drop-shadow-lg max-h-[180px]"
+              classNameThumbnailViewer="rounded-lg w-full h-full object-contain drop-shadow-lg"
             />
           </div>
         </div>

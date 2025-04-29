@@ -72,7 +72,7 @@ function ProductCard_07({
 
   return (
     <div className="flex flex-col overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm dark:border-gray-800 dark:bg-gray-900">
-      {/* Main product card - similar to product-card-06 */}
+      {/* Main product card */}
       <div className="group flex flex-col sm:h-[220px] sm:flex-row">
         {/* Image section */}
         <div className="relative h-52 w-full bg-gradient-to-br from-gray-50 via-green-50 to-emerald-50 sm:h-full sm:w-2/5 dark:from-gray-900 dark:via-green-950/10 dark:to-emerald-950/10">

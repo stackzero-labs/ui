@@ -76,14 +76,12 @@ function ProductCard_12({
         </div>
 
         {/* Image with hover effect */}
-        <div className="relative h-full w-full overflow-hidden p-4">
-          <div className="flex h-full w-full items-center justify-center">
-            <div className="transition-all duration-500 group-hover:scale-[1.05] group-hover:-rotate-1">
-              <ImageViewer
-                imageUrl={imageUrl}
-                classNameThumbnailViewer="rounded-lg w-auto h-auto max-h-[180px] max-w-full object-contain drop-shadow-lg "
-              />
-            </div>
+        <div className="absolute inset-0 -top-20 overflow-hidden">
+          <div className="h-full w-full transition-transform duration-500 group-hover:scale-[1.03]">
+            <ImageViewer
+              imageUrl={imageUrl}
+              classNameThumbnailViewer="w-full h-full object-cover "
+            />
           </div>
         </div>
       </div>

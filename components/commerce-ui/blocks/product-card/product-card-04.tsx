@@ -37,7 +37,7 @@ function ProductCard_04({
 }: ProductCard_04Props = {}) {
   return (
     <div className="group relative flex w-[320px] flex-col overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm transition-all duration-300 hover:shadow-md dark:border-gray-800 dark:bg-gray-900">
-      {/* Gradient badge inspired by banner-02 */}
+      {/* Gradient badge  */}
       {tagText && (
         <div className="absolute top-3 left-3 z-10">
           <span className="relative inline-block rounded-full bg-gradient-to-r from-indigo-500 to-indigo-700 px-3 py-1.5 text-xs font-semibold text-white">
@@ -50,7 +50,7 @@ function ProductCard_04({
         </div>
       )}
 
-      {/* Image container with background glow effect inspired by banner-07 */}
+      {/* Image container with background glow effect */}
       <div className="relative overflow-hidden bg-gradient-to-br from-indigo-50 to-purple-50 p-6 dark:from-indigo-950/30 dark:to-purple-950/30">
         <div className="absolute -bottom-10 left-1/2 h-40 w-40 -translate-x-1/2 transform rounded-full bg-indigo-500/20 blur-3xl"></div>
         <div className="transition-transform duration-500 group-hover:scale-105">
@@ -68,7 +68,7 @@ function ProductCard_04({
             {productName}
           </h3>
 
-          {/* Star rating with StarRating_Fractions component */}
+          {/* Star rating component */}
           <div className="mb-2 flex items-center">
             <StarRating_Fractions
               value={rating}

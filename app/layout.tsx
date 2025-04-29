@@ -6,6 +6,10 @@ import localFont from "next/font/local";
 import type { ReactNode } from "react";
 import "./global.css";
 import Script from "next/script";
+import { Banner } from "fumadocs-ui/components/banner";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { DocsBanners } from "./docs-banners";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -43,6 +47,7 @@ export default function Layout({ children }: { children: ReactNode }) {
             },
           }}
         >
+          <DocsBanners />
           {children}
         </RootProvider>
       </body>

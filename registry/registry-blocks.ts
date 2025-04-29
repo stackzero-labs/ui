@@ -454,6 +454,28 @@ export const blocks: Registry = [
   },
 
   {
+    name: "product-card-13-block",
+    type: "registry:block",
+    dependencies: ["lucide-react"],
+    registryDependencies: [
+      "button",
+      "https://ui.stackzero.co/r/image-viewer-basic.json",
+      "https://ui.stackzero.co/r/price-format-sale.json",
+      "https://ui.stackzero.co/r/star-rating-fractions.json",
+    ],
+    files: [
+      {
+        path: "@/components/commerce-ui/blocks/product-card/product-card-13.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import("../components/commerce-ui/blocks/product-card/product-card-13")
+    ),
+  },
+
+  {
     name: "product-variant-01-block",
     type: "registry:block",
     dependencies: ["lucide-react"],

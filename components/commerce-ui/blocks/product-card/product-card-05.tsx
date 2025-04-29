@@ -36,7 +36,7 @@ function ProductCard_05({
 }: ProductCard_05Props = {}) {
   return (
     <div className="group relative flex w-[330px] flex-col overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm transition-all duration-300 hover:shadow-lg dark:border-gray-800 dark:bg-gray-900">
-      {/* Sale tag - more prominent and with animation */}
+      {/* Sale tag */}
       {promoText && (
         <div className="absolute top-5 left-0 z-10">
           <div className="relative overflow-hidden">
@@ -83,7 +83,7 @@ function ProductCard_05({
           </p>
         </div>
 
-        {/* Price with enhanced styling */}
+        {/* Price */}
         <div className="my-2 rounded-lg bg-rose-50 p-3 dark:bg-rose-900/20">
           <PriceFormatSale
             prefix={currencyPrefix}

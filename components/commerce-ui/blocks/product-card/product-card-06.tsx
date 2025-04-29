@@ -117,7 +117,7 @@ function ProductCard_06({
           </div>
         </div>
 
-        {/* Bottom section with availability and buttons */}
+        {/* Bottom section */}
         <div className="flex items-end justify-between">
           <div>
             {isLowStock ? (
