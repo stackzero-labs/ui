@@ -558,7 +558,7 @@ export const blocks: Registry = [
   {
     name: "review-01-block",
     type: "registry:block",
-    dependencies: ["lucide-react"],
+    dependencies: [],
     registryDependencies: ["https://ui.stackzero.co/r/star-rating-basic.json"],
     files: [
       {
@@ -592,7 +592,7 @@ export const blocks: Registry = [
   {
     name: "review-03-block",
     type: "registry:block",
-    dependencies: ["lucide-react"],
+    dependencies: [],
     registryDependencies: [
       "button",
       "https://ui.stackzero.co/r/star-rating-basic.json",
@@ -612,7 +612,7 @@ export const blocks: Registry = [
   {
     name: "review-04-block",
     type: "registry:block",
-    dependencies: ["lucide-react"],
+    dependencies: [],
     registryDependencies: [
       "https://ui.stackzero.co/r/star-rating-fractions.json",
     ],
@@ -624,6 +624,61 @@ export const blocks: Registry = [
     ],
     component: React.lazy(
       () => import("../components/commerce-ui/blocks/reviews/review-04")
+    ),
+  },
+  {
+    name: "review-05-block",
+    type: "registry:block",
+    dependencies: [],
+    registryDependencies: [
+      "https://ui.stackzero.co/r/star-rating-fractions.json",
+    ],
+    files: [
+      {
+        path: "@/components/commerce-ui/blocks/reviews/review-05.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/commerce-ui/blocks/reviews/review-05")
+    ),
+  },
+
+  {
+    name: "review-06-block",
+    type: "registry:block",
+    dependencies: ["lucide-react"],
+    registryDependencies: [
+      "button",
+      "https://ui.stackzero.co/r/star-rating-fractions.json",
+    ],
+    files: [
+      {
+        path: "@/components/commerce-ui/blocks/reviews/review-06.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/commerce-ui/blocks/reviews/review-06")
+    ),
+  },
+
+  {
+    name: "review-07-block",
+    type: "registry:block",
+    dependencies: ["lucide-react"],
+    registryDependencies: [
+      "button",
+      "https://ui.stackzero.co/r/like-rating-basic.json",
+    ],
+    files: [
+      {
+        path: "@/components/commerce-ui/blocks/reviews/review-07.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/commerce-ui/blocks/reviews/review-07")
     ),
   },
 ];

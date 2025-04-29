@@ -9,12 +9,12 @@ interface Review_01Props {
 }
 
 function Review_01({
+  avatarUrl = "https://raw.githubusercontent.com/stackzero-labs/ui/refs/heads/main/public/placeholders/user-05.jpg",
   rating = 4.0,
   reviewDate = "Feb 12, 2025",
-  reviewText = "The product is great, I'm very satisfied with the quality and the price. I would recommend it to anyone looking for a good product or service.",
-  avatarUrl = "https://docs.material-tailwind.com/img/face-2.jpg",
   reviewerName = "Adam Smith",
   reviewerTitle = "CEO ACME Inc.",
+  reviewText = "The product is great, I'm very satisfied with the quality and the price. I would recommend it to anyone looking for a good product or service.",
 }: Review_01Props = {}) {
   return (
     <>

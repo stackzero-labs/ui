@@ -20,15 +20,15 @@ interface Review_03Props {
 
 function Review_03({
   defaultRating = 5,
+  initialDislikes = 1,
+  initialIsDisliked = false,
+  initialIsLiked = true,
+  initialLikes = 11,
+  reviewContent = "I recently got my hands on this amazing bag, and after using it for a while, I can confidently say it is a solid choice for travelling. Verdict: If you are looking for an amazing backpack that balances comfort, organization, and durability, this is a great investment. Would definitely recommend it to anyone in need of a reliable bag! 🎒💼",
+  reviewerAvatar = "https://raw.githubusercontent.com/stackzero-labs/ui/refs/heads/main/public/placeholders/user-01.jpg",
   reviewerName = "Adam Smith",
   reviewerTitle = "CEO ACME Inc.",
-  reviewerAvatar = "https://docs.material-tailwind.com/img/face-2.jpg",
-  initialLikes = 11,
-  initialDislikes = 1,
-  initialIsLiked = true,
-  initialIsDisliked = false,
   reviewTitle = "Wished I bought this thing sooner!!",
-  reviewContent = "I recently got my hands on this amazing bag, and after using it for a while, I can confidently say it is a solid choice for travelling. Verdict: If you are looking for an amazing backpack that balances comfort, organization, and durability, this is a great investment. Would definitely recommend it to anyone in need of a reliable bag! 🎒💼",
 }: Review_03Props = {}) {
   const [isExpanded, setIsExpanded] = useState(false);
   const [likes, setLikes] = useState(initialLikes);

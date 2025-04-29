@@ -12,6 +12,7 @@ export type ComponentDisplayProps = {
   className?: string;
   reTriggerKey: number;
   reTrigger: () => void;
+  isPreview?: boolean;
 };
 
 export type CodePreviewProps = {

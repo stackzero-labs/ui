@@ -31,7 +31,7 @@ export const sidebarBadges: SidebarBadge[] = [
     page: "Product Variants Carousel",
   },
   {
-    count: 4,
+    count: 7,
     page: "Reviews",
   },
 ];

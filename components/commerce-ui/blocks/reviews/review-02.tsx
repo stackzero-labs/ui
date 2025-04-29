@@ -28,20 +28,20 @@ interface Review_02Props {
 }
 
 function Review_02({
-  productImageUrl = "https://images.pexels.com/photos/3731256/pexels-photo-3731256.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-  productName = "Ultra Backpack PRO GEAR - 2025 edition",
-  badgeText = "Top rated",
   averageRating = 4.5,
-  totalReviews = 100,
-  ratingLevels = [
-    { level: 5, value: 75, total: 75 },
-    { level: 4, value: 20, total: 20 },
-    { level: 3, value: 5, total: 5 },
-    { level: 2, value: 0, total: 0 },
-    { level: 1, value: 0, total: 0 },
-  ],
+  badgeText = "Top rated",
   onReviewClick = () => {},
   onSeeAllReviewsClick = () => {},
+  productImageUrl = "https://raw.githubusercontent.com/stackzero-labs/ui/refs/heads/main/public/placeholders/backpack.jpg",
+  productName = "Ultra Backpack PRO GEAR - 2025 edition",
+  ratingLevels = [
+    { level: 5, total: 75, value: 75 },
+    { level: 4, total: 20, value: 20 },
+    { level: 3, total: 5, value: 5 },
+    { level: 2, total: 0, value: 0 },
+    { level: 1, total: 0, value: 0 },
+  ],
+  totalReviews = 100,
 }: Review_02Props = {}) {
   return (
     <>
@@ -98,7 +98,7 @@ function Review_02({
 export default Review_02;
 export type { RatingData, RatingLevelProps, Review_02Props };
 
-const RatingLevel = ({ level, value, total }: RatingLevelProps) => {
+const RatingLevel = ({ level, total, value }: RatingLevelProps) => {
   return (
     <div>
       <div className="flex flex-row items-center gap-4">
@@ -111,7 +111,7 @@ const RatingLevel = ({ level, value, total }: RatingLevelProps) => {
           <div className="h-2.5 w-full rounded-full bg-gray-200 dark:bg-gray-700">
             <div
               className="width: 45% h-2.5 rounded-full"
-              style={{ width: `${value}%`, backgroundColor: "#e4c616" }}
+              style={{ backgroundColor: "#e4c616", width: `${value}%` }}
             ></div>
           </div>
         </div>

@@ -23,7 +23,11 @@ export default async function PreviewPage({
       <>
         <div>
           <div className="container my-12 flex h-full items-center justify-center">
-            <ComponentLoader name={componentName} hasReTrigger={false} />
+            <ComponentLoader
+              name={componentName}
+              hasReTrigger={true}
+              isPreview={true}
+            />
           </div>
         </div>
       </>
@@ -31,7 +35,11 @@ export default async function PreviewPage({
       <>
         <>
           <div className="container flex h-screen items-center justify-center">
-            <ComponentLoader name={componentName} hasReTrigger={false} />
+            <ComponentLoader
+              name={componentName}
+              hasReTrigger={true}
+              isPreview={true}
+            />
           </div>
         </>
       </>

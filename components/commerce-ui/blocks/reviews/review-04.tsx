@@ -18,7 +18,7 @@ interface Review_04Props {
   ratingItems?: RatingItemData[];
 }
 
-function RatingItem({ label, value, isLast }: RatingItemProps) {
+function RatingItem({ isLast, label, value }: RatingItemProps) {
   return (
     <div className="flex flex-col gap-2">
       <p className="text-sm tracking-wider uppercase">
@@ -33,9 +33,7 @@ function RatingItem({ label, value, isLast }: RatingItemProps) {
 }
 
 function Review_04({
-  title = "Customer Reviews",
   overallRating = 4.4,
-  recommendPercentage = 87,
   ratingItems = [
     { label: "Quality", value: 4.5 },
     { label: "Value", value: 4.5 },
@@ -44,6 +42,8 @@ function Review_04({
     { label: "Features", value: 4.1 },
     { label: "Quietness", value: 4.4 },
   ],
+  recommendPercentage = 87,
+  title = "Customer Reviews",
 }: Review_04Props = {}) {
   return (
     <div className="items-left flex flex-col gap-6 px-6 py-4">
