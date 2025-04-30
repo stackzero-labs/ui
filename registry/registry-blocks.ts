@@ -681,4 +681,65 @@ export const blocks: Registry = [
       () => import("../components/commerce-ui/blocks/reviews/review-07")
     ),
   },
+
+  {
+    name: "review-08-block",
+    type: "registry:block",
+    dependencies: ["lucide-react"],
+    registryDependencies: [
+      "button",
+      "separator",
+      "https://ui.stackzero.co/r/star-rating-fractions.json",
+    ],
+    files: [
+      {
+        path: "@/components/commerce-ui/blocks/reviews/review-08.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/commerce-ui/blocks/reviews/review-08")
+    ),
+  },
+
+  {
+    name: "review-09-block",
+    type: "registry:block",
+    dependencies: ["lucide-react"],
+    registryDependencies: [
+      "badge",
+      "button",
+      "dropdown-menu",
+      "input",
+      "https://ui.stackzero.co/r/star-rating-fractions.json",
+    ],
+    files: [
+      {
+        path: "@/components/commerce-ui/blocks/reviews/review-09.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/commerce-ui/blocks/reviews/review-09")
+    ),
+  },
+
+  {
+    name: "review-10-block",
+    type: "registry:block",
+    dependencies: ["lucide-react"],
+    registryDependencies: [
+      "button",
+      "https://ui.stackzero.co/r/upvote-rating-basic.json",
+    ],
+    files: [
+      {
+        path: "@/components/commerce-ui/blocks/reviews/review-10.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/commerce-ui/blocks/reviews/review-10")
+    ),
+  },
 ];
