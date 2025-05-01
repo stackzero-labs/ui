@@ -25,7 +25,7 @@ function Review_03({
   initialIsLiked = true,
   initialLikes = 11,
   reviewContent = "I recently got my hands on this amazing bag, and after using it for a while, I can confidently say it is a solid choice for travelling. Verdict: If you are looking for an amazing backpack that balances comfort, organization, and durability, this is a great investment. Would definitely recommend it to anyone in need of a reliable bag! 🎒💼",
-  reviewerAvatar = "https://raw.githubusercontent.com/stackzero-labs/ui/refs/heads/main/public/placeholders/user-01.jpg",
+  reviewerAvatar = "https://raw.githubusercontent.com/stackzero-labs/ui/refs/heads/main/public/placeholders/user-07.jpg",
   reviewerName = "Adam Smith",
   reviewerTitle = "CEO ACME Inc.",
   reviewTitle = "Wished I bought this thing sooner!!",

@@ -9,7 +9,7 @@ interface Review_01Props {
 }
 
 function Review_01({
-  avatarUrl = "https://raw.githubusercontent.com/stackzero-labs/ui/refs/heads/main/public/placeholders/user-05.jpg",
+  avatarUrl = "https://raw.githubusercontent.com/stackzero-labs/ui/refs/heads/main/public/placeholders/user-07.jpg",
   rating = 4.0,
   reviewDate = "Feb 12, 2025",
   reviewerName = "Adam Smith",
