@@ -193,7 +193,7 @@ function DocsNavbar({
           <Languages className="size-5" />
         </LanguageToggle>
       ) : null}
-      <ThemeToggle className="max-md:hidden" mode="light-dark-system" />
+      <ThemeToggle className="max-md:hidden" mode="light-dark" />
     </Navbar>
   );
 }

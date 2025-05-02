@@ -2,7 +2,7 @@ import { HeaderCustomLinks } from "@/components/landing/header-custom-links";
 import { siteConfig } from "@/config/site";
 import { LinkItemType } from "fumadocs-ui/layouts/links";
 import type { BaseLayoutProps } from "fumadocs-ui/layouts/shared";
-import { Album, Cuboid, Newspaper } from "lucide-react";
+import { Album, Boxes, Cuboid, Newspaper } from "lucide-react";
 import Image from "next/image";
 
 export const linkItems: LinkItemType[] = [
@@ -19,6 +19,12 @@ export const linkItems: LinkItemType[] = [
         icon: <Cuboid />,
         text: "Components",
         url: "/docs/components/rating-star/basic",
+      },
+      {
+        description: "Collection of UI building blocks",
+        icon: <Boxes />,
+        text: "Blocks",
+        url: "/docs/blocks/product-card",
       },
     ],
     text: "Docs",
