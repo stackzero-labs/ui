@@ -6,6 +6,7 @@ import path from "path";
 
 const REGISTRY_BASE_PATH = process.cwd();
 const PUBLIC_FOLDER_BASE_PATH = "public/r";
+const COMPLETE_REGISTRY_PATH = "public/registry.json";
 
 // const REGISTRY_TYPE_FOLDERS: Record<string, string> = {
 //     "registry:component": "components",
@@ -98,6 +99,40 @@ const getComponentFiles = async (files: File[], registryType: string) => {
   return filesArray;
 };
 
+/**
+ * Generate a complete registry.json file that contains all registry items
+ */
+const generateCompleteRegistry = async () => {
+  // Create a deep copy of the registry to avoid modifying the original
+  const registryCopy = JSON.parse(JSON.stringify(registry));
+
+  // Process each registry item to remove non-serializable properties
+  const processedRegistry = registryCopy.map((item: any) => {
+    // Remove the component property as it's a function and can't be serialized
+    const { component, ...rest } = item;
+
+    // If the registry item has files with content, keep that
+    if (rest.files) {
+      // Files are handled separately in individual JSON files
+      // For the complete registry, we'll keep the file paths but not include contents
+      rest.files = rest.files.map((file: any) => {
+        const { content, ...fileRest } = file;
+        return fileRest;
+      });
+    }
+
+    return rest;
+  });
+
+  // Write the complete registry to a single file
+  await writeFileRecursive(
+    COMPLETE_REGISTRY_PATH,
+    JSON.stringify({ registry: processedRegistry }, null, 2)
+  );
+
+  console.log(`✅ Complete registry generated at ${COMPLETE_REGISTRY_PATH}`);
+};
+
 const main = async () => {
   for (let i = 0; i < registry.length; i++) {
     const component = registry[i];
@@ -119,6 +154,9 @@ const main = async () => {
     await writeFileRecursive(jsonPath, json);
     // console.log(json);
   }
+
+  // Generate the complete registry.json file
+  await generateCompleteRegistry();
 };
 
 main()
