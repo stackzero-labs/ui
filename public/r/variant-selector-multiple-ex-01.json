@@ -3,8 +3,7 @@
   "type": "registry:example",
   "dependencies": [
     "lucide-react",
-    "@radix-ui/react-radio-group",
-    "motion"
+    "@radix-ui/react-toggle-group"
   ],
   "registryDependencies": [
     "https://ui.stackzero.co/r/variant-selector-multiple.json"

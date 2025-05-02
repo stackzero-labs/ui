@@ -392,24 +392,6 @@ export const components: Registry = [
   },
 
   {
-    name: "variant-selector-animated",
-    type: "registry:component",
-    dependencies: ["lucide-react", "@radix-ui/react-radio-group", "motion"],
-    files: [
-      {
-        path: "@/components/commerce-ui/variant-selector/animated/variant-selector-animated.tsx",
-        type: "registry:component",
-      },
-    ],
-    component: React.lazy(
-      () =>
-        import(
-          "../components/commerce-ui/variant-selector/animated/variant-selector-animated"
-        )
-    ),
-  },
-
-  {
     name: "variant-selector-multiple",
     type: "registry:component",
     dependencies: ["lucide-react", "@radix-ui/react-toggle-group"],

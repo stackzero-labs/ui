@@ -16,10 +16,15 @@ interface VariantSelectorBasicProps {
   onValueChange: (value: string) => void;
   variants: VariantItem[];
   className?: string;
+  itemClassName?: string;
+  labelClassName?: string;
+  // selectedClassName is being removed as redundant
 }
 
 const VariantSelectorBasic = ({
   className,
+  itemClassName,
+  labelClassName,
   onValueChange,
   value,
   variants,
@@ -41,10 +46,13 @@ const VariantSelectorBasic = ({
               "data-[state=checked]:border-2 data-[state=checked]:border-black dark:data-[state=checked]:border-white",
               "focus:ring-2 focus:ring-black focus:ring-offset-2 focus:outline-none",
               "dark:focus:ring-white dark:focus:ring-offset-gray-900",
-              "cursor-pointer disabled:cursor-not-allowed disabled:opacity-50"
+              "cursor-pointer disabled:cursor-not-allowed disabled:opacity-50",
+              itemClassName
             )}
           >
-            <span className="font-medium">{variant.label}</span>
+            <span className={cn("font-medium", labelClassName)}>
+              {variant.label}
+            </span>
           </RadioGroupPrimitive.Item>
         </div>
       ))}

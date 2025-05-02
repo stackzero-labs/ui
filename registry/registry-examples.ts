@@ -587,6 +587,69 @@ export const examples: Registry = [
   },
 
   {
+    name: "variant-selector-basic-ex-03",
+    type: "registry:example",
+    dependencies: ["lucide-react", "@radix-ui/react-radio-group"],
+    registryDependencies: [
+      "https://ui.stackzero.co/r/variant-selector-basic.json",
+    ],
+    files: [
+      {
+        path: "@/components/commerce-ui/variant-selector/basic/variant-selector-basic-ex-03.tsx",
+        type: "registry:example",
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import(
+          "../components/commerce-ui/variant-selector/basic/variant-selector-basic-ex-03"
+        )
+    ),
+  },
+
+  {
+    name: "variant-selector-basic-ex-04",
+    type: "registry:example",
+    dependencies: ["lucide-react", "@radix-ui/react-radio-group"],
+    registryDependencies: [
+      "https://ui.stackzero.co/r/variant-selector-basic.json",
+    ],
+    files: [
+      {
+        path: "@/components/commerce-ui/variant-selector/basic/variant-selector-basic-ex-04.tsx",
+        type: "registry:example",
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import(
+          "../components/commerce-ui/variant-selector/basic/variant-selector-basic-ex-04"
+        )
+    ),
+  },
+
+  {
+    name: "variant-selector-basic-ex-05",
+    type: "registry:example",
+    dependencies: ["lucide-react", "@radix-ui/react-radio-group"],
+    registryDependencies: [
+      "https://ui.stackzero.co/r/variant-selector-basic.json",
+    ],
+    files: [
+      {
+        path: "@/components/commerce-ui/variant-selector/basic/variant-selector-basic-ex-05.tsx",
+        type: "registry:example",
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import(
+          "../components/commerce-ui/variant-selector/basic/variant-selector-basic-ex-05"
+        )
+    ),
+  },
+
+  {
     name: "variant-selector-images-ex-01",
     type: "registry:example",
     dependencies: ["lucide-react", "@radix-ui/react-radio-group"],
@@ -608,51 +671,9 @@ export const examples: Registry = [
   },
 
   {
-    name: "variant-selector-animated-ex-01",
-    type: "registry:example",
-    dependencies: ["lucide-react", "@radix-ui/react-radio-group", "motion"],
-    registryDependencies: [
-      "https://ui.stackzero.co/r/variant-selector-animated.json",
-    ],
-    files: [
-      {
-        path: "@/components/commerce-ui/variant-selector/animated/variant-selector-animated-ex-01.tsx",
-        type: "registry:example",
-      },
-    ],
-    component: React.lazy(
-      () =>
-        import(
-          "../components/commerce-ui/variant-selector/animated/variant-selector-animated-ex-01"
-        )
-    ),
-  },
-
-  {
-    name: "variant-selector-animated-ex-02",
-    type: "registry:example",
-    dependencies: ["lucide-react", "@radix-ui/react-radio-group", "motion"],
-    registryDependencies: [
-      "https://ui.stackzero.co/r/variant-selector-animated.json",
-    ],
-    files: [
-      {
-        path: "@/components/commerce-ui/variant-selector/animated/variant-selector-animated-ex-02.tsx",
-        type: "registry:example",
-      },
-    ],
-    component: React.lazy(
-      () =>
-        import(
-          "../components/commerce-ui/variant-selector/animated/variant-selector-animated-ex-02"
-        )
-    ),
-  },
-
-  {
     name: "variant-selector-multiple-ex-01",
     type: "registry:example",
-    dependencies: ["lucide-react", "@radix-ui/react-radio-group", "motion"],
+    dependencies: ["lucide-react", "@radix-ui/react-toggle-group"],
     registryDependencies: [
       "https://ui.stackzero.co/r/variant-selector-multiple.json",
     ],
@@ -666,6 +687,27 @@ export const examples: Registry = [
       () =>
         import(
           "../components/commerce-ui/variant-selector/multiple/variant-selector-multiple-ex-01"
+        )
+    ),
+  },
+
+  {
+    name: "variant-selector-multiple-ex-02",
+    type: "registry:example",
+    dependencies: ["lucide-react", "@radix-ui/react-toggle-group"],
+    registryDependencies: [
+      "https://ui.stackzero.co/r/variant-selector-multiple.json",
+    ],
+    files: [
+      {
+        path: "@/components/commerce-ui/variant-selector/multiple/variant-selector-multiple-ex-02.tsx",
+        type: "registry:example",
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import(
+          "../components/commerce-ui/variant-selector/multiple/variant-selector-multiple-ex-02"
         )
     ),
   },
