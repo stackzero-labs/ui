@@ -43,7 +43,7 @@ const VariantSelectorBasic = ({
             className={cn(
               "peer relative h-10 w-full min-w-[80px] rounded-md border border-gray-300 px-3 py-2 text-center text-sm transition-all",
               "dark:border-gray-600 dark:text-gray-100",
-              "data-[state=checked]:border-2 data-[state=checked]:border-black dark:data-[state=checked]:border-white",
+              "data-[state=checked]:border-black dark:data-[state=checked]:border-white",
               "focus:ring-2 focus:ring-black focus:ring-offset-2 focus:outline-none",
               "dark:focus:ring-white dark:focus:ring-offset-gray-900",
               "cursor-pointer disabled:cursor-not-allowed disabled:opacity-50",

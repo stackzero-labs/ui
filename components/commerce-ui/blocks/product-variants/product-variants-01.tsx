@@ -6,7 +6,6 @@ import QuantityInputBasic from "@/components/commerce-ui/quantity-input/basic/qu
 import VariantSelectorBasic, {
   VariantItem,
 } from "@/components/commerce-ui/variant-selector/basic/variant-selector-basic";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 
@@ -29,7 +28,7 @@ const DEFAULT_MODEL_PRICES = {
   "model-ultraquite": 89.99,
 };
 
-export interface ProductVariant01Props {
+interface ProductVariant01Props {
   title?: string;
   description?: string;
   badge?: string | null;
@@ -194,3 +193,4 @@ function ProductVariant_01({
 }
 
 export default ProductVariant_01;
+export type { ProductVariant01Props };

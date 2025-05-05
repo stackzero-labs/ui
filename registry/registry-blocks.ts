@@ -527,6 +527,32 @@ export const blocks: Registry = [
         )
     ),
   },
+  {
+    name: "product-variant-03-block",
+    type: "registry:block",
+    dependencies: ["lucide-react"],
+    registryDependencies: [
+      "button",
+      "badge",
+      "separator",
+      "https://ui.stackzero.co/r/image-viewer-basic.json",
+      "https://ui.stackzero.co/r/price-format-sale.json",
+      "https://ui.stackzero.co/r/variant-selector-basic.json",
+      "https://ui.stackzero.co/r/quantity-input-basic.json",
+    ],
+    files: [
+      {
+        path: "@/components/commerce-ui/blocks/product-variants/product-variants-03.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import(
+          "../components/commerce-ui/blocks/product-variants/product-variants-03"
+        )
+    ),
+  },
 
   {
     name: "product-variants-carousel-01-block",
