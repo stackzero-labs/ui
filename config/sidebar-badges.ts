@@ -23,7 +23,7 @@ export const sidebarBadges: SidebarBadge[] = [
     page: "Product Card",
   },
   {
-    count: 3,
+    count: 5,
     page: "Product Variants",
   },
   {

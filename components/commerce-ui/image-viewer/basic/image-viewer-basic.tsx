@@ -52,9 +52,8 @@ const ImageViewer_Basic = ({
             src={thumbnailUrl || imageUrl}
             alt={`${imageTitle ?? "Image"} - Preview`}
             width="100%"
-            height={300}
             className={cn(
-              "rounded-lg object-cover transition-opacity hover:opacity-90",
+              "h-auto w-full rounded-lg object-contain transition-opacity hover:opacity-90",
               classNameThumbnailViewer
             )}
             onError={handleImgError}
@@ -78,7 +77,10 @@ const ImageViewer_Basic = ({
                     <img
                       src={imageUrl}
                       alt={`${imageTitle ?? "Image"} - Full`}
-                      className={classNameImageViewer}
+                      className={cn(
+                        "max-h-[90vh] max-w-[90vw] object-contain",
+                        classNameImageViewer
+                      )}
                       onError={handleImgError}
                     />
                   </TransformComponent>

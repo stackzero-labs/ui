@@ -41,23 +41,24 @@ const DEFAULT_SERVICE_VARIANTS: VariantItem[] = [
   },
 ];
 
-// Default image
-const DEFAULT_PRODUCT_IMAGE =
-  "https://raw.githubusercontent.com/stackzero-labs/ui/refs/heads/main/public/placeholders/coffee-machine-02.jpg";
-
 // Default product images for carousel
 const DEFAULT_PRODUCT_IMAGES: CarouselImage[] = [
   {
     title: "Coffee Machine Front View",
-    url: "https://raw.githubusercontent.com/stackzero-labs/ui/refs/heads/main/public/placeholders/coffee-machine-02.jpg",
-  },
-  {
-    title: "Coffee Machine Side View",
     url: "https://raw.githubusercontent.com/stackzero-labs/ui/refs/heads/main/public/placeholders/coffee-machine-01.jpg",
   },
   {
-    title: "Coffee Machine Parts",
-    url: "https://raw.githubusercontent.com/stackzero-labs/ui/refs/heads/main/public/placeholders/coffee-parts.jpg",
+    title: "Coffee Machine Side View",
+    url: "https://raw.githubusercontent.com/stackzero-labs/ui/refs/heads/main/public/placeholders/coffee-machine-02.jpg",
+  },
+  {
+    title: "Coffee Machine Cups",
+    url: "https://raw.githubusercontent.com/stackzero-labs/ui/refs/heads/main/public/placeholders/coffee-cups-01.jpg",
+  },
+
+  {
+    title: "Coffee Filters",
+    url: "https://raw.githubusercontent.com/stackzero-labs/ui/refs/heads/main/public/placeholders/coffee-filter-01.jpg",
   },
 ];
 
@@ -181,15 +182,14 @@ function ProductVariant_05({
   rating = 4.8,
   featuredReview = {
     avatarUrl:
-      "https://raw.githubusercontent.com/stackzero-labs/ui/refs/heads/main/public/placeholders/user-07.jpg",
+      "https://raw.githubusercontent.com/stackzero-labs/ui/refs/heads/main/public/placeholders/user-04.jpg",
     rating: 5,
     reviewDate: "Mar 15, 2024",
-    reviewerName: "Sarah Johnson",
+    reviewerName: "John Doe",
     reviewerTitle: "Coffee Enthusiast",
     reviewText:
       "This espresso machine changed my mornings completely. The milk frother creates the perfect foam for my lattes and the coffee quality is indistinguishable from my local café.",
   },
-  imageUrl = DEFAULT_PRODUCT_IMAGE,
   initialAccessories = ["acc-descaler"],
   initialServices = [],
   onAddToCart = () => {},

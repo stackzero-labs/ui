@@ -105,6 +105,25 @@ export const examples: Registry = [
   },
 
   {
+    name: "image-viewer-basic-ex-02",
+    type: "registry:component",
+    dependencies: ["lucide-react"],
+    registryDependencies: ["https://ui.stackzero.co/r/image-viewer-basic.json"],
+    files: [
+      {
+        path: "@/components/commerce-ui/image-viewer/basic/image-viewer-basic-ex-02.tsx",
+        type: "registry:component",
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import(
+          "../components/commerce-ui/image-viewer/basic/image-viewer-basic-ex-02"
+        )
+    ),
+  },
+
+  {
     name: "image-viewer-motion-ex-01",
     type: "registry:component",
     dependencies: ["lucide-react"],

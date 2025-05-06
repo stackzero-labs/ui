@@ -1,0 +1,18 @@
+{
+  "name": "image-viewer-basic-ex-02",
+  "type": "registry:component",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "https://ui.stackzero.co/r/image-viewer-basic.json"
+  ],
+  "files": [
+    {
+      "type": "registry:component",
+      "content": "\"use client\";\nimport ImageViewer from \"@/components/commerce-ui/image-viewer-basic\";\n\nconst EXAMPLE_IMAGE_URL =\n  \"https://raw.githubusercontent.com/stackzero-labs/ui/refs/heads/main/public/placeholders/speaker-01.jpg\";\nconst EXAMPLE_THUMBNAIL_URL =\n  \"https://raw.githubusercontent.com/stackzero-labs/ui/refs/heads/main/public/placeholders/speaker-01.jpg\";\n\nexport default function ImageViewer_Basic_Ex_02() {\n  return (\n    <div className=\"flex w-full flex-col gap-8\">\n      <div>\n        <div className=\"flex flex-col gap-6 md:grid-cols-3\">\n          {/* Tall thumbnail - 300px height */}\n          <div className=\"flex flex-col gap-2\">\n            <p className=\"text-muted-foreground text-xs\">Tall (300px)</p>\n            <ImageViewer\n              thumbnailUrl={EXAMPLE_THUMBNAIL_URL}\n              imageUrl={EXAMPLE_IMAGE_URL}\n              classNameThumbnailViewer=\"h-[300px]\"\n              imageTitle=\"Tall Thumbnail Example\"\n            />\n          </div>\n\n          {/* Medium thumbnail - 200px height */}\n          <div className=\"flex flex-col gap-2\">\n            <p className=\"text-muted-foreground text-xs\">Medium (200px)</p>\n            <ImageViewer\n              thumbnailUrl={EXAMPLE_THUMBNAIL_URL}\n              imageUrl={EXAMPLE_IMAGE_URL}\n              classNameThumbnailViewer=\"h-[200px]\"\n              imageTitle=\"Medium Thumbnail Example\"\n            />\n          </div>\n\n          {/* Small thumbnail - 100px height */}\n          <div className=\"flex flex-col gap-2\">\n            <p className=\"text-muted-foreground text-xs\">Small (100px)</p>\n            <ImageViewer\n              thumbnailUrl={EXAMPLE_THUMBNAIL_URL}\n              imageUrl={EXAMPLE_IMAGE_URL}\n              classNameThumbnailViewer=\"h-[100px]\"\n              imageTitle=\"Small Thumbnail Example\"\n            />\n          </div>\n        </div>\n      </div>\n    </div>\n  );\n}\n",
+      "path": "/components/commerce-ui/image-viewer/basic/image-viewer-basic-ex-02.tsx",
+      "target": "/components/commerce-ui/image-viewer-basic-ex-02.tsx"
+    }
+  ]
+}
