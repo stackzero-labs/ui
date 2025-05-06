@@ -327,7 +327,7 @@ export const blocks: Registry = [
   {
     name: "product-card-07-block",
     type: "registry:block",
-    dependencies: [],
+    dependencies: ["lucide-react"],
     registryDependencies: [
       "button",
       "https://ui.stackzero.co/r/image-viewer-basic.json",
@@ -550,6 +550,59 @@ export const blocks: Registry = [
       () =>
         import(
           "../components/commerce-ui/blocks/product-variants/product-variants-03"
+        )
+    ),
+  },
+
+  {
+    name: "product-variant-04-block",
+    type: "registry:block",
+    dependencies: ["lucide-react"],
+    registryDependencies: [
+      "button",
+      "https://ui.stackzero.co/r/image-viewer-basic.json",
+      "https://ui.stackzero.co/r/price-format-basic.json",
+      "https://ui.stackzero.co/r/variant-selector-basic.json",
+      "https://ui.stackzero.co/r/variant-selector-multiple.json",
+      "https://ui.stackzero.co/r/star-rating-fractions.json",
+      "https://ui.stackzero.co/r/quantity-input-basic.json",
+    ],
+    files: [
+      {
+        path: "@/components/commerce-ui/blocks/product-variants/product-variants-04.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import(
+          "../components/commerce-ui/blocks/product-variants/product-variants-04"
+        )
+    ),
+  },
+
+  {
+    name: "product-variant-05-block",
+    type: "registry:block",
+    dependencies: ["lucide-react"],
+    registryDependencies: [
+      "button",
+      "https://ui.stackzero.co/r/price-format-basic.json",
+      "https://ui.stackzero.co/r/variant-selector-multiple.json",
+      "https://ui.stackzero.co/r/star-rating-fractions.json",
+      "https://ui.stackzero.co/r/quantity-input-basic.json",
+      "https://ui.stackzero.co/r/image-carousel-basic.json",
+    ],
+    files: [
+      {
+        path: "@/components/commerce-ui/blocks/product-variants/product-variants-05.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import(
+          "../components/commerce-ui/blocks/product-variants/product-variants-05"
         )
     ),
   },
