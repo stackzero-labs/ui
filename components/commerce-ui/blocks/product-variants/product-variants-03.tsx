@@ -1,6 +1,8 @@
 "use client";
 
-import ImageViewer from "@/components/commerce-ui/image-viewer/basic/image-viewer-basic";
+import ImageCarousel_Basic, {
+  CarouselImage,
+} from "@/components/commerce-ui/image-carousel/basic/image-carousel-basic";
 import PriceFormat from "@/components/commerce-ui/price-format/basic/price-format-basic";
 import QuantityInputBasic from "@/components/commerce-ui/quantity-input/basic/quantity-input-basic";
 import VariantSelectorBasic, {
@@ -10,7 +12,6 @@ import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { useState } from "react";
 
-// Default model variants
 const DEFAULT_MODEL_VARIANTS: VariantItem[] = [
   { id: "model-standard", label: "Standard", value: "model-standard" },
   { id: "model-pro", label: "Pro", value: "model-pro" },
@@ -18,59 +19,53 @@ const DEFAULT_MODEL_VARIANTS: VariantItem[] = [
   { id: "model-limited", label: "Limited Edition", value: "model-limited" },
 ];
 
-// Default color variants
-const DEFAULT_COLOR_VARIANTS: VariantItem[] = [
-  { id: "color-black", label: "Midnight Black", value: "color-black" },
-  { id: "color-white", label: "Pearl White", value: "color-white" },
-  { id: "color-blue", label: "Ocean Blue", value: "color-blue" },
-  { id: "color-coral", label: "Coral Red", value: "color-coral" },
-];
-
-// Default images per model-color combination
-const DEFAULT_PRODUCT_IMAGES: Record<string, Record<string, string>> = {
-  "model-limited": {
-    "color-black":
-      "https://raw.githubusercontent.com/stackzero-labs/ui/refs/heads/main/public/placeholders/speaker-01.jpg",
-    "color-blue":
-      "https://raw.githubusercontent.com/stackzero-labs/ui/refs/heads/main/public/placeholders/speaker-01.jpg",
-    "color-coral":
-      "https://raw.githubusercontent.com/stackzero-labs/ui/refs/heads/main/public/placeholders/speaker-01.jpg",
-    "color-white":
-      "https://raw.githubusercontent.com/stackzero-labs/ui/refs/heads/main/public/placeholders/speaker-01.jpg",
-  },
-  "model-pro": {
-    "color-black":
-      "https://raw.githubusercontent.com/stackzero-labs/ui/refs/heads/main/public/placeholders/speaker-01.jpg",
-    "color-blue":
-      "https://raw.githubusercontent.com/stackzero-labs/ui/refs/heads/main/public/placeholders/speaker-01.jpg",
-    "color-coral":
-      "https://raw.githubusercontent.com/stackzero-labs/ui/refs/heads/main/public/placeholders/speaker-01.jpg",
-    "color-white":
-      "https://raw.githubusercontent.com/stackzero-labs/ui/refs/heads/main/public/placeholders/speaker-01.jpg",
-  },
-  "model-standard": {
-    "color-black":
-      "https://raw.githubusercontent.com/stackzero-labs/ui/refs/heads/main/public/placeholders/speaker-01.jpg",
-    "color-blue":
-      "https://raw.githubusercontent.com/stackzero-labs/ui/refs/heads/main/public/placeholders/speaker-01.jpg",
-    "color-coral":
-      "https://raw.githubusercontent.com/stackzero-labs/ui/refs/heads/main/public/placeholders/speaker-01.jpg",
-    "color-white":
-      "https://raw.githubusercontent.com/stackzero-labs/ui/refs/heads/main/public/placeholders/speaker-01.jpg",
-  },
-  "model-ultra": {
-    "color-black":
-      "https://raw.githubusercontent.com/stackzero-labs/ui/refs/heads/main/public/placeholders/speaker-01.jpg",
-    "color-blue":
-      "https://raw.githubusercontent.com/stackzero-labs/ui/refs/heads/main/public/placeholders/speaker-01.jpg",
-    "color-coral":
-      "https://raw.githubusercontent.com/stackzero-labs/ui/refs/heads/main/public/placeholders/speaker-01.jpg",
-    "color-white":
-      "https://raw.githubusercontent.com/stackzero-labs/ui/refs/heads/main/public/placeholders/speaker-01.jpg",
-  },
+const DEFAULT_PRODUCT_IMAGES: Record<string, CarouselImage[]> = {
+  "model-limited": [
+    {
+      title: "Limited Edition Speaker",
+      url: "https://raw.githubusercontent.com/stackzero-labs/ui/refs/heads/main/public/placeholders/speaker-01.jpg",
+    },
+    {
+      title: "Limited Edition Speaker",
+      url: "https://raw.githubusercontent.com/stackzero-labs/ui/refs/heads/main/public/placeholders/speaker-01.jpg",
+    },
+    {
+      title: "Limited Edition Speaker",
+      url: "https://raw.githubusercontent.com/stackzero-labs/ui/refs/heads/main/public/placeholders/speaker-01.jpg",
+    },
+  ],
+  "model-pro": [
+    {
+      title: "Pro Speaker",
+      url: "https://raw.githubusercontent.com/stackzero-labs/ui/refs/heads/main/public/placeholders/speaker-01.jpg",
+    },
+    {
+      title: "Pro Speaker",
+      url: "https://raw.githubusercontent.com/stackzero-labs/ui/refs/heads/main/public/placeholders/speaker-01.jpg",
+    },
+  ],
+  "model-standard": [
+    {
+      title: "Standard Speaker",
+      url: "https://raw.githubusercontent.com/stackzero-labs/ui/refs/heads/main/public/placeholders/speaker-01.jpg",
+    },
+    {
+      title: "Standard Speaker",
+      url: "https://raw.githubusercontent.com/stackzero-labs/ui/refs/heads/main/public/placeholders/speaker-01.jpg",
+    },
+  ],
+  "model-ultra": [
+    {
+      title: "Ultra Speaker",
+      url: "https://raw.githubusercontent.com/stackzero-labs/ui/refs/heads/main/public/placeholders/speaker-01.jpg",
+    },
+    {
+      title: "Ultra Speaker",
+      url: "https://raw.githubusercontent.com/stackzero-labs/ui/refs/heads/main/public/placeholders/speaker-01.jpg",
+    },
+  ],
 };
 
-// Default prices by model
 const DEFAULT_MODEL_PRICES = {
   "model-limited": 349.99,
   "model-pro": 249.99,
@@ -78,7 +73,6 @@ const DEFAULT_MODEL_PRICES = {
   "model-ultra": 299.99,
 };
 
-// Features by model
 const DEFAULT_MODEL_FEATURES: Record<string, string[]> = {
   "model-limited": [
     "360° Immersive Sound",
@@ -120,12 +114,10 @@ interface ProductVariant03Props {
   availableStock?: number;
   releaseDate?: string;
   modelVariants?: VariantItem[];
-  colorVariants?: VariantItem[];
   modelPrices?: Record<string, number>;
-  productImages?: Record<string, Record<string, string>>;
+  productImages?: Record<string, CarouselImage[]>;
   modelFeatures?: Record<string, string[]>;
   initialModel?: string;
-  initialColor?: string;
   onAddToCart?: () => void;
   onBuyNow?: () => void;
   currencyPrefix?: string;
@@ -135,10 +127,8 @@ function ProductVariant_03({
   availableStock = 24,
   badge = "Just Released",
   basePrice = 199.99,
-  colorVariants = DEFAULT_COLOR_VARIANTS,
   currencyPrefix = "$",
   description = "Next-generation portable speaker with 360° spatial audio and 24-hour battery life. Perfect for home, travel, and outdoor adventures.",
-  initialColor = "color-black",
   initialModel = "model-standard",
   modelFeatures = DEFAULT_MODEL_FEATURES,
   modelPrices = DEFAULT_MODEL_PRICES,
@@ -150,13 +140,15 @@ function ProductVariant_03({
   title = "SoundSphere Ultra Wireless Speaker",
 }: ProductVariant03Props) {
   const [selectedModel, setSelectedModel] = useState(initialModel);
-  const [selectedColor, setSelectedColor] = useState(initialColor);
   const [quantity, setQuantity] = useState(1);
 
-  // Get current image based on selected model and color
-  const currentImage =
-    productImages[selectedModel]?.[selectedColor] ||
-    "https://raw.githubusercontent.com/stackzero-labs/ui/refs/heads/main/public/placeholders/speaker-01.jpg";
+  // Get current images based on selected model
+  const currentImages = productImages[selectedModel] || [
+    {
+      title: "Standard Speaker",
+      url: "https://raw.githubusercontent.com/stackzero-labs/ui/refs/heads/main/public/placeholders/speaker-01.jpg",
+    },
+  ];
 
   // Get current price based on selected model
   const currentPrice = modelPrices[selectedModel] || basePrice;
@@ -169,7 +161,7 @@ function ProductVariant_03({
   return (
     <div className="flex flex-col overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm transition-all duration-300 hover:shadow-md lg:flex-row dark:border-gray-800 dark:bg-gray-900">
       {/* Left section: Product Image */}
-      <div className="relative w-full bg-gradient-to-br from-sky-50 via-blue-50 to-indigo-50 p-6 lg:w-2/5 dark:from-gray-900 dark:via-blue-950/20 dark:to-gray-900">
+      <div className="relative flex w-full flex-col bg-gradient-to-br from-sky-50 via-blue-50 to-indigo-50 p-6 lg:w-2/5 dark:from-gray-900 dark:via-blue-950/20 dark:to-gray-900">
         {badge && (
           <div className="absolute top-3 left-3 z-10 flex items-center justify-center">
             <div className="animate-pulse-slow rounded-full bg-blue-600 px-3 py-1 text-xs font-bold tracking-wider text-white uppercase shadow-md">
@@ -184,14 +176,16 @@ function ProductVariant_03({
           <div className="absolute right-0 -bottom-8 h-28 w-28 rounded-full bg-indigo-400/20 blur-xl"></div>
         </div>
 
-        {/* Image with hover effect */}
-        <div className="flex h-full items-center justify-center p-4">
-          <div className="transition-all duration-500 hover:scale-[1.05] hover:-rotate-2">
-            <ImageViewer
-              imageUrl={currentImage}
-              classNameThumbnailViewer="rounded-lg object-contain h-[300px] mx-auto drop-shadow-lg"
-            />
-          </div>
+        {/* Image carousel - now positioned at the top of its container */}
+        <div className="z-10 mt-4 mb-auto flex w-full justify-center">
+          <ImageCarousel_Basic
+            images={currentImages}
+            aspectRatio="square"
+            imageFit="contain"
+            showThumbs={currentImages.length > 1}
+            thumbPosition="bottom"
+            className="mx-auto max-w-full"
+          />
         </div>
       </div>
 
@@ -223,23 +217,6 @@ function ProductVariant_03({
                 value={selectedModel}
                 onValueChange={setSelectedModel}
                 variants={modelVariants}
-                itemClassName="bg-gray-50 border-gray-200 hover:border-blue-300 dark:bg-gray-800 dark:border-gray-700
-                            data-[state=checked]:border-blue-500 data-[state=checked]:bg-blue-50 
-                            data-[state=checked]:text-blue-700 dark:data-[state=checked]:bg-gray-700 
-                            dark:data-[state=checked]:border-blue-500 dark:data-[state=checked]:text-blue-300
-                            focus:ring-2 focus:ring-blue-500/50 focus:ring-offset-2 focus:border-blue-400
-                            dark:focus:ring-blue-500/40 dark:focus:ring-offset-gray-900"
-              />
-            </div>
-
-            <div>
-              <label className="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
-                Color
-              </label>
-              <VariantSelectorBasic
-                value={selectedColor}
-                onValueChange={setSelectedColor}
-                variants={colorVariants}
                 itemClassName="bg-gray-50 border-gray-200 hover:border-blue-300 dark:bg-gray-800 dark:border-gray-700
                             data-[state=checked]:border-blue-500 data-[state=checked]:bg-blue-50 
                             data-[state=checked]:text-blue-700 dark:data-[state=checked]:bg-gray-700 
