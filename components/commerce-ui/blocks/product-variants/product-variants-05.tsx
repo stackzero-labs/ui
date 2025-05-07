@@ -289,11 +289,9 @@ function ProductVariant_05({
                       color="#92400E"
                       className="flex-shrink-0"
                     />
-                    <span className="text-xs text-amber-700 dark:text-amber-400">
-                      {featuredReview.reviewDate}
-                    </span>
+                    <span className="text-xs">{featuredReview.reviewDate}</span>
                   </div>
-                  <p className="text-sm text-amber-800/90 italic dark:text-amber-200/90">
+                  <p className="text-sm italic">
                     &quot;{featuredReview.reviewText}&quot;
                   </p>
                   <div className="flex items-center space-x-3">
@@ -346,9 +344,7 @@ function ProductVariant_05({
                   </span>
                 </div>
 
-                <p className="text-sm text-amber-800/80 dark:text-amber-200/80">
-                  {description}
-                </p>
+                <p className="text-sm">{description}</p>
               </div>
 
               {/* Variants selection */}
@@ -409,13 +405,11 @@ function ProductVariant_05({
                               key={accId}
                               className="flex items-center justify-between text-sm"
                             >
-                              <span className="text-amber-700 dark:text-amber-300">
-                                {accessory?.label}
-                              </span>
+                              <span>{accessory?.label}</span>
                               <PriceFormat
                                 prefix={currencyPrefix}
                                 value={accessoryPrices[accId] || 0}
-                                className="text-amber-800 dark:text-amber-400"
+                                className="font-light"
                               />
                             </li>
                           );
@@ -439,13 +433,11 @@ function ProductVariant_05({
                               key={servId}
                               className="flex items-center justify-between text-sm"
                             >
-                              <span className="text-amber-700 dark:text-amber-300">
-                                {service?.label}
-                              </span>
+                              <span>{service?.label}</span>
                               <PriceFormat
                                 prefix={currencyPrefix}
                                 value={servicePrices[servId] || 0}
-                                className="text-amber-800 dark:text-amber-400"
+                                className="font-light"
                               />
                             </li>
                           );
