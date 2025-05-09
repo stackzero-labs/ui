@@ -6,6 +6,7 @@ import {
   Dialog,
   DialogClose,
   DialogContent,
+  DialogDescription,
   DialogOverlay,
   DialogPortal,
   DialogTitle,
@@ -95,6 +96,9 @@ const ImageContainer: React.FC<{
             <DialogTitle className="sr-only">
               {image.title || "Image"}
             </DialogTitle>
+            <DialogDescription className="sr-only">
+              {image.title || "Image"}
+            </DialogDescription>
 
             <div className="relative flex h-screen w-screen items-center justify-center">
               <TransformWrapper
