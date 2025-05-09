@@ -52,7 +52,17 @@ const ImageContainer: React.FC<{
   fit?: "cover" | "contain" | "fill";
   aspectRatio?: string;
   showImageControls?: boolean;
-}> = ({ alt, aspectRatio, fit = "cover", image, showImageControls }) => {
+  classNameImage?: string;
+  classNameThumbnail?: string;
+}> = ({
+  alt,
+  aspectRatio,
+  classNameImage,
+  classNameThumbnail,
+  fit = "cover",
+  image,
+  showImageControls,
+}) => {
   return (
     <div
       className={cn(
@@ -72,7 +82,8 @@ const ImageContainer: React.FC<{
                 "absolute inset-0 h-full w-full",
                 fit === "contain" && "object-contain",
                 fit === "cover" && "object-cover",
-                fit === "fill" && "object-fill"
+                fit === "fill" && "object-fill",
+                classNameThumbnail
               )}
             />
           </div>
@@ -95,7 +106,14 @@ const ImageContainer: React.FC<{
                   <>
                     <TransformComponent>
                       {/* You can swap this with your preferred image optization technique, like using  next/image */}
-                      <img src={image.url} alt={image.title || "Full size"} />
+                      <img
+                        src={image.url}
+                        alt={image.title || "Full size"}
+                        className={cn(
+                          "max-h-[90vh] max-w-[90vw] object-contain",
+                          classNameImage
+                        )}
+                      />
                     </TransformComponent>
                     {showImageControls && (
                       <div className="absolute bottom-4 left-1/2 z-10 flex -translate-x-1/2 gap-2">
@@ -191,21 +209,25 @@ interface ImageCarousel_BasicProps
   // Controlled mode props
   selectedIndex?: number;
   onSlideChange?: (index: number) => void;
+  classNameImage?: string;
+  classNameThumbnail?: string;
 }
 
 const ImageCarousel_Basic: React.FC<ImageCarousel_BasicProps> = ({
   aspectRatio = "wide",
   className,
+  classNameImage,
+  classNameThumbnail,
   imageFit = "contain",
   images,
+  onSlideChange,
   opts,
+  // Controlled mode props
+  selectedIndex: controlledIndex,
   showCarouselControls = true,
   showImageControls = true,
   showThumbs = true,
   thumbPosition = "bottom",
-  // Controlled mode props
-  selectedIndex: controlledIndex,
-  onSlideChange,
   ...props
 }) => {
   const isControlled = controlledIndex !== undefined;
@@ -390,6 +412,8 @@ const ImageCarousel_Basic: React.FC<ImageCarousel_BasicProps> = ({
                   fit={imageFit}
                   aspectRatio={aspectRatio}
                   showImageControls={showImageControls}
+                  classNameImage={classNameImage}
+                  classNameThumbnail={classNameThumbnail}
                 />
               </div>
             ))}

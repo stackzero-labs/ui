@@ -10,7 +10,7 @@
   "files": [
     {
       "type": "registry:example",
-      "content": "import ImageCarouselBasic, {\n  CarouselImages,\n} from \"@/components/commerce-ui/image-carousel-basic\";\n\nconst images: CarouselImages = [\n  {\n    title: \"Headphone 1\",\n    url: \"https://raw.githubusercontent.com/stackzero-labs/ui/refs/heads/main/public/placeholders/headphone-1.jpg\",\n  },\n  {\n    title: \"Headphone 2\",\n    url: \"https://raw.githubusercontent.com/stackzero-labs/ui/refs/heads/main/public/placeholders/headphone-2.jpg\",\n  },\n  {\n    title: \"Headphone 3\",\n    url: \"https://raw.githubusercontent.com/stackzero-labs/ui/refs/heads/main/public/placeholders/headphone-3.jpg\",\n  },\n];\n\nexport default function ImageCarousel_Basic_Ex_01() {\n  return <ImageCarouselBasic images={images} imageFit=\"contain\" />;\n}\n",
+      "content": "import ImageCarouselBasic, {\n  CarouselImages,\n} from \"@/components/commerce-ui/image-carousel-basic\";\n\nconst images: CarouselImages = [\n  {\n    title: \"Speaker 1\",\n    url: \"https://raw.githubusercontent.com/stackzero-labs/ui/refs/heads/main/public/placeholders/speaker-02.jpg\",\n  },\n  {\n    title: \"Headphone 2\",\n    url: \"https://raw.githubusercontent.com/stackzero-labs/ui/refs/heads/main/public/placeholders/speaker-03.jpg\",\n  },\n  {\n    title: \"Headphone 3\",\n    url: \"https://raw.githubusercontent.com/stackzero-labs/ui/refs/heads/main/public/placeholders/speaker-04.jpg\",\n  },\n];\n\nexport default function ImageCarousel_Basic_Ex_01() {\n  return <ImageCarouselBasic images={images} imageFit=\"contain\" />;\n}\n",
       "path": "/components/commerce-ui/image-carousel/basic/image-carousel-basic-ex-01.tsx",
       "target": "/components/commerce-ui/image-carousel-basic-ex-01.tsx"
     }
