@@ -751,4 +751,24 @@ export const examples: Registry = [
         )
     ),
   },
+  {
+    name: "address-page-ex-01",
+    type: "registry:example",
+    dependencies: ["lucide-react", "@radix-ui/react-checkbox"],
+    registryDependencies: [
+      "https://ui.stackzero.co/r/address-page.json",
+    ],
+    files: [
+      {
+        path: "@/components/commerce-ui/checkout-page/address-page-ex-01.tsx",
+        type: "registry:example",
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import(
+          "../components/commerce-ui/checkout-page/address-page-ex-01"
+        )
+    ),
+  },
 ];
