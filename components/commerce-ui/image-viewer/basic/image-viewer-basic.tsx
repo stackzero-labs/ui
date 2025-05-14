@@ -5,6 +5,7 @@ import {
   Dialog,
   DialogClose,
   DialogContent,
+  DialogDescription,
   DialogOverlay,
   DialogPortal,
   DialogTitle,
@@ -63,7 +64,10 @@ const ImageViewer_Basic = ({
       <DialogPortal>
         <DialogOverlay className="fixed inset-0 z-50 bg-black/80" />
         <DialogContent className="bg-background fixed inset-0 z-50 flex flex-col items-center justify-center p-0">
-          <DialogTitle className="sr-only">{imageTitle}</DialogTitle>
+          <DialogTitle className="sr-only">{imageTitle || "Image"}</DialogTitle>
+          <DialogDescription className="sr-only">
+            {imageTitle || "Image"}
+          </DialogDescription>
           <div className="relative flex h-screen w-screen items-center justify-center">
             <TransformWrapper
               initialScale={1}
