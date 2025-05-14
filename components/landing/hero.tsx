@@ -1,4 +1,5 @@
 "use client";
+import { useRegistryCounts } from "@/hooks/use-registry-counts";
 import { cn } from "@/lib/utils";
 import { ArrowRight } from "lucide-react";
 import { useTheme } from "next-themes";
@@ -6,12 +7,14 @@ import Link from "next/link";
 import { GridPattern } from "../magicui/grid-pattern";
 import { LineShadowText } from "../magicui/line-shadow-text";
 import { Button } from "../ui/button";
-import { TechStatck } from "./tech-stack";
 import { Icons } from "../ui/icons";
+import { TechStatck } from "./tech-stack";
 
 const HeroTitle = () => {
   const theme = useTheme();
   const shadowColor = theme.resolvedTheme === "dark" ? "white" : "black";
+  const { total } = useRegistryCounts();
+
   return (
     <>
       <div className="flex flex-col items-center">
@@ -35,14 +38,20 @@ const HeroTitle = () => {
         </h1>
 
         <p className="text-muted-foreground mb-8 text-2xl font-light text-balance md:text-xl">
-          <span className="text-foreground font-normal">
-            Copy-paste components{" "}
+          <span className="bg-background text-foreground font-normal">
+            +{total}
           </span>{" "}
-          and blocks that you can use in your next{" "}
+          <span className="text-foreground font-normal">
+            components and blocks{" "}
+          </span>{" "}
+          that you can {""}
+          <span className="text-foreground font-normal">
+            copy and paste
+          </span>{" "}
+          into your next{" "}
           <span className="text-foreground font-normal">
             e-commerce project
           </span>
-          .
         </p>
 
         <div className="flex flex-row gap-4">

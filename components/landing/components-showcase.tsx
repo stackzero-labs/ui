@@ -1,5 +1,6 @@
 "use client";
 
+import { useRegistryCounts } from "@/hooks/use-registry-counts";
 import { useState } from "react";
 import Banner_03 from "../commerce-ui/blocks/banners/banner-03";
 import Banner_07 from "../commerce-ui/blocks/banners/banner-07";
@@ -12,11 +13,20 @@ import Review_02 from "../commerce-ui/blocks/reviews/review-02";
 import StarRatingFractions from "../commerce-ui/star-rating/fractions/star-rating-fractions";
 
 function ComponentsShowcase() {
+  const { blocks, components, examples } = useRegistryCounts();
   return (
     <section className="relative rounded-xl px-4 md:px-0">
-      <h2 className="mb-6 text-2xl font-semibold tracking-tighter md:text-5xl">
-        Components Showcase
+      <h2 className="mb-2 text-2xl font-semibold tracking-tighter md:text-5xl">
+        <span>Components Showcase</span>
       </h2>
+      <p className="text-muted-foreground mb-6">
+        <span className="text-foreground font-medium">{components}</span>{" "}
+        components | {""}
+        <span className="text-foreground font-medium">{examples}</span> examples
+        | {""}
+        <span className="text-foreground font-medium">{blocks}</span> blocks and
+        counting...
+      </p>
 
       <div className="relative flex flex-col gap-4">
         <div className="grid w-full grid-cols-3 gap-4">
