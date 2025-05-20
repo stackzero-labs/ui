@@ -3,6 +3,22 @@ import * as React from "react";
 
 export const examples: Registry = [
   {
+    name: "cart-01-block-ex",
+    type: "registry:example",
+    dependencies: ["lucide-react"],
+    registryDependencies: ["https://ui.stackzero.co/r/cart-01-block.json"],
+    files: [
+      {
+        path: "@/components/commerce-ui/blocks/carts/cart-01-ex.tsx",
+        type: "registry:example",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/commerce-ui/blocks/carts/cart-01-ex")
+    ),
+  },
+
+  {
     name: "image-carousel-basic-ex-01",
     type: "registry:example",
     dependencies: ["lucide-react"],

@@ -272,6 +272,22 @@
       ]
     },
     {
+      "name": "cart-01-block-ex",
+      "type": "registry:example",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://ui.stackzero.co/r/cart-01-block.json"
+      ],
+      "files": [
+        {
+          "path": "@/components/commerce-ui/blocks/carts/cart-01-ex.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
       "name": "image-carousel-basic-ex-01",
       "type": "registry:example",
       "dependencies": [
@@ -1019,6 +1035,22 @@
       "files": [
         {
           "path": "@/components/commerce-ui/blocks/banners/banner-12.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "cart-01-block",
+      "type": "registry:block",
+      "dependencies": [],
+      "registryDependencies": [
+        "button",
+        "https://ui.stackzero.co/r/image-viewer-basic.json",
+        "https://ui.stackzero.co/r/price-format-basic.json"
+      ],
+      "files": [
+        {
+          "path": "@/components/commerce-ui/blocks/carts/cart-01.tsx",
           "type": "registry:block"
         }
       ]

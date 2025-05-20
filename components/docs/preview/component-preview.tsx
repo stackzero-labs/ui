@@ -25,6 +25,7 @@ const prePath =
 export function ComponentPreview({
   classNameComponentContainer,
   code,
+  displayExampleName, // When we need to display a different component in the preview, instead of the component that can be installed / copied (e.g.: to showcase state changes)
   hasReTrigger = false,
   highlightedCode,
   name,
@@ -51,13 +52,13 @@ export function ComponentPreview({
         <TabsList className="w-full justify-start rounded-none border-b bg-transparent p-0">
           <TabsTrigger
             value="preview"
-            className="relative h-9 rounded-none border-b-2 border-b-transparent bg-transparent px-4 pb-3 pt-2 font-semibold text-muted-foreground shadow-none transition-none data-[state=active]:border-b-primary data-[state=active]:text-foreground data-[state=active]:shadow-none"
+            className="text-muted-foreground data-[state=active]:border-b-primary data-[state=active]:text-foreground relative h-9 rounded-none border-b-2 border-b-transparent bg-transparent px-4 pt-2 pb-3 font-semibold shadow-none transition-none data-[state=active]:shadow-none"
           >
             Preview
           </TabsTrigger>
           <TabsTrigger
             value="code"
-            className="relative h-9 rounded-none border-b-2 border-b-transparent bg-transparent px-4 pb-3 pt-2 font-semibold text-muted-foreground shadow-none transition-none data-[state=active]:border-b-primary data-[state=active]:text-foreground data-[state=active]:shadow-none"
+            className="text-muted-foreground data-[state=active]:border-b-primary data-[state=active]:text-foreground relative h-9 rounded-none border-b-2 border-b-transparent bg-transparent px-4 pt-2 pb-3 font-semibold shadow-none transition-none data-[state=active]:shadow-none"
           >
             Code
           </TabsTrigger>
@@ -74,7 +75,7 @@ export function ComponentPreview({
               {isTerminalCopied ? (
                 <>
                   <CheckCheck className="h-3.5 w-3.5" />
-                  <span className="motion-preset-expand absolute right-0 top-1/2 flex h-full -translate-y-1/2 transform items-center rounded-e-sm bg-background px-8 text-teal-400 motion-duration-[0.3s]">
+                  <span className="motion-preset-expand bg-background motion-duration-[0.3s] absolute top-1/2 right-0 flex h-full -translate-y-1/2 transform items-center rounded-e-sm px-8 text-teal-400">
                     Copied!
                   </span>
                 </>
@@ -93,7 +94,7 @@ export function ComponentPreview({
             </Button>
             <Button size="sm" asChild variant="default">
               <a
-                href={`${prePath}/preview/${name}`}
+                href={`${prePath}/preview/${displayExampleName ? displayExampleName : name}`}
                 target="_blank"
                 rel="noreferrer"
                 className={cn("group no-underline transition-all duration-200")}
@@ -126,7 +127,7 @@ export function ComponentPreview({
                   {isTerminalCopied ? (
                     <>
                       <CheckCheck className="h-3.5 w-3.5" />
-                      <span className="motion-preset-expand absolute right-0 top-1/2 flex h-full -translate-y-1/2 transform items-center rounded-e-sm bg-background px-8 text-teal-400 motion-duration-[0.3s]">
+                      <span className="motion-preset-expand bg-background motion-duration-[0.3s] absolute top-1/2 right-0 flex h-full -translate-y-1/2 transform items-center rounded-e-sm px-8 text-teal-400">
                         Copied!
                       </span>
                     </>
@@ -145,7 +146,7 @@ export function ComponentPreview({
                 </Button>
                 <Button size="sm" asChild variant="default">
                   <a
-                    href={`${prePath}/preview/${name}`}
+                    href={`${prePath}/preview/${displayExampleName ? displayExampleName : name}`}
                     target="_blank"
                     rel="noreferrer"
                     className={cn(
@@ -168,7 +169,7 @@ export function ComponentPreview({
         <TabsContent value="preview">
           <div className="preview flex min-h-[450px] w-full justify-center p-4">
             <ComponentLoader
-              name={name}
+              name={displayExampleName ? displayExampleName : name}
               hasReTrigger={hasReTrigger}
               classNameComponentContainer={classNameComponentContainer}
             />

@@ -1,6 +1,7 @@
 export type ComponentPreviewProps = {
   name: string;
   code: string;
+  displayExampleName?: string;
   highlightedCode: string;
   hasReTrigger?: boolean;
   classNameComponentContainer?: string;
