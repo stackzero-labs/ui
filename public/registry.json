@@ -73,75 +73,6 @@
       ]
     },
     {
-      "name": "upvote-downvote-rating-01",
-      "type": "registry:component",
-      "dependencies": [
-        "lucide-react"
-      ],
-      "files": [
-        {
-          "path": "@/components/commerce-ui/upvote-downvote-rating/upvote-downvote-rating-01.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "upvote-downvote-rating-02",
-      "type": "registry:component",
-      "dependencies": [
-        "lucide-react",
-        "@number-flow/react"
-      ],
-      "files": [
-        {
-          "path": "@/components/commerce-ui/upvote-downvote-rating/upvote-downvote-rating-02.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "upvote-downvote-rating-03",
-      "type": "registry:component",
-      "dependencies": [
-        "lucide-react",
-        "@number-flow/react"
-      ],
-      "files": [
-        {
-          "path": "@/components/commerce-ui/upvote-downvote-rating/upvote-downvote-rating-03.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "upvote-downvote-rating-04",
-      "type": "registry:component",
-      "dependencies": [
-        "lucide-react",
-        "@number-flow/react"
-      ],
-      "files": [
-        {
-          "path": "@/components/commerce-ui/upvote-downvote-rating/upvote-downvote-rating-04.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "upvote-downvote-rating-05",
-      "type": "registry:component",
-      "dependencies": [
-        "lucide-react",
-        "@number-flow/react"
-      ],
-      "files": [
-        {
-          "path": "@/components/commerce-ui/upvote-downvote-rating/upvote-downvote-rating-05.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
       "name": "star-rating-basic",
       "type": "registry:component",
       "dependencies": [
@@ -1415,28 +1346,6 @@
       "files": [
         {
           "path": "@/components/commerce-ui/blocks/product-variants/product-variants-05.tsx",
-          "type": "registry:block"
-        }
-      ]
-    },
-    {
-      "name": "product-variants-carousel-01-block",
-      "type": "registry:block",
-      "dependencies": [
-        "lucide-react"
-      ],
-      "registryDependencies": [
-        "button",
-        "badge",
-        "separator",
-        "https://ui.stackzero.co/r/image-carousel-basic.json",
-        "https://ui.stackzero.co/r/price-format-basic.json",
-        "https://ui.stackzero.co/r/variant-selector-basic.json",
-        "https://ui.stackzero.co/r/quantity-input-basic.json"
-      ],
-      "files": [
-        {
-          "path": "@/components/commerce-ui/blocks/product-variants-carousel/product-variants-carousel-01.tsx",
           "type": "registry:block"
         }
       ]

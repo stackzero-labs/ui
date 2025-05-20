@@ -70,8 +70,8 @@ export async function generateMetadata(props: {
   //   title: page.data.title,
   // };
   return metadataImageBlog.withImage(page.slugs, {
-    title: page.data.title,
     description: description,
+    title: page.data.title,
   });
 }
 

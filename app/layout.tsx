@@ -3,13 +3,10 @@ import { RootProvider } from "fumadocs-ui/provider";
 import { GeistSans } from "geist/font/sans";
 import { Metadata } from "next";
 import localFont from "next/font/local";
-import type { ReactNode } from "react";
-import "./global.css";
 import Script from "next/script";
-import { Banner } from "fumadocs-ui/components/banner";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
+import type { ReactNode } from "react";
 import { DocsBanners } from "./docs-banners";
+import "./global.css";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
