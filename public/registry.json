@@ -3,10 +3,7 @@
     {
       "name": "utils",
       "type": "registry:lib",
-      "dependencies": [
-        "clsx",
-        "tailwind-merge"
-      ],
+      "dependencies": ["clsx", "tailwind-merge"],
       "files": [
         {
           "path": "lib/utils.ts",
@@ -17,9 +14,7 @@
     {
       "name": "face-rating-basic",
       "type": "registry:component",
-      "dependencies": [
-        "lucide-react"
-      ],
+      "dependencies": ["lucide-react"],
       "files": [
         {
           "path": "@/components/commerce-ui/face-rating/basic/face-rating-basic.tsx",
@@ -30,10 +25,7 @@
     {
       "name": "face-rating-gradient",
       "type": "registry:component",
-      "dependencies": [
-        "lucide-react",
-        "tinycolor2"
-      ],
+      "dependencies": ["lucide-react", "tinycolor2"],
       "files": [
         {
           "path": "@/components/commerce-ui/face-rating/gradient/face-rating-gradient.tsx",
@@ -75,9 +67,7 @@
     {
       "name": "star-rating-basic",
       "type": "registry:component",
-      "dependencies": [
-        "lucide-react"
-      ],
+      "dependencies": ["lucide-react"],
       "files": [
         {
           "path": "@/components/commerce-ui/star-rating/basic/star-rating-basic.tsx",
@@ -88,9 +78,7 @@
     {
       "name": "star-rating-fractions",
       "type": "registry:component",
-      "dependencies": [
-        "lucide-react"
-      ],
+      "dependencies": ["lucide-react"],
       "files": [
         {
           "path": "@/components/commerce-ui/star-rating/fractions/star-rating-fractions.tsx",
@@ -101,9 +89,7 @@
     {
       "name": "like-rating-basic",
       "type": "registry:component",
-      "dependencies": [
-        "lucide-react"
-      ],
+      "dependencies": ["lucide-react"],
       "files": [
         {
           "path": "@/components/commerce-ui/like-rating/basic/like-rating-basic.tsx",
@@ -114,10 +100,7 @@
     {
       "name": "variant-color-selector-basic",
       "type": "registry:component",
-      "dependencies": [
-        "lucide-react",
-        "@radix-ui/react-radio-group"
-      ],
+      "dependencies": ["lucide-react", "@radix-ui/react-radio-group"],
       "files": [
         {
           "path": "@/components/commerce-ui/variant-color-selector/basic/variant-color-selector-basic.tsx",
@@ -135,9 +118,7 @@
         "embla-carousel",
         "react-zoom-pan-pinch"
       ],
-      "registryDependencies": [
-        "button"
-      ],
+      "registryDependencies": ["button"],
       "files": [
         {
           "path": "@/components/commerce-ui/image-carousel/basic/image-carousel-basic.tsx",
@@ -148,13 +129,8 @@
     {
       "name": "price-format-basic",
       "type": "registry:component",
-      "dependencies": [
-        "lucide-react",
-        "react-number-format"
-      ],
-      "registryDependencies": [
-        "button"
-      ],
+      "dependencies": ["lucide-react", "react-number-format"],
+      "registryDependencies": ["button"],
       "files": [
         {
           "path": "@/components/commerce-ui/price-format/basic/price-format-basic.tsx",
@@ -165,13 +141,8 @@
     {
       "name": "price-format-sale",
       "type": "registry:component",
-      "dependencies": [
-        "lucide-react",
-        "react-number-format"
-      ],
-      "registryDependencies": [
-        "button"
-      ],
+      "dependencies": ["lucide-react", "react-number-format"],
+      "registryDependencies": ["button"],
       "files": [
         {
           "path": "@/components/commerce-ui/price-format/sale/price-format-sale.tsx",
@@ -182,9 +153,7 @@
     {
       "name": "quantity-input-basic",
       "type": "registry:component",
-      "dependencies": [
-        "lucide-react"
-      ],
+      "dependencies": ["lucide-react"],
       "registryDependencies": [],
       "files": [
         {
@@ -196,12 +165,8 @@
     {
       "name": "upvote-rating-basic",
       "type": "registry:component",
-      "dependencies": [
-        "lucide-react"
-      ],
-      "registryDependencies": [
-        "button"
-      ],
+      "dependencies": ["lucide-react"],
+      "registryDependencies": ["button"],
       "files": [
         {
           "path": "@/components/commerce-ui/upvote-rating/basic/upvote-rating-basic.tsx",
@@ -212,13 +177,8 @@
     {
       "name": "upvote-rating-animated",
       "type": "registry:component",
-      "dependencies": [
-        "lucide-react",
-        "@number-flow/react"
-      ],
-      "registryDependencies": [
-        "button"
-      ],
+      "dependencies": ["lucide-react", "@number-flow/react"],
+      "registryDependencies": ["button"],
       "files": [
         {
           "path": "@/components/commerce-ui/upvote-rating/animated/upvote-rating-animated.tsx",
@@ -229,13 +189,8 @@
     {
       "name": "variant-selector-basic",
       "type": "registry:component",
-      "dependencies": [
-        "lucide-react",
-        "@radix-ui/react-radio-group"
-      ],
-      "registryDependencies": [
-        "button"
-      ],
+      "dependencies": ["lucide-react", "@radix-ui/react-radio-group"],
+      "registryDependencies": ["button"],
       "files": [
         {
           "path": "@/components/commerce-ui/variant-selector/basic/variant-selector-basic.tsx",
@@ -246,10 +201,7 @@
     {
       "name": "variant-selector-images",
       "type": "registry:component",
-      "dependencies": [
-        "lucide-react",
-        "@radix-ui/react-radio-group"
-      ],
+      "dependencies": ["lucide-react", "@radix-ui/react-radio-group"],
       "files": [
         {
           "path": "@/components/commerce-ui/variant-selector/images/variant-selector-images.tsx",
@@ -260,10 +212,7 @@
     {
       "name": "variant-selector-multiple",
       "type": "registry:component",
-      "dependencies": [
-        "lucide-react",
-        "@radix-ui/react-toggle-group"
-      ],
+      "dependencies": ["lucide-react", "@radix-ui/react-toggle-group"],
       "files": [
         {
           "path": "@/components/commerce-ui/variant-selector/multiple/variant-selector-multiple.tsx",
@@ -274,12 +223,8 @@
     {
       "name": "cart-01-block-ex",
       "type": "registry:example",
-      "dependencies": [
-        "lucide-react"
-      ],
-      "registryDependencies": [
-        "https://ui.stackzero.co/r/cart-01-block.json"
-      ],
+      "dependencies": ["lucide-react"],
+      "registryDependencies": ["https://ui.stackzero.co/r/cart-01-block.json"],
       "files": [
         {
           "path": "@/components/commerce-ui/blocks/carts/cart-01-ex.tsx",
@@ -290,9 +235,7 @@
     {
       "name": "image-carousel-basic-ex-01",
       "type": "registry:example",
-      "dependencies": [
-        "lucide-react"
-      ],
+      "dependencies": ["lucide-react"],
       "registryDependencies": [
         "https://ui.stackzero.co/r/image-carousel-basic.json"
       ],
@@ -306,9 +249,7 @@
     {
       "name": "image-carousel-basic-ex-02",
       "type": "registry:example",
-      "dependencies": [
-        "lucide-react"
-      ],
+      "dependencies": ["lucide-react"],
       "registryDependencies": [
         "https://ui.stackzero.co/r/image-carousel-basic.json"
       ],
@@ -322,9 +263,7 @@
     {
       "name": "image-carousel-basic-ex-03",
       "type": "registry:example",
-      "dependencies": [
-        "lucide-react"
-      ],
+      "dependencies": ["lucide-react"],
       "registryDependencies": [
         "https://ui.stackzero.co/r/image-carousel-basic.json"
       ],
@@ -338,9 +277,7 @@
     {
       "name": "image-carousel-basic-ex-04",
       "type": "registry:example",
-      "dependencies": [
-        "lucide-react"
-      ],
+      "dependencies": ["lucide-react"],
       "registryDependencies": [
         "https://ui.stackzero.co/r/image-carousel-basic.json"
       ],
@@ -354,9 +291,7 @@
     {
       "name": "image-viewer-basic-ex-01",
       "type": "registry:component",
-      "dependencies": [
-        "lucide-react"
-      ],
+      "dependencies": ["lucide-react"],
       "registryDependencies": [
         "https://ui.stackzero.co/r/image-viewer-basic.json"
       ],
@@ -370,9 +305,7 @@
     {
       "name": "image-viewer-basic-ex-02",
       "type": "registry:component",
-      "dependencies": [
-        "lucide-react"
-      ],
+      "dependencies": ["lucide-react"],
       "registryDependencies": [
         "https://ui.stackzero.co/r/image-viewer-basic.json"
       ],
@@ -386,9 +319,7 @@
     {
       "name": "image-viewer-motion-ex-01",
       "type": "registry:component",
-      "dependencies": [
-        "lucide-react"
-      ],
+      "dependencies": ["lucide-react"],
       "registryDependencies": [
         "https://ui.stackzero.co/r/image-viewer-motion.json"
       ],
@@ -402,9 +333,7 @@
     {
       "name": "price-format-basic-ex-01",
       "type": "registry:example",
-      "dependencies": [
-        "lucide-react"
-      ],
+      "dependencies": ["lucide-react"],
       "registryDependencies": [
         "https://ui.stackzero.co/r/price-format-basic.json"
       ],
@@ -418,9 +347,7 @@
     {
       "name": "price-format-sale-ex-01",
       "type": "registry:example",
-      "dependencies": [
-        "lucide-react"
-      ],
+      "dependencies": [],
       "registryDependencies": [
         "https://ui.stackzero.co/r/price-format-sale.json"
       ],
@@ -434,9 +361,7 @@
     {
       "name": "price-format-sale-ex-02",
       "type": "registry:example",
-      "dependencies": [
-        "lucide-react"
-      ],
+      "dependencies": [],
       "registryDependencies": [
         "https://ui.stackzero.co/r/price-format-sale.json"
       ],
@@ -448,17 +373,15 @@
       ]
     },
     {
-      "name": "product-variant-01-block-ex",
+      "name": "price-format-sale-ex-03",
       "type": "registry:example",
-      "dependencies": [
-        "lucide-react"
-      ],
+      "dependencies": [],
       "registryDependencies": [
-        "https://ui.stackzero.co/r/product-variant-01-block.json"
+        "https://ui.stackzero.co/r/price-format-sale.json"
       ],
       "files": [
         {
-          "path": "@/components/commerce-ui/blocks/product-variants/product-variants-01-ex.tsx",
+          "path": "@/components/commerce-ui/price-format/sale/price-format-sale-ex-03.tsx",
           "type": "registry:example"
         }
       ]
@@ -466,9 +389,7 @@
     {
       "name": "quantity-input-basic-ex-01",
       "type": "registry:example",
-      "dependencies": [
-        "lucide-react"
-      ],
+      "dependencies": ["lucide-react"],
       "registryDependencies": [
         "https://ui.stackzero.co/r/quantity-input-basic.json"
       ],
@@ -482,9 +403,7 @@
     {
       "name": "quantity-input-basic-ex-02",
       "type": "registry:example",
-      "dependencies": [
-        "lucide-react"
-      ],
+      "dependencies": ["lucide-react"],
       "registryDependencies": [
         "https://ui.stackzero.co/r/quantity-input-basic.json"
       ],
@@ -498,9 +417,7 @@
     {
       "name": "quantity-input-basic-ex-03",
       "type": "registry:example",
-      "dependencies": [
-        "lucide-react"
-      ],
+      "dependencies": ["lucide-react"],
       "registryDependencies": [
         "https://ui.stackzero.co/r/quantity-input-basic.json"
       ],
@@ -514,9 +431,7 @@
     {
       "name": "face-rating-basic-ex-01",
       "type": "registry:example",
-      "dependencies": [
-        "lucide-react"
-      ],
+      "dependencies": ["lucide-react"],
       "registryDependencies": [
         "https://ui.stackzero.co/r/face-rating-basic.json"
       ],
@@ -530,9 +445,7 @@
     {
       "name": "face-rating-basic-ex-02",
       "type": "registry:example",
-      "dependencies": [
-        "lucide-react"
-      ],
+      "dependencies": ["lucide-react"],
       "registryDependencies": [
         "https://ui.stackzero.co/r/face-rating-basic.json"
       ],
@@ -546,9 +459,7 @@
     {
       "name": "face-rating-basic-ex-03",
       "type": "registry:example",
-      "dependencies": [
-        "lucide-react"
-      ],
+      "dependencies": ["lucide-react"],
       "registryDependencies": [
         "https://ui.stackzero.co/r/face-rating-basic.json"
       ],
@@ -562,9 +473,7 @@
     {
       "name": "face-rating-gradient-ex-01",
       "type": "registry:example",
-      "dependencies": [
-        "lucide-react"
-      ],
+      "dependencies": ["lucide-react"],
       "registryDependencies": [
         "https://ui.stackzero.co/r/face-rating-gradient.json"
       ],
@@ -578,9 +487,7 @@
     {
       "name": "like-rating-basic-ex-01",
       "type": "registry:example",
-      "dependencies": [
-        "lucide-react"
-      ],
+      "dependencies": ["lucide-react"],
       "registryDependencies": [
         "https://ui.stackzero.co/r/like-rating-basic.json"
       ],
@@ -594,9 +501,7 @@
     {
       "name": "star-rating-basic-ex-01",
       "type": "registry:example",
-      "dependencies": [
-        "lucide-react"
-      ],
+      "dependencies": ["lucide-react"],
       "registryDependencies": [
         "https://ui.stackzero.co/r/star-rating-basic.json"
       ],
@@ -610,9 +515,7 @@
     {
       "name": "star-rating-basic-ex-02",
       "type": "registry:example",
-      "dependencies": [
-        "lucide-react"
-      ],
+      "dependencies": ["lucide-react"],
       "registryDependencies": [
         "https://ui.stackzero.co/r/star-rating-basic.json"
       ],
@@ -626,9 +529,7 @@
     {
       "name": "star-rating-basic-ex-03",
       "type": "registry:example",
-      "dependencies": [
-        "lucide-react"
-      ],
+      "dependencies": ["lucide-react"],
       "registryDependencies": [
         "https://ui.stackzero.co/r/star-rating-basic.json"
       ],
@@ -642,9 +543,7 @@
     {
       "name": "star-rating-fractions-ex-01",
       "type": "registry:example",
-      "dependencies": [
-        "lucide-react"
-      ],
+      "dependencies": ["lucide-react"],
       "registryDependencies": [
         "https://ui.stackzero.co/r/star-rating-fractions.json"
       ],
@@ -658,9 +557,7 @@
     {
       "name": "star-rating-fractions-ex-02",
       "type": "registry:example",
-      "dependencies": [
-        "lucide-react"
-      ],
+      "dependencies": ["lucide-react"],
       "registryDependencies": [
         "https://ui.stackzero.co/r/star-rating-fractions.json"
       ],
@@ -674,9 +571,7 @@
     {
       "name": "star-rating-fractions-ex-03",
       "type": "registry:example",
-      "dependencies": [
-        "lucide-react"
-      ],
+      "dependencies": ["lucide-react"],
       "registryDependencies": [
         "https://ui.stackzero.co/r/star-rating-fractions.json"
       ],
@@ -690,9 +585,7 @@
     {
       "name": "upvote-rating-basic-ex-01",
       "type": "registry:example",
-      "dependencies": [
-        "lucide-react"
-      ],
+      "dependencies": ["lucide-react"],
       "registryDependencies": [
         "https://ui.stackzero.co/r/upvote-rating-basic.json"
       ],
@@ -706,9 +599,7 @@
     {
       "name": "upvote-rating-basic-ex-02",
       "type": "registry:example",
-      "dependencies": [
-        "lucide-react"
-      ],
+      "dependencies": ["lucide-react"],
       "registryDependencies": [
         "https://ui.stackzero.co/r/upvote-rating-basic.json"
       ],
@@ -722,10 +613,7 @@
     {
       "name": "upvote-rating-animated-ex-01",
       "type": "registry:example",
-      "dependencies": [
-        "lucide-react",
-        "@number-flow/react"
-      ],
+      "dependencies": ["lucide-react", "@number-flow/react"],
       "registryDependencies": [
         "https://ui.stackzero.co/r/upvote-rating-animated.json"
       ],
@@ -739,10 +627,7 @@
     {
       "name": "upvote-rating-animated-ex-02",
       "type": "registry:example",
-      "dependencies": [
-        "lucide-react",
-        "@number-flow/react"
-      ],
+      "dependencies": ["lucide-react", "@number-flow/react"],
       "registryDependencies": [
         "https://ui.stackzero.co/r/upvote-rating-animated.json"
       ],
@@ -756,10 +641,7 @@
     {
       "name": "variant-selector-basic-ex-01",
       "type": "registry:example",
-      "dependencies": [
-        "lucide-react",
-        "@radix-ui/react-radio-group"
-      ],
+      "dependencies": ["lucide-react", "@radix-ui/react-radio-group"],
       "registryDependencies": [
         "https://ui.stackzero.co/r/variant-selector-basic.json"
       ],
@@ -773,10 +655,7 @@
     {
       "name": "variant-selector-basic-ex-02",
       "type": "registry:example",
-      "dependencies": [
-        "lucide-react",
-        "@radix-ui/react-radio-group"
-      ],
+      "dependencies": ["lucide-react", "@radix-ui/react-radio-group"],
       "registryDependencies": [
         "https://ui.stackzero.co/r/variant-selector-basic.json"
       ],
@@ -790,10 +669,7 @@
     {
       "name": "variant-selector-basic-ex-03",
       "type": "registry:example",
-      "dependencies": [
-        "lucide-react",
-        "@radix-ui/react-radio-group"
-      ],
+      "dependencies": ["lucide-react", "@radix-ui/react-radio-group"],
       "registryDependencies": [
         "https://ui.stackzero.co/r/variant-selector-basic.json"
       ],
@@ -807,10 +683,7 @@
     {
       "name": "variant-selector-basic-ex-04",
       "type": "registry:example",
-      "dependencies": [
-        "lucide-react",
-        "@radix-ui/react-radio-group"
-      ],
+      "dependencies": ["lucide-react", "@radix-ui/react-radio-group"],
       "registryDependencies": [
         "https://ui.stackzero.co/r/variant-selector-basic.json"
       ],
@@ -824,10 +697,7 @@
     {
       "name": "variant-selector-basic-ex-05",
       "type": "registry:example",
-      "dependencies": [
-        "lucide-react",
-        "@radix-ui/react-radio-group"
-      ],
+      "dependencies": ["lucide-react", "@radix-ui/react-radio-group"],
       "registryDependencies": [
         "https://ui.stackzero.co/r/variant-selector-basic.json"
       ],
@@ -841,10 +711,7 @@
     {
       "name": "variant-selector-images-ex-01",
       "type": "registry:example",
-      "dependencies": [
-        "lucide-react",
-        "@radix-ui/react-radio-group"
-      ],
+      "dependencies": ["lucide-react", "@radix-ui/react-radio-group"],
       "registryDependencies": [
         "https://ui.stackzero.co/r/variant-selector-images.json"
       ],
@@ -858,10 +725,7 @@
     {
       "name": "variant-selector-multiple-ex-01",
       "type": "registry:example",
-      "dependencies": [
-        "lucide-react",
-        "@radix-ui/react-toggle-group"
-      ],
+      "dependencies": ["lucide-react", "@radix-ui/react-toggle-group"],
       "registryDependencies": [
         "https://ui.stackzero.co/r/variant-selector-multiple.json"
       ],
@@ -875,10 +739,7 @@
     {
       "name": "variant-selector-multiple-ex-02",
       "type": "registry:example",
-      "dependencies": [
-        "lucide-react",
-        "@radix-ui/react-toggle-group"
-      ],
+      "dependencies": ["lucide-react", "@radix-ui/react-toggle-group"],
       "registryDependencies": [
         "https://ui.stackzero.co/r/variant-selector-multiple.json"
       ],
@@ -892,11 +753,7 @@
     {
       "name": "variant-color-selector-basic-ex-01",
       "type": "registry:example",
-      "dependencies": [
-        "lucide-react",
-        "@radix-ui/react-radio-group",
-        "motion"
-      ],
+      "dependencies": ["lucide-react", "@radix-ui/react-radio-group", "motion"],
       "registryDependencies": [
         "https://ui.stackzero.co/r/variant-color-selector-basic.json"
       ],
@@ -982,9 +839,7 @@
     {
       "name": "banner-07-block",
       "type": "registry:block",
-      "dependencies": [
-        "@number-flow/react"
-      ],
+      "dependencies": ["@number-flow/react"],
       "registryDependencies": [],
       "files": [
         {
@@ -1008,9 +863,7 @@
     {
       "name": "banner-09-block",
       "type": "registry:block",
-      "dependencies": [
-        "lucide-react"
-      ],
+      "dependencies": ["lucide-react"],
       "registryDependencies": [],
       "files": [
         {
@@ -1174,9 +1027,7 @@
     {
       "name": "product-card-07-block",
       "type": "registry:block",
-      "dependencies": [
-        "lucide-react"
-      ],
+      "dependencies": ["lucide-react"],
       "registryDependencies": [
         "button",
         "https://ui.stackzero.co/r/image-viewer-basic.json",
@@ -1275,9 +1126,7 @@
     {
       "name": "product-card-13-block",
       "type": "registry:block",
-      "dependencies": [
-        "lucide-react"
-      ],
+      "dependencies": ["lucide-react"],
       "registryDependencies": [
         "button",
         "https://ui.stackzero.co/r/image-viewer-basic.json",
@@ -1294,9 +1143,7 @@
     {
       "name": "product-variant-01-block",
       "type": "registry:block",
-      "dependencies": [
-        "lucide-react"
-      ],
+      "dependencies": ["lucide-react"],
       "registryDependencies": [
         "button",
         "badge",
@@ -1315,9 +1162,7 @@
     {
       "name": "product-variant-02-block",
       "type": "registry:block",
-      "dependencies": [
-        "lucide-react"
-      ],
+      "dependencies": ["lucide-react"],
       "registryDependencies": [
         "button",
         "badge",
@@ -1337,9 +1182,7 @@
     {
       "name": "product-variant-03-block",
       "type": "registry:block",
-      "dependencies": [
-        "lucide-react"
-      ],
+      "dependencies": ["lucide-react"],
       "registryDependencies": [
         "button",
         "separator",
@@ -1358,9 +1201,7 @@
     {
       "name": "product-variant-04-block",
       "type": "registry:block",
-      "dependencies": [
-        "lucide-react"
-      ],
+      "dependencies": ["lucide-react"],
       "registryDependencies": [
         "button",
         "https://ui.stackzero.co/r/image-viewer-basic.json",
@@ -1380,9 +1221,7 @@
     {
       "name": "product-variant-05-block",
       "type": "registry:block",
-      "dependencies": [
-        "lucide-react"
-      ],
+      "dependencies": ["lucide-react"],
       "registryDependencies": [
         "button",
         "https://ui.stackzero.co/r/price-format-basic.json",
@@ -1415,9 +1254,7 @@
     {
       "name": "review-02-block",
       "type": "registry:block",
-      "dependencies": [
-        "lucide-react"
-      ],
+      "dependencies": ["lucide-react"],
       "registryDependencies": [
         "button",
         "https://ui.stackzero.co/r/star-rating-fractions.json"
@@ -1476,9 +1313,7 @@
     {
       "name": "review-06-block",
       "type": "registry:block",
-      "dependencies": [
-        "lucide-react"
-      ],
+      "dependencies": ["lucide-react"],
       "registryDependencies": [
         "button",
         "https://ui.stackzero.co/r/star-rating-fractions.json"
@@ -1493,9 +1328,7 @@
     {
       "name": "review-07-block",
       "type": "registry:block",
-      "dependencies": [
-        "lucide-react"
-      ],
+      "dependencies": ["lucide-react"],
       "registryDependencies": [
         "button",
         "https://ui.stackzero.co/r/like-rating-basic.json"
@@ -1510,9 +1343,7 @@
     {
       "name": "review-08-block",
       "type": "registry:block",
-      "dependencies": [
-        "lucide-react"
-      ],
+      "dependencies": ["lucide-react"],
       "registryDependencies": [
         "button",
         "separator",
@@ -1528,9 +1359,7 @@
     {
       "name": "review-09-block",
       "type": "registry:block",
-      "dependencies": [
-        "lucide-react"
-      ],
+      "dependencies": ["lucide-react"],
       "registryDependencies": [
         "badge",
         "button",
@@ -1548,9 +1377,7 @@
     {
       "name": "review-10-block",
       "type": "registry:block",
-      "dependencies": [
-        "lucide-react"
-      ],
+      "dependencies": ["lucide-react"],
       "registryDependencies": [
         "button",
         "https://ui.stackzero.co/r/upvote-rating-basic.json"

@@ -1,9 +1,7 @@
 {
   "name": "price-format-sale-ex-01",
   "type": "registry:example",
-  "dependencies": [
-    "lucide-react"
-  ],
+  "dependencies": [],
   "registryDependencies": [
     "https://ui.stackzero.co/r/price-format-sale.json"
   ],

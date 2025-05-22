@@ -182,7 +182,7 @@ export const examples: Registry = [
   {
     name: "price-format-sale-ex-01",
     type: "registry:example",
-    dependencies: ["lucide-react"],
+    dependencies: [],
     registryDependencies: ["https://ui.stackzero.co/r/price-format-sale.json"],
     files: [
       {
@@ -201,7 +201,7 @@ export const examples: Registry = [
   {
     name: "price-format-sale-ex-02",
     type: "registry:example",
-    dependencies: ["lucide-react"],
+    dependencies: [],
     registryDependencies: ["https://ui.stackzero.co/r/price-format-sale.json"],
     files: [
       {
@@ -218,22 +218,20 @@ export const examples: Registry = [
   },
 
   {
-    name: "product-variant-01-block-ex",
+    name: "price-format-sale-ex-03",
     type: "registry:example",
-    dependencies: ["lucide-react"],
-    registryDependencies: [
-      "https://ui.stackzero.co/r/product-variant-01-block.json",
-    ],
+    dependencies: [],
+    registryDependencies: ["https://ui.stackzero.co/r/price-format-sale.json"],
     files: [
       {
-        path: "@/components/commerce-ui/blocks/product-variants/product-variants-01-ex.tsx",
+        path: "@/components/commerce-ui/price-format/sale/price-format-sale-ex-03.tsx",
         type: "registry:example",
       },
     ],
     component: React.lazy(
       () =>
         import(
-          "../components/commerce-ui/blocks/product-variants/product-variants-01-ex"
+          "../components/commerce-ui/price-format/sale/price-format-sale-ex-03"
         )
     ),
   },
