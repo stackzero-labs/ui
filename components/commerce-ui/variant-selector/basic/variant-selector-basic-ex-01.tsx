@@ -31,7 +31,7 @@ export default function VariantSelector_Basic_Ex_01() {
 
       <button
         onClick={() => setSelectedVariant("variant-m")}
-        className="rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:bg-primary/90"
+        className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-md px-4 py-2 text-sm font-medium"
       >
         Reset to Medium
       </button>

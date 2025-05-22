@@ -9,6 +9,7 @@ export interface VariantItem {
   id: string;
   value: string;
   label: string;
+  disabled?: boolean;
 }
 
 interface VariantSelectorMultipleProps {
@@ -39,6 +40,7 @@ const VariantSelectorMultiple = ({
         <div key={variant.id} className="flex items-center">
           <ToggleGroupItem
             value={variant.value}
+            disabled={variant.disabled}
             className={cn(
               "relative h-10 w-full min-w-[80px] rounded-md border border-gray-300 px-3 py-2 text-center text-sm transition-all",
               "dark:border-gray-600 dark:text-gray-100",

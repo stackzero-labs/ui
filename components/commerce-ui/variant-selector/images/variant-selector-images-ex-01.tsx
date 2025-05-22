@@ -37,7 +37,7 @@ export default function VariantSelector_Images_Ex_01() {
           variants={variants}
         />
       </fieldset>
-      <p className="text-center text-sm text-muted-foreground">
+      <p className="text-muted-foreground text-center text-sm">
         Selected variant: {selected}
       </p>
     </div>
