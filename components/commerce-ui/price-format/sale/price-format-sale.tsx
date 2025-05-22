@@ -5,7 +5,7 @@ import { NumericFormat } from "react-number-format";
 
 interface PriceFormat_SaleProps extends React.HTMLAttributes<HTMLDivElement> {
   originalPrice: number;
-  salePrice: number;
+  salePrice?: number;
   prefix?: string;
   thousandSeparator?: string;
   decimalSeparator?: string;
@@ -29,40 +29,63 @@ const PriceFormat_Sale: React.FC<PriceFormat_SaleProps> = ({
   showSavePercentage = false,
   thousandSeparator = ".",
 }) => {
-  const savePercentage = ((originalPrice - salePrice) / originalPrice) * 100;
+  const isSale = salePrice !== undefined && salePrice < originalPrice;
+  const savePercentage = isSale
+    ? ((originalPrice - salePrice) / originalPrice) * 100
+    : 0;
 
   return (
     <div className={cn("flex flex-wrap items-center gap-2", className)}>
-      <NumericFormat
-        value={originalPrice}
-        thousandSeparator={thousandSeparator}
-        decimalSeparator={decimalSeparator}
-        decimalScale={decimalScale}
-        prefix={prefix}
-        displayType="text"
-        className={cn(
-          "font-medium text-gray-500 line-through",
-          classNameOriginalPrice
-        )}
-      />
-      <NumericFormat
-        value={salePrice}
-        thousandSeparator={thousandSeparator}
-        decimalSeparator={decimalSeparator}
-        decimalScale={decimalScale}
-        prefix={prefix}
-        displayType="text"
-        className={cn("text-[length:inherit] font-medium", classNameSalePrice)}
-      />
-      {showSavePercentage && (
-        <span
-          className={cn(
-            "rounded-sm bg-green-500/50 p-1 text-sm font-medium",
-            classNameSalePercentage
+      {isSale ? (
+        <>
+          <NumericFormat
+            value={originalPrice}
+            thousandSeparator={thousandSeparator}
+            decimalSeparator={decimalSeparator}
+            decimalScale={decimalScale}
+            prefix={prefix}
+            displayType="text"
+            className={cn(
+              "font-medium text-gray-500 line-through",
+              classNameOriginalPrice
+            )}
+          />
+          <NumericFormat
+            value={salePrice}
+            thousandSeparator={thousandSeparator}
+            decimalSeparator={decimalSeparator}
+            decimalScale={decimalScale}
+            prefix={prefix}
+            displayType="text"
+            className={cn(
+              "text-[length:inherit] font-medium",
+              classNameSalePrice
+            )}
+          />
+          {showSavePercentage && (
+            <span
+              className={cn(
+                "rounded-sm bg-green-500/50 p-1 text-sm font-medium",
+                classNameSalePercentage
+              )}
+            >
+              Save {Math.round(savePercentage)}%
+            </span>
           )}
-        >
-          Save {Math.round(savePercentage)}%
-        </span>
+        </>
+      ) : (
+        <NumericFormat
+          value={originalPrice}
+          thousandSeparator={thousandSeparator}
+          decimalSeparator={decimalSeparator}
+          decimalScale={decimalScale}
+          prefix={prefix}
+          displayType="text"
+          className={cn(
+            "text-[length:inherit] font-medium",
+            classNameSalePrice
+          )}
+        />
       )}
     </div>
   );

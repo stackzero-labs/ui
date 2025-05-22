@@ -448,6 +448,22 @@
       ]
     },
     {
+      "name": "price-format-sale-ex-03",
+      "type": "registry:example",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://ui.stackzero.co/r/price-format-sale.json"
+      ],
+      "files": [
+        {
+          "path": "@/components/commerce-ui/price-format/sale/price-format-sale-ex-03.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
       "name": "quantity-input-basic-ex-01",
       "type": "registry:example",
       "dependencies": [
