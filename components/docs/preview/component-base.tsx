@@ -18,14 +18,16 @@ interface ComponentBaseProps extends ComponentPreviewProps {
   className?: string;
 }
 
+/**
+ * @deprecated
+ */
 export function ComponentBase({
   className,
-  code,
   defaultExpanded = false,
   expandButtonTitle = "Expand",
-  highlightedCode,
   maxHeight = "550px",
   name,
+  source,
   ...props
 }: ComponentBaseProps) {
   const [isOpened, setIsOpened] = React.useState(defaultExpanded);
@@ -39,7 +41,7 @@ export function ComponentBase({
     >
       <div
         className={cn(
-          "group/item relative my-4 overflow-hidden rounded-lg border bg-card text-card-foreground",
+          "group/item bg-card text-card-foreground relative my-4 overflow-hidden rounded-lg border",
           className
         )}
         {...props}
@@ -58,13 +60,16 @@ export function ComponentBase({
               overflow: "auto",
             }}
           >
-            <CodeRenderer code={code} highlightedCode={highlightedCode} />
+            <CodeRenderer
+              code={source[0].code}
+              highlightedCode={source[0].highlightedCode}
+            />
           </div>
         </CollapsibleContent>
 
         <div
           className={cn(
-            "absolute flex items-center justify-center bg-linear-to-b from-background/30 to-background/90 p-2",
+            "from-background/30 to-background/90 absolute flex items-center justify-center bg-linear-to-b p-2",
             isOpened ? "inset-x-0 bottom-0 h-12" : "inset-0"
           )}
         >

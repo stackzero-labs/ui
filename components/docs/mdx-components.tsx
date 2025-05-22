@@ -1,5 +1,5 @@
 import { Reference, References } from "@/components/ui/references";
-import { extractSourceCode } from "@/lib/code";
+import { extractMultipleSourceCodes, extractSourceCode } from "@/lib/code";
 import { createTypeTable } from "fumadocs-typescript/ui";
 import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
 import { Callout } from "fumadocs-ui/components/callout";
@@ -13,17 +13,15 @@ import { TypeTable } from "fumadocs-ui/components/type-table";
 import defaultComponents from "fumadocs-ui/mdx";
 import type { MDXComponents } from "mdx/types";
 import type { ReactNode } from "react";
-import { ComponentBase } from "./preview/component-base";
-import { ComponentCollapse } from "./preview/component-collapse";
-import { ComponentPreview } from "./preview/component-preview";
+import { ComponentLoader } from "./component-loader";
 import { ComponentPropsTable } from "./component-props-table";
+import { ComponentPreview } from "./preview/component-preview";
+import { ComponentSource } from "./preview/component-source";
 import {
-  ComponentInstall,
   CLIInstall,
+  ComponentInstall,
   ManualInstall,
 } from "./preview/components-install";
-import { ComponentSource } from "./preview/component-source";
-import { ComponentLoader } from "./component-loader";
 const { AutoTypeTable } = createTypeTable();
 
 export function getMDXComponents(components: MDXComponents): MDXComponents {
@@ -37,36 +35,23 @@ export function getMDXComponents(components: MDXComponents): MDXComponents {
     Card,
     Cards,
     CLIInstall,
-    ComponentBase: async ({ name, ...props }: { name: string }) => {
-      const { code, highlightedCode } = await extractSourceCode(name);
-      return (
-        <ComponentBase
-          name={name}
-          code={code}
-          highlightedCode={highlightedCode}
-          {...props}
-        />
-      );
-    },
-    ComponentCollapse: async ({ name, ...props }: { name: string }) => {
-      const { code, highlightedCode } = await extractSourceCode(name);
-      return (
-        <ComponentCollapse
-          name={name}
-          code={code}
-          highlightedCode={highlightedCode}
-          {...props}
-        />
-      );
-    },
     ComponentInstall,
-    ComponentPreview: async ({ name, ...props }: { name: string }) => {
-      const { code, highlightedCode } = await extractSourceCode(name);
+    ComponentPreview: async ({
+      codeRendererFiles,
+      name,
+      ...props
+    }: {
+      name: string;
+      codeRendererFiles: string[];
+    }) => {
+      const sourceCodes = await extractMultipleSourceCodes(
+        codeRendererFiles || [name]
+      );
       return (
         <ComponentPreview
           name={name}
-          code={code}
-          highlightedCode={highlightedCode}
+          source={sourceCodes}
+          codeRendererFiles={codeRendererFiles}
           {...props}
         />
       );

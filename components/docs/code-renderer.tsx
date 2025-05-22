@@ -1,4 +1,3 @@
-import React from "react";
 import type { CodePreviewProps } from "types/component";
 import CopyButton from "./copy-btn";
 

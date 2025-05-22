@@ -51,6 +51,7 @@
     "react-dom": "^19.0.0",
     "react-intersection-observer": "^9.15.1",
     "react-number-format": "^5.4.3",
+    "react-resizable-panels": "^3.0.2",
     "react-zoom-pan-pinch": "^3.7.0",
     "shiki": "^2.5.0",
     "tailwind-merge": "^2.6.0",

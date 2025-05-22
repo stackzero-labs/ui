@@ -12,12 +12,14 @@ import type { ComponentPreviewProps } from "types/component";
 import { CodeRenderer } from "../code-renderer";
 import { ComponentLoader } from "../component-loader";
 
+/**
+ * @deprecated
+ */
 export function ComponentCollapse({
   classNameComponentContainer,
-  code,
   hasReTrigger = false,
-  highlightedCode,
   name,
+  source,
 }: ComponentPreviewProps) {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -49,7 +51,10 @@ export function ComponentCollapse({
       </div>
       <CollapsibleContent>
         <div className="border-t">
-          <CodeRenderer code={code} highlightedCode={highlightedCode} />
+          <CodeRenderer
+            code={source[0].code}
+            highlightedCode={source[0].highlightedCode}
+          />
         </div>
       </CollapsibleContent>
     </Collapsible>
