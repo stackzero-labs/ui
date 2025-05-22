@@ -9,7 +9,6 @@ type SidebarBadge = {
 export const sidebarBadges: SidebarBadge[] = [
   {
     count: 12,
-    isNew: true,
     page: "Banners",
   },
   {
@@ -23,12 +22,9 @@ export const sidebarBadges: SidebarBadge[] = [
     page: "Product Card",
   },
   {
+    alpha: true,
     count: 5,
     page: "Product Variants",
-  },
-  {
-    alpha: true,
-    page: "Product Variants Carousel",
   },
   {
     count: 10,

@@ -1,7 +1,6 @@
 "use client";
 
 import ImageViewer from "@/components/commerce-ui/image-viewer/basic/image-viewer-basic";
-import PriceFormat from "@/components/commerce-ui/price-format/basic/price-format-basic";
 import PriceFormat_Sale from "@/components/commerce-ui/price-format/sale/price-format-sale";
 import QuantityInputBasic from "@/components/commerce-ui/quantity-input/basic/quantity-input-basic";
 import VariantSelectorBasic, {
@@ -10,51 +9,11 @@ import VariantSelectorBasic, {
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 
-// Extended VariantItem with price and image
 interface VariantItem extends BaseVariantItem {
   price: number; // Changed to required
   salePrice?: number; // Added salePrice
   imageUrl?: string;
 }
-
-// Default data
-const DEFAULT_IMAGE =
-  "https://raw.githubusercontent.com/stackzero-labs/ui/refs/heads/main/public/placeholders/headphone-1.jpg";
-
-const DEFAULT_VARIANTS: VariantItem[] = [
-  {
-    id: "variant-sport",
-    label: "Sport",
-    value: "variant-sport",
-    price: 109.99,
-    imageUrl: DEFAULT_IMAGE,
-  },
-  {
-    id: "variant-prosound",
-    label: "ProSound",
-    value: "variant-prosound",
-    price: 99.99,
-    salePrice: 89.99,
-    imageUrl: DEFAULT_IMAGE,
-  },
-  {
-    id: "variant-ultraquite",
-    label: "UltraQuite™",
-    value: "variant-ultraquite",
-    price: 89.99,
-    imageUrl: DEFAULT_IMAGE,
-  },
-  {
-    id: "variant-extremesilence",
-    label: "ExtremeSilence™",
-    value: "variant-extremesilence",
-    price: 119.99,
-    salePrice: 99.99,
-    imageUrl: DEFAULT_IMAGE,
-  },
-];
-
-// Define the payload type for callbacks
 interface VariantSelectionPayload {
   variantId: string;
   variantLabel: string;
@@ -65,69 +24,54 @@ interface VariantSelectionPayload {
   totalPrice: number;
   isOnSale: boolean;
 }
-
 interface ProductVariant01Props {
   title?: string;
   description?: string;
   badge?: string | null;
   shippingInfo?: string;
-  variants: VariantItem[]; // Changed from optional to required
+  variants: VariantItem[];
   defaultImage?: string;
   initialVariant?: string;
   variantLabel?: string;
-
-  // Updated callback types with consolidated parameter
   onAddToCart?: (payload: VariantSelectionPayload) => void;
   onBuyNow?: (payload: VariantSelectionPayload) => void;
-
-  // Controlled mode props
   selectedVariant?: string;
   onVariantChange?: (variant: string) => void;
   quantity?: number;
   onQuantityChange?: (quantity: number) => void;
-
-  // Loading and error states
   isLoading?: boolean;
   errorMessage?: string | null;
-
-  // Availability
   isInStock?: boolean;
-  availableQuantity?: number;
+  availableQuantity?: number | null;
 }
 
 function ProductVariant_01({
+  availableQuantity = null,
   badge = "New",
-  description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-  variants,
   defaultImage,
+  description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  errorMessage = null,
+  initialVariant,
+  isInStock = true,
+  isLoading = false,
   onAddToCart = () => {},
   onBuyNow = () => {},
+  onQuantityChange,
+  onVariantChange,
+  quantity: controlledQuantity,
+  selectedVariant: controlledVariant,
   shippingInfo,
   title = "Product Variant Title",
   variantLabel = "Variant",
-  // Initialize initialVariant to the first variant's value if not provided
-  initialVariant,
-  // Controlled mode props with default to uncontrolled
-  selectedVariant: controlledVariant,
-  onVariantChange,
-  quantity: controlledQuantity,
-  onQuantityChange,
-  // Loading and error states
-  isLoading = false,
-  errorMessage = null,
-  // Availability
-  isInStock = true,
-  availableQuantity = 0,
+  variants,
 }: ProductVariant01Props) {
   // Ensure variants array is not empty
   if (!variants.length) {
     throw new Error("At least one variant must be provided");
   }
 
-  // Use the first variant's value as default if initialVariant is not provided
   const defaultInitialVariant = initialVariant || variants[0].value;
 
-  // Internal state for uncontrolled mode
   const [internalSelectedVariant, setInternalSelectedVariant] = useState(
     defaultInitialVariant
   );
@@ -157,43 +101,40 @@ function ProductVariant_01({
     }
   };
 
-  // Find the selected variant
   const selectedVariant =
     variants.find((v) => v.value === selectedVariantId) || variants[0];
 
-  // Get image, price and sale price from the selected variant
   const currentImage = selectedVariant?.imageUrl || defaultImage;
   const currentPrice = selectedVariant.price;
   const currentSalePrice = selectedVariant.salePrice;
   const isOnSale =
     currentSalePrice !== undefined && currentSalePrice < currentPrice;
 
-  // The actual price to use for calculations
   const effectivePrice = isOnSale ? currentSalePrice : currentPrice;
 
   const handleAddToCart = () => {
     onAddToCart({
-      variantId: selectedVariantId,
-      variantLabel: selectedVariant?.label || "",
-      quantity: quantity,
-      price: currentPrice,
+      isOnSale: isOnSale,
       originalPrice: isOnSale ? currentPrice : undefined,
+      price: currentPrice,
+      quantity: quantity,
       salePrice: isOnSale ? currentSalePrice : undefined,
       totalPrice: quantity * effectivePrice,
-      isOnSale: isOnSale,
+      variantId: selectedVariantId,
+      variantLabel: selectedVariant?.label || "",
     });
   };
 
   const handleBuyNow = () => {
     onBuyNow({
-      variantId: selectedVariantId,
-      variantLabel: selectedVariant?.label || "",
-      quantity: quantity,
-      price: currentPrice,
+      isOnSale: isOnSale,
       originalPrice: isOnSale ? currentPrice : undefined,
+      price: currentPrice,
+      quantity: quantity,
       salePrice: isOnSale ? currentSalePrice : undefined,
       totalPrice: quantity * effectivePrice,
-      isOnSale: isOnSale,
+      variantId: selectedVariantId,
+      variantLabel: selectedVariant?.label || "",
     });
   };
 
@@ -208,14 +149,12 @@ function ProductVariant_01({
 
   return (
     <div className="my-6 grid max-w-screen-lg grid-cols-1 gap-12 rounded-lg md:grid-cols-2">
-      <div className="relative w-full overflow-hidden rounded-2xl bg-gradient-to-br from-teal-50 to-cyan-50 p-5 dark:from-teal-950/30 dark:to-cyan-950/30">
+      <div className="relative h-fit w-full overflow-hidden rounded-2xl bg-gradient-to-br from-teal-50 to-cyan-50 p-5 dark:from-teal-950/30 dark:to-cyan-950/30">
         {badge && (
           <span className="absolute top-4 left-4 z-10 rounded-full bg-gradient-to-r from-teal-500 to-cyan-600 px-3 py-1.5 text-xs font-bold text-white">
             {badge}
           </span>
         )}
-        {/* Glow effect */}
-        <div className="absolute -bottom-10 left-1/2 h-40 w-40 -translate-x-1/2 transform rounded-full bg-teal-500/20 blur-3xl"></div>
         <div className="transition-transform duration-500 hover:scale-105">
           {isLoading ? (
             <div className="flex h-[300px] items-center justify-center">
@@ -248,24 +187,16 @@ function ProductVariant_01({
               </p>
             </div>
 
-            <div className="flex items-center gap-2">
-              {isOnSale ? (
-                <PriceFormat_Sale
-                  originalPrice={currentPrice}
-                  salePrice={currentSalePrice!}
-                  showSavePercentage
-                  className="items-baseline"
-                  classNameOriginalPrice="text-lg text-gray-500 line-through"
-                  classNameSalePrice="text-3xl font-bold text-teal-700 dark:text-teal-400"
-                  classNameSalePercentage="bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400 text-xs px-2 py-0.5 rounded-md"
-                />
-              ) : (
-                <PriceFormat
-                  prefix="$"
-                  value={currentPrice}
-                  className="text-3xl font-bold text-teal-700 dark:text-teal-400"
-                />
-              )}
+            <div className="flex flex-wrap items-center gap-2">
+              <PriceFormat_Sale
+                originalPrice={currentPrice}
+                salePrice={isOnSale ? currentSalePrice : undefined}
+                showSavePercentage
+                className="items-baseline"
+                classNameOriginalPrice="text-lg text-gray-500 line-through"
+                classNameSalePrice="text-3xl font-bold text-teal-700 dark:text-teal-400"
+                classNameSalePercentage="bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400 text-xs px-2 py-0.5 rounded-md"
+              />
 
               {shippingInfo && (
                 <p className="mt-1 inline-flex items-center text-sm text-green-600 dark:text-green-400">
@@ -285,9 +216,18 @@ function ProductVariant_01({
               )}
             </div>
 
-            {!isInStock && (
+            {isInStock ? (
+              <div className="rounded-md bg-green-50 p-3 text-green-800 dark:bg-green-900/20 dark:text-green-300">
+                <p className="text-sm font-bold">In Stock</p>
+                {availableQuantity !== null && availableQuantity > 0 && (
+                  <span className="mt-1 text-sm font-normal">
+                    {availableQuantity} units available
+                  </span>
+                )}
+              </div>
+            ) : (
               <div className="rounded-md bg-amber-50 p-3 text-amber-800 dark:bg-amber-900/20 dark:text-amber-300">
-                <p className="text-sm font-medium">Currently out of stock</p>
+                <p className="text-sm font-bold">Currently out of stock</p>
               </div>
             )}
 
@@ -318,14 +258,14 @@ function ProductVariant_01({
               <QuantityInputBasic
                 quantity={quantity}
                 onChange={handleQuantityChange}
-                max={isInStock ? availableQuantity || 10 : 0}
+                max={availableQuantity !== null ? availableQuantity : undefined}
                 min={1}
                 className="max-w-[150px] border-gray-300 dark:border-gray-700"
                 disabled={!isInStock}
               />
             </div>
 
-            <div className="mt-2 flex flex-col gap-3 sm:flex-row">
+            <div className="mt-2 flex flex-col flex-wrap gap-3 sm:flex-row">
               <Button
                 variant="outline"
                 className="w-full border-gray-300 bg-white text-gray-800 transition-all duration-200 hover:border-teal-500 hover:bg-teal-50 hover:text-teal-700 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200 dark:hover:border-teal-500 dark:hover:bg-gray-700"

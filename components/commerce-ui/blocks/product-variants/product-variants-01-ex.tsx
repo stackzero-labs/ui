@@ -8,44 +8,49 @@ import ProductVariant_01, {
   VariantSelectionPayload,
 } from "./product-variants-01";
 
-// Example product data with sale prices
 const EXAMPLE_VARIANTS: VariantItem[] = [
   {
-    id: "color-red",
-    label: "Ruby Red",
-    value: "color-red",
-    price: 249.99,
+    id: "variant-sport",
     imageUrl:
-      "https://raw.githubusercontent.com/stackzero-labs/ui/refs/heads/main/public/placeholders/headphone-red.jpg",
+      "https://raw.githubusercontent.com/stackzero-labs/ui/refs/heads/main/public/placeholders/headphone-1.jpg",
+    label: "Sport",
+    price: 109.99,
+    value: "variant-sport",
   },
   {
-    id: "color-black",
-    label: "Stealth Black",
-    value: "color-black",
-    price: 229.99,
-    salePrice: 199.99, // On sale!
+    id: "variant-prosound",
     imageUrl:
-      "https://raw.githubusercontent.com/stackzero-labs/ui/refs/heads/main/public/placeholders/headphone-black.jpg",
+      "https://raw.githubusercontent.com/stackzero-labs/ui/refs/heads/main/public/placeholders/headphone-2.jpg",
+    label: "ProSound",
+    price: 99.99,
+    salePrice: 89.99,
+    value: "variant-prosound",
   },
   {
-    id: "color-blue",
-    label: "Ocean Blue",
-    value: "color-blue",
-    price: 239.99,
-    salePrice: 209.99, // On sale!
+    id: "variant-ultraquite",
     imageUrl:
-      "https://raw.githubusercontent.com/stackzero-labs/ui/refs/heads/main/public/placeholders/headphone-blue.jpg",
+      "https://raw.githubusercontent.com/stackzero-labs/ui/refs/heads/main/public/placeholders/headphone-3.jpg",
+    label: "UltraQuite™",
+    price: 89.99,
+    value: "variant-ultraquite",
+  },
+  {
+    id: "variant-extremesilence",
+    imageUrl:
+      "https://raw.githubusercontent.com/stackzero-labs/ui/refs/heads/main/public/placeholders/headphone-4.jpg",
+    label: "ExtremeSilence™",
+    price: 119.99,
+    salePrice: 99.99,
+    value: "variant-extremesilence",
   },
 ];
 
 export default function ProductVariantExample() {
-  // State for controlled usage
   const [selectedVariant, setSelectedVariant] = useState<string>(
     EXAMPLE_VARIANTS[0].value
   );
   const [quantity, setQuantity] = useState<number>(1);
 
-  // Handlers for adding to cart and buying
   const handleAddToCart = (payload: VariantSelectionPayload) => {
     window.alert(
       `Added ${payload.quantity} ${payload.variantLabel} to cart at $${payload.price} each.`
@@ -60,7 +65,6 @@ export default function ProductVariantExample() {
 
   return (
     <div className="container mx-auto p-4">
-      {/* ProductVariant_01 Component with Controlled Props */}
       <ProductVariant_01
         title="Premium Noise-Cancelling Headphones"
         description="Experience exceptional sound quality with our top-of-the-line noise-cancelling headphones, perfect for music lovers and professionals alike."
@@ -68,17 +72,14 @@ export default function ProductVariantExample() {
         variants={EXAMPLE_VARIANTS}
         variantLabel="Color"
         shippingInfo="Free 2-day shipping"
-        // Controlled state
         selectedVariant={selectedVariant}
         onVariantChange={setSelectedVariant}
         quantity={quantity}
         onQuantityChange={setQuantity}
-        // Callbacks
         onAddToCart={handleAddToCart}
         onBuyNow={handleBuyNow}
-        // Availability
         isInStock={true}
-        availableQuantity={20}
+        availableQuantity={10}
       />
     </div>
   );
