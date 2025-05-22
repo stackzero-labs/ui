@@ -6,7 +6,7 @@ import { ChangeEvent, useState, useEffect } from "react";
 interface QuantityInputBasicProps {
   quantity: number;
   min?: number;
-  max?: number;
+  max?: number | null;
   step?: number;
   disabled?: boolean;
   onChange: (quantity: number) => void;
@@ -16,7 +16,7 @@ interface QuantityInputBasicProps {
 const QuantityInputBasic = ({
   className,
   disabled = false,
-  max = 99,
+  max = null,
   min = 1,
   onChange,
   quantity,
@@ -37,7 +37,7 @@ const QuantityInputBasic = ({
   };
 
   const handleIncrease = () => {
-    if (quantity + step <= max) {
+    if (max === null || quantity + step <= max) {
       onChange(quantity + step);
     }
   };
@@ -48,7 +48,7 @@ const QuantityInputBasic = ({
 
     // If the input is a valid number, update the parent component
     const value = parseInt(e.target.value);
-    if (!isNaN(value) && value >= min && value <= max) {
+    if (!isNaN(value) && value >= min && (max === null || value <= max)) {
       onChange(value);
     }
   };
@@ -60,8 +60,8 @@ const QuantityInputBasic = ({
       // If invalid or below min, reset to min
       setInputValue(min.toString());
       onChange(min);
-    } else if (value > max) {
-      // If above max, reset to max
+    } else if (max !== null && value > max) {
+      // If above max and max is defined, reset to max
       setInputValue(max.toString());
       onChange(max);
     } else {
@@ -96,7 +96,7 @@ const QuantityInputBasic = ({
         onBlur={handleBlur}
         className="w-12 border-y px-2 py-1 text-center font-mono outline-none"
         min={min}
-        max={max}
+        max={max !== null ? max : undefined}
         disabled={disabled}
         aria-label="Quantity"
       />
@@ -106,7 +106,7 @@ const QuantityInputBasic = ({
           disabled && "pointer-events-none"
         )}
         onClick={handleIncrease}
-        disabled={disabled || quantity >= max}
+        disabled={disabled || (max !== null && quantity >= max)}
         aria-label="Increase quantity"
       >
         <Plus size={16} strokeWidth={2} aria-hidden="true" />
