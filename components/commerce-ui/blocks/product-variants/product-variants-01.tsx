@@ -7,12 +7,15 @@ import VariantSelectorBasic, {
   VariantItem as BaseVariantItem,
 } from "@/components/commerce-ui/variant-selector/basic/variant-selector-basic";
 import { Button } from "@/components/ui/button";
+import { Clock } from "lucide-react";
 import { useState } from "react";
 
 interface VariantItem extends BaseVariantItem {
-  price: number; // Changed to required
-  salePrice?: number; // Added salePrice
+  price: number;
+  salePrice?: number;
   imageUrl?: string;
+  isInStock?: boolean; // Added stock status per variant
+  availableQuantity?: number | null; // Added quantity per variant
 }
 interface VariantSelectionPayload {
   variantId: string;
@@ -41,18 +44,16 @@ interface ProductVariant01Props {
   onQuantityChange?: (quantity: number) => void;
   isLoading?: boolean;
   errorMessage?: string | null;
-  isInStock?: boolean;
-  availableQuantity?: number | null;
+  // Removed isInStock and availableQuantity props as they are now part of each variant
 }
 
 function ProductVariant_01({
-  availableQuantity = null,
+  // Removed availableQuantity and isInStock parameters
   badge = "New",
   defaultImage,
   description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
   errorMessage = null,
   initialVariant,
-  isInStock = true,
   isLoading = false,
   onAddToCart = () => {},
   onBuyNow = () => {},
@@ -110,6 +111,12 @@ function ProductVariant_01({
   const isOnSale =
     currentSalePrice !== undefined && currentSalePrice < currentPrice;
 
+  // Get stock status from the selected variant
+  const isInStock =
+    selectedVariant.isInStock !== undefined ? selectedVariant.isInStock : true; // Default to in stock if not specified
+
+  const availableQuantity = selectedVariant.availableQuantity;
+
   const effectivePrice = isOnSale ? currentSalePrice : currentPrice;
 
   const handleAddToCart = () => {
@@ -146,6 +153,17 @@ function ProductVariant_01({
       </div>
     );
   }
+
+  // Add visual indicator for out of stock items in variant selector
+  const variantsWithStockIndicator = variants.map((variant) => {
+    const isVariantInStock =
+      variant.isInStock !== undefined ? variant.isInStock : true;
+    return {
+      ...variant,
+      disabled: !isVariantInStock,
+      label: variant.label + (isVariantInStock ? "" : " (Out of Stock)"),
+    };
+  });
 
   return (
     <div className="my-6 grid max-w-screen-lg grid-cols-1 gap-12 rounded-lg md:grid-cols-2">
@@ -200,17 +218,7 @@ function ProductVariant_01({
 
               {shippingInfo && (
                 <p className="mt-1 inline-flex items-center text-sm text-green-600 dark:text-green-400">
-                  <svg
-                    className="mr-1 h-4 w-4"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
+                  <Clock className="mr-1 h-4 w-4" />
                   {shippingInfo}
                 </p>
               )}
@@ -219,11 +227,13 @@ function ProductVariant_01({
             {isInStock ? (
               <div className="rounded-md bg-green-50 p-3 text-green-800 dark:bg-green-900/20 dark:text-green-300">
                 <p className="text-sm font-bold">In Stock</p>
-                {availableQuantity !== null && availableQuantity > 0 && (
-                  <span className="mt-1 text-sm font-normal">
-                    {availableQuantity} units available
-                  </span>
-                )}
+                {availableQuantity !== null &&
+                  availableQuantity !== undefined &&
+                  availableQuantity > 0 && (
+                    <span className="mt-1 text-sm font-normal">
+                      {availableQuantity} units available
+                    </span>
+                  )}
               </div>
             ) : (
               <div className="rounded-md bg-amber-50 p-3 text-amber-800 dark:bg-amber-900/20 dark:text-amber-300">
@@ -239,7 +249,7 @@ function ProductVariant_01({
                 <VariantSelectorBasic
                   value={selectedVariantId}
                   onValueChange={handleVariantChange}
-                  variants={variants}
+                  variants={variantsWithStockIndicator}
                   className="grid-cols-2 sm:grid-cols-2"
                   itemClassName="bg-gray-50 border-gray-200 hover:border-teal-300 dark:bg-gray-800 dark:border-gray-700
                                 data-[state=checked]:border-teal-500 data-[state=checked]:bg-teal-50 
@@ -258,7 +268,11 @@ function ProductVariant_01({
               <QuantityInputBasic
                 quantity={quantity}
                 onChange={handleQuantityChange}
-                max={availableQuantity !== null ? availableQuantity : undefined}
+                max={
+                  availableQuantity !== null && availableQuantity !== undefined
+                    ? availableQuantity
+                    : undefined
+                }
                 min={1}
                 className="max-w-[150px] border-gray-300 dark:border-gray-700"
                 disabled={!isInStock}
@@ -311,6 +325,13 @@ function ProductVariant_01({
                 {quantity} {quantity > 1 ? "units" : "unit"} × $
                 {effectivePrice.toFixed(2)} = $
                 {(quantity * effectivePrice).toFixed(2)}
+              </p>
+              <p className="mt-1 text-xs text-gray-500">
+                {isInStock ? "In Stock" : "Out of Stock"}
+                {isInStock &&
+                  availableQuantity !== null &&
+                  availableQuantity !== undefined &&
+                  ` (${availableQuantity} available)`}
               </p>
             </div>
           </>

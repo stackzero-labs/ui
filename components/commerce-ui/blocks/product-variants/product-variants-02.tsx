@@ -4,88 +4,190 @@ import ImageViewer from "@/components/commerce-ui/image-viewer/basic/image-viewe
 import PriceFormat_Sale from "@/components/commerce-ui/price-format/sale/price-format-sale";
 import QuantityInputBasic from "@/components/commerce-ui/quantity-input/basic/quantity-input-basic";
 import VariantSelectorBasic, {
-  VariantItem,
+  VariantItem as BaseVariantItem,
 } from "@/components/commerce-ui/variant-selector/basic/variant-selector-basic";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
+import { Clock } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 
-// Default data
-const DEFAULT_MODEL_VARIANTS: VariantItem[] = [
-  { id: "model-sport", label: "Sport", value: "model-sport" },
-  { id: "model-prosound", label: "ProSound", value: "model-prosound" },
-  { id: "model-ultraquite", label: "UltraQuite™", value: "model-ultraquite" },
-  {
-    id: "model-extremesilence",
-    label: "ExtremeSilence™",
-    value: "model-extremesilence",
-  },
-];
+interface VariantItem extends BaseVariantItem {
+  price: number;
+  salePrice?: number;
+  imageUrl?: string;
+  isInStock?: boolean; // Added stock status per variant
+  availableQuantity?: number | null; // Added quantity per variant
+}
 
-const DEFAULT_MODEL_IMAGES = {
-  "model-extremesilence":
-    "https://raw.githubusercontent.com/stackzero-labs/ui/refs/heads/main/public/placeholders/headphone-1.jpg",
-  "model-prosound":
-    "https://raw.githubusercontent.com/stackzero-labs/ui/refs/heads/main/public/placeholders/headphone-2.jpg",
-  "model-sport":
-    "https://raw.githubusercontent.com/stackzero-labs/ui/refs/heads/main/public/placeholders/headphone-3.jpg",
-  "model-ultraquite":
-    "https://raw.githubusercontent.com/stackzero-labs/ui/refs/heads/main/public/placeholders/headphone-4.jpg",
-};
-
-const DEFAULT_MODEL_PRICES = {
-  "model-extremesilence": 119.99,
-  "model-prosound": 99.99,
-  "model-sport": 109.99,
-  "model-ultraquite": 89.99,
-};
+interface VariantSelectionPayload {
+  variantId: string;
+  variantLabel: string;
+  quantity: number;
+  price: number;
+  originalPrice?: number;
+  salePrice?: number;
+  totalPrice: number;
+  isOnSale: boolean;
+}
 
 interface ProductVariant02Props {
-  badge?: string | null;
-  basePrice?: number;
-  modelImages?: Record<string, string>;
-  modelVariants?: VariantItem[];
-  description?: string;
-  initialModel?: string;
-  onAddToCart?: () => void;
-  onBuyNow?: () => void;
-  salePrice?: number;
-  shippingInfo?: string;
-  modelPrices?: Record<string, number>;
   title?: string;
+  description?: string;
+  badge?: string | null;
+  shippingInfo?: string;
+  variants: VariantItem[];
+  defaultImage?: string;
+  initialVariant?: string;
+  variantLabel?: string;
+  onAddToCart?: (payload: VariantSelectionPayload) => void;
+  onBuyNow?: (payload: VariantSelectionPayload) => void;
+  selectedVariant?: string;
+  onVariantChange?: (variant: string) => void;
+  quantity?: number;
+  onQuantityChange?: (quantity: number) => void;
+  isLoading?: boolean;
+  errorMessage?: string | null;
+  // Removed isInStock and availableQuantity props
+  sellerName?: string;
+  marketplaceName?: string;
+  returnPolicyUrl?: string;
 }
 
 function ProductVariant_02({
-  badge = "New Arrival",
-  basePrice = 99.99,
-  description = "Experience crystal-clear sound with our premium wireless headphones. Perfect for music lovers, gamers, and professionals.",
-  initialModel = "model-sport",
-  modelImages = DEFAULT_MODEL_IMAGES,
-  modelPrices = DEFAULT_MODEL_PRICES,
-  modelVariants = DEFAULT_MODEL_VARIANTS,
+  badge = "New",
+  defaultImage,
+  description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  errorMessage = null,
+  initialVariant,
+  isLoading = false,
+  marketplaceName = "Lorem Marketplace",
   onAddToCart = () => {},
   onBuyNow = () => {},
-  salePrice = 89.99,
-  shippingInfo = "Eligible for free shipping",
-  title = "Premium Wireless Headphones",
+  onQuantityChange,
+  onVariantChange,
+  quantity: controlledQuantity,
+  returnPolicyUrl = "/",
+  selectedVariant: controlledVariant,
+  // Removed isInStock and availableQuantity parameters
+  sellerName = "Seller Name",
+  shippingInfo = "Free shipping",
+  title = "Product Variant Title",
+  variantLabel = "Variant",
+  variants = [],
 }: ProductVariant02Props) {
-  const [selectedModel, setSelectedModel] = useState(initialModel);
-  const [quantity, setQuantity] = useState(1);
+  // Ensure variants array is not empty
+  if (!variants.length) {
+    throw new Error("At least one variant must be provided");
+  }
 
-  // Get current image based on selected model
-  const currentImage =
-    modelImages[selectedModel as keyof typeof modelImages] ||
-    modelImages[Object.keys(modelImages)[0] || initialModel];
+  const defaultInitialVariant = initialVariant || variants[0].value;
 
-  // Get current price based on selected model
-  const currentPrice =
-    modelPrices[selectedModel as keyof typeof modelPrices] ||
-    modelPrices[Object.keys(modelPrices)[0] || initialModel] ||
-    basePrice;
+  const [internalSelectedVariant, setInternalSelectedVariant] = useState(
+    defaultInitialVariant
+  );
+  const [internalQuantity, setInternalQuantity] = useState(1);
+
+  // Determine if we're in controlled or uncontrolled mode
+  const isVariantControlled = controlledVariant !== undefined;
+  const isQuantityControlled = controlledQuantity !== undefined;
+  const selectedVariantId = isVariantControlled
+    ? controlledVariant
+    : internalSelectedVariant;
+  const quantity = isQuantityControlled ? controlledQuantity : internalQuantity;
+
+  const handleVariantChange = (newVariant: string) => {
+    if (isVariantControlled) {
+      onVariantChange?.(newVariant);
+    } else {
+      setInternalSelectedVariant(newVariant);
+
+      // Reset quantity if changing to a variant with less available quantity
+      const newSelectedVariant = variants.find((v) => v.value === newVariant);
+      if (
+        newSelectedVariant?.isInStock &&
+        newSelectedVariant.availableQuantity !== null &&
+        newSelectedVariant.availableQuantity !== undefined &&
+        quantity > newSelectedVariant.availableQuantity
+      ) {
+        handleQuantityChange(newSelectedVariant.availableQuantity);
+      }
+    }
+  };
+
+  const handleQuantityChange = (newQuantity: number) => {
+    if (isQuantityControlled) {
+      onQuantityChange?.(newQuantity);
+    } else {
+      setInternalQuantity(newQuantity);
+    }
+  };
+
+  const selectedVariant =
+    variants.find((v) => v.value === selectedVariantId) || variants[0];
+
+  const currentImage = selectedVariant?.imageUrl || defaultImage;
+  const currentPrice = selectedVariant.price;
+  const currentSalePrice = selectedVariant.salePrice;
+  const isOnSale =
+    currentSalePrice !== undefined && currentSalePrice < currentPrice;
+
+  // Get stock status from the selected variant
+  const isInStock =
+    selectedVariant.isInStock !== undefined ? selectedVariant.isInStock : true; // Default to in stock if not specified
+
+  const availableQuantity = selectedVariant.availableQuantity;
+
+  const effectivePrice = isOnSale ? currentSalePrice : currentPrice;
+
+  const handleAddToCart = () => {
+    onAddToCart({
+      isOnSale,
+      originalPrice: isOnSale ? currentPrice : undefined,
+      price: currentPrice,
+      quantity,
+      salePrice: isOnSale ? currentSalePrice : undefined,
+      totalPrice: quantity * effectivePrice,
+      variantId: selectedVariantId,
+      variantLabel: selectedVariant?.label || "",
+    });
+  };
+
+  const handleBuyNow = () => {
+    onBuyNow({
+      isOnSale,
+      originalPrice: isOnSale ? currentPrice : undefined,
+      price: currentPrice,
+      quantity,
+      salePrice: isOnSale ? currentSalePrice : undefined,
+      totalPrice: quantity * effectivePrice,
+      variantId: selectedVariantId,
+      variantLabel: selectedVariant?.label || "",
+    });
+  };
+
+  if (errorMessage) {
+    return (
+      <div className="my-6 rounded-lg border border-red-200 bg-red-50 p-6 text-red-600 dark:border-red-900 dark:bg-red-900/20 dark:text-red-400">
+        <p className="font-medium">Error loading product</p>
+        <p className="text-sm">{errorMessage}</p>
+      </div>
+    );
+  }
+
+  // Add visual indicator for out of stock items in variant selector
+  const variantsWithStockIndicator = variants.map((variant) => {
+    const isVariantInStock =
+      variant.isInStock !== undefined ? variant.isInStock : true;
+    return {
+      ...variant,
+      disabled: !isVariantInStock,
+      label: variant.label + (isVariantInStock ? "" : " (Out of Stock)"),
+    };
+  });
 
   return (
-    <div className="grid grid-cols-1 gap-6 md:grid-cols-3 md:gap-8">
+    <div className="grid max-w-screen-lg grid-cols-1 gap-6 md:grid-cols-3 md:gap-8">
       <div className="col-span-1 md:col-span-2">
         <div>
           <div className="relative w-full overflow-hidden rounded-xl bg-gradient-to-br from-rose-50 to-orange-50 p-6 dark:from-rose-950/30 dark:to-orange-950/30">
@@ -97,10 +199,16 @@ function ProductVariant_02({
             {/* Glow effect */}
             <div className="absolute -bottom-10 left-1/2 h-40 w-40 -translate-x-1/2 transform rounded-full bg-rose-500/20 blur-3xl"></div>
             <div className="transition-transform duration-500 hover:scale-105">
-              <ImageViewer
-                imageUrl={currentImage}
-                classNameThumbnailViewer="rounded-lg object-contain h-[300px] mx-auto"
-              />
+              {isLoading ? (
+                <div className="flex h-[300px] items-center justify-center">
+                  <div className="h-10 w-10 animate-spin rounded-full border-4 border-rose-200 border-t-rose-600"></div>
+                </div>
+              ) : (
+                <ImageViewer
+                  imageUrl={currentImage || ""}
+                  classNameThumbnailViewer="rounded-lg object-contain h-[300px] mx-auto"
+                />
+              )}
             </div>
           </div>
         </div>
@@ -117,12 +225,12 @@ function ProductVariant_02({
           <div className="space-y-4">
             <div>
               <label className="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
-                Model
+                {variantLabel}
               </label>
               <VariantSelectorBasic
-                value={selectedModel}
-                onValueChange={setSelectedModel}
-                variants={modelVariants}
+                value={selectedVariantId}
+                onValueChange={handleVariantChange}
+                variants={variantsWithStockIndicator}
                 className="grid-cols-2 sm:grid-cols-2"
                 itemClassName="bg-gray-50 border-gray-200 hover:border-rose-300 dark:bg-gray-800 dark:border-gray-700
                             data-[state=checked]:border-rose-500 data-[state=checked]:bg-rose-50 
@@ -134,13 +242,36 @@ function ProductVariant_02({
             </div>
           </div>
 
+          {isInStock ? (
+            <div className="rounded-md bg-green-50 p-3 text-green-800 dark:bg-green-900/20 dark:text-green-300">
+              <p className="text-sm font-bold">In Stock</p>
+              {availableQuantity !== null &&
+                availableQuantity !== undefined &&
+                availableQuantity > 0 && (
+                  <span className="mt-1 text-sm font-normal">
+                    {availableQuantity} units available
+                  </span>
+                )}
+            </div>
+          ) : (
+            <div className="rounded-md bg-amber-50 p-3 text-amber-800 dark:bg-amber-900/20 dark:text-amber-300">
+              <p className="text-sm font-bold">Currently out of stock</p>
+            </div>
+          )}
+
           <div className="mt-2 md:mt-4">
             <p className="text-sm font-medium text-gray-800 dark:text-gray-200">
               Selected Configuration:
             </p>
             <p className="text-sm text-gray-600 dark:text-gray-400">
-              {modelVariants.find((v) => v.value === selectedModel)?.label} - $
-              {currentPrice}
+              {selectedVariant.label} - ${effectivePrice.toFixed(2)}
+            </p>
+            <p className="mt-1 text-xs text-gray-500">
+              {isInStock ? "In Stock" : "Out of Stock"}
+              {isInStock &&
+                availableQuantity !== null &&
+                availableQuantity !== undefined &&
+                ` (${availableQuantity} available)`}
             </p>
           </div>
         </div>
@@ -169,7 +300,7 @@ function ProductVariant_02({
           <PriceFormat_Sale
             prefix="$"
             originalPrice={currentPrice}
-            salePrice={salePrice}
+            salePrice={isOnSale ? currentSalePrice : undefined}
             showSavePercentage
             className="text-3xl font-semibold text-gray-600 dark:text-gray-300"
             classNameSalePrice="text-3xl font-bold text-rose-600 dark:text-rose-400"
@@ -177,17 +308,7 @@ function ProductVariant_02({
           />
           {shippingInfo && (
             <p className="mt-1 inline-flex items-center text-sm text-green-600 dark:text-green-400">
-              <svg
-                className="mr-1 h-4 w-4"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
-                  clipRule="evenodd"
-                />
-              </svg>
+              <Clock className="mr-1 h-4 w-4" />
               {shippingInfo}
             </p>
           )}
@@ -198,9 +319,15 @@ function ProductVariant_02({
             </label>
             <QuantityInputBasic
               quantity={quantity}
-              onChange={setQuantity}
-              max={10}
+              onChange={handleQuantityChange}
+              max={
+                availableQuantity !== null && availableQuantity !== undefined
+                  ? availableQuantity
+                  : undefined
+              }
+              min={1}
               className="border-gray-300 dark:border-gray-700"
+              disabled={!isInStock}
             />
           </div>
 
@@ -208,58 +335,61 @@ function ProductVariant_02({
             <Button
               variant="outline"
               className="w-full border-gray-300 bg-white py-5 text-base text-gray-800 transition-all duration-200 hover:border-rose-500 hover:bg-rose-50 hover:text-rose-700 sm:py-2 sm:text-sm dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200 dark:hover:border-rose-500 dark:hover:bg-gray-700"
-              onClick={onAddToCart}
+              onClick={handleAddToCart}
+              disabled={!isInStock || isLoading}
             >
-              Add to Cart
+              {isLoading ? "Loading..." : "Add to Cart"}
             </Button>
             <Button
               className="w-full bg-gradient-to-r from-rose-600 to-red-600 py-5 text-base text-white transition-all hover:from-rose-700 hover:to-red-700 sm:py-2 sm:text-sm"
-              onClick={onBuyNow}
+              onClick={handleBuyNow}
+              disabled={!isInStock || isLoading}
             >
-              Buy Now
+              {isLoading ? "Loading..." : "Buy Now"}
             </Button>
           </div>
 
           <Separator className="my-4" />
 
-          <div className="grid grid-cols-3 gap-2 text-xs sm:text-sm"></div>
-          <div className="col-span-1 text-gray-600 dark:text-gray-400">
-            Sold by:
+          <div className="grid grid-cols-3 gap-2 text-xs sm:text-sm">
+            <div className="col-span-1 text-gray-600 dark:text-gray-400">
+              Sold by:
+            </div>
+            <div className="col-span-2">
+              <Link
+                href="/"
+                className="text-rose-600 hover:text-rose-700 hover:underline dark:text-rose-400 dark:hover:text-rose-300"
+              >
+                {sellerName}
+              </Link>
+            </div>
+            <div className="col-span-1 text-gray-600 dark:text-gray-400">
+              Shipping:
+            </div>
+            <div className="col-span-2">
+              <Link
+                href="/"
+                className="text-rose-600 hover:text-rose-700 hover:underline dark:text-rose-400 dark:hover:text-rose-300"
+              >
+                {marketplaceName}
+              </Link>
+            </div>
+            <div className="col-span-1 text-gray-600 dark:text-gray-400">
+              Return Policy:{" "}
+            </div>
+            <div className="col-span-2">
+              <Link
+                href={returnPolicyUrl}
+                className="text-rose-600 hover:text-rose-700 hover:underline dark:text-rose-400 dark:hover:text-rose-300"
+              >
+                View our Return Policy
+              </Link>
+            </div>
+            <div className="col-span-1 text-gray-600 dark:text-gray-400">
+              Payment:
+            </div>
+            <div className="col-span-2">Secure Payment</div>
           </div>
-          <div className="col-span-2">
-            <Link
-              href="/"
-              className="text-rose-600 hover:text-rose-700 hover:underline dark:text-rose-400 dark:hover:text-rose-300"
-            >
-              Soundbeast Engineering
-            </Link>
-          </div>
-          <div className="col-span-1 text-gray-600 dark:text-gray-400">
-            Shipping:
-          </div>
-          <div className="col-span-2">
-            <Link
-              href="/"
-              className="text-rose-600 hover:text-rose-700 hover:underline dark:text-rose-400 dark:hover:text-rose-300"
-            >
-              Xeon Marketplace
-            </Link>
-          </div>
-          <div className="col-span-1 text-gray-600 dark:text-gray-400">
-            Return Policy:{" "}
-          </div>
-          <div className="col-span-2">
-            <Link
-              href="/"
-              className="text-rose-600 hover:text-rose-700 hover:underline dark:text-rose-400 dark:hover:text-rose-300"
-            >
-              View our Return Policy
-            </Link>
-          </div>
-          <div className="col-span-1 text-gray-600 dark:text-gray-400">
-            Payment:
-          </div>
-          <div className="col-span-2">Secure Payment</div>
         </div>
       </div>
     </div>
@@ -267,4 +397,4 @@ function ProductVariant_02({
 }
 
 export default ProductVariant_02;
-export type { ProductVariant02Props };
+export type { ProductVariant02Props, VariantItem, VariantSelectionPayload };

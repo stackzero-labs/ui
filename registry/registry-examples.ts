@@ -258,6 +258,27 @@ export const examples: Registry = [
   },
 
   {
+    name: "product-variant-02-block-ex",
+    type: "registry:example",
+    dependencies: [],
+    registryDependencies: [
+      "https://ui.stackzero.co/r/product-variant-02-block.json",
+    ],
+    files: [
+      {
+        path: "@/components/commerce-ui/blocks/product-variants/product-variants-02-ex.tsx",
+        type: "registry:example",
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import(
+          "../components/commerce-ui/blocks/product-variants/product-variants-02-ex"
+        )
+    ),
+  },
+
+  {
     name: "quantity-input-basic-ex-01",
     type: "registry:example",
     dependencies: ["lucide-react"],

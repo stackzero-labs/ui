@@ -1,12 +1,12 @@
 "use client";
 
-// Example usage of ProductVariant_01 component
+// Example usage of ProductVariant_02 component
 
 import { useState } from "react";
-import ProductVariant_01, {
+import ProductVariant_02, {
   VariantItem,
   VariantSelectionPayload,
-} from "./product-variants-01";
+} from "./product-variants-02";
 
 const EXAMPLE_VARIANTS: VariantItem[] = [
   {
@@ -92,12 +92,12 @@ export default function ProductVariantExample() {
 
   return (
     <div className="container mx-auto p-4">
-      <ProductVariant_01
+      <ProductVariant_02
         title="Premium Noise-Cancelling Headphones"
-        description="Experience exceptional sound quality with our top-of-the-line noise-cancelling headphones, perfect for music lovers and professionals alike."
-        badge="Sale"
+        description="Experience crystal-clear sound with our premium wireless headphones. Perfect for music lovers, gamers, and professionals."
+        badge="Flash Sale"
         variants={EXAMPLE_VARIANTS}
-        variantLabel="Color"
+        variantLabel="Model"
         shippingInfo="Free 2-day shipping"
         selectedVariant={selectedVariant}
         onVariantChange={handleVariantChange}
@@ -105,6 +105,9 @@ export default function ProductVariantExample() {
         onQuantityChange={setQuantity}
         onAddToCart={handleAddToCart}
         onBuyNow={handleBuyNow}
+        sellerName="Soundbeast Engineering"
+        marketplaceName="Xeon Marketplace"
+        returnPolicyUrl="/"
       />
     </div>
   );
