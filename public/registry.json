@@ -418,9 +418,7 @@
     {
       "name": "price-format-sale-ex-01",
       "type": "registry:example",
-      "dependencies": [
-        "lucide-react"
-      ],
+      "dependencies": [],
       "registryDependencies": [
         "https://ui.stackzero.co/r/price-format-sale.json"
       ],
@@ -434,9 +432,7 @@
     {
       "name": "price-format-sale-ex-02",
       "type": "registry:example",
-      "dependencies": [
-        "lucide-react"
-      ],
+      "dependencies": [],
       "registryDependencies": [
         "https://ui.stackzero.co/r/price-format-sale.json"
       ],
@@ -450,9 +446,7 @@
     {
       "name": "price-format-sale-ex-03",
       "type": "registry:example",
-      "dependencies": [
-        "lucide-react"
-      ],
+      "dependencies": [],
       "registryDependencies": [
         "https://ui.stackzero.co/r/price-format-sale.json"
       ],
