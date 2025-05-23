@@ -300,6 +300,48 @@ export const examples: Registry = [
   },
 
   {
+    name: "product-variant-04-block-ex",
+    type: "registry:example",
+    dependencies: [],
+    registryDependencies: [
+      "https://ui.stackzero.co/r/product-variant-04-block.json",
+    ],
+    files: [
+      {
+        path: "@/components/commerce-ui/blocks/product-variants/product-variants-04-ex.tsx",
+        type: "registry:example",
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import(
+          "../components/commerce-ui/blocks/product-variants/product-variants-04-ex"
+        )
+    ),
+  },
+
+  {
+    name: "product-variant-05-block-ex",
+    type: "registry:example",
+    dependencies: [],
+    registryDependencies: [
+      "https://ui.stackzero.co/r/product-variant-05-block.json",
+    ],
+    files: [
+      {
+        path: "@/components/commerce-ui/blocks/product-variants/product-variants-05-ex.tsx",
+        type: "registry:example",
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import(
+          "../components/commerce-ui/blocks/product-variants/product-variants-05-ex"
+        )
+    ),
+  },
+
+  {
     name: "quantity-input-basic-ex-01",
     type: "registry:example",
     dependencies: ["lucide-react"],

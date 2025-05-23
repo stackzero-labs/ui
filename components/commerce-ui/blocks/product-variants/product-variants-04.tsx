@@ -4,10 +4,10 @@ import ImageViewer from "@/components/commerce-ui/image-viewer/basic/image-viewe
 import PriceFormat from "@/components/commerce-ui/price-format/basic/price-format-basic";
 import QuantityInputBasic from "@/components/commerce-ui/quantity-input/basic/quantity-input-basic";
 import StarRating_Fractions from "@/components/commerce-ui/star-rating/fractions/star-rating-fractions";
-import VariantSelectorBasic from "@/components/commerce-ui/variant-selector/basic/variant-selector-basic";
-import VariantSelectorMultiple, {
-  VariantItem,
-} from "@/components/commerce-ui/variant-selector/multiple/variant-selector-multiple";
+import VariantSelectorBasic, {
+  VariantItem as BaseVariantItem,
+} from "@/components/commerce-ui/variant-selector/basic/variant-selector-basic";
+import VariantSelectorMultiple from "@/components/commerce-ui/variant-selector/multiple/variant-selector-multiple";
 import { Button } from "@/components/ui/button";
 import {
   Check,
@@ -17,41 +17,17 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 
-// Default storage variants
-const DEFAULT_STORAGE_VARIANTS: VariantItem[] = [
-  { id: "storage-64", label: "64GB", value: "storage-64" },
-  { id: "storage-128", label: "128GB", value: "storage-128" },
-  { id: "storage-256", label: "256GB", value: "storage-256" },
-];
+interface StorageVariant extends BaseVariantItem {
+  price: number;
+  salePrice?: number;
+  isInStock?: boolean;
+  availableQuantity?: number | null;
+}
 
-// Default accessory options
-const DEFAULT_ACCESSORY_VARIANTS: VariantItem[] = [
-  { id: "acc-sd", label: "SD Card (64GB)", value: "acc-sd" },
-  { id: "acc-tripod", label: "Mini Tripod", value: "acc-tripod" },
-  { id: "acc-bag", label: "Camera Bag", value: "acc-bag" },
-  { id: "acc-lens", label: "Extra Lens", value: "acc-lens" },
-  { id: "acc-batt", label: "Battery Pack", value: "acc-batt" },
-];
-
-// Default image
-const DEFAULT_PRODUCT_IMAGE =
-  "https://images.pexels.com/photos/6883802/pexels-photo-6883802.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
-
-// Storage pricing
-const DEFAULT_STORAGE_PRICES: Record<string, number> = {
-  "storage-128": 1399.99,
-  "storage-256": 1499.99,
-  "storage-64": 1299.99,
-};
-
-// Accessory pricing
-const DEFAULT_ACCESSORY_PRICES: Record<string, number> = {
-  "acc-bag": 79.99,
-  "acc-batt": 59.99,
-  "acc-lens": 249.99,
-  "acc-sd": 29.99,
-  "acc-tripod": 49.99,
-};
+interface AccessoryVariant extends BaseVariantItem {
+  price: number;
+  salePrice?: number;
+}
 
 interface Testimonial {
   name: string;
@@ -61,95 +37,212 @@ interface Testimonial {
   date?: string;
 }
 
-interface ProductVariant_04Props {
+interface VariantSelectionPayload {
+  storageVariantId: string;
+  storageVariantLabel: string;
+  storagePrice: number;
+  accessoryIds: string[];
+  accessoryLabels: string[];
+  accessoriesPrice: number;
+  quantity: number;
+  totalPrice: number;
+}
+
+interface ProductVariant04Props {
   imageUrl?: string;
-  productName?: string;
+  title?: string;
   description?: string;
-  basePrice?: number;
-  storagePrices?: Record<string, number>;
-  accessoryPrices?: Record<string, number>;
-  inStock?: boolean;
+  badge?: string | null;
   features?: string[];
-  storageVariants?: VariantItem[];
-  accessoryVariants?: VariantItem[];
+  storageVariants: StorageVariant[];
+  accessoryVariants?: AccessoryVariant[];
   testimonials?: Testimonial[];
   initialStorage?: string;
   initialAccessories?: string[];
-  onAddToCart?: () => void;
-  onBuyNow?: () => void;
+  defaultImage?: string;
+  onAddToCart?: (payload: VariantSelectionPayload) => void;
+  onBuyNow?: (payload: VariantSelectionPayload) => void;
+  selectedStorage?: string;
+  onStorageChange?: (storage: string) => void;
+  selectedAccessories?: string[];
+  onAccessoriesChange?: (accessories: string[]) => void;
+  quantity?: number;
+  onQuantityChange?: (quantity: number) => void;
+  isLoading?: boolean;
+  errorMessage?: string | null;
   currencyPrefix?: string;
 }
 
 function ProductVariant_04({
-  accessoryPrices = DEFAULT_ACCESSORY_PRICES,
-  accessoryVariants = DEFAULT_ACCESSORY_VARIANTS,
-  basePrice = 1299.99,
+  accessoryVariants = [],
+  badge = "In Stock",
   currencyPrefix = "$",
-  description = "Professional-grade mirrorless camera with 32MP sensor and 4K video recording capabilities",
-  features = [
-    "32 Megapixel Sensor",
-    "4K Video Recording",
-    "5-Axis Stabilization",
-    "Weather-Sealed Body",
-  ],
-  imageUrl = DEFAULT_PRODUCT_IMAGE,
-  initialAccessories = ["acc-sd", "acc-tripod"],
-  initialStorage = "storage-128",
-  inStock = true,
+  defaultImage,
+  description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  errorMessage = null,
+  features = ["Feature 1", "Feature 2", "Feature 3", "Feature 4"],
+  imageUrl = defaultImage,
+  initialAccessories = [],
+  initialStorage,
+  isLoading = false,
+  onAccessoriesChange,
   onAddToCart = () => {},
   onBuyNow = () => {},
-  productName = "ProCapture X3 Digital Camera",
-  storagePrices = DEFAULT_STORAGE_PRICES,
-  storageVariants = DEFAULT_STORAGE_VARIANTS,
+  onQuantityChange,
+  onStorageChange,
+  quantity: controlledQuantity,
+  selectedAccessories: controlledAccessories,
+  selectedStorage: controlledStorage,
+  storageVariants = [],
   testimonials = [
     {
       date: "3 weeks ago",
-      name: "Michael Roberts",
+      name: "John Doe",
       rating: 5,
-      role: "Professional Photographer",
-      text: "The image quality is exceptional. I've switched from my DSLR and haven't looked back.",
+      role: "Role",
+      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     },
     {
-      date: "1 month ago",
-      name: "Sarah Chen",
+      date: "2 weeks ago",
+      name: "John Doe",
       rating: 4,
-      role: "Content Creator",
-      text: "Perfect for my YouTube videos. The autofocus is lightning fast!",
+      role: "Role",
+      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     },
     {
-      date: "2 months ago",
-      name: "Alex Johnson",
-      rating: 5,
-      text: "Worth every penny. The low light performance is incredible.",
+      date: "1 week ago",
+      name: "John Doe",
+      rating: 4.5,
+      role: "Role",
+      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     },
   ],
-}: ProductVariant_04Props = {}) {
+  title = "Product Title",
+}: ProductVariant04Props) {
+  // Ensure storage variants array is not empty
+  if (!storageVariants.length) {
+    throw new Error("At least one storage variant must be provided");
+  }
+
+  const defaultInitialStorage = initialStorage || storageVariants[0].value;
+
   const [activeTestimonial, setActiveTestimonial] = useState(0);
-  const [selectedStorage, setSelectedStorage] = useState(initialStorage);
-  const [selectedAccessories, setSelectedAccessories] =
-    useState<string[]>(initialAccessories);
-  const [quantity, setQuantity] = useState(1);
-
-  // Get current price based on selected storage
-  const baseStoragePrice = storagePrices[selectedStorage] || basePrice;
-
-  // Calculate accessories price
-  const accessoriesPrice = selectedAccessories.reduce(
-    (total, acc) => total + (accessoryPrices[acc] || 0),
-    0
+  const [internalSelectedStorage, setInternalSelectedStorage] = useState(
+    defaultInitialStorage
   );
+  const [internalSelectedAccessories, setInternalSelectedAccessories] =
+    useState<string[]>(initialAccessories);
+  const [internalQuantity, setInternalQuantity] = useState(1);
 
-  // Calculate total item price
-  const itemPrice = baseStoragePrice + accessoriesPrice;
+  // Determine if we're in controlled or uncontrolled mode
+  const isStorageControlled = controlledStorage !== undefined;
+  const isAccessoriesControlled = controlledAccessories !== undefined;
+  const isQuantityControlled = controlledQuantity !== undefined;
 
-  // Calculate total price including quantity
+  const selectedStorageId = isStorageControlled
+    ? controlledStorage
+    : internalSelectedStorage;
+  const selectedAccessoryIds = isAccessoriesControlled
+    ? controlledAccessories
+    : internalSelectedAccessories;
+  const quantity = isQuantityControlled ? controlledQuantity : internalQuantity;
+
+  const handleStorageChange = (newStorage: string) => {
+    if (isStorageControlled) {
+      onStorageChange?.(newStorage);
+    } else {
+      setInternalSelectedStorage(newStorage);
+    }
+  };
+
+  const handleAccessoriesChange = (newAccessories: string[]) => {
+    if (isAccessoriesControlled) {
+      onAccessoriesChange?.(newAccessories);
+    } else {
+      setInternalSelectedAccessories(newAccessories);
+    }
+  };
+
+  const handleQuantityChange = (newQuantity: number) => {
+    if (isQuantityControlled) {
+      onQuantityChange?.(newQuantity);
+    } else {
+      setInternalQuantity(newQuantity);
+    }
+  };
+
+  const selectedStorage =
+    storageVariants.find((v) => v.value === selectedStorageId) ||
+    storageVariants[0];
+
+  const isInStock =
+    selectedStorage.isInStock !== undefined ? selectedStorage.isInStock : true;
+  const availableQuantity = selectedStorage.availableQuantity;
+  const storagePrice = selectedStorage.price;
+  const accessoriesPrice = selectedAccessoryIds.reduce((total, accId) => {
+    const accessory = accessoryVariants.find((a) => a.value === accId);
+    return total + (accessory?.price || 0);
+  }, 0);
+
+  const itemPrice = storagePrice + accessoriesPrice;
   const totalPrice = itemPrice * quantity;
 
+  const handleAddToCart = () => {
+    onAddToCart({
+      accessoriesPrice,
+      accessoryIds: selectedAccessoryIds,
+      accessoryLabels: selectedAccessoryIds.map((id) => {
+        const accessory = accessoryVariants.find((a) => a.value === id);
+        return accessory?.label || "";
+      }),
+      quantity,
+      storagePrice,
+      storageVariantId: selectedStorageId,
+      storageVariantLabel: selectedStorage?.label || "",
+      totalPrice,
+    });
+  };
+
+  const handleBuyNow = () => {
+    onBuyNow({
+      accessoriesPrice,
+      accessoryIds: selectedAccessoryIds,
+      accessoryLabels: selectedAccessoryIds.map((id) => {
+        const accessory = accessoryVariants.find((a) => a.value === id);
+        return accessory?.label || "";
+      }),
+      quantity,
+      storagePrice,
+      storageVariantId: selectedStorageId,
+      storageVariantLabel: selectedStorage?.label || "",
+      totalPrice,
+    });
+  };
+
+  if (errorMessage) {
+    return (
+      <div className="my-6 rounded-lg border border-red-200 bg-red-50 p-6 text-red-600 dark:border-red-900 dark:bg-red-900/20 dark:text-red-400">
+        <p className="font-medium">Error loading product</p>
+        <p className="text-sm">{errorMessage}</p>
+      </div>
+    );
+  }
+
+  // Add visual indicator for out of stock items in storage selector
+  const storageVariantsWithStockIndicator = storageVariants.map((variant) => {
+    const isVariantInStock =
+      variant.isInStock !== undefined ? variant.isInStock : true;
+    return {
+      ...variant,
+      disabled: !isVariantInStock,
+      label: variant.label + (isVariantInStock ? "" : " (Out of Stock)"),
+    };
+  });
+
   return (
-    <div className="flex flex-col overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm dark:border-gray-800 dark:bg-gray-900">
+    <div className="flex max-w-screen-xl flex-col overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm dark:border-gray-800 dark:bg-gray-900">
       {/* Main product card */}
       <div className="group align-start flex flex-col sm:h-auto sm:flex-row">
-        {/* Image section */}
         <div className="relative h-52 w-full bg-gradient-to-br from-gray-50 via-green-50 to-emerald-50 sm:h-[350px] sm:w-2/5 dark:from-gray-900 dark:via-green-950/10 dark:to-emerald-950/10">
           <div className="absolute inset-0">
             <div className="absolute -top-10 -right-10 h-32 w-32 rounded-full bg-emerald-300/20 blur-2xl"></div>
@@ -157,26 +250,26 @@ function ProductVariant_04({
           </div>
 
           {/* Product label */}
-          {inStock ? (
+          {badge && (
             <div className="absolute top-3 left-3 z-10">
-              <div className="rounded-md bg-green-500 px-2 py-1 text-xs font-bold tracking-wider text-white uppercase shadow-md">
-                In Stock
-              </div>
-            </div>
-          ) : (
-            <div className="absolute top-3 left-3 z-10">
-              <div className="rounded-md bg-amber-500 px-2 py-1 text-xs font-bold tracking-wider text-white uppercase shadow-md">
-                Pre-order
+              <div className="rounded-md bg-emerald-500 px-2 py-1 text-xs font-bold tracking-wider text-white uppercase shadow-md">
+                {badge}
               </div>
             </div>
           )}
 
           {/* Image */}
           <div className="flex h-full items-center justify-center p-4">
-            <ImageViewer
-              imageUrl={imageUrl}
-              classNameThumbnailViewer="rounded-lg h-full object-contain drop-shadow-lg max-h-[300px]"
-            />
+            {isLoading ? (
+              <div className="flex h-full items-center justify-center">
+                <div className="h-10 w-10 animate-spin rounded-full border-4 border-emerald-200 border-t-emerald-600"></div>
+              </div>
+            ) : (
+              <ImageViewer
+                imageUrl={imageUrl || ""}
+                classNameThumbnailViewer="rounded-lg h-full object-contain drop-shadow-lg max-h-[300px]"
+              />
+            )}
           </div>
         </div>
 
@@ -187,7 +280,7 @@ function ProductVariant_04({
             <div className="mb-3">
               <div className="flex items-center justify-between">
                 <h3 className="text-xl font-bold text-gray-900 dark:text-white">
-                  {productName}
+                  {title}
                 </h3>
                 <PriceFormat
                   prefix={currencyPrefix}
@@ -207,9 +300,9 @@ function ProductVariant_04({
                   Storage
                 </label>
                 <VariantSelectorBasic
-                  value={selectedStorage}
-                  onValueChange={setSelectedStorage}
-                  variants={storageVariants}
+                  value={selectedStorageId}
+                  onValueChange={handleStorageChange}
+                  variants={storageVariantsWithStockIndicator}
                   itemClassName="bg-gray-50 border-gray-200 hover:border-emerald-300 dark:bg-gray-800 dark:border-gray-700
                               data-[state=checked]:border-emerald-500 data-[state=checked]:bg-emerald-50 
                               data-[state=checked]:text-emerald-700 dark:data-[state=checked]:bg-gray-700 
@@ -219,33 +312,35 @@ function ProductVariant_04({
                 />
               </div>
 
-              <div>
-                <label className="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
-                  Accessories
-                </label>
-                <VariantSelectorMultiple
-                  values={selectedAccessories}
-                  onValuesChange={setSelectedAccessories}
-                  variants={accessoryVariants}
-                  className="flex-wrap"
-                  itemClassName="bg-gray-50 border-gray-200 hover:border-emerald-300 dark:bg-gray-800 dark:border-gray-700
-                              data-[state=on]:border-emerald-500 data-[state=on]:bg-emerald-50 
-                              data-[state=on]:text-emerald-700 dark:data-[state=on]:bg-gray-700 
-                              dark:data-[state=on]:border-emerald-500 dark:data-[state=on]:text-emerald-300
-                              focus:ring-2 focus:ring-emerald-500/50 focus:ring-offset-2
-                              dark:focus:ring-emerald-500/40 dark:focus:ring-offset-gray-900"
-                />
-              </div>
+              {accessoryVariants.length > 0 && (
+                <div>
+                  <label className="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
+                    Accessories
+                  </label>
+                  <VariantSelectorMultiple
+                    values={selectedAccessoryIds}
+                    onValuesChange={handleAccessoriesChange}
+                    variants={accessoryVariants}
+                    className="flex-wrap"
+                    itemClassName="bg-gray-50 border-gray-200 hover:border-emerald-300 dark:bg-gray-800 dark:border-gray-700
+                                data-[state=on]:border-emerald-500 data-[state=on]:bg-emerald-50 
+                                data-[state=on]:text-emerald-700 dark:data-[state=on]:bg-gray-700 
+                                dark:data-[state=on]:border-emerald-500 dark:data-[state=on]:text-emerald-300
+                                focus:ring-2 focus:ring-emerald-500/50 focus:ring-offset-2
+                                dark:focus:ring-emerald-500/40 dark:focus:ring-offset-gray-900"
+                  />
+                </div>
+              )}
             </div>
 
             {/* Accessories details if selected */}
-            {selectedAccessories.length > 0 && (
+            {selectedAccessoryIds.length > 0 && (
               <div className="mb-4 rounded-md bg-emerald-50 p-3 dark:bg-emerald-950/20">
                 <h4 className="mb-2 text-sm font-medium text-gray-800 dark:text-gray-200">
                   Selected accessories:
                 </h4>
                 <ul className="space-y-1">
-                  {selectedAccessories.map((accId) => {
+                  {selectedAccessoryIds.map((accId) => {
                     const accessory = accessoryVariants.find(
                       (a) => a.value === accId
                     );
@@ -259,13 +354,29 @@ function ProductVariant_04({
                         </span>
                         <PriceFormat
                           prefix={currencyPrefix}
-                          value={accessoryPrices[accId] || 0}
+                          value={accessory?.price || 0}
                           className="text-emerald-600 dark:text-emerald-400"
                         />
                       </li>
                     );
                   })}
                 </ul>
+              </div>
+            )}
+
+            {/* Stock status */}
+            {isInStock ? (
+              availableQuantity !== null &&
+              availableQuantity !== undefined && (
+                <div className="mb-3 rounded-md bg-green-50 p-2 text-green-800 dark:bg-green-900/20 dark:text-green-300">
+                  <p className="text-sm font-bold">
+                    In Stock: {availableQuantity} available
+                  </p>
+                </div>
+              )
+            ) : (
+              <div className="mb-3 rounded-md bg-amber-50 p-2 text-amber-800 dark:bg-amber-900/20 dark:text-amber-300">
+                <p className="text-sm font-bold">Currently out of stock</p>
               </div>
             )}
 
@@ -277,9 +388,15 @@ function ProductVariant_04({
               <div className="flex items-center justify-between">
                 <QuantityInputBasic
                   quantity={quantity}
-                  onChange={setQuantity}
-                  max={10}
+                  onChange={handleQuantityChange}
+                  max={
+                    availableQuantity !== null &&
+                    availableQuantity !== undefined
+                      ? availableQuantity
+                      : 10
+                  }
                   className="w-[120px] border-gray-300 dark:border-gray-700"
+                  disabled={!isInStock}
                 />
                 <div className="text-sm font-medium">
                   Total:{" "}
@@ -310,116 +427,126 @@ function ProductVariant_04({
           <div className="flex space-x-2">
             <Button
               variant="outline"
-              onClick={onAddToCart}
+              onClick={handleAddToCart}
               className="flex-1 border-gray-300 bg-white text-gray-700 hover:border-emerald-500 hover:bg-emerald-50 hover:text-emerald-600 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200"
+              disabled={!isInStock || isLoading}
             >
-              Add to cart
+              {isLoading ? "Loading..." : "Add to cart"}
             </Button>
             <Button
-              onClick={onBuyNow}
+              onClick={handleBuyNow}
               className="flex-1 bg-emerald-600 text-white hover:bg-emerald-700"
+              disabled={!isInStock || isLoading}
             >
-              Buy now
+              {isLoading ? "Loading..." : "Buy now"}
             </Button>
           </div>
         </div>
       </div>
 
-      {/* Compact horizontal testimonials section */}
-      <div className="border-t border-gray-200 bg-gray-50 p-4 dark:border-gray-800 dark:bg-gray-900/50">
-        <div className="mb-3 flex items-center justify-between">
-          <h4 className="flex items-center text-base font-medium text-gray-900 dark:text-white">
-            <MessageSquareText className="mr-2 h-5 w-5 text-emerald-500 dark:text-emerald-400" />
-            Customer Reviews
-          </h4>
-          <div className="text-sm text-gray-500 dark:text-gray-400">
-            {testimonials.length} reviews
+      {/* Testimonials section */}
+      {testimonials.length > 0 && (
+        <div className="border-t border-gray-200 bg-gray-50 p-4 dark:border-gray-800 dark:bg-gray-900/50">
+          <div className="mb-3 flex items-center justify-between">
+            <h4 className="flex items-center text-base font-medium text-gray-900 dark:text-white">
+              <MessageSquareText className="mr-2 h-5 w-5 text-emerald-500 dark:text-emerald-400" />
+              Customer Reviews
+            </h4>
+            <div className="text-sm text-gray-500 dark:text-gray-400">
+              {testimonials.length} reviews
+            </div>
           </div>
-        </div>
 
-        {/* Current testimonial */}
-        <div className="mb-3 rounded-lg border border-gray-200 bg-white p-3 shadow-sm dark:border-gray-700 dark:bg-gray-800">
-          <div className="mb-2 flex items-center justify-between">
-            <div className="flex items-center">
-              <div className="mr-2 flex h-7 w-7 items-center justify-center rounded-full bg-gradient-to-br from-emerald-400 to-green-500 text-center font-medium text-white">
-                {testimonials[activeTestimonial].name.charAt(0)}
-              </div>
-              <div>
-                <p className="font-medium text-gray-800 dark:text-gray-200">
-                  {testimonials[activeTestimonial].name}
-                </p>
-                {testimonials[activeTestimonial].role && (
-                  <p className="text-xs text-gray-500 dark:text-gray-400">
-                    {testimonials[activeTestimonial].role}
+          {/* Current testimonial */}
+          <div className="mb-3 rounded-lg border border-gray-200 bg-white p-3 shadow-sm dark:border-gray-700 dark:bg-gray-800">
+            <div className="mb-2 flex items-center justify-between">
+              <div className="flex items-center">
+                <div className="mr-2 flex h-7 w-7 items-center justify-center rounded-full bg-gradient-to-br from-emerald-400 to-green-500 text-center font-medium text-white">
+                  {testimonials[activeTestimonial].name.charAt(0)}
+                </div>
+                <div>
+                  <p className="font-medium text-gray-800 dark:text-gray-200">
+                    {testimonials[activeTestimonial].name}
                   </p>
-                )}
+                  {testimonials[activeTestimonial].role && (
+                    <p className="text-xs text-gray-500 dark:text-gray-400">
+                      {testimonials[activeTestimonial].role}
+                    </p>
+                  )}
+                </div>
               </div>
+
+              <StarRating_Fractions
+                value={testimonials[activeTestimonial].rating}
+                readOnly={true}
+                iconSize={16}
+                color="#F59E0B" // amber-400 color
+                className="flex-shrink-0"
+              />
             </div>
 
-            <StarRating_Fractions
-              value={testimonials[activeTestimonial].rating}
-              readOnly={true}
-              iconSize={16}
-              color="#F59E0B" // amber-400 color
-              className="flex-shrink-0"
-            />
+            <p className="text-sm text-gray-600 dark:text-gray-300">
+              {testimonials[activeTestimonial].text}
+            </p>
+
+            <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
+              {testimonials[activeTestimonial].date}
+            </p>
           </div>
 
-          <p className="text-sm text-gray-600 dark:text-gray-300">
-            {testimonials[activeTestimonial].text}
-          </p>
+          {/* Testimonial navigation */}
+          <div className="flex items-center justify-between">
+            <div className="flex space-x-1">
+              {testimonials.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setActiveTestimonial(index)}
+                  className={`h-2 w-6 rounded-full transition-colors ${
+                    activeTestimonial === index
+                      ? "bg-emerald-500"
+                      : "bg-gray-300 hover:bg-gray-400 dark:bg-gray-700 dark:hover:bg-gray-600"
+                  }`}
+                  aria-label={`View review ${index + 1}`}
+                />
+              ))}
+            </div>
 
-          <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
-            {testimonials[activeTestimonial].date}
-          </p>
-        </div>
-
-        {/* Testimonial navigation */}
-        <div className="flex items-center justify-between">
-          <div className="flex space-x-1">
-            {testimonials.map((_, index) => (
+            <div className="flex space-x-1">
               <button
-                key={index}
-                onClick={() => setActiveTestimonial(index)}
-                className={`h-2 w-6 rounded-full transition-colors ${
-                  activeTestimonial === index
-                    ? "bg-emerald-500"
-                    : "bg-gray-300 hover:bg-gray-400 dark:bg-gray-700 dark:hover:bg-gray-600"
-                }`}
-                aria-label={`View review ${index + 1}`}
-              />
-            ))}
-          </div>
-
-          <div className="flex space-x-1">
-            <button
-              onClick={() =>
-                setActiveTestimonial((prev) =>
-                  prev === 0 ? testimonials.length - 1 : prev - 1
-                )
-              }
-              className="rounded p-1 text-gray-500 hover:bg-gray-200 dark:hover:bg-gray-700"
-              aria-label="Previous review"
-            >
-              <ChevronLeft className="h-5 w-5" />
-            </button>
-            <button
-              onClick={() =>
-                setActiveTestimonial((prev) =>
-                  prev === testimonials.length - 1 ? 0 : prev + 1
-                )
-              }
-              className="rounded p-1 text-gray-500 hover:bg-gray-200 dark:hover:bg-gray-700"
-              aria-label="Next review"
-            >
-              <ChevronRight className="h-5 w-5" />
-            </button>
+                onClick={() =>
+                  setActiveTestimonial((prev) =>
+                    prev === 0 ? testimonials.length - 1 : prev - 1
+                  )
+                }
+                className="rounded p-1 text-gray-500 hover:bg-gray-200 dark:hover:bg-gray-700"
+                aria-label="Previous review"
+              >
+                <ChevronLeft className="h-5 w-5" />
+              </button>
+              <button
+                onClick={() =>
+                  setActiveTestimonial((prev) =>
+                    prev === testimonials.length - 1 ? 0 : prev + 1
+                  )
+                }
+                className="rounded p-1 text-gray-500 hover:bg-gray-200 dark:hover:bg-gray-700"
+                aria-label="Next review"
+              >
+                <ChevronRight className="h-5 w-5" />
+              </button>
+            </div>
           </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }
 
 export default ProductVariant_04;
-export type { ProductVariant_04Props, Testimonial };
+export type {
+  AccessoryVariant,
+  ProductVariant04Props,
+  StorageVariant,
+  Testimonial,
+  VariantSelectionPayload,
+};

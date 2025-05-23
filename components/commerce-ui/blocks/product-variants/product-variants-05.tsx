@@ -7,36 +7,123 @@ import PriceFormat from "@/components/commerce-ui/price-format/basic/price-forma
 import QuantityInputBasic from "@/components/commerce-ui/quantity-input/basic/quantity-input-basic";
 import StarRating_Fractions from "@/components/commerce-ui/star-rating/fractions/star-rating-fractions";
 import VariantSelectorMultiple, {
-  VariantItem,
+  VariantItem as BaseVariantItem,
 } from "@/components/commerce-ui/variant-selector/multiple/variant-selector-multiple";
 import { Button } from "@/components/ui/button";
-import { Users } from "lucide-react";
+import { ShieldCheck, Users } from "lucide-react";
 import { useState } from "react";
 
+interface AccessoryVariant extends BaseVariantItem {
+  price: number;
+  salePrice?: number;
+  isInStock?: boolean;
+  availableQuantity?: number | null;
+}
+
+interface ServiceVariant extends BaseVariantItem {
+  price: number;
+  salePrice?: number;
+}
+
+interface Benefit {
+  icon?: React.ReactNode;
+  title: string;
+  description: string;
+}
+
+interface FeaturedReview {
+  rating: number;
+  reviewDate: string;
+  reviewText: string;
+  avatarUrl: string;
+  reviewerName: string;
+  reviewerTitle: string;
+}
+
+interface VariantSelectionPayload {
+  productPrice: number;
+  accessoryIds: string[];
+  accessoryLabels: string[];
+  accessoriesPrice: number;
+  serviceIds: string[];
+  serviceLabels: string[];
+  servicesPrice: number;
+  quantity: number;
+  totalPrice: number;
+}
+
+interface ProductVariant05Props {
+  title?: string;
+  description?: string;
+  price?: number;
+  badge?: string | null;
+  rating?: number;
+  reviewCount?: number;
+  warranty?: string;
+  images?: CarouselImage[];
+  defaultImages?: CarouselImage[];
+  benefits?: Benefit[];
+  accessoryVariants?: AccessoryVariant[];
+  serviceVariants?: ServiceVariant[];
+  initialAccessories?: string[];
+  initialServices?: string[];
+  selectedAccessories?: string[];
+  onAccessoriesChange?: (accessories: string[]) => void;
+  selectedServices?: string[];
+  onServicesChange?: (services: string[]) => void;
+  quantity?: number;
+  onQuantityChange?: (quantity: number) => void;
+  onAddToCart?: (payload: VariantSelectionPayload) => void;
+  onBuyNow?: (payload: VariantSelectionPayload) => void;
+  isLoading?: boolean;
+  errorMessage?: string | null;
+  currencyPrefix?: string;
+  featuredReview?: FeaturedReview;
+}
+
 // Default accessory options
-const DEFAULT_ACCESSORY_VARIANTS: VariantItem[] = [
-  { id: "acc-pitcher", label: "Milk Pitcher", value: "acc-pitcher" },
-  { id: "acc-descaler", label: "Descaling Kit", value: "acc-descaler" },
-  { id: "acc-filter", label: "Water Filter Pack", value: "acc-filter" },
-  { id: "acc-cups", label: "Espresso Cup Set", value: "acc-cups" },
-  { id: "acc-tamper", label: "Premium Tamper", value: "acc-tamper" },
+const DEFAULT_ACCESSORY_VARIANTS: AccessoryVariant[] = [
+  {
+    id: "acc-1",
+    isInStock: true,
+    label: "Accessory 1",
+    price: 10.99,
+    value: "acc-1",
+  },
+  {
+    id: "acc-2",
+    isInStock: true,
+    label: "Accessory 2",
+    price: 15.99,
+    value: "acc-3",
+  },
+  {
+    id: "acc-3",
+    isInStock: true,
+    label: "Accessory 3",
+    price: 65.99,
+    value: "acc-3",
+  },
 ];
 
 // Default service options
-const DEFAULT_SERVICE_VARIANTS: VariantItem[] = [
+const DEFAULT_SERVICE_VARIANTS: ServiceVariant[] = [
   {
     id: "serv-extended",
     label: "Extended Warranty (+2 Years)",
+    price: 99.99,
     value: "serv-extended",
   },
   {
     id: "serv-installation",
     label: "Professional Installation",
+    price: 79.99,
     value: "serv-installation",
   },
   {
     id: "serv-maintenance",
     label: "Annual Maintenance Plan",
+    price: 149.99,
     value: "serv-maintenance",
   },
 ];
@@ -55,130 +142,34 @@ const DEFAULT_PRODUCT_IMAGES: CarouselImage[] = [
     title: "Coffee Machine Cups",
     url: "https://raw.githubusercontent.com/stackzero-labs/ui/refs/heads/main/public/placeholders/coffee-cups-01.jpg",
   },
-
   {
     title: "Coffee Filters",
     url: "https://raw.githubusercontent.com/stackzero-labs/ui/refs/heads/main/public/placeholders/coffee-filter-01.jpg",
   },
 ];
 
-// Accessory pricing
-const DEFAULT_ACCESSORY_PRICES: Record<string, number> = {
-  "acc-cups": 39.99,
-  "acc-descaler": 19.99,
-  "acc-filter": 29.99,
-  "acc-pitcher": 24.99,
-  "acc-tamper": 44.99,
-};
-
-// Service pricing
-const DEFAULT_SERVICE_PRICES: Record<string, number> = {
-  "serv-extended": 99.99,
-  "serv-installation": 79.99,
-  "serv-maintenance": 149.99,
-};
-
-interface Benefit {
-  icon: React.ReactNode;
-  title: string;
-  description: string;
-}
-
-interface FeaturedReview {
-  rating: number;
-  reviewDate: string;
-  reviewText: string;
-  avatarUrl: string;
-  reviewerName: string;
-  reviewerTitle: string;
-}
-
-interface ProductVariant_05Props {
-  imageUrl?: string;
-  productImages?: CarouselImage[];
-  productName?: string;
-  description?: string;
-  price?: number;
-  rating?: number;
-  reviewCount?: number;
-  warranty?: string;
-  benefits?: Benefit[];
-  accessoryVariants?: VariantItem[];
-  serviceVariants?: VariantItem[];
-  accessoryPrices?: Record<string, number>;
-  servicePrices?: Record<string, number>;
-  initialAccessories?: string[];
-  initialServices?: string[];
-  onAddToCart?: () => void;
-  onBuyNow?: () => void;
-  currencyPrefix?: string;
-  featuredReview?: FeaturedReview;
-}
-
 function ProductVariant_05({
-  accessoryPrices = DEFAULT_ACCESSORY_PRICES,
   accessoryVariants = DEFAULT_ACCESSORY_VARIANTS,
-  description = "Premium espresso machine with 15-bar pressure, built-in grinder and milk frother for café-quality coffee at home",
+  badge = "New Arrival",
+  description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  title = "Product Title",
   benefits = [
     {
-      description: "Ready in under 30 seconds",
-      icon: (
-        <svg
-          className="h-6 w-6"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M13 10V3L4 14h7v7l9-11h-7z"
-          />
-        </svg>
-      ),
-      title: "Fast Brewing",
+      description: "A very good benefit description",
+      title: "Benefit A",
     },
     {
-      description: "Self-cleaning function",
-      icon: (
-        <svg
-          className="h-6 w-6"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
-          />
-        </svg>
-      ),
-      title: "Easy Cleaning",
+      description: "A very good benefit description",
+      title: "Benefit B",
     },
     {
-      description: "Multiple brewing options",
-      icon: (
-        <svg
-          className="h-6 w-6"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"
-          />
-        </svg>
-      ),
-      title: "Customizable",
+      description: "A very good benefit description",
+      title: "Benefit C",
     },
   ],
   currencyPrefix = "$",
+  defaultImages = [],
+  errorMessage = null,
   rating = 4.8,
   featuredReview = {
     avatarUrl:
@@ -186,48 +177,151 @@ function ProductVariant_05({
     rating: 5,
     reviewDate: "Mar 15, 2024",
     reviewerName: "John Doe",
-    reviewerTitle: "Coffee Enthusiast",
+    reviewerTitle: "Reviewer",
     reviewText:
-      "This espresso machine changed my mornings completely. The milk frother creates the perfect foam for my lattes and the coffee quality is indistinguishable from my local café.",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
   },
+  images = DEFAULT_PRODUCT_IMAGES,
   initialAccessories = ["acc-descaler"],
   initialServices = [],
+  isLoading = false,
+  onAccessoriesChange,
   onAddToCart = () => {},
   onBuyNow = () => {},
+  onQuantityChange,
+  onServicesChange,
   price = 399.99,
-  productImages = DEFAULT_PRODUCT_IMAGES,
-  productName = "BrewMaster Pro Coffee Machine",
+  quantity: controlledQuantity,
   reviewCount = 256,
-  servicePrices = DEFAULT_SERVICE_PRICES,
+  selectedAccessories: controlledAccessories,
+  selectedServices: controlledServices,
   serviceVariants = DEFAULT_SERVICE_VARIANTS,
   warranty = "2 Year",
-}: ProductVariant_05Props = {}) {
-  const [selectedAccessories, setSelectedAccessories] =
+}: ProductVariant05Props) {
+  // Internal state management for uncontrolled component
+  const [internalSelectedAccessories, setInternalSelectedAccessories] =
     useState<string[]>(initialAccessories);
-  const [selectedServices, setSelectedServices] =
+  const [internalSelectedServices, setInternalSelectedServices] =
     useState<string[]>(initialServices);
-  const [quantity, setQuantity] = useState(1);
+  const [internalQuantity, setInternalQuantity] = useState(1);
+
+  // Determine if we're in controlled or uncontrolled mode
+  const isAccessoriesControlled = controlledAccessories !== undefined;
+  const isServicesControlled = controlledServices !== undefined;
+  const isQuantityControlled = controlledQuantity !== undefined;
+
+  const selectedAccessoryIds = isAccessoriesControlled
+    ? controlledAccessories
+    : internalSelectedAccessories;
+  const selectedServiceIds = isServicesControlled
+    ? controlledServices
+    : internalSelectedServices;
+  const quantity = isQuantityControlled ? controlledQuantity : internalQuantity;
+
+  const handleAccessoriesChange = (newAccessories: string[]) => {
+    if (isAccessoriesControlled) {
+      onAccessoriesChange?.(newAccessories);
+    } else {
+      setInternalSelectedAccessories(newAccessories);
+    }
+  };
+
+  const handleServicesChange = (newServices: string[]) => {
+    if (isServicesControlled) {
+      onServicesChange?.(newServices);
+    } else {
+      setInternalSelectedServices(newServices);
+    }
+  };
+
+  const handleQuantityChange = (newQuantity: number) => {
+    if (isQuantityControlled) {
+      onQuantityChange?.(newQuantity);
+    } else {
+      setInternalQuantity(newQuantity);
+    }
+  };
 
   // Calculate accessories price
-  const accessoriesPrice = selectedAccessories.reduce(
-    (total, acc) => total + (accessoryPrices[acc] || 0),
-    0
-  );
+  const accessoriesPrice = selectedAccessoryIds.reduce((total, acc) => {
+    const accessory = accessoryVariants.find((a) => a.value === acc);
+    return total + (accessory?.price || 0);
+  }, 0);
 
   // Calculate services price
-  const servicesPrice = selectedServices.reduce(
-    (total, serv) => total + (servicePrices[serv] || 0),
-    0
-  );
+  const servicesPrice = selectedServiceIds.reduce((total, serv) => {
+    const service = serviceVariants.find((s) => s.value === serv);
+    return total + (service?.price || 0);
+  }, 0);
 
-  // Calculate total item price
+  // Calculate total price
   const itemPrice = price + accessoriesPrice + servicesPrice;
-
-  // Calculate total price including quantity
   const totalPrice = itemPrice * quantity;
 
+  // Add visual indicator for out of stock items
+  const accessoryVariantsWithStockIndicator = accessoryVariants.map(
+    (variant) => {
+      const isInStock =
+        variant.isInStock !== undefined ? variant.isInStock : true;
+      return {
+        ...variant,
+        disabled: !isInStock,
+        label: variant.label + (isInStock ? "" : " (Out of Stock)"),
+      };
+    }
+  );
+
+  const handleAddToCart = () => {
+    onAddToCart({
+      accessoriesPrice,
+      accessoryIds: selectedAccessoryIds,
+      accessoryLabels: selectedAccessoryIds.map((id) => {
+        const accessory = accessoryVariants.find((a) => a.value === id);
+        return accessory?.label || "";
+      }),
+      productPrice: price,
+      quantity,
+      serviceIds: selectedServiceIds,
+      serviceLabels: selectedServiceIds.map((id) => {
+        const service = serviceVariants.find((s) => s.value === id);
+        return service?.label || "";
+      }),
+      servicesPrice,
+      totalPrice,
+    });
+  };
+
+  const handleBuyNow = () => {
+    onBuyNow({
+      accessoriesPrice,
+      accessoryIds: selectedAccessoryIds,
+      accessoryLabels: selectedAccessoryIds.map((id) => {
+        const accessory = accessoryVariants.find((a) => a.value === id);
+        return accessory?.label || "";
+      }),
+      productPrice: price,
+      quantity,
+      serviceIds: selectedServiceIds,
+      serviceLabels: selectedServiceIds.map((id) => {
+        const service = serviceVariants.find((s) => s.value === id);
+        return service?.label || "";
+      }),
+      servicesPrice,
+      totalPrice,
+    });
+  };
+
+  if (errorMessage) {
+    return (
+      <div className="my-6 rounded-lg border border-red-200 bg-red-50 p-6 text-red-600 dark:border-red-900 dark:bg-red-900/20 dark:text-red-400">
+        <p className="font-medium">Error loading product</p>
+        <p className="text-sm">{errorMessage}</p>
+      </div>
+    );
+  }
+
   return (
-    <div className="flex flex-col">
+    <div className="max-w-screen-x flex flex-col">
       {/* Main product card */}
       <div className="border-brown-200 dark:border-brown-800 relative flex flex-col overflow-hidden rounded-xl border bg-white shadow-sm transition-all duration-300 hover:shadow-md dark:bg-gray-900">
         <div className="absolute inset-0 overflow-hidden">
@@ -238,45 +332,47 @@ function ProductVariant_05({
         </div>
 
         <div className="flex flex-col lg:flex-row">
-          {/* Image and review section - left column - MADE LARGER */}
+          {/* Image and review section - left column */}
           <div className="to-brown-50 relative flex w-full flex-col bg-gradient-to-br from-amber-50 via-amber-100/50 lg:h-auto lg:w-1/2 dark:from-gray-900 dark:via-amber-950/10 dark:to-gray-900">
-            {/* Premium badge */}
-            <div className="absolute top-3 left-3 z-20 flex items-center justify-center">
-              <div className="rounded-md bg-gradient-to-r from-amber-700 to-amber-900 px-3 py-1 text-xs font-bold tracking-wider text-amber-50 uppercase shadow-md">
-                Barista Choice
+            {badge && (
+              <div className="absolute top-3 left-3 z-20 flex items-center justify-center">
+                <div className="rounded-md bg-gradient-to-r from-amber-700 to-amber-900 px-3 py-1 text-xs font-bold tracking-wider text-amber-50 uppercase shadow-md">
+                  {badge}
+                </div>
               </div>
-            </div>
+            )}
 
-            {/* Coffee-themed decoration */}
             <div className="absolute inset-0 z-10">
-              {/* Steam-like swirls */}
               <div className="absolute top-1/3 left-1/2 h-12 w-8 -translate-x-1/2 rounded-full border-t border-l border-amber-700/20 opacity-30"></div>
               <div className="absolute top-1/4 left-1/3 h-8 w-12 -translate-x-1/2 rounded-full border-t border-r border-amber-700/20 opacity-30"></div>
             </div>
 
-            {/* Image Carousel replacing Image Viewer */}
+            {/* Image Carousel */}
             <div className="relative z-10 flex h-full items-center justify-center p-6">
               <div className="w-full transition-all duration-500">
-                <ImageCarouselBasic
-                  images={productImages}
-                  //   imageFit="contain"
-                  //   aspectRatio="wide"
-                  showThumbs={true}
-                  thumbPosition="bottom"
-                  showCarouselControls={true}
-                  className="mx-auto"
-                />
+                {isLoading ? (
+                  <div className="flex h-[300px] items-center justify-center">
+                    <div className="h-10 w-10 animate-spin rounded-full border-4 border-amber-200 border-t-amber-600"></div>
+                  </div>
+                ) : (
+                  <ImageCarouselBasic
+                    images={images.length > 0 ? images : defaultImages}
+                    showThumbs={true}
+                    thumbPosition="bottom"
+                    showCarouselControls={true}
+                    className="mx-auto"
+                  />
+                )}
               </div>
             </div>
 
-            {/* Featured Review section - below image */}
             <div className="relative z-10 px-6 pb-6">
               <div className="rounded-lg bg-white/80 p-4 shadow-sm backdrop-blur-sm dark:bg-gray-800/80">
                 <div className="mb-2 flex items-center justify-between">
                   <div className="flex items-center space-x-2">
                     <Users className="h-4 w-4 text-amber-700 dark:text-amber-500" />
                     <h4 className="text-sm font-medium text-amber-900 dark:text-amber-100">
-                      1,000+ Happy Customers
+                      {reviewCount}+ Happy Customers
                     </h4>
                   </div>
                 </div>
@@ -314,14 +410,13 @@ function ProductVariant_05({
             </div>
           </div>
 
-          {/* Content section - right side - ADJUSTED WIDTH */}
+          {/* Content section - right side */}
           <div className="relative z-10 flex flex-1 flex-col justify-between p-5 lg:w-1/2">
             <div>
-              {/* Product name and description */}
               <div className="mb-3">
                 <div className="mb-1 flex items-center justify-between">
                   <h3 className="text-xl font-bold text-amber-900 dark:text-amber-100">
-                    {productName}
+                    {title}
                   </h3>
                   <PriceFormat
                     prefix={currencyPrefix}
@@ -330,7 +425,6 @@ function ProductVariant_05({
                   />
                 </div>
 
-                {/* Rating section */}
                 <div className="mb-2 flex items-center">
                   <StarRating_Fractions
                     value={rating}
@@ -347,16 +441,15 @@ function ProductVariant_05({
                 <p className="text-sm">{description}</p>
               </div>
 
-              {/* Variants selection */}
               <div className="space-y-4">
                 <div>
                   <label className="mb-2 block text-sm font-medium text-amber-800 dark:text-amber-300">
                     Accessories
                   </label>
                   <VariantSelectorMultiple
-                    values={selectedAccessories}
-                    onValuesChange={setSelectedAccessories}
-                    variants={accessoryVariants}
+                    values={selectedAccessoryIds}
+                    onValuesChange={handleAccessoriesChange}
+                    variants={accessoryVariantsWithStockIndicator}
                     className="flex-wrap"
                     itemClassName="bg-amber-50 border-amber-200 hover:border-amber-400 dark:bg-gray-800 dark:border-amber-700/50
                                 data-[state=on]:border-amber-600 data-[state=on]:bg-amber-100 
@@ -372,8 +465,8 @@ function ProductVariant_05({
                     Service & Protection
                   </label>
                   <VariantSelectorMultiple
-                    values={selectedServices}
-                    onValuesChange={setSelectedServices}
+                    values={selectedServiceIds}
+                    onValuesChange={handleServicesChange}
                     variants={serviceVariants}
                     className="flex-wrap"
                     itemClassName="bg-amber-50 border-amber-200 hover:border-amber-400 dark:bg-gray-800 dark:border-amber-700/50
@@ -387,16 +480,16 @@ function ProductVariant_05({
               </div>
 
               {/* Selections summary */}
-              {(selectedAccessories.length > 0 ||
-                selectedServices.length > 0) && (
+              {(selectedAccessoryIds.length > 0 ||
+                selectedServiceIds.length > 0) && (
                 <div className="my-4 rounded-md bg-amber-50 p-3 dark:bg-amber-950/20">
-                  {selectedAccessories.length > 0 && (
+                  {selectedAccessoryIds.length > 0 && (
                     <div className="mb-2">
                       <h4 className="text-sm font-medium text-amber-800 dark:text-amber-200">
                         Selected accessories:
                       </h4>
                       <ul className="space-y-1">
-                        {selectedAccessories.map((accId) => {
+                        {selectedAccessoryIds.map((accId) => {
                           const accessory = accessoryVariants.find(
                             (a) => a.value === accId
                           );
@@ -408,7 +501,7 @@ function ProductVariant_05({
                               <span>{accessory?.label}</span>
                               <PriceFormat
                                 prefix={currencyPrefix}
-                                value={accessoryPrices[accId] || 0}
+                                value={accessory?.price || 0}
                                 className="font-light"
                               />
                             </li>
@@ -418,13 +511,13 @@ function ProductVariant_05({
                     </div>
                   )}
 
-                  {selectedServices.length > 0 && (
+                  {selectedServiceIds.length > 0 && (
                     <div>
                       <h4 className="text-sm font-medium text-amber-800 dark:text-amber-200">
                         Selected services:
                       </h4>
                       <ul className="space-y-1">
-                        {selectedServices.map((servId) => {
+                        {selectedServiceIds.map((servId) => {
                           const service = serviceVariants.find(
                             (s) => s.value === servId
                           );
@@ -436,7 +529,7 @@ function ProductVariant_05({
                               <span>{service?.label}</span>
                               <PriceFormat
                                 prefix={currencyPrefix}
-                                value={servicePrices[servId] || 0}
+                                value={service?.price || 0}
                                 className="font-light"
                               />
                             </li>
@@ -457,7 +550,7 @@ function ProductVariant_05({
                     </label>
                     <QuantityInputBasic
                       quantity={quantity}
-                      onChange={setQuantity}
+                      onChange={handleQuantityChange}
                       max={10}
                       className="w-[120px] border-amber-200 dark:border-amber-700/50"
                     />
@@ -480,33 +573,25 @@ function ProductVariant_05({
             <div className="mt-2 flex space-x-2">
               <Button
                 variant="outline"
-                onClick={onAddToCart}
+                onClick={handleAddToCart}
                 className="flex-1 border-amber-300 bg-white text-amber-800 hover:border-amber-500 hover:bg-amber-50 hover:text-amber-900 dark:border-amber-700/50 dark:bg-gray-800 dark:text-amber-300 dark:hover:border-amber-600"
+                disabled={isLoading}
               >
-                Add to cart
+                {isLoading ? "Loading..." : "Add to cart"}
               </Button>
               <Button
-                onClick={onBuyNow}
+                onClick={handleBuyNow}
                 className="flex-1 bg-gradient-to-r from-amber-700 to-amber-900 text-white hover:from-amber-800 hover:to-amber-950"
+                disabled={isLoading}
               >
-                Buy now
+                {isLoading ? "Loading..." : "Buy now"}
               </Button>
             </div>
 
             {/* Warranty info */}
             <div className="mt-3">
               <p className="flex items-center text-xs font-medium text-amber-700 dark:text-amber-400">
-                <svg
-                  className="mr-1 h-4 w-4"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                    clipRule="evenodd"
-                  />
-                </svg>
+                <ShieldCheck className="mr-1 h-4 w-4 text-amber-700 dark:text-amber-400" />
                 {warranty} Manufacturer Warranty Included
               </p>
             </div>
@@ -543,4 +628,11 @@ function ProductVariant_05({
 }
 
 export default ProductVariant_05;
-export type { Benefit, FeaturedReview, ProductVariant_05Props };
+export type {
+  AccessoryVariant,
+  Benefit,
+  FeaturedReview,
+  ProductVariant05Props,
+  ServiceVariant,
+  VariantSelectionPayload,
+};

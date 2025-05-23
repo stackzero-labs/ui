@@ -6,7 +6,7 @@ import { useState } from "react";
 import ProductVariant_03, {
   VariantItem,
   VariantSelectionPayload,
-} from "./product-variants-03";
+} from "@/components/commerce-ui/blocks/product-variants/product-variants-03";
 
 const EXAMPLE_VARIANTS: VariantItem[] = [
   {

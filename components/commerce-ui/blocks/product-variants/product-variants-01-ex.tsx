@@ -6,7 +6,7 @@ import { useState } from "react";
 import ProductVariant_01, {
   VariantItem,
   VariantSelectionPayload,
-} from "./product-variants-01";
+} from "@/components/commerce-ui/blocks/product-variants/product-variants-01";
 
 const EXAMPLE_VARIANTS: VariantItem[] = [
   {
@@ -32,13 +32,13 @@ const EXAMPLE_VARIANTS: VariantItem[] = [
   },
   {
     availableQuantity: 0,
-    id: "variant-ultraquite",
+    id: "variant-ultraquiet",
     imageUrl:
       "https://raw.githubusercontent.com/stackzero-labs/ui/refs/heads/main/public/placeholders/headphone-3.jpg",
     isInStock: false,
-    label: "UltraQuite™",
+    label: "UltraQuiet™",
     price: 89.99,
-    value: "variant-ultraquite",
+    value: "variant-ultraquiet",
   },
   {
     availableQuantity: 2,
