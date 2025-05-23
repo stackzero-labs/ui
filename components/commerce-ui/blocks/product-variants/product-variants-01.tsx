@@ -14,8 +14,8 @@ interface VariantItem extends BaseVariantItem {
   price: number;
   salePrice?: number;
   imageUrl?: string;
-  isInStock?: boolean; // Added stock status per variant
-  availableQuantity?: number | null; // Added quantity per variant
+  isInStock?: boolean;
+  availableQuantity?: number | null;
 }
 interface VariantSelectionPayload {
   variantId: string;
@@ -44,11 +44,9 @@ interface ProductVariant01Props {
   onQuantityChange?: (quantity: number) => void;
   isLoading?: boolean;
   errorMessage?: string | null;
-  // Removed isInStock and availableQuantity props as they are now part of each variant
 }
 
 function ProductVariant_01({
-  // Removed availableQuantity and isInStock parameters
   badge = "New",
   defaultImage,
   description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",

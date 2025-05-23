@@ -48,7 +48,6 @@ interface ProductVariant02Props {
   onQuantityChange?: (quantity: number) => void;
   isLoading?: boolean;
   errorMessage?: string | null;
-  // Removed isInStock and availableQuantity props
   sellerName?: string;
   marketplaceName?: string;
   returnPolicyUrl?: string;
@@ -69,7 +68,6 @@ function ProductVariant_02({
   quantity: controlledQuantity,
   returnPolicyUrl = "/",
   selectedVariant: controlledVariant,
-  // Removed isInStock and availableQuantity parameters
   sellerName = "Seller Name",
   shippingInfo = "Free shipping",
   title = "Product Variant Title",
@@ -196,8 +194,6 @@ function ProductVariant_02({
                 {badge}
               </span>
             )}
-            {/* Glow effect */}
-            <div className="absolute -bottom-10 left-1/2 h-40 w-40 -translate-x-1/2 transform rounded-full bg-rose-500/20 blur-3xl"></div>
             <div className="transition-transform duration-500 hover:scale-105">
               {isLoading ? (
                 <div className="flex h-[300px] items-center justify-center">
@@ -351,6 +347,7 @@ function ProductVariant_02({
 
           <Separator className="my-4" />
 
+          {/* Bottom section: Stock info and call-to-action buttons */}
           <div className="grid grid-cols-3 gap-2 text-xs sm:text-sm">
             <div className="col-span-1 text-gray-600 dark:text-gray-400">
               Sold by:
