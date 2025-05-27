@@ -8,13 +8,15 @@ export const components: Registry = [
     dependencies: ["lucide-react"],
     files: [
       {
-        path: "@/components/commerce-ui/face-rating/basic/face-rating-basic.tsx",
+        path: "@/components/commerce-ui/components/face-rating/basic/face-rating-basic.tsx",
         type: "registry:component",
       },
     ],
     component: React.lazy(
       () =>
-        import("../components/commerce-ui/face-rating/basic/face-rating-basic")
+        import(
+          "../components/commerce-ui/components/face-rating/basic/face-rating-basic"
+        )
     ),
   },
 
@@ -24,14 +26,14 @@ export const components: Registry = [
     dependencies: ["lucide-react", "tinycolor2"],
     files: [
       {
-        path: "@/components/commerce-ui/face-rating/gradient/face-rating-gradient.tsx",
+        path: "@/components/commerce-ui/components/face-rating/gradient/face-rating-gradient.tsx",
         type: "registry:component",
       },
     ],
     component: React.lazy(
       () =>
         import(
-          "../components/commerce-ui/face-rating/gradient/face-rating-gradient"
+          "../components/commerce-ui/components/face-rating/gradient/face-rating-gradient"
         )
     ),
   },
@@ -120,13 +122,15 @@ export const components: Registry = [
     dependencies: ["lucide-react"],
     files: [
       {
-        path: "@/components/commerce-ui/like-rating/basic/like-rating-basic.tsx",
+        path: "@/components/commerce-ui/components/like-rating/basic/like-rating-basic.tsx",
         type: "registry:component",
       },
     ],
     component: React.lazy(
       () =>
-        import("../components/commerce-ui/like-rating/basic/like-rating-basic")
+        import(
+          "../components/commerce-ui/components/like-rating/basic/like-rating-basic"
+        )
     ),
   },
 

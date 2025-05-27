@@ -11,7 +11,7 @@
     {
       "type": "registry:example",
       "content": "\"use client\";\n\nimport FaceRatingBasic from \"@/components/commerce-ui/face-rating-basic\";\nimport { useState } from \"react\";\n\nexport default function FaceRating_01_Ex_02() {\n  const [rating, setRating] = useState(3);\n  return (\n    <div className=\"flex flex-col items-center gap-4\">\n      <div>How do you feel about this product?</div>\n      <FaceRatingBasic value={rating} onChange={setRating} iconSize={48} />\n      <p>Rating: {rating}</p>\n    </div>\n  );\n}\n",
-      "path": "/components/commerce-ui/face-rating/basic/face-rating-basic-ex-02.tsx",
+      "path": "/components/commerce-ui/components/face-rating/basic/face-rating-basic-ex-02.tsx",
       "target": "/components/commerce-ui/face-rating-basic-ex-02.tsx"
     }
   ]

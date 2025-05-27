@@ -22,7 +22,7 @@
       ],
       "files": [
         {
-          "path": "@/components/commerce-ui/face-rating/basic/face-rating-basic.tsx",
+          "path": "@/components/commerce-ui/components/face-rating/basic/face-rating-basic.tsx",
           "type": "registry:component"
         }
       ]
@@ -36,7 +36,7 @@
       ],
       "files": [
         {
-          "path": "@/components/commerce-ui/face-rating/gradient/face-rating-gradient.tsx",
+          "path": "@/components/commerce-ui/components/face-rating/gradient/face-rating-gradient.tsx",
           "type": "registry:component"
         }
       ]
@@ -106,7 +106,7 @@
       ],
       "files": [
         {
-          "path": "@/components/commerce-ui/like-rating/basic/like-rating-basic.tsx",
+          "path": "@/components/commerce-ui/components/like-rating/basic/like-rating-basic.tsx",
           "type": "registry:component"
         }
       ]
@@ -586,7 +586,7 @@
       ],
       "files": [
         {
-          "path": "@/components/commerce-ui/face-rating/basic/face-rating-basic-ex-01.tsx",
+          "path": "@/components/commerce-ui/components/face-rating/basic/face-rating-basic-ex-01.tsx",
           "type": "registry:example"
         }
       ]
@@ -602,7 +602,7 @@
       ],
       "files": [
         {
-          "path": "@/components/commerce-ui/face-rating/basic/face-rating-basic-ex-02.tsx",
+          "path": "@/components/commerce-ui/components/face-rating/basic/face-rating-basic-ex-02.tsx",
           "type": "registry:example"
         }
       ]
@@ -618,7 +618,7 @@
       ],
       "files": [
         {
-          "path": "@/components/commerce-ui/face-rating/basic/face-rating-basic-ex-03.tsx",
+          "path": "@/components/commerce-ui/components/face-rating/basic/face-rating-basic-ex-03.tsx",
           "type": "registry:example"
         }
       ]
@@ -634,7 +634,7 @@
       ],
       "files": [
         {
-          "path": "@/components/commerce-ui/face-rating/gradient/face-rating-gradient-ex-01.tsx",
+          "path": "@/components/commerce-ui/components/face-rating/gradient/face-rating-gradient-ex-01.tsx",
           "type": "registry:example"
         }
       ]
@@ -650,7 +650,7 @@
       ],
       "files": [
         {
-          "path": "@/components/commerce-ui/like-rating/basic/like-rating-ex-01.tsx",
+          "path": "@/components/commerce-ui/components/like-rating/basic/like-rating-ex-01.tsx",
           "type": "registry:example"
         }
       ]

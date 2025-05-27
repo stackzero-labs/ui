@@ -1,6 +1,6 @@
 "use client";
 
-import LikeRatingBasic from "@/components/commerce-ui/like-rating/basic/like-rating-basic";
+import LikeRatingBasic from "@/components/commerce-ui/components/like-rating/basic/like-rating-basic";
 import { useState } from "react";
 
 export default function LikeRating_Basic_Ex_01() {

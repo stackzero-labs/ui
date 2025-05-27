@@ -1,6 +1,6 @@
 "use client";
 
-import FaceRatingBasic from "@/components/commerce-ui/face-rating/basic/face-rating-basic";
+import FaceRatingBasic from "@/components/commerce-ui/components/face-rating/basic/face-rating-basic";
 import { useState } from "react";
 
 export default function FaceRating_01_Ex_01() {
