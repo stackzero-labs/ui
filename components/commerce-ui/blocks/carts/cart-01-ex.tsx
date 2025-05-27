@@ -81,7 +81,7 @@ export default function CartExample_01() {
       {
         id: `demo-${Date.now() + 1}`,
         imageUrl:
-          "https://raw.githubusercontent.com/stackzero-labs/ui/refs/heads/main/public/placeholders/headphones-4.jpg",
+          "https://raw.githubusercontent.com/stackzero-labs/ui/refs/heads/main/public/placeholders/headphone-4.jpg",
         name: "AeroTune X9",
         price: 89.95,
         quantity: 1,
