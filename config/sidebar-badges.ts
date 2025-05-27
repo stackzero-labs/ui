@@ -18,7 +18,6 @@ export const sidebarBadges: SidebarBadge[] = [
   },
   {
     count: 12,
-    isNew: true,
     page: "Product Card",
   },
   {
@@ -29,5 +28,10 @@ export const sidebarBadges: SidebarBadge[] = [
   {
     count: 10,
     page: "Reviews",
+  },
+  {
+    alpha: true,
+    count: 1,
+    page: "Carts",
   },
 ];

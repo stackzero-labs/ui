@@ -1,10 +1,11 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
 import Cart_01, {
+  CartCheckoutPayload,
   CartProduct,
 } from "@/components/commerce-ui/blocks/carts/cart-01";
 import { Button } from "@/components/ui/button";
+import { useEffect, useState } from "react";
 
 export default function CartExample_01() {
   // Initial products for the demo
@@ -40,6 +41,8 @@ export default function CartExample_01() {
   const [subtotal, setSubtotal] = useState<number>(0);
   const [shippingCost] = useState<number>(15.99);
   const [vatRate] = useState<number>(0.2); // 20% VAT rate
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [errorMessage, setErrorMessage] = useState<string>("");
 
   // Calculate subtotal whenever the products change
   useEffect(() => {
@@ -63,8 +66,32 @@ export default function CartExample_01() {
 
   // Handler to remove a product
   const handleRemoveProduct = (productId: string) => {
-    const productName = products.find((p) => p.id === productId)?.name;
     setProducts(products.filter((product) => product.id !== productId));
+  };
+
+  // Handler for checkout
+  const handleCheckout = (payload: CartCheckoutPayload) => {
+    const itemCount = payload.products.reduce((sum, p) => sum + p.quantity, 0);
+    window.alert(
+      `Proceeding to checkout with ${itemCount} items.\nTotal: ${payload.currencyPrefix}${payload.totalAmount.toFixed(2)}
+      `
+    );
+  };
+
+  // Handler for continue shopping
+  const handleContinueShopping = (payload: CartCheckoutPayload) => {
+    if (payload.products.length === 0) {
+      window.alert("Starting your shopping journey!");
+    } else {
+      const itemCount = payload.products.reduce(
+        (sum, p) => sum + p.quantity,
+        0
+      );
+      window.alert(
+        `Continuing shopping with ${itemCount} items in your cart.\nSubtotal: ${payload.currencyPrefix}${payload.subtotal.toFixed(2)}
+        `
+      );
+    }
   };
 
   // Add a demo product
@@ -81,7 +108,7 @@ export default function CartExample_01() {
       {
         id: `demo-${Date.now() + 1}`,
         imageUrl:
-          "https://raw.githubusercontent.com/stackzero-labs/ui/refs/heads/main/public/placeholders/headphones-4.jpg",
+          "https://raw.githubusercontent.com/stackzero-labs/ui/refs/heads/main/public/placeholders/headphone-4.jpg",
         name: "AeroTune X9",
         price: 89.95,
         quantity: 1,
@@ -96,11 +123,38 @@ export default function CartExample_01() {
   // Reset cart to initial state
   const handleResetCart = () => {
     setProducts(initialProducts);
+    setErrorMessage("");
+  };
+
+  // Clear cart
+  const handleClearCart = () => {
+    setProducts([]);
+    setErrorMessage("");
+  };
+
+  // Toggle loading state
+  const handleToggleLoading = () => {
+    setIsLoading(!isLoading);
+    if (errorMessage) {
+      setErrorMessage("");
+    }
+  };
+
+  // Toggle error state
+  const handleToggleError = () => {
+    if (errorMessage) {
+      setErrorMessage("");
+    } else {
+      setErrorMessage("Unable to load cart items. Please try again later.");
+    }
+    if (isLoading) {
+      setIsLoading(false);
+    }
   };
 
   return (
-    <div className="mx-auto max-w-4xl py-8">
-      <div className="mb-6 flex justify-center space-x-4">
+    <div className="mx-auto w-full max-w-3xl py-8">
+      <div className="mb-6 flex flex-wrap justify-center gap-4">
         <Button
           onClick={handleAddDemoProduct}
           variant="outline"
@@ -118,6 +172,37 @@ export default function CartExample_01() {
         >
           Reset Cart
         </Button>
+
+        <Button
+          onClick={handleClearCart}
+          variant="outline"
+          className="font-mono"
+          size="sm"
+        >
+          Clear Cart
+        </Button>
+
+        <Button
+          onClick={handleToggleLoading}
+          variant="outline"
+          className={`font-mono ${
+            isLoading ? "border-blue-500 text-blue-500" : ""
+          }`}
+          size="sm"
+        >
+          {isLoading ? "Stop Loading" : "Simulate Loading"}
+        </Button>
+
+        <Button
+          onClick={handleToggleError}
+          variant="outline"
+          className={`font-mono ${
+            errorMessage ? "border-red-500 text-red-500" : ""
+          }`}
+          size="sm"
+        >
+          {errorMessage ? "Clear Error" : "Simulate Error"}
+        </Button>
       </div>
 
       <Cart_01
@@ -128,8 +213,12 @@ export default function CartExample_01() {
         shippingCost={shippingCost}
         vatRate={vatRate}
         currencyPrefix="$"
+        isLoading={isLoading}
+        errorMessage={errorMessage}
         onUpdateQuantity={handleUpdateQuantity}
         onRemoveProduct={handleRemoveProduct}
+        onCheckout={handleCheckout}
+        onContinueShopping={handleContinueShopping}
       />
     </div>
   );

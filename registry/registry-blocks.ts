@@ -197,10 +197,10 @@ export const blocks: Registry = [
   {
     name: "cart-01-block",
     type: "registry:block",
-    dependencies: [],
+    dependencies: ["lucide-react"],
     registryDependencies: [
       "button",
-      "https://ui.stackzero.co/r/image-viewer-basic.json",
+      "https://ui.stackzero.co/r/quantity-input-basic.json",
       "https://ui.stackzero.co/r/price-format-basic.json",
     ],
     files: [
