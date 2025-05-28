@@ -411,14 +411,14 @@ export const examples: Registry = [
     registryDependencies: ["https://ui.stackzero.co/r/face-rating-basic.json"],
     files: [
       {
-        path: "@/components/commerce-ui/face-rating/basic/face-rating-basic-ex-01.tsx",
+        path: "@/components/commerce-ui/components/face-rating/basic/face-rating-basic-ex-01.tsx",
         type: "registry:example",
       },
     ],
     component: React.lazy(
       () =>
         import(
-          "../components/commerce-ui/face-rating/basic/face-rating-basic-ex-01"
+          "../components/commerce-ui/components/face-rating/basic/face-rating-basic-ex-01"
         )
     ),
   },
@@ -431,14 +431,14 @@ export const examples: Registry = [
 
     files: [
       {
-        path: "@/components/commerce-ui/face-rating/basic/face-rating-basic-ex-02.tsx",
+        path: "@/components/commerce-ui/components/face-rating/basic/face-rating-basic-ex-02.tsx",
         type: "registry:example",
       },
     ],
     component: React.lazy(
       () =>
         import(
-          "../components/commerce-ui/face-rating/basic/face-rating-basic-ex-02"
+          "../components/commerce-ui/components/face-rating/basic/face-rating-basic-ex-02"
         )
     ),
   },
@@ -450,14 +450,14 @@ export const examples: Registry = [
     registryDependencies: ["https://ui.stackzero.co/r/face-rating-basic.json"],
     files: [
       {
-        path: "@/components/commerce-ui/face-rating/basic/face-rating-basic-ex-03.tsx",
+        path: "@/components/commerce-ui/components/face-rating/basic/face-rating-basic-ex-03.tsx",
         type: "registry:example",
       },
     ],
     component: React.lazy(
       () =>
         import(
-          "../components/commerce-ui/face-rating/basic/face-rating-basic-ex-03"
+          "../components/commerce-ui/components/face-rating/basic/face-rating-basic-ex-03"
         )
     ),
   },
@@ -470,14 +470,14 @@ export const examples: Registry = [
     ],
     files: [
       {
-        path: "@/components/commerce-ui/face-rating/gradient/face-rating-gradient-ex-01.tsx",
+        path: "@/components/commerce-ui/components/face-rating/gradient/face-rating-gradient-ex-01.tsx",
         type: "registry:example",
       },
     ],
     component: React.lazy(
       () =>
         import(
-          "../components/commerce-ui/face-rating/gradient/face-rating-gradient-ex-01"
+          "../components/commerce-ui/components/face-rating/gradient/face-rating-gradient-ex-01"
         )
     ),
   },
@@ -489,13 +489,15 @@ export const examples: Registry = [
     registryDependencies: ["https://ui.stackzero.co/r/like-rating-basic.json"],
     files: [
       {
-        path: "@/components/commerce-ui/like-rating/basic/like-rating-ex-01.tsx",
+        path: "@/components/commerce-ui/components/like-rating/basic/like-rating-ex-01.tsx",
         type: "registry:example",
       },
     ],
     component: React.lazy(
       () =>
-        import("../components/commerce-ui/like-rating/basic/like-rating-ex-01")
+        import(
+          "../components/commerce-ui/components/like-rating/basic/like-rating-ex-01"
+        )
     ),
   },
 

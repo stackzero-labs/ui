@@ -1,6 +1,6 @@
 "use client";
 
-import LikeRating from "@/components/commerce-ui/like-rating/basic/like-rating-basic";
+import LikeRating from "@/components/commerce-ui/components/like-rating/basic/like-rating-basic";
 import StarRating from "@/components/commerce-ui/star-rating/basic/star-rating-basic";
 import { Button } from "@/components/ui/button";
 import { useState, useRef, useEffect } from "react";

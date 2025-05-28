@@ -1,6 +1,6 @@
 "use client";
 
-import FaceRatingGradient from "@/components/commerce-ui/face-rating/gradient/face-rating-gradient";
+import FaceRatingGradient from "@/components/commerce-ui/components/face-rating/gradient/face-rating-gradient";
 import { useState } from "react";
 
 export default function FaceRating_Gradient_Ex_01() {

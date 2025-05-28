@@ -1,6 +1,6 @@
 "use client";
 
-import LikeRating from "@/components/commerce-ui/like-rating/basic/like-rating-basic";
+import LikeRating from "@/components/commerce-ui/components/like-rating/basic/like-rating-basic";
 import { Button } from "@/components/ui/button";
 import {
   Building,
