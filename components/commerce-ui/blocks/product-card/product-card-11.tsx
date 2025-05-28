@@ -1,7 +1,7 @@
 "use client";
 
-import ImageViewer from "@/components/commerce-ui/image-viewer/basic/image-viewer-basic";
-import PriceFormat_Sale from "@/components/commerce-ui/price-format/sale/price-format-sale";
+import ImageViewer from "@/components/commerce-ui/components/image-viewer/basic/image-viewer-basic";
+import PriceFormat_Sale from "@/components/commerce-ui/components/price-format/sale/price-format-sale";
 import { Button } from "@/components/ui/button";
 
 const DEFAULT_IMAGE_URL =

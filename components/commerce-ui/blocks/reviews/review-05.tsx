@@ -1,4 +1,4 @@
-import StarRating from "@/components/commerce-ui/star-rating/fractions/star-rating-fractions";
+import StarRating from "@/components/commerce-ui/components/star-rating/fractions/star-rating-fractions";
 import { Progress } from "@/components/ui/progress";
 
 interface ReviewStatProps {

@@ -27,14 +27,14 @@ export const examples: Registry = [
     ],
     files: [
       {
-        path: "@/components/commerce-ui/image-carousel/basic/image-carousel-basic-ex-01.tsx",
+        path: "@/components/commerce-ui/components/image-carousel/basic/image-carousel-basic-ex-01.tsx",
         type: "registry:example",
       },
     ],
     component: React.lazy(
       () =>
         import(
-          "../components/commerce-ui/image-carousel/basic/image-carousel-basic-ex-01"
+          "../components/commerce-ui/components/image-carousel/basic/image-carousel-basic-ex-01"
         )
     ),
   },
@@ -48,14 +48,14 @@ export const examples: Registry = [
     ],
     files: [
       {
-        path: "@/components/commerce-ui/image-carousel/basic/image-carousel-basic-ex-02.tsx",
+        path: "@/components/commerce-ui/components/image-carousel/basic/image-carousel-basic-ex-02.tsx",
         type: "registry:example",
       },
     ],
     component: React.lazy(
       () =>
         import(
-          "../components/commerce-ui/image-carousel/basic/image-carousel-basic-ex-02"
+          "../components/commerce-ui/components/image-carousel/basic/image-carousel-basic-ex-02"
         )
     ),
   },
@@ -69,14 +69,14 @@ export const examples: Registry = [
     ],
     files: [
       {
-        path: "@/components/commerce-ui/image-carousel/basic/image-carousel-basic-ex-03.tsx",
+        path: "@/components/commerce-ui/components/image-carousel/basic/image-carousel-basic-ex-03.tsx",
         type: "registry:example",
       },
     ],
     component: React.lazy(
       () =>
         import(
-          "../components/commerce-ui/image-carousel/basic/image-carousel-basic-ex-03"
+          "../components/commerce-ui/components/image-carousel/basic/image-carousel-basic-ex-03"
         )
     ),
   },
@@ -89,14 +89,14 @@ export const examples: Registry = [
     ],
     files: [
       {
-        path: "@/components/commerce-ui/image-carousel/basic/image-carousel-basic-ex-04.tsx",
+        path: "@/components/commerce-ui/components/image-carousel/basic/image-carousel-basic-ex-04.tsx",
         type: "registry:example",
       },
     ],
     component: React.lazy(
       () =>
         import(
-          "../components/commerce-ui/image-carousel/basic/image-carousel-basic-ex-04"
+          "../components/commerce-ui/components/image-carousel/basic/image-carousel-basic-ex-04"
         )
     ),
   },
@@ -108,14 +108,14 @@ export const examples: Registry = [
     registryDependencies: ["https://ui.stackzero.co/r/image-viewer-basic.json"],
     files: [
       {
-        path: "@/components/commerce-ui/image-viewer/basic/image-viewer-basic-ex-01.tsx",
+        path: "@/components/commerce-ui/components/image-viewer/basic/image-viewer-basic-ex-01.tsx",
         type: "registry:component",
       },
     ],
     component: React.lazy(
       () =>
         import(
-          "../components/commerce-ui/image-viewer/basic/image-viewer-basic-ex-01"
+          "../components/commerce-ui/components/image-viewer/basic/image-viewer-basic-ex-01"
         )
     ),
   },
@@ -127,14 +127,14 @@ export const examples: Registry = [
     registryDependencies: ["https://ui.stackzero.co/r/image-viewer-basic.json"],
     files: [
       {
-        path: "@/components/commerce-ui/image-viewer/basic/image-viewer-basic-ex-02.tsx",
+        path: "@/components/commerce-ui/components/image-viewer/basic/image-viewer-basic-ex-02.tsx",
         type: "registry:component",
       },
     ],
     component: React.lazy(
       () =>
         import(
-          "../components/commerce-ui/image-viewer/basic/image-viewer-basic-ex-02"
+          "../components/commerce-ui/components/image-viewer/basic/image-viewer-basic-ex-02"
         )
     ),
   },
@@ -148,14 +148,14 @@ export const examples: Registry = [
     ],
     files: [
       {
-        path: "@/components/commerce-ui/image-viewer/motion/image-viewer-motion-ex-01.tsx",
+        path: "@/components/commerce-ui/components/image-viewer/motion/image-viewer-motion-ex-01.tsx",
         type: "registry:component",
       },
     ],
     component: React.lazy(
       () =>
         import(
-          "../components/commerce-ui/image-viewer/motion/image-viewer-motion-ex-01"
+          "../components/commerce-ui/components/image-viewer/motion/image-viewer-motion-ex-01"
         )
     ),
   },
@@ -167,14 +167,14 @@ export const examples: Registry = [
     registryDependencies: ["https://ui.stackzero.co/r/price-format-basic.json"],
     files: [
       {
-        path: "@/components/commerce-ui/price-format/basic/price-format-basic-ex-01.tsx",
+        path: "@/components/commerce-ui/components/price-format/basic/price-format-basic-ex-01.tsx",
         type: "registry:example",
       },
     ],
     component: React.lazy(
       () =>
         import(
-          "../components/commerce-ui/price-format/basic/price-format-basic-ex-01"
+          "../components/commerce-ui/components/price-format/basic/price-format-basic-ex-01"
         )
     ),
   },
@@ -186,14 +186,14 @@ export const examples: Registry = [
     registryDependencies: ["https://ui.stackzero.co/r/price-format-sale.json"],
     files: [
       {
-        path: "@/components/commerce-ui/price-format/sale/price-format-sale-ex-01.tsx",
+        path: "@/components/commerce-ui/components/price-format/sale/price-format-sale-ex-01.tsx",
         type: "registry:example",
       },
     ],
     component: React.lazy(
       () =>
         import(
-          "../components/commerce-ui/price-format/sale/price-format-sale-ex-01"
+          "../components/commerce-ui/components/price-format/sale/price-format-sale-ex-01"
         )
     ),
   },
@@ -205,14 +205,14 @@ export const examples: Registry = [
     registryDependencies: ["https://ui.stackzero.co/r/price-format-sale.json"],
     files: [
       {
-        path: "@/components/commerce-ui/price-format/sale/price-format-sale-ex-02.tsx",
+        path: "@/components/commerce-ui/components/price-format/sale/price-format-sale-ex-02.tsx",
         type: "registry:example",
       },
     ],
     component: React.lazy(
       () =>
         import(
-          "../components/commerce-ui/price-format/sale/price-format-sale-ex-02"
+          "../components/commerce-ui/components/price-format/sale/price-format-sale-ex-02"
         )
     ),
   },
@@ -224,14 +224,14 @@ export const examples: Registry = [
     registryDependencies: ["https://ui.stackzero.co/r/price-format-sale.json"],
     files: [
       {
-        path: "@/components/commerce-ui/price-format/sale/price-format-sale-ex-03.tsx",
+        path: "@/components/commerce-ui/components/price-format/sale/price-format-sale-ex-03.tsx",
         type: "registry:example",
       },
     ],
     component: React.lazy(
       () =>
         import(
-          "../components/commerce-ui/price-format/sale/price-format-sale-ex-03"
+          "../components/commerce-ui/components/price-format/sale/price-format-sale-ex-03"
         )
     ),
   },
@@ -350,14 +350,14 @@ export const examples: Registry = [
     ],
     files: [
       {
-        path: "@/components/commerce-ui/quantity-input/basic/quantity-input-ex-01.tsx",
+        path: "@/components/commerce-ui/components/quantity-input/basic/quantity-input-ex-01.tsx",
         type: "registry:example",
       },
     ],
     component: React.lazy(
       () =>
         import(
-          "../components/commerce-ui/quantity-input/basic/quantity-input-ex-01"
+          "../components/commerce-ui/components/quantity-input/basic/quantity-input-ex-01"
         )
     ),
   },
@@ -371,14 +371,14 @@ export const examples: Registry = [
     ],
     files: [
       {
-        path: "@/components/commerce-ui/quantity-input/basic/quantity-input-ex-02.tsx",
+        path: "@/components/commerce-ui/components/quantity-input/basic/quantity-input-ex-02.tsx",
         type: "registry:example",
       },
     ],
     component: React.lazy(
       () =>
         import(
-          "../components/commerce-ui/quantity-input/basic/quantity-input-ex-02"
+          "../components/commerce-ui/components/quantity-input/basic/quantity-input-ex-02"
         )
     ),
   },
@@ -392,14 +392,14 @@ export const examples: Registry = [
     ],
     files: [
       {
-        path: "@/components/commerce-ui/quantity-input/basic/quantity-input-ex-03.tsx",
+        path: "@/components/commerce-ui/components/quantity-input/basic/quantity-input-ex-03.tsx",
         type: "registry:example",
       },
     ],
     component: React.lazy(
       () =>
         import(
-          "../components/commerce-ui/quantity-input/basic/quantity-input-ex-03"
+          "../components/commerce-ui/components/quantity-input/basic/quantity-input-ex-03"
         )
     ),
   },
@@ -508,14 +508,14 @@ export const examples: Registry = [
     registryDependencies: ["https://ui.stackzero.co/r/star-rating-basic.json"],
     files: [
       {
-        path: "@/components/commerce-ui/star-rating/basic/star-rating-basic-ex-01.tsx",
+        path: "@/components/commerce-ui/components/star-rating/basic/star-rating-basic-ex-01.tsx",
         type: "registry:example",
       },
     ],
     component: React.lazy(
       () =>
         import(
-          "../components/commerce-ui/star-rating/basic/star-rating-basic-ex-01"
+          "../components/commerce-ui/components/star-rating/basic/star-rating-basic-ex-01"
         )
     ),
   },
@@ -527,14 +527,14 @@ export const examples: Registry = [
     registryDependencies: ["https://ui.stackzero.co/r/star-rating-basic.json"],
     files: [
       {
-        path: "@/components/commerce-ui/star-rating/basic/star-rating-basic-ex-02.tsx",
+        path: "@/components/commerce-ui/components/star-rating/basic/star-rating-basic-ex-02.tsx",
         type: "registry:example",
       },
     ],
     component: React.lazy(
       () =>
         import(
-          "../components/commerce-ui/star-rating/basic/star-rating-basic-ex-02"
+          "../components/commerce-ui/components/star-rating/basic/star-rating-basic-ex-02"
         )
     ),
   },
@@ -546,14 +546,14 @@ export const examples: Registry = [
     registryDependencies: ["https://ui.stackzero.co/r/star-rating-basic.json"],
     files: [
       {
-        path: "@/components/commerce-ui/star-rating/basic/star-rating-basic-ex-03.tsx",
+        path: "@/components/commerce-ui/components/star-rating/basic/star-rating-basic-ex-03.tsx",
         type: "registry:example",
       },
     ],
     component: React.lazy(
       () =>
         import(
-          "../components/commerce-ui/star-rating/basic/star-rating-basic-ex-03"
+          "../components/commerce-ui/components/star-rating/basic/star-rating-basic-ex-03"
         )
     ),
   },
@@ -567,14 +567,14 @@ export const examples: Registry = [
     ],
     files: [
       {
-        path: "@/components/commerce-ui/star-rating/fractions/star-rating-fractions-ex-01.tsx",
+        path: "@/components/commerce-ui/components/star-rating/fractions/star-rating-fractions-ex-01.tsx",
         type: "registry:example",
       },
     ],
     component: React.lazy(
       () =>
         import(
-          "../components/commerce-ui/star-rating/fractions/star-rating-fractions-ex-01"
+          "../components/commerce-ui/components/star-rating/fractions/star-rating-fractions-ex-01"
         )
     ),
   },
@@ -588,14 +588,14 @@ export const examples: Registry = [
     ],
     files: [
       {
-        path: "@/components/commerce-ui/star-rating/fractions/star-rating-fractions-ex-02.tsx",
+        path: "@/components/commerce-ui/components/star-rating/fractions/star-rating-fractions-ex-02.tsx",
         type: "registry:example",
       },
     ],
     component: React.lazy(
       () =>
         import(
-          "../components/commerce-ui/star-rating/fractions/star-rating-fractions-ex-02"
+          "../components/commerce-ui/components/star-rating/fractions/star-rating-fractions-ex-02"
         )
     ),
   },
@@ -609,14 +609,14 @@ export const examples: Registry = [
     ],
     files: [
       {
-        path: "@/components/commerce-ui/star-rating/fractions/star-rating-fractions-ex-03.tsx",
+        path: "@/components/commerce-ui/components/star-rating/fractions/star-rating-fractions-ex-03.tsx",
         type: "registry:example",
       },
     ],
     component: React.lazy(
       () =>
         import(
-          "../components/commerce-ui/star-rating/fractions/star-rating-fractions-ex-03"
+          "../components/commerce-ui/components/star-rating/fractions/star-rating-fractions-ex-03"
         )
     ),
   },
@@ -630,14 +630,14 @@ export const examples: Registry = [
     ],
     files: [
       {
-        path: "@/components/commerce-ui/upvote-rating/basic/upvote-rating-basic-ex-01.tsx",
+        path: "@/components/commerce-ui/components/upvote-rating/basic/upvote-rating-basic-ex-01.tsx",
         type: "registry:example",
       },
     ],
     component: React.lazy(
       () =>
         import(
-          "../components/commerce-ui/upvote-rating/basic/upvote-rating-basic-ex-01"
+          "../components/commerce-ui/components/upvote-rating/basic/upvote-rating-basic-ex-01"
         )
     ),
   },
@@ -651,14 +651,14 @@ export const examples: Registry = [
     ],
     files: [
       {
-        path: "@/components/commerce-ui/upvote-rating/basic/upvote-rating-basic-ex-02.tsx",
+        path: "@/components/commerce-ui/components/upvote-rating/basic/upvote-rating-basic-ex-02.tsx",
         type: "registry:example",
       },
     ],
     component: React.lazy(
       () =>
         import(
-          "../components/commerce-ui/upvote-rating/basic/upvote-rating-basic-ex-02"
+          "../components/commerce-ui/components/upvote-rating/basic/upvote-rating-basic-ex-02"
         )
     ),
   },
@@ -672,14 +672,14 @@ export const examples: Registry = [
     ],
     files: [
       {
-        path: "@/components/commerce-ui/upvote-rating/animated/upvote-rating-animated-ex-01.tsx",
+        path: "@/components/commerce-ui/components/upvote-rating/animated/upvote-rating-animated-ex-01.tsx",
         type: "registry:example",
       },
     ],
     component: React.lazy(
       () =>
         import(
-          "../components/commerce-ui/upvote-rating/animated/upvote-rating-animated-ex-01"
+          "../components/commerce-ui/components/upvote-rating/animated/upvote-rating-animated-ex-01"
         )
     ),
   },
@@ -693,14 +693,14 @@ export const examples: Registry = [
     ],
     files: [
       {
-        path: "@/components/commerce-ui/upvote-rating/animated/upvote-rating-animated-ex-02.tsx",
+        path: "@/components/commerce-ui/components/upvote-rating/animated/upvote-rating-animated-ex-02.tsx",
         type: "registry:example",
       },
     ],
     component: React.lazy(
       () =>
         import(
-          "../components/commerce-ui/upvote-rating/animated/upvote-rating-animated-ex-02"
+          "../components/commerce-ui/components/upvote-rating/animated/upvote-rating-animated-ex-02"
         )
     ),
   },
@@ -714,14 +714,14 @@ export const examples: Registry = [
     ],
     files: [
       {
-        path: "@/components/commerce-ui/variant-selector/basic/variant-selector-basic-ex-01.tsx",
+        path: "@/components/commerce-ui/components/variant-selector/basic/variant-selector-basic-ex-01.tsx",
         type: "registry:example",
       },
     ],
     component: React.lazy(
       () =>
         import(
-          "../components/commerce-ui/variant-selector/basic/variant-selector-basic-ex-01"
+          "../components/commerce-ui/components/variant-selector/basic/variant-selector-basic-ex-01"
         )
     ),
   },
@@ -735,14 +735,14 @@ export const examples: Registry = [
     ],
     files: [
       {
-        path: "@/components/commerce-ui/variant-selector/basic/variant-selector-basic-ex-02.tsx",
+        path: "@/components/commerce-ui/components/variant-selector/basic/variant-selector-basic-ex-02.tsx",
         type: "registry:example",
       },
     ],
     component: React.lazy(
       () =>
         import(
-          "../components/commerce-ui/variant-selector/basic/variant-selector-basic-ex-02"
+          "../components/commerce-ui/components/variant-selector/basic/variant-selector-basic-ex-02"
         )
     ),
   },
@@ -756,14 +756,14 @@ export const examples: Registry = [
     ],
     files: [
       {
-        path: "@/components/commerce-ui/variant-selector/basic/variant-selector-basic-ex-03.tsx",
+        path: "@/components/commerce-ui/components/variant-selector/basic/variant-selector-basic-ex-03.tsx",
         type: "registry:example",
       },
     ],
     component: React.lazy(
       () =>
         import(
-          "../components/commerce-ui/variant-selector/basic/variant-selector-basic-ex-03"
+          "../components/commerce-ui/components/variant-selector/basic/variant-selector-basic-ex-03"
         )
     ),
   },
@@ -777,14 +777,14 @@ export const examples: Registry = [
     ],
     files: [
       {
-        path: "@/components/commerce-ui/variant-selector/basic/variant-selector-basic-ex-04.tsx",
+        path: "@/components/commerce-ui/components/variant-selector/basic/variant-selector-basic-ex-04.tsx",
         type: "registry:example",
       },
     ],
     component: React.lazy(
       () =>
         import(
-          "../components/commerce-ui/variant-selector/basic/variant-selector-basic-ex-04"
+          "../components/commerce-ui/components/variant-selector/basic/variant-selector-basic-ex-04"
         )
     ),
   },
@@ -798,14 +798,14 @@ export const examples: Registry = [
     ],
     files: [
       {
-        path: "@/components/commerce-ui/variant-selector/basic/variant-selector-basic-ex-05.tsx",
+        path: "@/components/commerce-ui/components/variant-selector/basic/variant-selector-basic-ex-05.tsx",
         type: "registry:example",
       },
     ],
     component: React.lazy(
       () =>
         import(
-          "../components/commerce-ui/variant-selector/basic/variant-selector-basic-ex-05"
+          "../components/commerce-ui/components/variant-selector/basic/variant-selector-basic-ex-05"
         )
     ),
   },
@@ -819,14 +819,14 @@ export const examples: Registry = [
     ],
     files: [
       {
-        path: "@/components/commerce-ui/variant-selector/images/variant-selector-images-ex-01.tsx",
+        path: "@/components/commerce-ui/components/variant-selector/images/variant-selector-images-ex-01.tsx",
         type: "registry:example",
       },
     ],
     component: React.lazy(
       () =>
         import(
-          "../components/commerce-ui/variant-selector/images/variant-selector-images-ex-01"
+          "../components/commerce-ui/components/variant-selector/images/variant-selector-images-ex-01"
         )
     ),
   },
@@ -840,14 +840,14 @@ export const examples: Registry = [
     ],
     files: [
       {
-        path: "@/components/commerce-ui/variant-selector/multiple/variant-selector-multiple-ex-01.tsx",
+        path: "@/components/commerce-ui/components/variant-selector/multiple/variant-selector-multiple-ex-01.tsx",
         type: "registry:example",
       },
     ],
     component: React.lazy(
       () =>
         import(
-          "../components/commerce-ui/variant-selector/multiple/variant-selector-multiple-ex-01"
+          "../components/commerce-ui/components/variant-selector/multiple/variant-selector-multiple-ex-01"
         )
     ),
   },
@@ -861,14 +861,14 @@ export const examples: Registry = [
     ],
     files: [
       {
-        path: "@/components/commerce-ui/variant-selector/multiple/variant-selector-multiple-ex-02.tsx",
+        path: "@/components/commerce-ui/components/variant-selector/multiple/variant-selector-multiple-ex-02.tsx",
         type: "registry:example",
       },
     ],
     component: React.lazy(
       () =>
         import(
-          "../components/commerce-ui/variant-selector/multiple/variant-selector-multiple-ex-02"
+          "../components/commerce-ui/components/variant-selector/multiple/variant-selector-multiple-ex-02"
         )
     ),
   },
@@ -882,14 +882,14 @@ export const examples: Registry = [
     ],
     files: [
       {
-        path: "@/components/commerce-ui/variant-color-selector/basic/variant-color-selector-basic-ex-01.tsx",
+        path: "@/components/commerce-ui/components/variant-color-selector/basic/variant-color-selector-basic-ex-01.tsx",
         type: "registry:example",
       },
     ],
     component: React.lazy(
       () =>
         import(
-          "../components/commerce-ui/variant-color-selector/basic/variant-color-selector-basic-ex-01"
+          "../components/commerce-ui/components/variant-color-selector/basic/variant-color-selector-basic-ex-01"
         )
     ),
   },

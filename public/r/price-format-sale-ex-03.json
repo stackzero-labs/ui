@@ -9,7 +9,7 @@
     {
       "type": "registry:example",
       "content": "\"use client\";\n\nimport PriceFormat_Sale from \"@/components/commerce-ui/price-format-sale\";\n\nexport default function PriceFormat_Sale_Ex_03() {\n  return (\n    <div className=\"flex flex-row items-center gap-4 text-lg\">\n      <PriceFormat_Sale\n        originalPrice={99.95}\n        prefix=\"$\"\n        showSavePercentage={true}\n        classNameSalePrice=\"text-4xl\"\n        className=\"flex-col items-start\"\n      />\n    </div>\n  );\n}\n",
-      "path": "/components/commerce-ui/price-format/sale/price-format-sale-ex-03.tsx",
+      "path": "/components/commerce-ui/components/price-format/sale/price-format-sale-ex-03.tsx",
       "target": "/components/commerce-ui/price-format-sale-ex-03.tsx"
     }
   ]

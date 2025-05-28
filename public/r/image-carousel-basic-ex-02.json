@@ -11,7 +11,7 @@
     {
       "type": "registry:example",
       "content": "import ImageCarouselBasic, {\n  CarouselImages,\n} from \"@/components/commerce-ui/image-carousel-basic\";\n\nconst images: CarouselImages = [\n  {\n    title: \"Coffee Machine 1\",\n    url: \"https://raw.githubusercontent.com/stackzero-labs/ui/refs/heads/main/public/placeholders/coffee-machine-01.jpg\",\n  },\n  {\n    title: \"Coffee Machine 2\",\n    url: \"https://raw.githubusercontent.com/stackzero-labs/ui/refs/heads/main/public/placeholders/coffee-machine-02.jpg\",\n  },\n  {\n    title: \"Coffee Filter\",\n    url: \"https://raw.githubusercontent.com/stackzero-labs/ui/refs/heads/main/public/placeholders/coffee-filter-01.jpg\",\n  },\n  {\n    title: \"Coffee Cups\",\n    url: \"https://raw.githubusercontent.com/stackzero-labs/ui/refs/heads/main/public/placeholders/coffee-cups-01.jpg\",\n  },\n];\n\nexport default function ImageCarousel_Basic_Ex_02() {\n  return (\n    <ImageCarouselBasic\n      images={images}\n      imageFit=\"contain\"\n      thumbPosition=\"right\"\n    />\n  );\n}\n",
-      "path": "/components/commerce-ui/image-carousel/basic/image-carousel-basic-ex-02.tsx",
+      "path": "/components/commerce-ui/components/image-carousel/basic/image-carousel-basic-ex-02.tsx",
       "target": "/components/commerce-ui/image-carousel-basic-ex-02.tsx"
     }
   ]

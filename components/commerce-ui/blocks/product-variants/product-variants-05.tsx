@@ -2,13 +2,13 @@
 
 import ImageCarouselBasic, {
   CarouselImage,
-} from "@/components/commerce-ui/image-carousel/basic/image-carousel-basic";
-import PriceFormat from "@/components/commerce-ui/price-format/basic/price-format-basic";
-import QuantityInputBasic from "@/components/commerce-ui/quantity-input/basic/quantity-input-basic";
-import StarRating_Fractions from "@/components/commerce-ui/star-rating/fractions/star-rating-fractions";
+} from "@/components/commerce-ui/components/image-carousel/basic/image-carousel-basic";
+import PriceFormat from "@/components/commerce-ui/components/price-format/basic/price-format-basic";
+import QuantityInputBasic from "@/components/commerce-ui/components/quantity-input/basic/quantity-input-basic";
+import StarRating_Fractions from "@/components/commerce-ui/components/star-rating/fractions/star-rating-fractions";
 import VariantSelectorMultiple, {
   VariantItem as BaseVariantItem,
-} from "@/components/commerce-ui/variant-selector/multiple/variant-selector-multiple";
+} from "@/components/commerce-ui/components/variant-selector/multiple/variant-selector-multiple";
 import { Button } from "@/components/ui/button";
 import { ShieldCheck, Users } from "lucide-react";
 import { useState } from "react";

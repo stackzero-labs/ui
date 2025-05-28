@@ -12,7 +12,7 @@
     {
       "type": "registry:component",
       "content": "\"use client\";\n\nimport { cn } from \"@/lib/utils\";\nimport { NumericFormat } from \"react-number-format\";\n\ninterface PriceFormat_BasicProps extends React.HTMLAttributes<HTMLDivElement> {\n  value: number;\n  prefix?: string;\n  thousandSeparator?: string;\n  decimalSeparator?: string;\n  decimalScale?: number;\n}\n\nconst PriceFormat_Basic: React.FC<PriceFormat_BasicProps> = ({\n  className,\n  decimalScale = 2,\n  decimalSeparator = \",\",\n  prefix = \"$\",\n  thousandSeparator = \".\",\n  value,\n}) => {\n  return (\n    <NumericFormat\n      value={value}\n      thousandSeparator={thousandSeparator}\n      decimalSeparator={decimalSeparator}\n      decimalScale={decimalScale}\n      prefix={prefix}\n      displayType=\"text\"\n      className={cn(\"text-lg font-medium\", className)}\n    />\n  );\n};\n\nexport default PriceFormat_Basic;\n",
-      "path": "/components/commerce-ui/price-format/basic/price-format-basic.tsx",
+      "path": "/components/commerce-ui/components/price-format/basic/price-format-basic.tsx",
       "target": "/components/commerce-ui/price-format-basic.tsx"
     }
   ]

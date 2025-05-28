@@ -1,4 +1,4 @@
-import StarRating from "@/components/commerce-ui/star-rating/basic/star-rating-basic";
+import StarRating from "@/components/commerce-ui/components/star-rating/basic/star-rating-basic";
 interface Review_01Props {
   rating?: number;
   reviewDate?: string;

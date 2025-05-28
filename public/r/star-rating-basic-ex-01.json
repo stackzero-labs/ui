@@ -11,7 +11,7 @@
     {
       "type": "registry:example",
       "content": "\"use client\";\n\nimport StarRatingBasic from \"@/components/commerce-ui/star-rating-basic\";\nimport { useState } from \"react\";\n\nexport default function StarRating_Basic_Ex_01() {\n  const [rating, setRating] = useState(3);\n  return (\n    <div className=\"flex flex-row items-center gap-4\">\n      <StarRatingBasic value={rating} onChange={setRating} maxStars={5} />\n      <p>({rating})</p>\n    </div>\n  );\n}\n",
-      "path": "/components/commerce-ui/star-rating/basic/star-rating-basic-ex-01.tsx",
+      "path": "/components/commerce-ui/components/star-rating/basic/star-rating-basic-ex-01.tsx",
       "target": "/components/commerce-ui/star-rating-basic-ex-01.tsx"
     }
   ]

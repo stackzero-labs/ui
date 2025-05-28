@@ -51,7 +51,7 @@
       ],
       "files": [
         {
-          "path": "@/components/commerce-ui/image-viewer/basic/image-viewer-basic.tsx",
+          "path": "@/components/commerce-ui/components/image-viewer/basic/image-viewer-basic.tsx",
           "type": "registry:component"
         }
       ]
@@ -67,7 +67,7 @@
       ],
       "files": [
         {
-          "path": "@/components/commerce-ui/image-viewer/motion/image-viewer-motion.tsx",
+          "path": "@/components/commerce-ui/components/image-viewer/motion/image-viewer-motion.tsx",
           "type": "registry:component"
         }
       ]
@@ -80,7 +80,7 @@
       ],
       "files": [
         {
-          "path": "@/components/commerce-ui/star-rating/basic/star-rating-basic.tsx",
+          "path": "@/components/commerce-ui/components/star-rating/basic/star-rating-basic.tsx",
           "type": "registry:component"
         }
       ]
@@ -93,7 +93,7 @@
       ],
       "files": [
         {
-          "path": "@/components/commerce-ui/star-rating/fractions/star-rating-fractions.tsx",
+          "path": "@/components/commerce-ui/components/star-rating/fractions/star-rating-fractions.tsx",
           "type": "registry:component"
         }
       ]
@@ -120,7 +120,7 @@
       ],
       "files": [
         {
-          "path": "@/components/commerce-ui/variant-color-selector/basic/variant-color-selector-basic.tsx",
+          "path": "@/components/commerce-ui/components/variant-color-selector/basic/variant-color-selector-basic.tsx",
           "type": "registry:component"
         }
       ]
@@ -140,7 +140,7 @@
       ],
       "files": [
         {
-          "path": "@/components/commerce-ui/image-carousel/basic/image-carousel-basic.tsx",
+          "path": "@/components/commerce-ui/components/image-carousel/basic/image-carousel-basic.tsx",
           "type": "registry:component"
         }
       ]
@@ -157,7 +157,7 @@
       ],
       "files": [
         {
-          "path": "@/components/commerce-ui/price-format/basic/price-format-basic.tsx",
+          "path": "@/components/commerce-ui/components/price-format/basic/price-format-basic.tsx",
           "type": "registry:component"
         }
       ]
@@ -174,7 +174,7 @@
       ],
       "files": [
         {
-          "path": "@/components/commerce-ui/price-format/sale/price-format-sale.tsx",
+          "path": "@/components/commerce-ui/components/price-format/sale/price-format-sale.tsx",
           "type": "registry:component"
         }
       ]
@@ -188,7 +188,7 @@
       "registryDependencies": [],
       "files": [
         {
-          "path": "@/components/commerce-ui/quantity-input/basic/quantity-input-basic.tsx",
+          "path": "@/components/commerce-ui/components/quantity-input/basic/quantity-input-basic.tsx",
           "type": "registry:component"
         }
       ]
@@ -204,7 +204,7 @@
       ],
       "files": [
         {
-          "path": "@/components/commerce-ui/upvote-rating/basic/upvote-rating-basic.tsx",
+          "path": "@/components/commerce-ui/components/upvote-rating/basic/upvote-rating-basic.tsx",
           "type": "registry:component"
         }
       ]
@@ -221,7 +221,7 @@
       ],
       "files": [
         {
-          "path": "@/components/commerce-ui/upvote-rating/animated/upvote-rating-animated.tsx",
+          "path": "@/components/commerce-ui/components/upvote-rating/animated/upvote-rating-animated.tsx",
           "type": "registry:component"
         }
       ]
@@ -238,7 +238,7 @@
       ],
       "files": [
         {
-          "path": "@/components/commerce-ui/variant-selector/basic/variant-selector-basic.tsx",
+          "path": "@/components/commerce-ui/components/variant-selector/basic/variant-selector-basic.tsx",
           "type": "registry:component"
         }
       ]
@@ -252,7 +252,7 @@
       ],
       "files": [
         {
-          "path": "@/components/commerce-ui/variant-selector/images/variant-selector-images.tsx",
+          "path": "@/components/commerce-ui/components/variant-selector/images/variant-selector-images.tsx",
           "type": "registry:component"
         }
       ]
@@ -266,7 +266,7 @@
       ],
       "files": [
         {
-          "path": "@/components/commerce-ui/variant-selector/multiple/variant-selector-multiple.tsx",
+          "path": "@/components/commerce-ui/components/variant-selector/multiple/variant-selector-multiple.tsx",
           "type": "registry:component"
         }
       ]
@@ -298,7 +298,7 @@
       ],
       "files": [
         {
-          "path": "@/components/commerce-ui/image-carousel/basic/image-carousel-basic-ex-01.tsx",
+          "path": "@/components/commerce-ui/components/image-carousel/basic/image-carousel-basic-ex-01.tsx",
           "type": "registry:example"
         }
       ]
@@ -314,7 +314,7 @@
       ],
       "files": [
         {
-          "path": "@/components/commerce-ui/image-carousel/basic/image-carousel-basic-ex-02.tsx",
+          "path": "@/components/commerce-ui/components/image-carousel/basic/image-carousel-basic-ex-02.tsx",
           "type": "registry:example"
         }
       ]
@@ -330,7 +330,7 @@
       ],
       "files": [
         {
-          "path": "@/components/commerce-ui/image-carousel/basic/image-carousel-basic-ex-03.tsx",
+          "path": "@/components/commerce-ui/components/image-carousel/basic/image-carousel-basic-ex-03.tsx",
           "type": "registry:example"
         }
       ]
@@ -346,7 +346,7 @@
       ],
       "files": [
         {
-          "path": "@/components/commerce-ui/image-carousel/basic/image-carousel-basic-ex-04.tsx",
+          "path": "@/components/commerce-ui/components/image-carousel/basic/image-carousel-basic-ex-04.tsx",
           "type": "registry:example"
         }
       ]
@@ -362,7 +362,7 @@
       ],
       "files": [
         {
-          "path": "@/components/commerce-ui/image-viewer/basic/image-viewer-basic-ex-01.tsx",
+          "path": "@/components/commerce-ui/components/image-viewer/basic/image-viewer-basic-ex-01.tsx",
           "type": "registry:component"
         }
       ]
@@ -378,7 +378,7 @@
       ],
       "files": [
         {
-          "path": "@/components/commerce-ui/image-viewer/basic/image-viewer-basic-ex-02.tsx",
+          "path": "@/components/commerce-ui/components/image-viewer/basic/image-viewer-basic-ex-02.tsx",
           "type": "registry:component"
         }
       ]
@@ -394,7 +394,7 @@
       ],
       "files": [
         {
-          "path": "@/components/commerce-ui/image-viewer/motion/image-viewer-motion-ex-01.tsx",
+          "path": "@/components/commerce-ui/components/image-viewer/motion/image-viewer-motion-ex-01.tsx",
           "type": "registry:component"
         }
       ]
@@ -410,7 +410,7 @@
       ],
       "files": [
         {
-          "path": "@/components/commerce-ui/price-format/basic/price-format-basic-ex-01.tsx",
+          "path": "@/components/commerce-ui/components/price-format/basic/price-format-basic-ex-01.tsx",
           "type": "registry:example"
         }
       ]
@@ -424,7 +424,7 @@
       ],
       "files": [
         {
-          "path": "@/components/commerce-ui/price-format/sale/price-format-sale-ex-01.tsx",
+          "path": "@/components/commerce-ui/components/price-format/sale/price-format-sale-ex-01.tsx",
           "type": "registry:example"
         }
       ]
@@ -438,7 +438,7 @@
       ],
       "files": [
         {
-          "path": "@/components/commerce-ui/price-format/sale/price-format-sale-ex-02.tsx",
+          "path": "@/components/commerce-ui/components/price-format/sale/price-format-sale-ex-02.tsx",
           "type": "registry:example"
         }
       ]
@@ -452,7 +452,7 @@
       ],
       "files": [
         {
-          "path": "@/components/commerce-ui/price-format/sale/price-format-sale-ex-03.tsx",
+          "path": "@/components/commerce-ui/components/price-format/sale/price-format-sale-ex-03.tsx",
           "type": "registry:example"
         }
       ]
@@ -538,7 +538,7 @@
       ],
       "files": [
         {
-          "path": "@/components/commerce-ui/quantity-input/basic/quantity-input-ex-01.tsx",
+          "path": "@/components/commerce-ui/components/quantity-input/basic/quantity-input-ex-01.tsx",
           "type": "registry:example"
         }
       ]
@@ -554,7 +554,7 @@
       ],
       "files": [
         {
-          "path": "@/components/commerce-ui/quantity-input/basic/quantity-input-ex-02.tsx",
+          "path": "@/components/commerce-ui/components/quantity-input/basic/quantity-input-ex-02.tsx",
           "type": "registry:example"
         }
       ]
@@ -570,7 +570,7 @@
       ],
       "files": [
         {
-          "path": "@/components/commerce-ui/quantity-input/basic/quantity-input-ex-03.tsx",
+          "path": "@/components/commerce-ui/components/quantity-input/basic/quantity-input-ex-03.tsx",
           "type": "registry:example"
         }
       ]
@@ -666,7 +666,7 @@
       ],
       "files": [
         {
-          "path": "@/components/commerce-ui/star-rating/basic/star-rating-basic-ex-01.tsx",
+          "path": "@/components/commerce-ui/components/star-rating/basic/star-rating-basic-ex-01.tsx",
           "type": "registry:example"
         }
       ]
@@ -682,7 +682,7 @@
       ],
       "files": [
         {
-          "path": "@/components/commerce-ui/star-rating/basic/star-rating-basic-ex-02.tsx",
+          "path": "@/components/commerce-ui/components/star-rating/basic/star-rating-basic-ex-02.tsx",
           "type": "registry:example"
         }
       ]
@@ -698,7 +698,7 @@
       ],
       "files": [
         {
-          "path": "@/components/commerce-ui/star-rating/basic/star-rating-basic-ex-03.tsx",
+          "path": "@/components/commerce-ui/components/star-rating/basic/star-rating-basic-ex-03.tsx",
           "type": "registry:example"
         }
       ]
@@ -714,7 +714,7 @@
       ],
       "files": [
         {
-          "path": "@/components/commerce-ui/star-rating/fractions/star-rating-fractions-ex-01.tsx",
+          "path": "@/components/commerce-ui/components/star-rating/fractions/star-rating-fractions-ex-01.tsx",
           "type": "registry:example"
         }
       ]
@@ -730,7 +730,7 @@
       ],
       "files": [
         {
-          "path": "@/components/commerce-ui/star-rating/fractions/star-rating-fractions-ex-02.tsx",
+          "path": "@/components/commerce-ui/components/star-rating/fractions/star-rating-fractions-ex-02.tsx",
           "type": "registry:example"
         }
       ]
@@ -746,7 +746,7 @@
       ],
       "files": [
         {
-          "path": "@/components/commerce-ui/star-rating/fractions/star-rating-fractions-ex-03.tsx",
+          "path": "@/components/commerce-ui/components/star-rating/fractions/star-rating-fractions-ex-03.tsx",
           "type": "registry:example"
         }
       ]
@@ -762,7 +762,7 @@
       ],
       "files": [
         {
-          "path": "@/components/commerce-ui/upvote-rating/basic/upvote-rating-basic-ex-01.tsx",
+          "path": "@/components/commerce-ui/components/upvote-rating/basic/upvote-rating-basic-ex-01.tsx",
           "type": "registry:example"
         }
       ]
@@ -778,7 +778,7 @@
       ],
       "files": [
         {
-          "path": "@/components/commerce-ui/upvote-rating/basic/upvote-rating-basic-ex-02.tsx",
+          "path": "@/components/commerce-ui/components/upvote-rating/basic/upvote-rating-basic-ex-02.tsx",
           "type": "registry:example"
         }
       ]
@@ -795,7 +795,7 @@
       ],
       "files": [
         {
-          "path": "@/components/commerce-ui/upvote-rating/animated/upvote-rating-animated-ex-01.tsx",
+          "path": "@/components/commerce-ui/components/upvote-rating/animated/upvote-rating-animated-ex-01.tsx",
           "type": "registry:example"
         }
       ]
@@ -812,7 +812,7 @@
       ],
       "files": [
         {
-          "path": "@/components/commerce-ui/upvote-rating/animated/upvote-rating-animated-ex-02.tsx",
+          "path": "@/components/commerce-ui/components/upvote-rating/animated/upvote-rating-animated-ex-02.tsx",
           "type": "registry:example"
         }
       ]
@@ -829,7 +829,7 @@
       ],
       "files": [
         {
-          "path": "@/components/commerce-ui/variant-selector/basic/variant-selector-basic-ex-01.tsx",
+          "path": "@/components/commerce-ui/components/variant-selector/basic/variant-selector-basic-ex-01.tsx",
           "type": "registry:example"
         }
       ]
@@ -846,7 +846,7 @@
       ],
       "files": [
         {
-          "path": "@/components/commerce-ui/variant-selector/basic/variant-selector-basic-ex-02.tsx",
+          "path": "@/components/commerce-ui/components/variant-selector/basic/variant-selector-basic-ex-02.tsx",
           "type": "registry:example"
         }
       ]
@@ -863,7 +863,7 @@
       ],
       "files": [
         {
-          "path": "@/components/commerce-ui/variant-selector/basic/variant-selector-basic-ex-03.tsx",
+          "path": "@/components/commerce-ui/components/variant-selector/basic/variant-selector-basic-ex-03.tsx",
           "type": "registry:example"
         }
       ]
@@ -880,7 +880,7 @@
       ],
       "files": [
         {
-          "path": "@/components/commerce-ui/variant-selector/basic/variant-selector-basic-ex-04.tsx",
+          "path": "@/components/commerce-ui/components/variant-selector/basic/variant-selector-basic-ex-04.tsx",
           "type": "registry:example"
         }
       ]
@@ -897,7 +897,7 @@
       ],
       "files": [
         {
-          "path": "@/components/commerce-ui/variant-selector/basic/variant-selector-basic-ex-05.tsx",
+          "path": "@/components/commerce-ui/components/variant-selector/basic/variant-selector-basic-ex-05.tsx",
           "type": "registry:example"
         }
       ]
@@ -914,7 +914,7 @@
       ],
       "files": [
         {
-          "path": "@/components/commerce-ui/variant-selector/images/variant-selector-images-ex-01.tsx",
+          "path": "@/components/commerce-ui/components/variant-selector/images/variant-selector-images-ex-01.tsx",
           "type": "registry:example"
         }
       ]
@@ -931,7 +931,7 @@
       ],
       "files": [
         {
-          "path": "@/components/commerce-ui/variant-selector/multiple/variant-selector-multiple-ex-01.tsx",
+          "path": "@/components/commerce-ui/components/variant-selector/multiple/variant-selector-multiple-ex-01.tsx",
           "type": "registry:example"
         }
       ]
@@ -948,7 +948,7 @@
       ],
       "files": [
         {
-          "path": "@/components/commerce-ui/variant-selector/multiple/variant-selector-multiple-ex-02.tsx",
+          "path": "@/components/commerce-ui/components/variant-selector/multiple/variant-selector-multiple-ex-02.tsx",
           "type": "registry:example"
         }
       ]
@@ -966,7 +966,7 @@
       ],
       "files": [
         {
-          "path": "@/components/commerce-ui/variant-color-selector/basic/variant-color-selector-basic-ex-01.tsx",
+          "path": "@/components/commerce-ui/components/variant-color-selector/basic/variant-color-selector-basic-ex-01.tsx",
           "type": "registry:example"
         }
       ]

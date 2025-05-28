@@ -1,13 +1,13 @@
 "use client";
 
-import ImageViewer from "@/components/commerce-ui/image-viewer/basic/image-viewer-basic";
-import PriceFormat from "@/components/commerce-ui/price-format/basic/price-format-basic";
-import QuantityInputBasic from "@/components/commerce-ui/quantity-input/basic/quantity-input-basic";
-import StarRating_Fractions from "@/components/commerce-ui/star-rating/fractions/star-rating-fractions";
+import ImageViewer from "@/components/commerce-ui/components/image-viewer/basic/image-viewer-basic";
+import PriceFormat from "@/components/commerce-ui/components/price-format/basic/price-format-basic";
+import QuantityInputBasic from "@/components/commerce-ui/components/quantity-input/basic/quantity-input-basic";
+import StarRating_Fractions from "@/components/commerce-ui/components/star-rating/fractions/star-rating-fractions";
 import VariantSelectorBasic, {
   VariantItem as BaseVariantItem,
-} from "@/components/commerce-ui/variant-selector/basic/variant-selector-basic";
-import VariantSelectorMultiple from "@/components/commerce-ui/variant-selector/multiple/variant-selector-multiple";
+} from "@/components/commerce-ui/components/variant-selector/basic/variant-selector-basic";
+import VariantSelectorMultiple from "@/components/commerce-ui/components/variant-selector/multiple/variant-selector-multiple";
 import { Button } from "@/components/ui/button";
 import {
   Check,

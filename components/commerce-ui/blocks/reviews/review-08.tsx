@@ -1,6 +1,6 @@
 "use client";
 
-import StarRating from "@/components/commerce-ui/star-rating/fractions/star-rating-fractions";
+import StarRating from "@/components/commerce-ui/components/star-rating/fractions/star-rating-fractions";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { Globe, ThumbsUp } from "lucide-react";

@@ -1,8 +1,8 @@
 "use client";
 
-import ImageViewer from "@/components/commerce-ui/image-viewer/basic/image-viewer-basic";
-import PriceFormat_Sale from "@/components/commerce-ui/price-format/sale/price-format-sale";
-import StarRating_Fractions from "@/components/commerce-ui/star-rating/fractions/star-rating-fractions";
+import ImageViewer from "@/components/commerce-ui/components/image-viewer/basic/image-viewer-basic";
+import PriceFormat_Sale from "@/components/commerce-ui/components/price-format/sale/price-format-sale";
+import StarRating_Fractions from "@/components/commerce-ui/components/star-rating/fractions/star-rating-fractions";
 import { Button } from "@/components/ui/button";
 import {
   BadgeCheck,

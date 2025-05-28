@@ -2,12 +2,12 @@
 
 import ImageCarousel_Basic, {
   CarouselImage,
-} from "@/components/commerce-ui/image-carousel/basic/image-carousel-basic";
-import PriceFormat from "@/components/commerce-ui/price-format/basic/price-format-basic";
-import QuantityInputBasic from "@/components/commerce-ui/quantity-input/basic/quantity-input-basic";
+} from "@/components/commerce-ui/components/image-carousel/basic/image-carousel-basic";
+import PriceFormat from "@/components/commerce-ui/components/price-format/basic/price-format-basic";
+import QuantityInputBasic from "@/components/commerce-ui/components/quantity-input/basic/quantity-input-basic";
 import VariantSelectorBasic, {
   VariantItem as BaseVariantItem,
-} from "@/components/commerce-ui/variant-selector/basic/variant-selector-basic";
+} from "@/components/commerce-ui/components/variant-selector/basic/variant-selector-basic";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { Check, ShieldCheck } from "lucide-react";

@@ -48,14 +48,14 @@ export const components: Registry = [
     ],
     files: [
       {
-        path: "@/components/commerce-ui/image-viewer/basic/image-viewer-basic.tsx",
+        path: "@/components/commerce-ui/components/image-viewer/basic/image-viewer-basic.tsx",
         type: "registry:component",
       },
     ],
     component: React.lazy(
       () =>
         import(
-          "../components/commerce-ui/image-viewer/basic/image-viewer-basic"
+          "../components/commerce-ui/components/image-viewer/basic/image-viewer-basic"
         )
     ),
   },
@@ -71,14 +71,14 @@ export const components: Registry = [
     ],
     files: [
       {
-        path: "@/components/commerce-ui/image-viewer/motion/image-viewer-motion.tsx",
+        path: "@/components/commerce-ui/components/image-viewer/motion/image-viewer-motion.tsx",
         type: "registry:component",
       },
     ],
     component: React.lazy(
       () =>
         import(
-          "../components/commerce-ui/image-viewer/motion/image-viewer-motion"
+          "../components/commerce-ui/components/image-viewer/motion/image-viewer-motion"
         )
     ),
   },
@@ -88,13 +88,15 @@ export const components: Registry = [
     dependencies: ["lucide-react"],
     files: [
       {
-        path: "@/components/commerce-ui/star-rating/basic/star-rating-basic.tsx",
+        path: "@/components/commerce-ui/components/star-rating/basic/star-rating-basic.tsx",
         type: "registry:component",
       },
     ],
     component: React.lazy(
       () =>
-        import("../components/commerce-ui/star-rating/basic/star-rating-basic")
+        import(
+          "../components/commerce-ui/components/star-rating/basic/star-rating-basic"
+        )
     ),
   },
 
@@ -104,14 +106,14 @@ export const components: Registry = [
     dependencies: ["lucide-react"],
     files: [
       {
-        path: "@/components/commerce-ui/star-rating/fractions/star-rating-fractions.tsx",
+        path: "@/components/commerce-ui/components/star-rating/fractions/star-rating-fractions.tsx",
         type: "registry:component",
       },
     ],
     component: React.lazy(
       () =>
         import(
-          "../components/commerce-ui/star-rating/fractions/star-rating-fractions"
+          "../components/commerce-ui/components/star-rating/fractions/star-rating-fractions"
         )
     ),
   },
@@ -140,14 +142,14 @@ export const components: Registry = [
     dependencies: ["lucide-react", "@radix-ui/react-radio-group"],
     files: [
       {
-        path: "@/components/commerce-ui/variant-color-selector/basic/variant-color-selector-basic.tsx",
+        path: "@/components/commerce-ui/components/variant-color-selector/basic/variant-color-selector-basic.tsx",
         type: "registry:component",
       },
     ],
     component: React.lazy(
       () =>
         import(
-          "../components/commerce-ui/variant-color-selector/basic/variant-color-selector-basic"
+          "../components/commerce-ui/components/variant-color-selector/basic/variant-color-selector-basic"
         )
     ),
   },
@@ -165,14 +167,14 @@ export const components: Registry = [
     registryDependencies: ["button"],
     files: [
       {
-        path: "@/components/commerce-ui/image-carousel/basic/image-carousel-basic.tsx",
+        path: "@/components/commerce-ui/components/image-carousel/basic/image-carousel-basic.tsx",
         type: "registry:component",
       },
     ],
     component: React.lazy(
       () =>
         import(
-          "../components/commerce-ui/image-carousel/basic/image-carousel-basic"
+          "../components/commerce-ui/components/image-carousel/basic/image-carousel-basic"
         )
     ),
   },
@@ -184,14 +186,14 @@ export const components: Registry = [
     registryDependencies: ["button"],
     files: [
       {
-        path: "@/components/commerce-ui/price-format/basic/price-format-basic.tsx",
+        path: "@/components/commerce-ui/components/price-format/basic/price-format-basic.tsx",
         type: "registry:component",
       },
     ],
     component: React.lazy(
       () =>
         import(
-          "../components/commerce-ui/price-format/basic/price-format-basic"
+          "../components/commerce-ui/components/price-format/basic/price-format-basic"
         )
     ),
   },
@@ -203,13 +205,15 @@ export const components: Registry = [
     registryDependencies: ["button"],
     files: [
       {
-        path: "@/components/commerce-ui/price-format/sale/price-format-sale.tsx",
+        path: "@/components/commerce-ui/components/price-format/sale/price-format-sale.tsx",
         type: "registry:component",
       },
     ],
     component: React.lazy(
       () =>
-        import("../components/commerce-ui/price-format/sale/price-format-sale")
+        import(
+          "../components/commerce-ui/components/price-format/sale/price-format-sale"
+        )
     ),
   },
   {
@@ -219,14 +223,14 @@ export const components: Registry = [
     registryDependencies: [],
     files: [
       {
-        path: "@/components/commerce-ui/quantity-input/basic/quantity-input-basic.tsx",
+        path: "@/components/commerce-ui/components/quantity-input/basic/quantity-input-basic.tsx",
         type: "registry:component",
       },
     ],
     component: React.lazy(
       () =>
         import(
-          "../components/commerce-ui/quantity-input/basic/quantity-input-basic"
+          "../components/commerce-ui/components/quantity-input/basic/quantity-input-basic"
         )
     ),
   },
@@ -238,14 +242,14 @@ export const components: Registry = [
     registryDependencies: ["button"],
     files: [
       {
-        path: "@/components/commerce-ui/upvote-rating/basic/upvote-rating-basic.tsx",
+        path: "@/components/commerce-ui/components/upvote-rating/basic/upvote-rating-basic.tsx",
         type: "registry:component",
       },
     ],
     component: React.lazy(
       () =>
         import(
-          "../components/commerce-ui/upvote-rating/basic/upvote-rating-basic"
+          "../components/commerce-ui/components/upvote-rating/basic/upvote-rating-basic"
         )
     ),
   },
@@ -257,14 +261,14 @@ export const components: Registry = [
     registryDependencies: ["button"],
     files: [
       {
-        path: "@/components/commerce-ui/upvote-rating/animated/upvote-rating-animated.tsx",
+        path: "@/components/commerce-ui/components/upvote-rating/animated/upvote-rating-animated.tsx",
         type: "registry:component",
       },
     ],
     component: React.lazy(
       () =>
         import(
-          "../components/commerce-ui/upvote-rating/animated/upvote-rating-animated"
+          "../components/commerce-ui/components/upvote-rating/animated/upvote-rating-animated"
         )
     ),
   },
@@ -276,14 +280,14 @@ export const components: Registry = [
     registryDependencies: ["button"],
     files: [
       {
-        path: "@/components/commerce-ui/variant-selector/basic/variant-selector-basic.tsx",
+        path: "@/components/commerce-ui/components/variant-selector/basic/variant-selector-basic.tsx",
         type: "registry:component",
       },
     ],
     component: React.lazy(
       () =>
         import(
-          "../components/commerce-ui/variant-selector/basic/variant-selector-basic"
+          "../components/commerce-ui/components/variant-selector/basic/variant-selector-basic"
         )
     ),
   },
@@ -294,14 +298,14 @@ export const components: Registry = [
     dependencies: ["lucide-react", "@radix-ui/react-radio-group"],
     files: [
       {
-        path: "@/components/commerce-ui/variant-selector/images/variant-selector-images.tsx",
+        path: "@/components/commerce-ui/components/variant-selector/images/variant-selector-images.tsx",
         type: "registry:component",
       },
     ],
     component: React.lazy(
       () =>
         import(
-          "../components/commerce-ui/variant-selector/images/variant-selector-images"
+          "../components/commerce-ui/components/variant-selector/images/variant-selector-images"
         )
     ),
   },
@@ -312,14 +316,14 @@ export const components: Registry = [
     dependencies: ["lucide-react", "@radix-ui/react-toggle-group"],
     files: [
       {
-        path: "@/components/commerce-ui/variant-selector/multiple/variant-selector-multiple.tsx",
+        path: "@/components/commerce-ui/components/variant-selector/multiple/variant-selector-multiple.tsx",
         type: "registry:component",
       },
     ],
     component: React.lazy(
       () =>
         import(
-          "../components/commerce-ui/variant-selector/multiple/variant-selector-multiple"
+          "../components/commerce-ui/components/variant-selector/multiple/variant-selector-multiple"
         )
     ),
   },

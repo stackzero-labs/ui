@@ -10,7 +10,7 @@ import ProductCard_06 from "../commerce-ui/blocks/product-card/product-card-06";
 import ProductCard_07 from "../commerce-ui/blocks/product-card/product-card-07";
 import Review_01 from "../commerce-ui/blocks/reviews/review-01";
 import Review_02 from "../commerce-ui/blocks/reviews/review-02";
-import StarRatingFractions from "../commerce-ui/star-rating/fractions/star-rating-fractions";
+import StarRatingFractions from "../commerce-ui/components/star-rating/fractions/star-rating-fractions";
 
 function ComponentsShowcase() {
   const { blocks, components, examples } = useRegistryCounts();

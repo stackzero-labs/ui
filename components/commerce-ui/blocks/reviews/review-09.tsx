@@ -1,6 +1,6 @@
 "use client";
 
-import StarRating from "@/components/commerce-ui/star-rating/fractions/star-rating-fractions";
+import StarRating from "@/components/commerce-ui/components/star-rating/fractions/star-rating-fractions";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {

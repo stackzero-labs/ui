@@ -1,6 +1,6 @@
 "use client";
 
-import UpvoteRating_Basic from "@/components/commerce-ui/upvote-rating/basic/upvote-rating-basic";
+import UpvoteRating_Basic from "@/components/commerce-ui/components/upvote-rating/basic/upvote-rating-basic";
 import { Button } from "@/components/ui/button";
 import { Check, Clock, Flag, Share2 } from "lucide-react";
 import { useState } from "react";
