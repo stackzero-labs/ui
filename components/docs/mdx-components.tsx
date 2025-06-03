@@ -1,5 +1,9 @@
 import { Reference, References } from "@/components/ui/references";
-import { extractMultipleSourceCodes, extractSourceCode } from "@/lib/code";
+import {
+  extractMultipleSourceCodes,
+  extractSourceCode,
+  extractPageSourceCodes,
+} from "@/lib/code";
 import { createTypeTable } from "fumadocs-typescript/ui";
 import { Accordion, Accordions } from "fumadocs-ui/components/accordion";
 import { Callout } from "fumadocs-ui/components/callout";
@@ -22,6 +26,7 @@ import {
   ComponentInstall,
   ManualInstall,
 } from "./preview/components-install";
+import { PagePreview } from "./preview/page-preview";
 const { AutoTypeTable } = createTypeTable();
 
 export function getMDXComponents(components: MDXComponents): MDXComponents {
@@ -43,6 +48,7 @@ export function getMDXComponents(components: MDXComponents): MDXComponents {
     }: {
       name: string;
       codeRendererFiles: string[];
+      isPage?: boolean;
     }) => {
       const sourceCodes = await extractMultipleSourceCodes(
         codeRendererFiles || [name]
@@ -56,6 +62,17 @@ export function getMDXComponents(components: MDXComponents): MDXComponents {
         />
       );
     },
+
+    PagePreview: async ({
+      name,
+      ...props
+    }: {
+      name: string;
+      codeRendererFiles: string[];
+    }) => {
+      const sourceCodes = await extractPageSourceCodes(name);
+      return <PagePreview name={name} source={sourceCodes} {...props} />;
+    },
     ComponentPropsTable,
     ComponentSource: async ({ name, ...props }: { name: string }) => {
       const { code, highlightedCode } = await extractSourceCode(name);
@@ -66,6 +83,10 @@ export function getMDXComponents(components: MDXComponents): MDXComponents {
           {...props}
         />
       );
+    },
+    PageSource: async ({ name, ...props }: { name: string }) => {
+      const sourceCodes = await extractPageSourceCodes(name);
+      return <ComponentPreview name={name} source={sourceCodes} {...props} />;
     },
     File,
     Files,

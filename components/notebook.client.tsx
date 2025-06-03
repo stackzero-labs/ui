@@ -63,11 +63,12 @@ export function Inset({ children }: { children: React.ReactNode }) {
   const { slug } = params as { slug: string[] };
 
   const isBlock = slug?.includes("blocks");
+  const isPage = slug?.includes("pages");
 
   // console.log("isBlock", isBlock);
 
   const pageStyles: PageStyles = {
-    article: cn("w-full", isBlock ? "!max-w-[1450px]" : ""),
+    article: cn("w-full", isBlock || isPage ? "!max-w-[1450px]" : ""),
     page: cn("mt-[var(--fd-nav-height)]"),
     toc: cn("max-xl:hidden"),
     tocNav: cn("xl:hidden"),

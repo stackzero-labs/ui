@@ -6,10 +6,12 @@
     "index",
     "installation",
     "cli",
-    "---Components---",
-    "...components",
-
     "---Blocks---",
-    "...blocks"
+    "...blocks",
+    "!---Pages---",
+    "!...pages",
+    "---Components---",
+    "...components"
+
   ]
 }

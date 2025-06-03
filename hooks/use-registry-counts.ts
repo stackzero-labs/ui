@@ -22,6 +22,8 @@ export function useRegistryCounts(): StatCount {
           acc.blocks += 1;
         } else if (item.type === "registry:example") {
           acc.examples += 1;
+        } else if (item.type === "registry:page") {
+          acc.examples += 1; // Treat pages as examples for counting purposes
         }
         return acc;
       },
