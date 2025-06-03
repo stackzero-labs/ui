@@ -86,3 +86,78 @@ export async function extractSourceCode(
   const results = await extractMultipleSourceCodes([componentName]);
   return results[componentName];
 }
+
+export async function extractPageSourceCodes(
+  pageName: string
+): Promise<SourceCodes> {
+  const basePath = path.join(process.cwd());
+  const results: SourceCodes = {};
+
+  try {
+    // Read the page JSON file
+    const pageJsonPath = path.join(basePath, "public", "r", `${pageName}.json`);
+    const pageJsonContent = await fs.readFile(pageJsonPath, "utf8");
+    const pageData = JSON.parse(pageJsonContent);
+
+    if (!pageData.files || !Array.isArray(pageData.files)) {
+      const errorMsg = `// No files found in page ${pageName}`;
+      results[pageName] = {
+        code: errorMsg,
+        highlightedCode: await codeToHtml({ code: errorMsg, lang: "tsx" }),
+        fileName: `${pageName}.tsx`,
+        isMainFile: false,
+      };
+      return results;
+    }
+
+    for (const file of pageData.files) {
+      if (!file.content || !file.path) {
+        continue;
+      }
+
+      // Extract filename from path for the key
+      const fileName = path.basename(file.path);
+      const { lang } = extractExtension(fileName);
+
+      // Use the file path as the key for better identification
+      const fileKey = file.path;
+
+      // Determine if this is the main file (registry:page type)
+      const isMainFile = file.type === "registry:page";
+
+      try {
+        const code = file.content;
+        const highlightedCode = await codeToHtml({ code, lang });
+        results[fileKey] = {
+          code,
+          highlightedCode,
+          fileName,
+          isMainFile,
+        };
+      } catch (error) {
+        const errorMsg = `// Failed to process file ${file.path}\n// Error: ${
+          error instanceof Error ? error.message : "Unknown error"
+        }`;
+        results[fileKey] = {
+          code: errorMsg,
+          highlightedCode: await codeToHtml({ code: errorMsg, lang }),
+          fileName,
+          isMainFile,
+        };
+      }
+    }
+
+    return results;
+  } catch (error) {
+    const errorMsg = `// Failed to read page ${pageName}\n// Error: ${
+      error instanceof Error ? error.message : "Unknown error"
+    }`;
+    results[pageName] = {
+      code: errorMsg,
+      highlightedCode: await codeToHtml({ code: errorMsg, lang: "tsx" }),
+      fileName: `${pageName}.tsx`,
+      isMainFile: false,
+    };
+    return results;
+  }
+}

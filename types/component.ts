@@ -3,6 +3,8 @@ export type SourceCodes = Record<
   {
     code: string;
     highlightedCode: string;
+    fileName?: string; // Optional file name for better context
+    isMainFile?: boolean; // Optional flag to indicate if this is the main file
   }
 >;
 
@@ -12,6 +14,13 @@ export type ComponentPreviewProps = {
   hasReTrigger?: boolean;
   classNameComponentContainer?: string;
   codeRendererFiles?: string[];
+  source: SourceCodes;
+};
+
+export type PagePreviewProps = {
+  name: string;
+  hasReTrigger?: boolean;
+  classNameComponentContainer?: string;
   source: SourceCodes;
 };
 
