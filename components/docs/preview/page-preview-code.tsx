@@ -62,7 +62,9 @@ export function PageCodePreview({
         <ResizableHandle withHandle />
         <ResizablePanel defaultSize={75}>
           <div className="w-full pt-2">
-            <p className="mb-2 pl-2 font-mono text-xs">{selectedFile}</p>
+            <p className="mb-2 pl-2 font-mono text-xs">
+              {source[selectedFile].fileName}
+            </p>
             <Separator className="mb-2" />
             {selectedFile && source[selectedFile] && (
               <CodeRenderer

@@ -259,7 +259,6 @@ export function SidebarItem({
       prefetch={prefetch}
       style={{
         paddingInlineStart: getOffset(level),
-
         ...props.style,
       }}
     >
