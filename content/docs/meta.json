@@ -8,10 +8,9 @@
     "cli",
     "---Blocks---",
     "...blocks",
-    "!---Pages---",
-    "!...pages",
+    "---Pages---",
+    "...pages",
     "---Components---",
     "...components"
-
   ]
 }

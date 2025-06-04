@@ -12,11 +12,6 @@ export const sidebarBadges: SidebarBadge[] = [
     page: "Banners",
   },
   {
-    alpha: true,
-    isNew: true,
-    page: "Image Carousel",
-  },
-  {
     count: 12,
     page: "Product Card",
   },
@@ -33,5 +28,11 @@ export const sidebarBadges: SidebarBadge[] = [
     alpha: true,
     count: 1,
     page: "Carts",
+  },
+  {
+    alpha: true,
+    isNew: true,
+    count: 1,
+    page: "Product Pages",
   },
 ];
