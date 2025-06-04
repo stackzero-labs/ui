@@ -1635,22 +1635,21 @@
         "lucide-react"
       ],
       "registryDependencies": [
+        "accordion",
+        "breadcrumb",
         "button",
-        "https://ui.stackzero.co/r/star-rating-fractions.json"
+        "dropdown-menu",
+        "input",
+        "https://ui.stackzero.co/r/star-rating-fractions.json",
+        "https://ui.stackzero.co/r/product-variant-01-block.json",
+        "https://ui.stackzero.co/r/banner-08-block.json",
+        "https://ui.stackzero.co/r/review-04-block.json"
       ],
       "files": [
         {
           "path": "@/components/commerce-ui/pages/product-01/page.tsx",
           "type": "registry:page",
           "target": "app/product/page.tsx"
-        },
-        {
-          "path": "@/components/commerce-ui/blocks/reviews/review-04.tsx",
-          "type": "registry:block"
-        },
-        {
-          "path": "@/components/commerce-ui/blocks/banners/banner-08.tsx",
-          "type": "registry:block"
         },
         {
           "path": "@/components/commerce-ui/pages/product-01/components/product.tsx",
