@@ -1,5 +1,4 @@
 import { getMDXComponents } from "@/components/docs/mdx-components";
-import { ShimmerButton } from "@/components/magicui/shimmer-button";
 import { metadataImage } from "@/lib/metadata";
 import { source } from "@/lib/source";
 import {
