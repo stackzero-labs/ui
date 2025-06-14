@@ -195,6 +195,26 @@ export const blocks: Registry = [
   },
 
   {
+    name: "checkout-01-block",
+    type: "registry:block",
+    dependencies: ["lucide-react"],
+    registryDependencies: [
+      "button",
+      "https://ui.stackzero.co/r/quantity-input-basic.json",
+      "https://ui.stackzero.co/r/price-format-basic.json",
+    ],
+    files: [
+      {
+        path: "@/components/commerce-ui/blocks/checkout/checkout-01.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/commerce-ui/blocks/checkout/checkout-01")
+    ),
+  },
+
+  {
     name: "cart-01-block",
     type: "registry:block",
     dependencies: ["lucide-react"],

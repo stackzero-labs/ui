@@ -42,6 +42,26 @@
       ]
     },
     {
+      "name": "image-carousel-basic",
+      "type": "registry:component",
+      "dependencies": [
+        "@radix-ui/react-dialog",
+        "lucide-react",
+        "embla-carousel-react",
+        "embla-carousel",
+        "react-zoom-pan-pinch"
+      ],
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "@/components/commerce-ui/components/image-carousel/basic/image-carousel-basic.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "image-viewer-basic",
       "type": "registry:component",
       "dependencies": [
@@ -73,32 +93,6 @@
       ]
     },
     {
-      "name": "star-rating-basic",
-      "type": "registry:component",
-      "dependencies": [
-        "lucide-react"
-      ],
-      "files": [
-        {
-          "path": "@/components/commerce-ui/components/star-rating/basic/star-rating-basic.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "star-rating-fractions",
-      "type": "registry:component",
-      "dependencies": [
-        "lucide-react"
-      ],
-      "files": [
-        {
-          "path": "@/components/commerce-ui/components/star-rating/fractions/star-rating-fractions.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
       "name": "like-rating-basic",
       "type": "registry:component",
       "dependencies": [
@@ -107,40 +101,6 @@
       "files": [
         {
           "path": "@/components/commerce-ui/components/like-rating/basic/like-rating-basic.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "variant-color-selector-basic",
-      "type": "registry:component",
-      "dependencies": [
-        "lucide-react",
-        "@radix-ui/react-radio-group"
-      ],
-      "files": [
-        {
-          "path": "@/components/commerce-ui/components/variant-color-selector/basic/variant-color-selector-basic.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "image-carousel-basic",
-      "type": "registry:component",
-      "dependencies": [
-        "@radix-ui/react-dialog",
-        "lucide-react",
-        "embla-carousel-react",
-        "embla-carousel",
-        "react-zoom-pan-pinch"
-      ],
-      "registryDependencies": [
-        "button"
-      ],
-      "files": [
-        {
-          "path": "@/components/commerce-ui/components/image-carousel/basic/image-carousel-basic.tsx",
           "type": "registry:component"
         }
       ]
@@ -194,17 +154,27 @@
       ]
     },
     {
-      "name": "upvote-rating-basic",
+      "name": "star-rating-basic",
       "type": "registry:component",
       "dependencies": [
         "lucide-react"
       ],
-      "registryDependencies": [
-        "button"
+      "files": [
+        {
+          "path": "@/components/commerce-ui/components/star-rating/basic/star-rating-basic.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "star-rating-fractions",
+      "type": "registry:component",
+      "dependencies": [
+        "lucide-react"
       ],
       "files": [
         {
-          "path": "@/components/commerce-ui/components/upvote-rating/basic/upvote-rating-basic.tsx",
+          "path": "@/components/commerce-ui/components/star-rating/fractions/star-rating-fractions.tsx",
           "type": "registry:component"
         }
       ]
@@ -222,6 +192,36 @@
       "files": [
         {
           "path": "@/components/commerce-ui/components/upvote-rating/animated/upvote-rating-animated.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "upvote-rating-basic",
+      "type": "registry:component",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "@/components/commerce-ui/components/upvote-rating/basic/upvote-rating-basic.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "variant-color-selector-basic",
+      "type": "registry:component",
+      "dependencies": [
+        "lucide-react",
+        "@radix-ui/react-radio-group"
+      ],
+      "files": [
+        {
+          "path": "@/components/commerce-ui/components/variant-color-selector/basic/variant-color-selector-basic.tsx",
           "type": "registry:component"
         }
       ]
@@ -1115,6 +1115,24 @@
       "files": [
         {
           "path": "@/components/commerce-ui/blocks/banners/banner-12.tsx",
+          "type": "registry:block"
+        }
+      ]
+    },
+    {
+      "name": "checkout-01-block",
+      "type": "registry:block",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "button",
+        "https://ui.stackzero.co/r/quantity-input-basic.json",
+        "https://ui.stackzero.co/r/price-format-basic.json"
+      ],
+      "files": [
+        {
+          "path": "@/components/commerce-ui/blocks/checkout/checkout-01.tsx",
           "type": "registry:block"
         }
       ]

@@ -35,4 +35,10 @@ export const sidebarBadges: SidebarBadge[] = [
     count: 1,
     page: "Product Pages",
   },
+  {
+    alpha: true,
+    isNew: true,
+    count: 1,
+    page: "Checkout",
+  },
 ];
