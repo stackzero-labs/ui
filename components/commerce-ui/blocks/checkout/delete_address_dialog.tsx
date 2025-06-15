@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import React from 'react';
+import React from "react";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -11,9 +11,9 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from '@/components/ui/alert-dialog';
-import { Button } from '@/components/ui/button';
-import { Trash } from 'lucide-react';
+} from "@/components/ui/alert-dialog";
+import { Button } from "@/components/ui/button";
+import { Trash } from "lucide-react";
 
 type Address = {
   id: string;
@@ -32,7 +32,7 @@ const DialogAddress: React.FC<DialogAddressProps> = ({ address }) => {
     // Simulate network delay
     return new Promise((resolve) => {
       setTimeout(() => {
-        console.log('Deleted address:', body.address_id);
+        console.log("Deleted address:", body.address_id);
         resolve(true);
       }, 1000);
     });
@@ -42,10 +42,10 @@ const DialogAddress: React.FC<DialogAddressProps> = ({ address }) => {
     setIsDeleting(true);
     try {
       await deleteAddress({ address_id: address.id });
-      console.log('Address deleted successfully');
+      console.log("Address deleted successfully");
       // You can integrate toast here or any notification method
     } catch (error) {
-      console.error('Failed to delete address:', error);
+      console.error("Failed to delete address:", error);
     } finally {
       setIsDeleting(false);
     }
@@ -55,7 +55,7 @@ const DialogAddress: React.FC<DialogAddressProps> = ({ address }) => {
     <AlertDialog>
       <AlertDialogTrigger asChild>
         <Button variant="ghost" className="text-destructive">
-          <Trash className="w-4 h-4" />
+          <Trash className="h-4 w-4" />
         </Button>
       </AlertDialogTrigger>
       <AlertDialogContent>
@@ -64,13 +64,14 @@ const DialogAddress: React.FC<DialogAddressProps> = ({ address }) => {
           <AlertDialogDescription>
             {address.name} {address.phone_number && `- ${address.phone_number}`}
             <br />
-            You are going to delete this address from your account. This action cannot be undone.
+            You are going to delete this address from your account. This action
+            cannot be undone.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel disabled={isDeleting}>Cancel</AlertDialogCancel>
           <AlertDialogAction onClick={handleSubmit} disabled={isDeleting}>
-            {isDeleting ? 'Deleting...' : 'Delete'}
+            {isDeleting ? "Deleting..." : "Delete"}
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
@@ -79,4 +80,3 @@ const DialogAddress: React.FC<DialogAddressProps> = ({ address }) => {
 };
 
 export default DialogAddress;
-

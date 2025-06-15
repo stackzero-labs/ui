@@ -1,88 +1,136 @@
 "use client";
-import React, { useEffect, useState } from "react";
+
+import React, { useState, FormEvent } from "react";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
-interface CartItem {
-  name: string;
-  price: number;
-  quantity: number;
-  discountPercent?: number;
-}
+const PaymentPage: React.FC = ({ handleBack }) => {
+  const [paymentMethod, setPaymentMethod] = useState<"credit" | "debit">(
+    "credit"
+  );
+  const [cardNumber, setCardNumber] = useState("");
+  const [cardName, setCardName] = useState("");
+  const [expiry, setExpiry] = useState("");
+  const [cvv, setCvv] = useState("");
 
-const Payment: React.FC = () => {
-  const [cartItems, setCartItems] = useState<CartItem[]>([]);
-  const [originalTotal, setOriginalTotal] = useState(0);
-  const [discountAmount, setDiscountAmount] = useState(0);
-  const [discountedTotal, setDiscountedTotal] = useState(0);
-  const [orderId, setOrderId] = useState("");
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
 
-  useEffect(() => {
-    // Fake cart items for demo
-    const demoCart: CartItem[] = [
-      { name: "T-shirt", price: 500, quantity: 2, discountPercent: 10 },
-      { name: "Shoes", price: 1500, quantity: 1 },
-    ];
+    if (
+      cardNumber.length < 12 ||
+      !/^\d{2}\/\d{2}$/.test(expiry) ||
+      !/^\d{3}$/.test(cvv)
+    ) {
+      alert("Please fill valid card details.");
+      return;
+    }
 
-    setCartItems(demoCart);
-
-    // Calculate totals
-    const original = demoCart.reduce(
-      (acc, item) => acc + item.price * item.quantity,
-      0
-    );
-    const discount = demoCart.reduce((acc, item) => {
-      const discount = item.discountPercent
-        ? (item.price * item.quantity * item.discountPercent) / 100
-        : 0;
-      return acc + discount;
-    }, 0);
-    const discounted = original - discount;
-
-    setOriginalTotal(original);
-    setDiscountAmount(discount);
-    setDiscountedTotal(discounted);
-
-    // Generate a fake Order ID
-    const fakeId = `ORD-${Math.floor(Math.random() * 900000 + 100000)}`;
-    setOrderId(fakeId);
-  }, []);
+    alert("Order placed successfully!");
+  };
 
   return (
-    <Card className="max-w-md mx-auto p-4">
-      <CardHeader>
-        <CardTitle className="text-center text-xl">Pay via UPI</CardTitle>
-      </CardHeader>
+    <>
+      <Button onClick={handleBack}>
+        <span className="mr-2">←</span>
+        Back
+      </Button>
+      <div className="mx-auto mt-10 max-w-md">
+        <Card>
+          <CardHeader>
+            <CardTitle className="text-xl">Choose Payment Method</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div>
+                <Label className="mb-2 block">Payment Type</Label>
+                <RadioGroup
+                  value={paymentMethod}
+                  onValueChange={(val: "credit" | "debit") =>
+                    setPaymentMethod(val)
+                  }
+                  className="flex space-x-4"
+                >
+                  <div className="flex items-center space-x-2">
+                    <RadioGroupItem value="credit" id="credit" />
+                    <Label htmlFor="credit">Credit Card</Label>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <RadioGroupItem value="debit" id="debit" />
+                    <Label htmlFor="debit">Debit Card</Label>
+                  </div>
+                </RadioGroup>
+              </div>
 
-      <CardContent className="flex flex-col items-center gap-4">
-        <img
-          src="/images/payment-qr-code.jpeg"
-          alt="Scan to pay via UPI"
-          className="w-64 h-64 border rounded"
-        />
+              <div>
+                <Label htmlFor="cardNumber" className="mb-1 block">
+                  Card Number
+                </Label>
+                <Input
+                  id="cardNumber"
+                  name="cardNumber"
+                  type="text"
+                  inputMode="numeric"
+                  pattern="[0-9]*"
+                  placeholder="1234 5678 9012 3456"
+                  value={cardNumber}
+                  onChange={(e) => setCardNumber(e.target.value)}
+                />
+              </div>
+              <Label htmlFor="cardName" className="mb-1 block">
+                Name on card
+              </Label>
+              <Input
+                id="cardName"
+                name="name"
+                type="text"
+                inputMode="alphabetic"
+                placeholder="John Doe"
+                value={cardName}
+                onChange={(e) => setCardName(e.target.value)}
+              />
 
-        <div className="text-sm text-center">
-          Please scan the QR code using any UPI app (Google Pay, PhonePe, etc.).
-          <br />
-          <strong>Include your Order ID in the Payment NOTE:</strong>
-          <div className="text-base font-semibold mt-1 bg-gray-100 p-2 rounded">
-            {orderId}
-          </div>
-          <p className="mt-2">
-            We won’t be able to process your order without this information.
-          </p>
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <Label htmlFor="expiry" className="mb-1 block">
+                    Expiry (MM/YY)
+                  </Label>
+                  <Input
+                    id="expiry"
+                    name="expiry"
+                    type="text"
+                    placeholder="MM/YY"
+                    value={expiry}
+                    onChange={(e) => setExpiry(e.target.value)}
+                  />
+                </div>
+                <div>
+                  <Label htmlFor="cvv" className="mb-1 block">
+                    CVV
+                  </Label>
+                  <Input
+                    id="cvv"
+                    name="cvv"
+                    type="password"
+                    inputMode="numeric"
+                    placeholder="123"
+                    value={cvv}
+                    onChange={(e) => setCvv(e.target.value)}
+                  />
+                </div>
+              </div>
 
-          <div className="mt-4 text-left w-full">
-            <p>Original Total: ₹{originalTotal}</p>
-            <p>Discount: -₹{discountAmount}</p>
-            <p className="font-semibold text-green-600">
-              Payable Amount: ₹{discountedTotal}
-            </p>
-          </div>
-        </div>
-      </CardContent>
-    </Card>
+              <Button className="hover:bg-accent mt-4 w-full px-4 text-white">
+                Next
+              </Button>
+            </form>
+          </CardContent>
+        </Card>
+      </div>
+    </>
   );
 };
 
-export default Payment;
-
+export default PaymentPage;

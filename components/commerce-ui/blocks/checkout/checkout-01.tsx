@@ -1,75 +1,76 @@
-"use client"
+"use client";
 import React from "react";
 import Cart from "./cart";
 import Address from "./address";
 import Payment from "./payment";
-import { useRouter } from 'next/navigation';
-
 
 function Checkout_01() {
   const isAuthenticated = true;
-    const router = useRouter();
 
-  const [step, setStep] = React.useState("address");
+  const [step, setStep] = React.useState("cart");
 
-  const handlePlaceOrder = () => {
-    if (isAuthenticated) {
+  const handleNext = () => {
+    if (step === "cart") {
       setStep("address");
-    } else {
-      router.push("/login?redirect=/checkout?step=address");
+    } else if (step === "address") {
+      setStep("payment");
+    }
+  };
+
+  const handleBack = () => {
+    if (step === "payment") {
+      setStep("address");
+    } else if (step === "address") {
+      setStep("cart");
     }
   };
 
   return (
-    <div className="container mx-auto py-4 min-h-screen">
-      <div className="w-full max-w-md mx-auto pb-8 flex items-center justify-between hidden md:flex">
+    <div className="container mx-auto min-h-screen py-4">
+      <div className="mx-auto flex hidden w-full max-w-md items-center justify-between pb-8 md:flex">
         <p
-          className={`font-semibold text-green uppercase ${step === "cart" ? "text-secondary" : ""}`}
+          className={`text-green font-semibold uppercase ${step === "cart" ? "text-primary" : ""}`}
         >
           Cart
         </p>
-        <div className="flex items-center justify-center space-x-1 mx-2">
-          <div className="w-1 h-1 bg-[#8EDDCB] rounded-full" />
-          <div className="w-2 h-2 bg-[#8EDDCB] rounded-full" />
-          <div className="w-2 h-2 bg-[#8EDDCB] rounded-full" />
-          <div className="w-3 h-3 bg-[#8EDDCB] rounded-full" />
-          <div className="w-2 h-2 bg-[#8EDDCB] rounded-full" />
-          <div className="w-2 h-2 bg-[#8EDDCB] rounded-full" />
-          <div className="w-1 h-1 bg-[#8EDDCB] rounded-full" />
+        <div className="mx-2 flex items-center justify-center space-x-1">
+          <div className="h-1 w-1 rounded-full bg-[#8EDDCB]" />
+          <div className="h-2 w-2 rounded-full bg-[#8EDDCB]" />
+          <div className="h-2 w-2 rounded-full bg-[#8EDDCB]" />
+          <div className="h-3 w-3 rounded-full bg-[#8EDDCB]" />
+          <div className="h-2 w-2 rounded-full bg-[#8EDDCB]" />
+          <div className="h-2 w-2 rounded-full bg-[#8EDDCB]" />
+          <div className="h-1 w-1 rounded-full bg-[#8EDDCB]" />
         </div>
         <p
-          className={`font-semibold text-green uppercase ${step === "address" ? "text-accent" : ""}`}
+          className={`text-green font-semibold uppercase ${step === "address" ? "text-primary" : ""}`}
         >
           Address
         </p>
-        <div className="flex items-center justify-center space-x-1 mx-2">
-          <div className="w-1 h-1 bg-[#8EDDCB] rounded-full" />
-          <div className="w-2 h-2 bg-[#8EDDCB] rounded-full" />
-          <div className="w-2 h-2 bg-[#8EDDCB] rounded-full" />
-          <div className="w-3 h-3 bg-[#8EDDCB] rounded-full" />
-          <div className="w-2 h-2 bg-[#8EDDCB] rounded-full" />
-          <div className="w-2 h-2 bg-[#8EDDCB] rounded-full" />
-          <div className="w-1 h-1 bg-[#8EDDCB] rounded-full" />
+        <div className="mx-2 flex items-center justify-center space-x-1">
+          <div className="h-1 w-1 rounded-full bg-[#8EDDCB]" />
+          <div className="h-2 w-2 rounded-full bg-[#8EDDCB]" />
+          <div className="h-2 w-2 rounded-full bg-[#8EDDCB]" />
+          <div className="h-3 w-3 rounded-full bg-[#8EDDCB]" />
+          <div className="h-2 w-2 rounded-full bg-[#8EDDCB]" />
+          <div className="h-2 w-2 rounded-full bg-[#8EDDCB]" />
+          <div className="h-1 w-1 rounded-full bg-[#8EDDCB]" />
         </div>
         <p
-          className={`font-semibold text-green uppercase ${step === "payment" ? "text-accent" : ""}`}
+          className={`text-green font-semibold uppercase ${step === "payment" ? "text-primary" : ""}`}
         >
           Payment
         </p>
       </div>
       {step === "cart" ? (
-        <Cart
-          isAuthenticated={isAuthenticated}
-          handlePlaceOrder={handlePlaceOrder}
-
-        />
+        <Cart isAuthenticated={isAuthenticated} handleNext={handleNext} />
       ) : step === "address" ? (
-        <Address />
+        <Address handleNext={handleNext} handleBack={handleBack} />
       ) : (
-        <Payment />
+        <Payment handleBack={handleBack} />
       )}
     </div>
   );
-};
+}
 
 export default Checkout_01;

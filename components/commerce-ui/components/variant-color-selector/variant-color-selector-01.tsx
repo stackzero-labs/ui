@@ -39,7 +39,7 @@ function VariantColorSelector_01({ className }: { className?: string }) {
             <RadioGroupPrimitive.Item
               value={variant.value}
               className={cn(
-                "aspect-square size-6 rounded-full border-2 ring-offset-background focus:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
+                "ring-offset-background focus-visible:ring-ring aspect-square size-6 rounded-full border-2 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
                 "has-data-[state=checked]:ring-4",
                 "has-data-[state=checked]:border-0"
               )}
@@ -52,7 +52,7 @@ function VariantColorSelector_01({ className }: { className?: string }) {
                 <Circle className="h-2.5 w-2.5 fill-current text-current" />
               </RadioGroupPrimitive.Indicator>
             </RadioGroupPrimitive.Item>
-            <span className="text-sm font-medium leading-none text-foreground">
+            <span className="text-foreground text-sm leading-none font-medium">
               {variant.label}
             </span>
           </label>

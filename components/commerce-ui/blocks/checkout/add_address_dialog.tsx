@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
-import React, { useEffect, useState, ChangeEvent, FormEvent } from 'react';
-import { Button } from '@/components/ui/button';
-import { Checkbox } from '@/components/ui/checkbox';
-import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
-import { Label } from '@/components/ui/label';
-import { Input } from '@/components/ui/input';
+import React, { useEffect, useState, ChangeEvent, FormEvent } from "react";
+import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
 import {
   Dialog,
   DialogContent,
@@ -13,8 +13,8 @@ import {
   DialogTitle,
   DialogFooter,
   DialogDescription,
-} from '@/components/ui/dialog';
-import { CirclePlus, Pencil } from 'lucide-react';
+} from "@/components/ui/dialog";
+import { CirclePlus, Pencil } from "lucide-react";
 
 interface Address {
   id: number;
@@ -25,30 +25,34 @@ interface Address {
   locality: string;
   city: string;
   state: string;
-  address_type: 'HOME' | 'WORK';
+  address_type: "HOME" | "WORK";
   default?: boolean;
 }
 
 interface AddAddressDialogProps {
   address?: Address;
-  type: 'edit' | 'add';
+  type: "edit" | "add";
   onSave?: (data: Address[]) => void;
 }
 
-const STORAGE_KEY = 'demo_addresses';
+const STORAGE_KEY = "demo_addresses";
 
-const AddAddressDialog: React.FC<AddAddressDialogProps> = ({ address, onSave, type }) => {
+const AddAddressDialog: React.FC<AddAddressDialogProps> = ({
+  address,
+  onSave,
+  type,
+}) => {
   const [formData, setFormData] = useState<Address>({
-    address: '',
-    address_type: 'HOME',
-    city: '',
+    address: "",
+    address_type: "HOME",
+    city: "",
     default: false,
     id: Date.now(),
-    locality: '',
-    mobile: '',
-    name: '',
-    pincode: '',
-    state: '',
+    locality: "",
+    mobile: "",
+    name: "",
+    pincode: "",
+    state: "",
   });
 
   const [open, setOpen] = useState(false);
@@ -87,23 +91,30 @@ const AddAddressDialog: React.FC<AddAddressDialogProps> = ({ address, onSave, ty
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     const updated =
-      type === 'edit' && address
+      type === "edit" && address
         ? addresses.map((addr) => (addr.id === address.id ? formData : addr))
         : [...addresses, { ...formData, id: Date.now() }];
     saveToStorage(updated);
-    console.log(`${type === 'edit' ? 'Updated' : 'Added'} address in localStorage`, formData);
+    console.log(
+      `${type === "edit" ? "Updated" : "Added"} address in localStorage`,
+      formData
+    );
     setOpen(false);
   };
 
   return (
     <>
-      {type === 'edit' ? (
+      {type === "edit" ? (
         <Button variant="ghost" onClick={() => setOpen(true)}>
-          <Pencil className="w-4 h-4" />
+          <Pencil className="h-4 w-4" />
         </Button>
       ) : (
-        <Button variant="outline" className="w-full" onClick={() => setOpen(true)}>
-          <CirclePlus className="w-4 h-4 mr-2" />
+        <Button
+          variant="outline"
+          className="w-full"
+          onClick={() => setOpen(true)}
+        >
+          <CirclePlus className="mr-2 h-4 w-4" />
           Add Address
         </Button>
       )}
@@ -111,29 +122,77 @@ const AddAddressDialog: React.FC<AddAddressDialogProps> = ({ address, onSave, ty
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>{type === 'edit' ? 'Edit' : 'Add'} Address</DialogTitle>
-            <DialogDescription>Enter your contact and address details below.</DialogDescription>
+            <DialogTitle>
+              {type === "edit" ? "Edit" : "Add"} Address
+            </DialogTitle>
+            <DialogDescription>
+              Enter your contact and address details below.
+            </DialogDescription>
           </DialogHeader>
 
-          <form onSubmit={handleSubmit} className="space-y-4 mt-4">
-            <InputField label="Name" name="name" value={formData.name} onChange={handleChange} required />
-            <InputField label="Mobile No" name="mobile" type="tel" value={formData.mobile} onChange={handleChange} required />
-            <InputField label="Pin Code" name="pincode" type="number" value={formData.pincode} onChange={handleChange} required />
-            <InputField label="Address" name="address" value={formData.address} onChange={handleChange} required />
-            <InputField label="Locality / Town" name="locality" value={formData.locality} onChange={handleChange} required />
+          <form onSubmit={handleSubmit} className="mt-4 space-y-4">
+            <InputField
+              label="Name"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              required
+            />
+            <InputField
+              label="Mobile No"
+              name="mobile"
+              type="tel"
+              value={formData.mobile}
+              onChange={handleChange}
+              required
+            />
+            <InputField
+              label="Pin Code"
+              name="pincode"
+              type="number"
+              value={formData.pincode}
+              onChange={handleChange}
+              required
+            />
+            <InputField
+              label="Address"
+              name="address"
+              value={formData.address}
+              onChange={handleChange}
+              required
+            />
+            <InputField
+              label="Locality / Town"
+              name="locality"
+              value={formData.locality}
+              onChange={handleChange}
+              required
+            />
             <div className="grid grid-cols-2 gap-4">
-              <InputField label="City / District" name="city" value={formData.city} onChange={handleChange} required />
-              <InputField label="State" name="state" value={formData.state} onChange={handleChange} required />
+              <InputField
+                label="City / District"
+                name="city"
+                value={formData.city}
+                onChange={handleChange}
+                required
+              />
+              <InputField
+                label="State"
+                name="state"
+                value={formData.state}
+                onChange={handleChange}
+                required
+              />
             </div>
 
             <div>
-              <Label className="text-sm block mb-1">Address Type</Label>
+              <Label className="mb-1 block text-sm">Address Type</Label>
               <RadioGroup
                 value={formData.address_type}
-                onValueChange={(val: 'HOME' | 'WORK') =>
+                onValueChange={(val: "HOME" | "WORK") =>
                   setFormData((prev) => ({ ...prev, address_type: val }))
                 }
-                className="flex space-x-6 mt-2"
+                className="mt-2 flex space-x-6"
               >
                 <RadioGroupItem value="HOME" id="home" />
                 <Label htmlFor="home">Home</Label>
@@ -156,10 +215,18 @@ const AddAddressDialog: React.FC<AddAddressDialogProps> = ({ address, onSave, ty
             </div>
 
             <DialogFooter className="mt-4">
-              <Button type="button" variant="outline" onClick={() => setOpen(false)}>
+              <Button
+                type="button"
+                variant="outline"
+                onClick={() => setOpen(false)}
+              >
                 Cancel
               </Button>
-              <Button type="submit" className="bg-green text-white" disabled={submitDisabled}>
+              <Button
+                type="submit"
+                className="bg-green text-white"
+                disabled={submitDisabled}
+              >
                 Save
               </Button>
             </DialogFooter>
@@ -177,14 +244,19 @@ const InputField: React.FC<{
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
   required?: boolean;
   type?: string;
-}> = ({ label, name, onChange, required, type = 'text', value }) => (
+}> = ({ label, name, onChange, required, type = "text", value }) => (
   <div>
-    <Label className="text-sm block mb-1">
+    <Label className="mb-1 block text-sm">
       {label} {required && <span className="text-red-500">*</span>}
     </Label>
-    <Input type={type} name={name} value={value || ''} onChange={onChange} className="w-full" />
+    <Input
+      type={type}
+      name={name}
+      value={value || ""}
+      onChange={onChange}
+      className="w-full"
+    />
   </div>
 );
 
 export default AddAddressDialog;
-

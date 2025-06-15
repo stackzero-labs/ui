@@ -1,14 +1,14 @@
-'use client';
-import Link, { type LinkProps } from 'fumadocs-core/link';
+"use client";
+import Link, { type LinkProps } from "fumadocs-core/link";
 import {
   createContext,
   type ReactNode,
   useContext,
   useEffect,
   useState,
-} from 'react';
-import { cn } from '../../lib/cn';
-import { useI18n } from 'fumadocs-ui/provider';
+} from "react";
+import { cn } from "../../lib/cn";
+import { useI18n } from "fumadocs-ui/provider";
 
 export interface NavProviderProps {
   /**
@@ -16,7 +16,7 @@ export interface NavProviderProps {
    *
    * @defaultValue none
    */
-  transparentMode?: 'always' | 'top' | 'none';
+  transparentMode?: "always" | "top" | "none";
 }
 
 export interface TitleProps {
@@ -39,21 +39,21 @@ const NavContext = createContext<NavContextType>({
 
 export function NavProvider({
   children,
-  transparentMode = 'none',
+  transparentMode = "none",
 }: NavProviderProps & { children: ReactNode }) {
-  const [transparent, setTransparent] = useState(transparentMode !== 'none');
+  const [transparent, setTransparent] = useState(transparentMode !== "none");
 
   useEffect(() => {
-    if (transparentMode !== 'top') return;
+    if (transparentMode !== "top") return;
 
     const listener = () => {
       setTransparent(window.scrollY < 10);
     };
 
     listener();
-    window.addEventListener('scroll', listener);
+    window.addEventListener("scroll", listener);
     return () => {
-      window.removeEventListener('scroll', listener);
+      window.removeEventListener("scroll", listener);
     };
   }, [transparentMode]);
 
@@ -72,16 +72,16 @@ export function Title({
   title,
   url,
   ...props
-}: TitleProps & Omit<LinkProps, 'title'>) {
+}: TitleProps & Omit<LinkProps, "title">) {
   const { locale } = useI18n();
 
   return (
     <Link
-      href={url ?? (locale ? `/${locale}` : '/')}
+      href={url ?? (locale ? `/${locale}` : "/")}
       {...props}
       className={cn(
-        'inline-flex items-center gap-2.5 font-semibold',
-        props.className,
+        "inline-flex items-center gap-2.5 font-semibold",
+        props.className
       )}
     >
       {title}

@@ -1,17 +1,17 @@
-'use client';
+"use client";
 
-import React, { useState, useEffect } from 'react';
-import PriceFormat from '@/components/commerce-ui/components/price-format/basic/price-format-basic';
-import PriceFormatSale from '@/components/commerce-ui/components/price-format/sale/price-format-sale';
-import { Button } from '@/components/ui/button';
-import { Plus, Minus, X, Tag } from 'lucide-react';
+import React, { useState, useEffect } from "react";
+import PriceFormat from "@/components/commerce-ui/components/price-format/basic/price-format-basic";
+import PriceFormatSale from "@/components/commerce-ui/components/price-format/sale/price-format-sale";
+import { Button } from "@/components/ui/button";
+import { Plus, Minus, X, Tag } from "lucide-react";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from '@/components/ui/accordion';
-import { useRouter } from 'next/navigation';
+} from "@/components/ui/accordion";
+import { useRouter } from "next/navigation";
 
 const DEFAULT_IMAGE_URL =
   "https://raw.githubusercontent.com/stackzero-labs/ui/refs/heads/main/public/placeholders/headphone-1.jpg";
@@ -29,28 +29,29 @@ type CartItem = {
 
 const demoCartItems: CartItem[] = [
   {
-    description: 'Comfortable cotton t-shirt',
+    description: "Comfortable cotton t-shirt",
     discount: 25,
     discounted_price: 599,
     id: 1,
     images: [DEFAULT_IMAGE_URL],
-    name: 'Red T-Shirt',
+    name: "Red T-Shirt",
     price: 799,
     quantity: 2,
   },
   {
-    description: 'Slim fit denim jeans',
+    description: "Slim fit denim jeans",
     discount: null,
     id: 2,
     images: [DEFAULT_IMAGE_URL],
-    name: 'Blue Jeans',
+    name: "Blue Jeans",
     price: 1999,
     quantity: 1,
   },
 ];
 
-const Cart: React.FC = ({handlePlaceOrder}) => {
+const Cart: React.FC = ({ handleNext }) => {
   const [cartItems, setCartItems] = useState<CartItem[]>(demoCartItems);
+  const [couponCode, setCouponCode] = useState("");
 
   const handleRemove = (id: number) => {
     setCartItems((prev) => prev.filter((item) => item.id !== id));
@@ -74,23 +75,26 @@ const Cart: React.FC = ({handlePlaceOrder}) => {
     );
   };
 
-  const originalTotal = cartItems.reduce(
-    (sum, item) => sum + item.price * item.quantity,
-    0
-  );
+  const originalTotal = cartItems.reduce((sum, item) => {
+    const total = sum + item.price * item.quantity;
+    localStorage.setItem("originalTotal", total.toString());
+    return total;
+  }, 0);
 
   const discountedTotal = cartItems.reduce((sum, item) => {
     const price = item.discounted_price ?? item.price;
-    return sum + price * item.quantity;
+    const discountedTotal = sum + price * item.quantity;
+    localStorage.setItem("discountedTotal", discountedTotal);
+    return discountedTotal;
   }, 0);
 
   const discountAmount = originalTotal - discountedTotal;
 
   return (
     <div className="mx-auto p-4 md:p-20">
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
         <div className="col-span-1 md:col-span-2 md:p-2">
-          <div className="mt-4 md:p-2 rounded border">
+          <div className="mt-4 rounded border md:p-2">
             <Accordion type="single" collapsible className="w-full">
               <AccordionItem value="item-1" className="border-b-0">
                 <AccordionTrigger>Available Offers</AccordionTrigger>
@@ -103,9 +107,9 @@ const Cart: React.FC = ({handlePlaceOrder}) => {
             </Accordion>
           </div>
 
-          <div className="mt-4 md:p-2 border rounded">
+          <div className="mt-4 rounded border md:p-2">
             {cartItems.length === 0 ? (
-              <div className="flex flex-col items-center justify-center h-full">
+              <div className="flex h-full flex-col items-center justify-center">
                 <h3 className="text-lg font-semibold">Your cart is empty</h3>
                 <p className="text-gray-600">
                   Add items to your cart to get started
@@ -115,7 +119,7 @@ const Cart: React.FC = ({handlePlaceOrder}) => {
               cartItems.map((item) => (
                 <span
                   key={item.id}
-                  className="flex gap-2 p-0 py-2 md:p-4 border-b border-gray-200"
+                  className="flex gap-2 border-b border-gray-200 p-0 py-2 md:p-4"
                 >
                   <img
                     src={
@@ -124,18 +128,20 @@ const Cart: React.FC = ({handlePlaceOrder}) => {
                         : DEFAULT_IMAGE_URL
                     }
                     alt={item.name}
-                    className="w-24 h-24 object-cover rounded"
+                    className="h-24 w-24 rounded object-cover"
                   />
                   <div className="flex-1">
                     <h4 className="font-semibold">{item.name}</h4>
                     <p className="text-sm text-gray-600">{item.description}</p>
-                    <div className="flex items-center gap-4 mt-2">
+                    <div className="mt-2 flex items-center gap-4">
                       {item.discount === null ? (
                         <div>
                           <PriceFormat
                             prefix="₹"
                             value={item.price}
                             className="text-md font-semibold"
+                            thousandSeparator=","
+                            decimalSeparator="."
                           />
                           <p className="text-muted-foreground text-sm">
                             Inclusive of all taxes
@@ -147,6 +153,8 @@ const Cart: React.FC = ({handlePlaceOrder}) => {
                             prefix="₹"
                             originalPrice={item.price}
                             salePrice={item.discounted_price ?? item.price}
+                            thousandSeparator=","
+                            decimalSeparator="."
                             className="text-md font-semibold"
                           />
                           <p className="text-muted-foreground text-sm">
@@ -155,8 +163,8 @@ const Cart: React.FC = ({handlePlaceOrder}) => {
                         </div>
                       )}
                     </div>
-                    <div className="flex items-center gap-4 mt-2">
-                      <div className="flex items-center border px-2 rounded">
+                    <div className="mt-2 flex items-center gap-4">
+                      <div className="flex items-center rounded border px-2">
                         <button
                           className="text-gray-500"
                           onClick={() => decreaseQuantity(item.id)}
@@ -188,22 +196,25 @@ const Cart: React.FC = ({handlePlaceOrder}) => {
         </div>
 
         <div className="col-span-2 md:col-span-1">
-                    <div className="flex flex-col md:flex-row w-full gap-2 mt-10 items-center">
-  <input
-    type="text"
-    placeholder="Apply Coupons"
-    className="border p-2 rounded flex-1 min-w-0"
-    disabled
-  />
-  <Button className="whitespace-nowrap shrink-0 md:w-auto w-full">Apply</Button>
-</div>
+          <div className="mt-10 flex w-full flex-col items-center gap-2 md:flex-row">
+            <input
+              type="text"
+              placeholder="Apply Coupons"
+              className="min-w-0 flex-1 rounded border p-2"
+              value={couponCode}
+              onChange={(e) => setCouponCode(e.target.value)}
+            />
+            <Button className="w-full shrink-0 whitespace-nowrap md:w-auto">
+              Apply
+            </Button>
+          </div>
 
-          <div className="bg-rose mt-4 p-4 border rounded flex-col items-center justify-between">
+          <div className="bg-rose mt-4 flex-col items-center justify-between rounded border p-4">
             <div className="flex gap-2">
               <img
-                src="/images/gift-big.png"
+                src="/placeholders/gift-big.png"
                 alt="gift"
-                className="w-16 h-16"
+                className="h-16 w-16"
               />
               <div>
                 <p className="text-sm font-semibold">Buying for a loved one?</p>
@@ -214,24 +225,26 @@ const Cart: React.FC = ({handlePlaceOrder}) => {
             </div>
             <Button
               variant="ghost"
-              className="mt-2 text-rose-600 text-sm font-semibold"
-              onClick={() => alert('Gift package added!')}
+              className="mt-2 text-sm font-semibold text-rose-600"
+              onClick={() => alert("Gift package added!")}
             >
-              Add Gift Package 
+              Add Gift Package
             </Button>
           </div>
 
-          <div className="mt-4 p-4 border rounded">
+          <div className="mt-4 rounded border p-4">
             <h3 className="font-semibold">
               Price Details ({cartItems.length} Item
-              {cartItems.length !== 1 && 's'})
+              {cartItems.length !== 1 && "s"})
             </h3>
-            <div className="flex justify-between mt-2">
+            <div className="mt-2 flex justify-between">
               <span className="text-gray-600">Total MRP</span>
               <PriceFormat
                 prefix="₹"
                 value={originalTotal}
                 className="text-sm font-semibold"
+                thousandSeparator=","
+                decimalSeparator="."
               />
             </div>
             {discountAmount > 0 && (
@@ -251,11 +264,13 @@ const Cart: React.FC = ({handlePlaceOrder}) => {
                 prefix="₹"
                 value={discountedTotal}
                 className="text-md font-semibold"
+                thousandSeparator=","
+                decimalSeparator="."
               />
             </div>
           </div>
 
-          <Button className="my-2 w-full" onClick={handlePlaceOrder}>
+          <Button className="my-2 w-full" onClick={handleNext}>
             Place Order
           </Button>
         </div>
@@ -265,4 +280,3 @@ const Cart: React.FC = ({handlePlaceOrder}) => {
 };
 
 export default Cart;
-

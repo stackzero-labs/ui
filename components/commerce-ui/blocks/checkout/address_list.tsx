@@ -1,11 +1,7 @@
+"use client";
 import React from "react";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardContent,
-} from "@/components/ui/card";
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import DeleteAddress from "./delete_address_dialog.tsx";
@@ -13,9 +9,9 @@ import AddAddressDialog from "./add_address_dialog.tsx";
 
 const AddressCard = ({ address }) => {
   return (
-    <Card className="w-full my-2">
-      <CardHeader className="flex-row justify-between">
-        <div className="flex flex-row items-center gap-2 ">
+    <Card className="my-2 w-full">
+      <CardHeader className="flex w-full flex-row items-center justify-between">
+        <div className="flex flex-row items-center gap-2">
           <RadioGroupItem value={address.id} />
           <CardTitle>{address.name}</CardTitle>
           <Badge variant="success">{address.address_type}</Badge>
@@ -26,7 +22,7 @@ const AddressCard = ({ address }) => {
         </div>
       </CardHeader>
       <CardContent>
-        <p className="text-sm inline-block">
+        <p className="inline-block text-sm">
           {address.address +
             ", " +
             address.locality +
@@ -74,4 +70,3 @@ const AddressList = ({
 };
 
 export default AddressList;
-
