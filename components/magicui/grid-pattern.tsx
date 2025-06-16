@@ -14,13 +14,13 @@ interface GridPatternProps extends React.SVGProps<SVGSVGElement> {
 }
 
 export function GridPattern({
-  width = 40,
+  className,
   height = 40,
+  squares,
+  strokeDasharray = "0",
+  width = 40,
   x = -1,
   y = -1,
-  strokeDasharray = "0",
-  squares,
-  className,
   ...props
 }: GridPatternProps) {
   const id = useId();
@@ -30,7 +30,7 @@ export function GridPattern({
       aria-hidden="true"
       className={cn(
         "pointer-events-none absolute inset-0 h-full w-full fill-gray-400/30 stroke-gray-400/30",
-        className,
+        className
       )}
       {...props}
     >

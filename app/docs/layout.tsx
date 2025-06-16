@@ -6,9 +6,9 @@ import { DocsLayout, DocsLayoutProps } from "@/components/notebook";
 
 const docsOptions: DocsLayoutProps = {
   ...baseOptions,
+  i18n: false,
   links: linkItems,
   tree: source.pageTree,
-  i18n: false,
 };
 
 export default function Layout({ children }: { children: ReactNode }) {

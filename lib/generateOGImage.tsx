@@ -15,27 +15,27 @@ export function generateOGImage(
   options: GenerateProps & ImageResponseOptions
 ): ImageResponse {
   const {
-    title,
     description,
     icon,
-    site,
     primaryColor,
     primaryTextColor,
+    site,
+    title,
     ...rest
   } = options;
 
   return new ImageResponse(
     generate({
-      title,
       description,
       icon,
-      site,
-      primaryTextColor,
       primaryColor,
+      primaryTextColor,
+      site,
+      title,
     }),
     {
-      width: 1200,
       height: 630,
+      width: 1200,
       ...rest,
     }
   );
@@ -49,24 +49,24 @@ export function generate({
   return (
     <div
       style={{
-        display: "flex",
-        flexDirection: "column",
-        width: "100%",
-        height: "100%",
-        color: "white",
-        padding: "4rem",
         backgroundColor: "#0c0c0c",
         backgroundImage: `linear-gradient(to top right, ${primaryColor}, transparent)`,
+        color: "white",
+        display: "flex",
+        flexDirection: "column",
+        height: "100%",
+        padding: "4rem",
+        width: "100%",
       }}
     >
       <div
         style={{
+          alignItems: "center",
+          color: primaryTextColor,
           display: "flex",
           flexDirection: "row",
-          alignItems: "center",
           gap: "16px",
           marginBottom: "12px",
-          color: primaryTextColor,
         }}
       >
         {/* {props.icon} */}
@@ -84,16 +84,16 @@ export function generate({
 
       <p
         style={{
-          fontWeight: 800,
           fontSize: "82px",
+          fontWeight: 800,
         }}
       >
         {props.title}
       </p>
       <p
         style={{
-          fontSize: "52px",
           color: "rgba(240,240,240,0.8)",
+          fontSize: "52px",
         }}
       >
         {props.description}

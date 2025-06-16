@@ -19,30 +19,30 @@ interface LikeRatingBasicProps {
 
 const LikeRating_Basic = ({
   className,
-  likes = 0,
-  dislikes = 0,
-  isLiked,
-  isDisliked,
-  likeIncrement = 1,
   dislikeIncrement = 1,
+  dislikes = 0,
+  isDisliked,
+  isLiked,
+  likeIncrement = 1,
+  likes = 0,
   onRatingChange,
 }: LikeRatingBasicProps) => {
   const handleLike = () => {
     if (isLiked) {
       // Undo like
       onRatingChange({
-        isLiked: false,
-        isDisliked: false,
-        likes: likes - likeIncrement,
         dislikes,
+        isDisliked: false,
+        isLiked: false,
+        likes: likes - likeIncrement,
       });
     } else {
       // Add like and remove dislike if exists
       onRatingChange({
-        isLiked: true,
-        isDisliked: false,
-        likes: likes + likeIncrement,
         dislikes: isDisliked ? dislikes - dislikeIncrement : dislikes,
+        isDisliked: false,
+        isLiked: true,
+        likes: likes + likeIncrement,
       });
     }
   };
@@ -51,18 +51,18 @@ const LikeRating_Basic = ({
     if (isDisliked) {
       // Undo dislike
       onRatingChange({
-        isLiked: false,
-        isDisliked: false,
-        likes,
         dislikes: dislikes - dislikeIncrement,
+        isDisliked: false,
+        isLiked: false,
+        likes,
       });
     } else {
       // Add dislike and remove like if exists
       onRatingChange({
-        isLiked: false,
-        isDisliked: true,
-        likes: isLiked ? likes - likeIncrement : likes,
         dislikes: dislikes + dislikeIncrement,
+        isDisliked: true,
+        isLiked: false,
+        likes: isLiked ? likes - likeIncrement : likes,
       });
     }
   };

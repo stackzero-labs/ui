@@ -71,9 +71,9 @@ function Banner_07() {
             <NumberFlowGroup>
               <div
                 style={{
-                  fontVariantNumeric: "tabular-nums",
-                  fontSize: "4rem",
                   fontFamily: "monospace",
+                  fontSize: "4rem",
+                  fontVariantNumeric: "tabular-nums",
                 }}
                 className="~text-3xl/4xl flex items-baseline font-semibold"
               >
