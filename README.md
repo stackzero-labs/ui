@@ -70,6 +70,18 @@ You can just copy and paste the components into your project and start building 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+<!-- WHAT'S INSIDE? -->
+
+## What's inside?
+
+This project contains a collection of:
+
+- **Components** to build e-commerce sites and commerce apps.
+- **Blocks** to create complex layouts and sections. These blocks are mainly built using the components.
+- **Pages** to create complete pages and sections. These pages are built using the blocks and components.
+
+All components, blocks and pages are ready to be copy-pasted into your project.
+
 <!-- GETTING STARTED -->
 
 ## Getting Started
@@ -77,6 +89,8 @@ You can just copy and paste the components into your project and start building 
 Since this project is a collection of components, you can just copy and paste the components into your project and start building your e-commerce site right away!
 
 You can use the components in your project by copying and pasting the components from the [official documentation](https://ui.stackzero.co).
+
+For a quick start, we recommend using the CLI to install the components in your project. The CLI will automatically install the required dependencies and create the necessary files for you. Read more about the CLI in the [official documentation](https://ui.stackzero.co/docs/cli).
 
 ### Installation
 
