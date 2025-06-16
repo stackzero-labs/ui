@@ -103,8 +103,8 @@ export async function extractPageSourceCodes(
       const errorMsg = `// No files found in page ${pageName}`;
       results[pageName] = {
         code: errorMsg,
-        highlightedCode: await codeToHtml({ code: errorMsg, lang: "tsx" }),
         fileName: `${pageName}.tsx`,
+        highlightedCode: await codeToHtml({ code: errorMsg, lang: "tsx" }),
         isMainFile: false,
       };
       return results;
@@ -130,8 +130,8 @@ export async function extractPageSourceCodes(
         const highlightedCode = await codeToHtml({ code, lang });
         results[fileKey] = {
           code,
-          highlightedCode,
           fileName,
+          highlightedCode,
           isMainFile,
         };
       } catch (error) {
@@ -140,8 +140,8 @@ export async function extractPageSourceCodes(
         }`;
         results[fileKey] = {
           code: errorMsg,
-          highlightedCode: await codeToHtml({ code: errorMsg, lang }),
           fileName,
+          highlightedCode: await codeToHtml({ code: errorMsg, lang }),
           isMainFile,
         };
       }
@@ -154,8 +154,8 @@ export async function extractPageSourceCodes(
     }`;
     results[pageName] = {
       code: errorMsg,
-      highlightedCode: await codeToHtml({ code: errorMsg, lang: "tsx" }),
       fileName: `${pageName}.tsx`,
+      highlightedCode: await codeToHtml({ code: errorMsg, lang: "tsx" }),
       isMainFile: false,
     };
     return results;

@@ -63,16 +63,6 @@ export function getMDXComponents(components: MDXComponents): MDXComponents {
       );
     },
 
-    PagePreview: async ({
-      name,
-      ...props
-    }: {
-      name: string;
-      codeRendererFiles: string[];
-    }) => {
-      const sourceCodes = await extractPageSourceCodes(name);
-      return <PagePreview name={name} source={sourceCodes} {...props} />;
-    },
     ComponentPropsTable,
     ComponentSource: async ({ name, ...props }: { name: string }) => {
       const { code, highlightedCode } = await extractSourceCode(name);
@@ -84,15 +74,10 @@ export function getMDXComponents(components: MDXComponents): MDXComponents {
         />
       );
     },
-    PageSource: async ({ name, ...props }: { name: string }) => {
-      const sourceCodes = await extractPageSourceCodes(name);
-      return <ComponentPreview name={name} source={sourceCodes} {...props} />;
-    },
     File,
     Files,
     Folder,
     ImageZoom,
-
     InstallTabs: ({
       children,
       items,
@@ -105,6 +90,21 @@ export function getMDXComponents(components: MDXComponents): MDXComponents {
       </Tabs>
     ),
     ManualInstall,
+
+    PagePreview: async ({
+      name,
+      ...props
+    }: {
+      name: string;
+      codeRendererFiles: string[];
+    }) => {
+      const sourceCodes = await extractPageSourceCodes(name);
+      return <PagePreview name={name} source={sourceCodes} {...props} />;
+    },
+    PageSource: async ({ name, ...props }: { name: string }) => {
+      const sourceCodes = await extractPageSourceCodes(name);
+      return <ComponentPreview name={name} source={sourceCodes} {...props} />;
+    },
     pre: ({ ...props }) => (
       <CodeBlock {...props}>
         <Pre>{props.children}</Pre>

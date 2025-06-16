@@ -35,9 +35,9 @@ const ImageViewer_Basic = ({
   classNameThumbnailViewer,
   imageTitle,
   imageUrl,
-  thumbnailUrl,
   placeholderUrl = DEFAULT_PLACEHOLDER_URL,
   showControls = true,
+  thumbnailUrl,
 }: ImageViewerProps) => {
   const handleImgError = (event: React.SyntheticEvent<HTMLImageElement>) => {
     console.error("Image failed to load", event.currentTarget.src);

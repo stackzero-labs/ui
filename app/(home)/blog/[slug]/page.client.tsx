@@ -50,8 +50,8 @@ export function BlogTitle({
   date,
   description,
   name,
-  title,
   tags,
+  title,
 }: {
   title: string;
   description: string | undefined;

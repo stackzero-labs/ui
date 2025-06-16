@@ -1,26 +1,9 @@
-import { Fragment, type HTMLAttributes, type ReactNode } from "react";
-import { type BaseLayoutProps, getLinks, type SharedNavProps } from "./shared";
-import {
-  CollapsibleSidebar,
-  Sidebar,
-  SidebarCollapseTrigger,
-  SidebarFooter,
-  SidebarHeader,
-  SidebarViewport,
-  SidebarPageTree,
-} from "./docs/sidebar";
-import { RootToggle } from "./layout/root-toggle";
+import type { PageTree } from "fumadocs-core/server";
 import { TreeContextProvider } from "fumadocs-ui/provider";
-import { NavProvider, Title } from "./layout/nav";
-import { LargeSearchToggle, SearchToggle } from "./layout/search-toggle";
-import { cn } from "../lib/cn";
-import Link from "next/link";
-import { buttonVariants } from "./ui/button";
 import { ChevronDown, Languages } from "lucide-react";
-import { BaseLinkItem, type LinkItemType } from "./links";
-import { LanguageToggle } from "./layout/language-toggle";
-import { ThemeToggle } from "./layout/theme-toggle";
-import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
+import Link from "next/link";
+import { Fragment, type HTMLAttributes, type ReactNode } from "react";
+import { cn } from "../lib/cn";
 import {
   checkPageTree,
   getSidebarTabsFromOptions,
@@ -28,10 +11,25 @@ import {
   SidebarLinkItem,
   type SidebarOptions,
 } from "./docs/shared";
-import type { PageTree } from "fumadocs-core/server";
+import {
+  CollapsibleSidebar,
+  Sidebar,
+  SidebarCollapseTrigger,
+  SidebarFooter,
+  SidebarHeader,
+  SidebarPageTree,
+  SidebarViewport,
+} from "./docs/sidebar";
+import { LanguageToggle } from "./layout/language-toggle";
+import { NavProvider, Title } from "./layout/nav";
+import { RootToggle } from "./layout/root-toggle";
+import { LargeSearchToggle, SearchToggle } from "./layout/search-toggle";
+import { ThemeToggle } from "./layout/theme-toggle";
+import { BaseLinkItem, type LinkItemType } from "./links";
 import { Inset, Navbar, NavbarSidebarTrigger } from "./notebook.client";
-import { type PageStyles, StylesProvider } from "fumadocs-ui/provider";
-import { useParams } from "next/navigation";
+import { type BaseLayoutProps, getLinks, type SharedNavProps } from "./shared";
+import { buttonVariants } from "./ui/button";
+import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
 
 export interface DocsLayoutProps extends BaseLayoutProps {
   tree: PageTree.Root;
@@ -65,12 +63,12 @@ export function DocsLayout({
     "[--fd-nav-height:3.5rem] [--fd-tocnav-height:36px] md:[--fd-sidebar-width:300px] xl:[--fd-toc-width:268px] xl:[--fd-tocnav-height:0px]"
   );
 
-  const pageStyles: PageStyles = {
-    article: "w-full !max-w-[1450px]",
-    page: cn("mt-[var(--fd-nav-height)]"),
-    toc: cn("max-xl:hidden"),
-    tocNav: cn("xl:hidden"),
-  };
+  // const pageStyles: PageStyles = {
+  //   article: "w-full !max-w-[1450px]",
+  //   page: cn("mt-[var(--fd-nav-height)]"),
+  //   toc: cn("max-xl:hidden"),
+  //   tocNav: cn("xl:hidden"),
+  // };
 
   return (
     <TreeContextProvider tree={props.tree}>
