@@ -302,6 +302,12 @@ That's it! You have successfully added a new block to the library.
 
 ## Commit Convention
 
+We now use Conventional Commits to maintain a clear and consistent commit history. Read more about it [here](https://www.conventionalcommits.org).
+
+A pre-commit hook (via `husky` and `commitlint`) is set up to enforce this convention, so you will be prompted to follow it when committing your changes.
+
+When making changes, please follow the commit message format:
+
 `category(scope or module): message` in your commit message while using one of
 the following categories:
 

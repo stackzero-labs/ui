@@ -13,7 +13,8 @@
     "lint": "next lint --no-cache",
     "lint:fix": "next lint --fix",
     "format": "prettier --check .",
-    "format:fix": "prettier --write ."
+    "format:fix": "prettier --write .",
+    "prepare": "husky"
   },
   "dependencies": {
     "@mantine/hooks": "^7.17.0",
@@ -63,6 +64,8 @@
     "zod": "^3.24.2"
   },
   "devDependencies": {
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
     "@eslint/eslintrc": "^3.3.0",
     "@eslint/js": "^9.21.0",
     "@fumadocs/cli": "^0.0.7",
@@ -75,6 +78,7 @@
     "eslint": "^9.21.0",
     "eslint-config-next": "15.1.5",
     "eslint-plugin-perfectionist": "^4.9.0",
+    "husky": "^9.1.7",
     "postcss": "8.5.3",
     "prettier-plugin-tailwindcss": "^0.6.11",
     "source-map-support": "^0.5.21",
