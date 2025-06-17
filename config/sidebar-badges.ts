@@ -8,6 +8,10 @@ type SidebarBadge = {
 
 export const sidebarBadges: SidebarBadge[] = [
   {
+    isNew: true,
+    page: "MCP server",
+  },
+  {
     count: 12,
     page: "Banners",
   },

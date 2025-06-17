@@ -1,0 +1,100 @@
+---
+title: MCP server
+description: How to use the Model Context Protocol with stackzero-labs/ui
+icon: BrainCircuit
+---
+
+
+## Overview
+MCP is an open protocol that standardizes how applications provide context to LLMs. 
+
+We now provide a standardized way to connect AI models to components and blocks, allowing developers to build commerce applications even faster!
+
+This will give you the ability to ask your AI-powered IDE to create components and blocks based on your requirements, making it easier to build commerce applications.
+
+
+> To learn more about the Model Context Protocol, visit the [Model Context Protocol documentation](https://modelcontextprotocol.io/introduction).
+
+
+
+## 1-click install (Recommended)
+
+Instantly add the MCP server 
+
+[![Install MCP Server](https://cursor.com/deeplink/mcp-install-dark.svg)](https://cursor.com/install-mcp?name=%40stackzero-labs%2Fmcp&config=eyJjb21tYW5kIjoibnB4IC15IEBzdGFja3plcm8tbGFicy9tY3BAbGF0ZXN0In0%3D)
+
+
+
+## Manual installation
+
+
+### As a standalone server
+
+```bash
+npx @stackzero-labs/mcp
+```
+
+### In Cursor (manual setup)
+
+ Add to your Cursor MCP configuration:
+
+```json
+{
+  "mcpServers": {
+    "@stackzero-labs/mcp": {
+      "command": "npx",
+      "args": ["-y", "@stackzero-labs/mcp@latest"]
+    }
+  }
+}
+```
+
+> Read more about how to set up MCP servers in [Cursor documentation](https://docs.cursor.com/context/model-context-protocol#manual-configuration).
+
+### In Windsurf (manual setup)
+
+Add to your Windsurf MCP configuration:
+
+```json
+{
+  "mcpServers": {
+    "@stackzero-labs/mcp": {
+      "command": "npx",
+      "args": ["-y", "@stackzero-labs/mcp@latest"]
+    }
+  }
+}
+```
+
+> Read more about how to set up MCP servers in [Windsurf documentation](https://docs.windsurf.com/windsurf/cascade/mcp#adding-a-new-mcp-plugin).
+
+### In Claude Desktop  (manual setup)
+
+Add to your Claude Desktop configuration:
+
+```json
+{
+  "mcpServers": {
+    "@stackzero-labs/mcp": {
+      "command": "npx",
+      "args": ["-y", "@stackzero-labs/mcp@latest"]
+    }
+  }
+}
+```
+
+## How to use it
+
+Once installed, you can use the MCP server to enable your AI-powered IDE to provide context to your components and blocks, making it easier to build commerce applications. 
+
+For example, you can ask your IDE's agent the following question:
+- Create a product page using star rating fractional component 
+- Create a banner component similar to stackzero's banner-01. 
+
+
+
+## Repo
+
+The  source code for the MCP server is available on [GitHub](https://github.com/stackzero-labs/mcp).
+
+
