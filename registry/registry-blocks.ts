@@ -3,6 +3,21 @@ import * as React from "react";
 
 export const blocks: Registry = [
   {
+    name: "address-01-block",
+    type: "registry:block",
+    dependencies: [],
+    registryDependencies: [],
+    files: [
+      {
+        path: "@/components/commerce-ui/blocks/address/address-01.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/commerce-ui/blocks/address/address-01")
+    ),
+  },
+  {
     name: "banner-01-block",
     type: "registry:block",
     dependencies: [],

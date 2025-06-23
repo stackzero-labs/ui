@@ -8,6 +8,11 @@ type SidebarBadge = {
 
 export const sidebarBadges: SidebarBadge[] = [
   {
+    // isNew: true,
+    page: "Address",
+    upcoming: true,
+  },
+  {
     isNew: true,
     page: "MCP server",
   },
@@ -20,7 +25,6 @@ export const sidebarBadges: SidebarBadge[] = [
     page: "Product Card",
   },
   {
-    alpha: true,
     count: 5,
     page: "Product Variants",
   },
@@ -35,7 +39,6 @@ export const sidebarBadges: SidebarBadge[] = [
   },
   {
     alpha: true,
-    isNew: true,
     count: 1,
     page: "Product Pages",
   },
