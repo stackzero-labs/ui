@@ -82,6 +82,31 @@ export const components: Registry = [
         )
     ),
   },
+
+  {
+    name: "phone-number-input-basic",
+    type: "registry:component",
+    registryDependencies: [
+      "button",
+      "input",
+      "popover",
+      "scroll-area",
+      "command",
+    ],
+    dependencies: ["lucide-react", "react-phone-number-input"],
+    files: [
+      {
+        path: "@/components/commerce-ui/components/phone-number-input/basic/phone-number-input-basic.tsx",
+        type: "registry:component",
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import(
+          "../components/commerce-ui/components/phone-number-input/basic/phone-number-input-basic"
+        )
+    ),
+  },
   {
     name: "star-rating-basic",
     type: "registry:component",

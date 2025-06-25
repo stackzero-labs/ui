@@ -1,0 +1,23 @@
+{
+  "name": "phone-number-input-basic-ex-01",
+  "type": "registry:example",
+  "dependencies": [
+    "lucide-react",
+    "zod",
+    "react-hook-form",
+    "@hookform/resolvers"
+  ],
+  "registryDependencies": [
+    "https://ui.stackzero.co/r/phone-number-input-basic.json",
+    "button",
+    "form"
+  ],
+  "files": [
+    {
+      "type": "registry:example",
+      "content": "\"use client\";\n\nimport PhoneNumberInput_Basic from \"@/components/commerce-ui/phone-number-input-basic\";\nimport { Button } from \"@/components/ui/button\";\nimport {\n  Form,\n  FormControl,\n  FormDescription,\n  FormField,\n  FormItem,\n  FormLabel,\n  FormMessage,\n} from \"@/components/ui/form\";\nimport { zodResolver } from \"@hookform/resolvers/zod\";\nimport { useForm } from \"react-hook-form\";\nimport { z } from \"zod\";\n\nconst phoneNumberSchema = z.object({\n  phoneNumber: z.string().min(1, \"Phone number is required\"),\n});\nexport default function PhoneNumberInput_Basic_Ex_01() {\n  const form = useForm<z.infer<typeof phoneNumberSchema>>({\n    defaultValues: {\n      phoneNumber: \"+4407782700357\",\n    },\n    resolver: zodResolver(phoneNumberSchema),\n  });\n\n  function onSubmit(data: z.infer<typeof phoneNumberSchema>) {\n    console.log(\"Submitted phone number:\", data.phoneNumber);\n    window.alert(`Submitted phone number: ${data.phoneNumber}`);\n  }\n\n  return (\n    <Form {...form}>\n      <form\n        onSubmit={form.handleSubmit(onSubmit)}\n        className=\"gap-g flex max-w-md flex-col items-center gap-4\"\n      >\n        <FormField\n          control={form.control}\n          name=\"phoneNumber\"\n          render={({ field }) => (\n            <FormItem>\n              <FormLabel>Phone Number</FormLabel>\n              <FormControl>\n                <PhoneNumberInput_Basic\n                  defaultCountry=\"GB\"\n                  value={field.value}\n                  onChange={field.onChange}\n                />\n              </FormControl>\n              <FormDescription>\n                Enter your phone number with country code. For example,\n                +4407782700357 for UK.\n              </FormDescription>\n              <FormMessage />\n            </FormItem>\n          )}\n        />\n        <Button type=\"submit\" variant=\"secondary\" className=\"w-full\">\n          Submit\n        </Button>\n      </form>\n    </Form>\n  );\n}\n",
+      "path": "/components/commerce-ui/components/phone-number-input/basic/phone-number-input-basic-ex-01.tsx",
+      "target": "/components/commerce-ui/phone-number-input-basic-ex-01.tsx"
+    }
+  ]
+}
