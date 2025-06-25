@@ -12,7 +12,7 @@ interface LinkItem {
 export function References({ children }: React.PropsWithChildren) {
   return (
     <div className="not-prose mt-2 mb-6 flex items-center space-x-2">
-      <p className="font text-sm">Libraries used:</p>
+      <p className="font text-sm">Built with:</p>
       {children}
     </div>
   );

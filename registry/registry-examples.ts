@@ -161,6 +161,34 @@ export const examples: Registry = [
   },
 
   {
+    name: "phone-number-input-basic-ex-01",
+    type: "registry:example",
+    dependencies: [
+      "lucide-react",
+      "zod",
+      "react-hook-form",
+      "@hookform/resolvers",
+    ],
+    registryDependencies: [
+      "https://ui.stackzero.co/r/phone-number-input-basic.json",
+      "button",
+      "form",
+    ],
+    files: [
+      {
+        path: "@/components/commerce-ui/components/phone-number-input/basic/phone-number-input-basic-ex-01.tsx",
+        type: "registry:example",
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import(
+          "../components/commerce-ui/components/phone-number-input/basic/phone-number-input-basic-ex-01"
+        )
+    ),
+  },
+
+  {
     name: "price-format-basic-ex-01",
     type: "registry:example",
     dependencies: ["lucide-react"],

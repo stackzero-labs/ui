@@ -73,6 +73,27 @@
       ]
     },
     {
+      "name": "phone-number-input-basic",
+      "type": "registry:component",
+      "registryDependencies": [
+        "button",
+        "input",
+        "popover",
+        "scroll-area",
+        "command"
+      ],
+      "dependencies": [
+        "lucide-react",
+        "react-phone-number-input"
+      ],
+      "files": [
+        {
+          "path": "@/components/commerce-ui/components/phone-number-input/basic/phone-number-input-basic.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "star-rating-basic",
       "type": "registry:component",
       "dependencies": [
@@ -396,6 +417,27 @@
         {
           "path": "@/components/commerce-ui/components/image-viewer/motion/image-viewer-motion-ex-01.tsx",
           "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "phone-number-input-basic-ex-01",
+      "type": "registry:example",
+      "dependencies": [
+        "lucide-react",
+        "zod",
+        "react-hook-form",
+        "@hookform/resolvers"
+      ],
+      "registryDependencies": [
+        "https://ui.stackzero.co/r/phone-number-input-basic.json",
+        "button",
+        "form"
+      ],
+      "files": [
+        {
+          "path": "@/components/commerce-ui/components/phone-number-input/basic/phone-number-input-basic-ex-01.tsx",
+          "type": "registry:example"
         }
       ]
     },

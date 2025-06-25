@@ -42,4 +42,8 @@ export const sidebarBadges: SidebarBadge[] = [
     count: 1,
     page: "Product Pages",
   },
+  {
+    isNew: true,
+    page: "Phone Number Input",
+  },
 ];
