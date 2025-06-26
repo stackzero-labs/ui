@@ -73,6 +73,22 @@
       ]
     },
     {
+      "name": "input-icon",
+      "type": "registry:component",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "input"
+      ],
+      "files": [
+        {
+          "path": "@/components/commerce-ui/components/inputs/icon/input-icon.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "phone-number-input-basic",
       "type": "registry:component",
       "registryDependencies": [
@@ -416,6 +432,22 @@
       "files": [
         {
           "path": "@/components/commerce-ui/components/image-viewer/motion/image-viewer-motion-ex-01.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "input-icon-ex-01",
+      "type": "registry:component",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://ui.stackzero.co/r/input-icon.json"
+      ],
+      "files": [
+        {
+          "path": "@/components/commerce-ui/components/inputs/icon/input-icon-ex-01.tsx",
           "type": "registry:component"
         }
       ]

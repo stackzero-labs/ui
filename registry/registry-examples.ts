@@ -161,6 +161,25 @@ export const examples: Registry = [
   },
 
   {
+    name: "input-icon-ex-01",
+    type: "registry:component",
+    dependencies: ["lucide-react"],
+    registryDependencies: ["https://ui.stackzero.co/r/input-icon.json"],
+    files: [
+      {
+        path: "@/components/commerce-ui/components/inputs/icon/input-icon-ex-01.tsx",
+        type: "registry:component",
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import(
+          "../components/commerce-ui/components/inputs/icon/input-icon-ex-01"
+        )
+    ),
+  },
+
+  {
     name: "phone-number-input-basic-ex-01",
     type: "registry:example",
     dependencies: [

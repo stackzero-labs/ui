@@ -84,6 +84,23 @@ export const components: Registry = [
   },
 
   {
+    name: "input-icon",
+    type: "registry:component",
+    dependencies: ["lucide-react"],
+    registryDependencies: ["input"],
+    files: [
+      {
+        path: "@/components/commerce-ui/components/inputs/icon/input-icon.tsx",
+        type: "registry:component",
+      },
+    ],
+    component: React.lazy(
+      () =>
+        import("../components/commerce-ui/components/inputs/icon/input-icon")
+    ),
+  },
+
+  {
     name: "phone-number-input-basic",
     type: "registry:component",
     registryDependencies: [
