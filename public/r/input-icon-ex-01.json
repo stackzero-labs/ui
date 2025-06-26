@@ -1,0 +1,18 @@
+{
+  "name": "input-icon-ex-01",
+  "type": "registry:component",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "https://ui.stackzero.co/r/input-icon.json"
+  ],
+  "files": [
+    {
+      "type": "registry:component",
+      "content": "import { Mail, Eye } from \"lucide-react\";\nimport InputIcon from \"@/components/commerce-ui/input-icon\";\nimport { Input } from \"@/components/ui/input\";\nexport default function Input_Icon_Ex_01() {\n  return (\n    <div className=\"max-w-sm space-y-4\">\n      <InputIcon placeholder=\"Two icons\" startIcon={Mail} endIcon={Eye} />\n      <InputIcon placeholder=\"Just a start icon\" startIcon={Mail} />\n      <InputIcon placeholder=\"Just an end icon\" endIcon={Eye} />\n      <InputIcon placeholder=\"No icons\" />\n      <Input placeholder=\"Standard shadcn/ui input\" />\n    </div>\n  );\n}\n",
+      "path": "/components/commerce-ui/components/inputs/icon/input-icon-ex-01.tsx",
+      "target": "/components/commerce-ui/input-icon-ex-01.tsx"
+    }
+  ]
+}

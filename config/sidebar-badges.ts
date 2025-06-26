@@ -46,4 +46,8 @@ export const sidebarBadges: SidebarBadge[] = [
     isNew: true,
     page: "Phone Number Input",
   },
+  {
+    isNew: true,
+    page: "Inputs",
+  },
 ];

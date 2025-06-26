@@ -1,0 +1,18 @@
+{
+  "name": "input-icon",
+  "type": "registry:component",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "input"
+  ],
+  "files": [
+    {
+      "type": "registry:component",
+      "content": "import { cn } from \"@/lib/utils\";\nimport { LucideIcon } from \"lucide-react\";\nimport * as React from \"react\";\n\nexport interface InputProps\n  extends React.InputHTMLAttributes<HTMLInputElement> {\n  startIcon?: LucideIcon;\n  endIcon?: LucideIcon;\n}\n\nconst InputIcon = React.forwardRef<HTMLInputElement, InputProps>(\n  ({ className, endIcon, startIcon, type, ...props }, ref) => {\n    const StartIcon = startIcon;\n    const EndIcon = endIcon;\n\n    return (\n      <div className=\"relative w-full\">\n        {StartIcon && (\n          <div className=\"absolute top-1/2 left-2 -translate-y-1/2 transform\">\n            <StartIcon size={18} className=\"text-muted-foreground\" />\n          </div>\n        )}\n        <input\n          type={type}\n          className={cn(\n            \"file:text-foreground placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground dark:bg-input/30 border-input flex h-9 w-full min-w-0 rounded-md border bg-transparent px-3 py-1 text-base shadow-xs transition-[color,box-shadow] outline-none file:inline-flex file:h-7 file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm\",\n            \"focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]\",\n            \"aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive\",\n            startIcon ? \"pl-8\" : \"\",\n            endIcon ? \"pr-8\" : \"\",\n            className\n          )}\n          ref={ref}\n          {...props}\n        />\n        {EndIcon && (\n          <div className=\"absolute top-1/2 right-2 -translate-y-1/2 transform\">\n            <EndIcon className=\"text-muted-foreground\" size={18} />\n          </div>\n        )}\n      </div>\n    );\n  }\n);\n\nInputIcon.displayName = \"InputIcon\";\n\nexport default InputIcon;\n",
+      "path": "/components/commerce-ui/components/inputs/icon/input-icon.tsx",
+      "target": "/components/commerce-ui/input-icon.tsx"
+    }
+  ]
+}
