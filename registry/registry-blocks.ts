@@ -5,8 +5,20 @@ export const blocks: Registry = [
   {
     name: "address-01-block",
     type: "registry:block",
-    dependencies: [],
-    registryDependencies: [],
+    dependencies: [
+      "@hookform/resolvers",
+      "lucide-react",
+      "react-hook-form",
+      "zod",
+    ],
+    registryDependencies: [
+      "input",
+      "form",
+      "button",
+      "checkbox",
+      "https://ui.stackzero.co/r/phone-number-input-basic.json",
+      "https://ui.stackzero.co/r/input-icon.json",
+    ],
     files: [
       {
         path: "@/components/commerce-ui/blocks/address/address-01.tsx",
@@ -15,6 +27,36 @@ export const blocks: Registry = [
     ],
     component: React.lazy(
       () => import("../components/commerce-ui/blocks/address/address-01")
+    ),
+  },
+  {
+    name: "address-02-block",
+    type: "registry:block",
+    dependencies: [
+      "@hookform/resolvers",
+      "lucide-react",
+      "react-hook-form",
+      "zod",
+    ],
+    registryDependencies: [
+      "badge",
+      "button",
+      "card",
+      "checkbox",
+      "dialog",
+      "form",
+      "input",
+      "https://ui.stackzero.co/r/phone-number-input-basic.json",
+      "https://ui.stackzero.co/r/input-icon.json",
+    ],
+    files: [
+      {
+        path: "@/components/commerce-ui/blocks/address/address-02.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/commerce-ui/blocks/address/address-02")
     ),
   },
   {

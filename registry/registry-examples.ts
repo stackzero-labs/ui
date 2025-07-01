@@ -3,6 +3,21 @@ import * as React from "react";
 
 export const examples: Registry = [
   {
+    name: "address-02-block-ex",
+    type: "registry:example",
+    dependencies: ["lucide-react", "zod"],
+    registryDependencies: ["https://ui.stackzero.co/r/address-02-block.json"],
+    files: [
+      {
+        path: "@/components/commerce-ui/blocks/address/address-02-ex.tsx",
+        type: "registry:example",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/commerce-ui/blocks/address/address-02-ex")
+    ),
+  },
+  {
     name: "cart-01-block-ex",
     type: "registry:example",
     dependencies: ["lucide-react"],
