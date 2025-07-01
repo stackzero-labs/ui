@@ -1,0 +1,19 @@
+{
+  "name": "address-02-block-ex",
+  "type": "registry:example",
+  "dependencies": [
+    "lucide-react",
+    "zod"
+  ],
+  "registryDependencies": [
+    "https://ui.stackzero.co/r/address-02-block.json"
+  ],
+  "files": [
+    {
+      "type": "registry:example",
+      "content": "\"use client\";\n\nimport React, { useState } from \"react\";\nimport { z } from \"zod\";\nimport Address_02 from \"@/components/commerce-ui/address-02\";\n\nexport const addressFormSchema = z.object({\n  address1: z.string().min(1, \"Address is required\"),\n  address2: z.string().optional(),\n  city: z.string().min(1, \"City is required\"),\n  country: z.string().min(1, \"Country is required\"),\n  email: z.string().email(\"Invalid email\").optional(),\n  firstName: z.string().min(1, \"First name is required\"),\n  isBillingAddress: z.boolean(),\n  lastName: z.string().min(1, \"Last name is required\"),\n  phone: z.string().optional(),\n  postalCode: z.string().min(1, \"Postal code is required\"),\n  state: z.string().min(1, \"State is required\"),\n});\n\nexport type AddressFormValues = z.infer<typeof addressFormSchema>;\n\nexport type AddressCardProps = {\n  value?: AddressFormValues;\n  onChange?: (value: AddressFormValues) => void;\n  onSubmit?: (value: AddressFormValues) => void;\n  title?: string;\n  editButtonLabel?: string;\n  saveButtonLabel?: string;\n  cancelButtonLabel?: string;\n  disabled?: boolean;\n  className?: string;\n  showBillingBadge?: boolean;\n};\n\nexport default function Address_02_Ex_01() {\n  const [address, setAddress] = useState<AddressFormValues>({\n    address1: \"12 Main Street\",\n    address2: \"Apt 4B\",\n    city: \"New York\",\n    country: \"USA\",\n    email: \"john.doe@example.com\",\n    firstName: \"John\",\n    isBillingAddress: true,\n    lastName: \"Doe\",\n    phone: \"+441234567890\",\n    postalCode: \"10001\",\n    state: \"NY\",\n  });\n\n  const handleAddressSubmit = (value: AddressFormValues) => {\n    console.log(\"Address submitted:\", value);\n    setAddress(value); // Update the state to reflect changes in the card\n  };\n\n  return (\n    <div>\n      <Address_02\n        className=\"\"\n        value={address}\n        onChange={(value) => console.log(\"Address changed:\", value)}\n        onSubmit={handleAddressSubmit}\n      />\n    </div>\n  );\n}\n",
+      "path": "/components/commerce-ui/blocks/address/address-02-ex.tsx",
+      "target": "/components/commerce-ui/address-02-ex.tsx"
+    }
+  ]
+}

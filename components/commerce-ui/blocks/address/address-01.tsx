@@ -15,26 +15,27 @@ import {
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
+import PhoneInput from "@/components/commerce-ui/components/phone-number-input/basic/phone-number-input-basic";
+import InputIcon from "@/components/commerce-ui/components/inputs/icon/input-icon";
 
 export const addressFormSchema = z.object({
-  firstName: z.string().min(5, "First name is required"),
-  lastName: z.string().min(1, "Last name is required"),
   address1: z.string().min(1, "Address is required"),
   address2: z.string().optional(),
   city: z.string().min(1, "City is required"),
-  state: z.string().min(1, "State is required"),
-  postalCode: z.string().min(1, "Postal code is required"),
   country: z.string().min(1, "Country is required"),
-  phone: z.string().optional(),
   email: z.string().email("Invalid email").optional(),
+  firstName: z.string().min(5, "First name is required"),
   isBillingAddress: z.boolean(),
+  lastName: z.string().min(1, "Last name is required"),
+  phone: z.string().optional(),
+  postalCode: z.string().min(1, "Postal code is required"),
+  state: z.string().min(1, "State is required"),
 });
 
 export type AddressFormValues = z.infer<typeof addressFormSchema>;
 
 export type AddressFormProps = {
   value?: AddressFormValues;
-  onChange?: (value: AddressFormValues) => void;
   onSubmit?: (value: AddressFormValues) => void;
   submitLabel?: string;
   disabled?: boolean;
@@ -42,29 +43,28 @@ export type AddressFormProps = {
 };
 
 function Address_01({
-  value,
-  onChange,
+  className = "",
+  disabled = false,
   onSubmit,
   submitLabel = "Save Address",
-  disabled = false,
-  className = "",
+  value,
 }: AddressFormProps) {
   const form = useForm<AddressFormValues>({
-    resolver: zodResolver(addressFormSchema),
     defaultValues: value || {
-      firstName: "",
-      lastName: "",
       address1: "",
       address2: "",
       city: "",
-      state: "",
-      postalCode: "",
       country: "",
-      phone: "",
       email: "",
+      firstName: "",
       isBillingAddress: true,
+      lastName: "",
+      phone: "",
+      postalCode: "",
+      state: "",
     },
     mode: "onChange",
+    resolver: zodResolver(addressFormSchema),
   });
 
   return (
@@ -242,7 +242,7 @@ function Address_01({
                 <FormItem>
                   <FormLabel>Phone (optional)</FormLabel>
                   <FormControl>
-                    <Input
+                    <PhoneInput
                       {...field}
                       disabled={disabled}
                       autoComplete="tel"
