@@ -9,8 +9,8 @@ type SidebarBadge = {
 export const sidebarBadges: SidebarBadge[] = [
   {
     // isNew: true,
+    count: 2,
     page: "Address",
-    upcoming: true,
   },
   {
     isNew: true,
