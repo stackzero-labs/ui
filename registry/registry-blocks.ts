@@ -59,6 +59,34 @@ export const blocks: Registry = [
       () => import("../components/commerce-ui/blocks/address/address-02")
     ),
   },
+
+  {
+    name: "address-03-block",
+    type: "registry:block",
+    dependencies: [
+      "@hookform/resolvers",
+      "lucide-react",
+      "react-hook-form",
+      "zod",
+    ],
+    registryDependencies: [
+      "input",
+      "form",
+      "button",
+      "checkbox",
+      "https://ui.stackzero.co/r/phone-number-input-basic.json",
+      "https://ui.stackzero.co/r/input-icon.json",
+    ],
+    files: [
+      {
+        path: "@/components/commerce-ui/blocks/address/address-03.tsx",
+        type: "registry:block",
+      },
+    ],
+    component: React.lazy(
+      () => import("../components/commerce-ui/blocks/address/address-03")
+    ),
+  },
   {
     name: "banner-01-block",
     type: "registry:block",
