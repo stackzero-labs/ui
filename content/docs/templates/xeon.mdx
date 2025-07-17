@@ -5,26 +5,46 @@ full: false
 ---
 import { Button } from '@/components/ui/button';
 import { ExternalLink, ArrowRight } from 'lucide-react';
+import Link from 'next/link';
+import PriceFormat_Sale from "@/components/commerce-ui/components/price-format/sale/price-format-sale";
+
 
 > Save **100+ hours of development time** with our pre-built templates and components.
 
 <div className='w-full h-[400px] bg-gray-500'>
 <video width="100%" height="100%" autoPlay loop muted className="w-full h-full object-cover" controls={false}>
-  <source src="" type="video/mp4"/>
-  <source src="movie.ogg" type="video/ogg"/>
+  <source src="/templates/xeon-template.mp4" type="video/mp4"/>
+ 
   Your browser does not support the video tag.
 </video>
 </div>
 
+<div className='flex flex-row gap-3 justify-between'>
+<p className='text-2xl'><strong>Special Launch Price! 🎉</strong></p>
+     <PriceFormat_Sale
+        originalPrice={49}
+        salePrice={29}
+        prefix="$"
+        showSavePercentage={true}
+        classNameSalePrice="text-4xl"
+        classNameOriginalPrice="text-xl"
+      />
+</div>
 
 <div className='mt-6 flex gap-2 w-full'>
-<Button className='w-full'>
-  Buy Now
-  <ArrowRight className='ml-2 h-4 w-4' />
+
+
+<Button className='w-full' asChild>
+  <Link href="https://stackzerolabs.gumroad.com/l/xeon-template" target="_blank" className='no-underline'>
+    Buy Now
+    <ArrowRight className='ml-2 h-4 w-4' />
+  </Link>
 </Button>
-<Button className='w-full' variant='outline'>
+<Button className='w-full' variant='outline' asChild>
+<Link href="https://xeon-template.vercel.app/" target="_blank" className='no-underline'>
   Live Preview
   <ExternalLink className='ml-2 h-4 w-4' />
+</Link>
 </Button>
 
     </div>
@@ -42,17 +62,30 @@ This template is ideal for startups, SaaS companies, and product developers look
 
 ## Why use this?
 
+- **Time-Saving**: Save over **100 hours of development time** with a pre-built, ready-to-use template.
 - **Professional Design**: The template offers a sleek and modern design that enhances user experience and engagement.
 - **Customizable**: Easily modify the template to fit your brand's identity and requirements.
 - **Responsive**: The template is fully responsive, ensuring a seamless experience across all devices.
 - **SEO Optimized**: Built with SEO best practices in mind to help improve your search engine rankings.
 
+## Features
+
+- ⚡️ **Next.js 14** with App Router
+- 🎨 **Beautiful, modern UI** with reusable components
+- 🌗 **Dark theme** compatible
+- 📱 **Fully responsive** and mobile-friendly
+- 🧩 **Component-based architecture** (Hero, Features, Pricing, FAQ, Contact, etc.)
+- 🖼️ **SVG and image assets** included
+- 🛠️ **TypeScript** and strict linting
+- 💨 **PostCSS** and custom CSS utilities
+- 🔥 **Easy to deploy** (Vercel, Netlify, etc.)
+
 ## Built with
-- **React**: The template is built using React, allowing for a dynamic and interactive user interface.
-- **Tailwind CSS**: Utilizes Tailwind CSS for styling, providing a utility-first approach to design.
-- **Next.js**: The template is optimized for Next.js, ensuring fast performance and server-side rendering capabilities.
+- **React**: The template is built using React (v19), allowing for a dynamic and interactive user interface.
+- **Tailwind CSS**: Utilizes Tailwind CSS (v4, latest) for styling, providing a utility-first approach to design.
+- **Next.js**: The template is optimized for Next.js App Router (v15), ensuring fast performance and server-side rendering capabilities.
 
 
-
-
+## Deployment 
+To deploy the Xeon template, you can use platforms like Vercel or Netlify. Simply clone the repository, install the dependencies, and follow the deployment instructions provided in the documentation.
 
