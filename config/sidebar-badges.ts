@@ -4,9 +4,16 @@ type SidebarBadge = {
   isNew?: boolean;
   count?: number;
   upcoming?: boolean;
+  isPro?: boolean;
 };
 
 export const sidebarBadges: SidebarBadge[] = [
+  {
+    isPro: true,
+
+    page: "Xeon",
+  },
+
   {
     // isNew: true,
     count: 3,

@@ -311,6 +311,17 @@ export function SidebarItem({
           </Badge>
         </div>
       )}
+
+      {sidebarBadges.find((badge) => badge.page === name)?.isPro && (
+        <div className="ms-auto flex items-center gap-2">
+          <Badge
+            variant="default"
+            className="border-primary-500/50 rounded-sm px-[0.3rem] text-sm whitespace-nowrap"
+          >
+            <p className="text-xs">Pro</p>
+          </Badge>
+        </div>
+      )}
     </Link>
   );
 }
@@ -390,6 +401,16 @@ export function SidebarFolderTrigger({
             className="rounded-sm border-gray-500/50 px-[0.3rem] text-sm"
           >
             <p className="text-xs text-gray-500">Upcoming</p>
+          </Badge>
+        </div>
+      )}
+      {sidebarBadges.find((badge) => badge.page === name)?.isPro && (
+        <div className="ms-auto flex items-center gap-2">
+          <Badge
+            variant="default"
+            className="border-primary-500/50 rounded-sm px-[0.3rem] text-sm whitespace-nowrap"
+          >
+            <p className="text-xs">Pro</p>
           </Badge>
         </div>
       )}
